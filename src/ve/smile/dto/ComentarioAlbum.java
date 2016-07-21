@@ -1,0 +1,123 @@
+package ve.smile.dto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Table(name = "tb_comentario_album")
+@Entity
+public class ComentarioAlbum {
+
+	private Integer idComentarioAlbum;
+	private Album fkAlbum;
+	private Comunidad fkComunidad;
+	private String descripcion;
+	private Character estatus;
+
+	public ComentarioAlbum() {
+		super();
+	}
+
+	public ComentarioAlbum(Integer idComentarioAlbum) {
+		super();
+		this.idComentarioAlbum = idComentarioAlbum;
+	}
+
+	public ComentarioAlbum(
+			Album fkAlbum,
+			Comunidad fkComunidad,
+			String descripcion,
+			Character estatus) {
+		super();
+		this.fkAlbum = fkAlbum;
+		this.fkComunidad = fkComunidad;
+		this.descripcion = descripcion;
+		this.estatus = estatus;
+	}
+
+	@Id
+	@SequenceGenerator(name = "tb_comentario_album_sequence", sequenceName = "public.tb_comentario_album_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_comentario_album_sequence")
+	@Column(name="id_comentario_album")
+	public Integer getIdComentarioAlbum() {
+		return idComentarioAlbum;
+	}
+
+	public void setIdComentarioAlbum(Integer idComentarioAlbum) {
+		this.idComentarioAlbum = idComentarioAlbum;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_album", nullable = false)
+	public Album getFkAlbum() {
+		return fkAlbum;
+	}
+
+	public void setFkAlbum(Album fkAlbum) {
+		this.fkAlbum = fkAlbum;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_comunidad", nullable = false)
+	public Comunidad getFkComunidad() {
+		return fkComunidad;
+	}
+
+	public void setFkComunidad(Comunidad fkComunidad) {
+		this.fkComunidad = fkComunidad;
+	}
+
+	@Column(name="descripcion")
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	@Column(name="estatus")
+	public Character getEstatus() {
+		return estatus;
+	}
+
+	public void setEstatus(Character estatus) {
+		this.estatus = estatus;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idComentarioAlbum == null) ? 0 : idComentarioAlbum.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		ComentarioAlbum other = (ComentarioAlbum) obj;
+		if (idComentarioAlbum == null) {
+			return false;
+		} 
+		if (!idComentarioAlbum.equals(other.idComentarioAlbum)) {
+			return false;
+		} 
+		return true;
+	}
+
+}
