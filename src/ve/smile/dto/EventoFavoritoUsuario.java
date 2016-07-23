@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ve.smile.seguridad.dto.Usuario;
+
 @Table(name = "tb_evento_favorito_usuario")
 @Entity
 public class EventoFavoritoUsuario {
