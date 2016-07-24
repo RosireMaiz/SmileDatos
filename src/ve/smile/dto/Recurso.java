@@ -15,8 +15,9 @@ import javax.persistence.Table;
 public class Recurso {
 
 	private Integer idRecurso;
-	private ClasificadorRecurso fkClasificadorRecurso;
-	private Character estatus;
+	private UnidadMedida fkUnidadMedida;
+	private String nombre;
+	private String descripcion;
 
 	public Recurso() {
 		super();
@@ -28,11 +29,13 @@ public class Recurso {
 	}
 
 	public Recurso(
-			ClasificadorRecurso fkClasificadorRecurso,
-			Character estatus) {
+			UnidadMedida fkUnidadMedida,
+			String nombre,
+			String descripcion) {
 		super();
-		this.fkClasificadorRecurso = fkClasificadorRecurso;
-		this.estatus = estatus;
+		this.fkUnidadMedida = fkUnidadMedida;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
 	}
 
 	@Id
@@ -48,22 +51,31 @@ public class Recurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_clasificador_recurso", nullable = false)
-	public ClasificadorRecurso getFkClasificadorRecurso() {
-		return fkClasificadorRecurso;
+	@JoinColumn(name = "fk_unidad_medida", nullable = false)
+	public UnidadMedida getFkUnidadMedida() {
+		return fkUnidadMedida;
 	}
 
-	public void setFkClasificadorRecurso(ClasificadorRecurso fkClasificadorRecurso) {
-		this.fkClasificadorRecurso = fkClasificadorRecurso;
+	public void setFkUnidadMedida(UnidadMedida fkUnidadMedida) {
+		this.fkUnidadMedida = fkUnidadMedida;
 	}
 
-	@Column(name="estatus")
-	public Character getEstatus() {
-		return estatus;
+	@Column(name="nombre")
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setEstatus(Character estatus) {
-		this.estatus = estatus;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	@Column(name="descripcion")
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Override

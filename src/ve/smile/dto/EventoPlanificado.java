@@ -17,7 +17,7 @@ public class EventoPlanificado {
 	private Integer idEventoPlanificado;
 	private Album fkAlbum;
 	private Directorio fkDirectorio;
-	private Evento fkEvento;
+	private TipoEvento fkTipoEvento;
 	private TipoMotivo fkTipoMotivo;
 	private Persona fkPersona;
 	private Long fechaPlanificada;
@@ -35,7 +35,7 @@ public class EventoPlanificado {
 	public EventoPlanificado(
 			Album fkAlbum,
 			Directorio fkDirectorio,
-			Evento fkEvento,
+			TipoEvento fkTipoEvento,
 			TipoMotivo fkTipoMotivo,
 			Persona fkPersona,
 			Long fechaPlanificada,
@@ -43,7 +43,7 @@ public class EventoPlanificado {
 		super();
 		this.fkAlbum = fkAlbum;
 		this.fkDirectorio = fkDirectorio;
-		this.fkEvento = fkEvento;
+		this.fkTipoEvento = fkTipoEvento;
 		this.fkTipoMotivo = fkTipoMotivo;
 		this.fkPersona = fkPersona;
 		this.fechaPlanificada = fechaPlanificada;
@@ -83,13 +83,13 @@ public class EventoPlanificado {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_evento", nullable = false)
-	public Evento getFkEvento() {
-		return fkEvento;
+	@JoinColumn(name = "fk_tipo_evento", nullable = false)
+	public TipoEvento getFkTipoEvento() {
+		return fkTipoEvento;
 	}
 
-	public void setFkEvento(Evento fkEvento) {
-		this.fkEvento = fkEvento;
+	public void setFkTipoEvento(TipoEvento fkTipoEvento) {
+		this.fkTipoEvento = fkTipoEvento;
 	}
 
 	@ManyToOne

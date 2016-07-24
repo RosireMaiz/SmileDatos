@@ -7,7 +7,7 @@ public enum TipoEnum {
 
 	@Override
 	public String toString() {
-		ResourceBundle operacionBundle = ResourceBundle.getBundle("ve.smile.enums.TipoEnum");
+		ResourceBundle operacionBundle = ResourceBundle.getBundle("ve.smile.seguridad.enums.TipoEnum");
 
 		return operacionBundle.getString(this.ordinal() + ".descripcion");
 	}

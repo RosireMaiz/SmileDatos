@@ -18,7 +18,7 @@ public class TsPlan {
 	private Album fkAlbum;
 	private TipoMotivo fkTipoMotivo;
 	private Persona fkPersona;
-	private ClasificadorTrabajoSocial fkClasificadorTrabajoSocial;
+	private TrabajoSocial fkTrabajoSocial;
 	private Long fechaPlanificada;
 	private Long fechaEjecutada;
 
@@ -35,14 +35,14 @@ public class TsPlan {
 			Album fkAlbum,
 			TipoMotivo fkTipoMotivo,
 			Persona fkPersona,
-			ClasificadorTrabajoSocial fkClasificadorTrabajoSocial,
+			TrabajoSocial fkTrabajoSocial,
 			Long fechaPlanificada,
 			Long fechaEjecutada) {
 		super();
 		this.fkAlbum = fkAlbum;
 		this.fkTipoMotivo = fkTipoMotivo;
 		this.fkPersona = fkPersona;
-		this.fkClasificadorTrabajoSocial = fkClasificadorTrabajoSocial;
+		this.fkTrabajoSocial = fkTrabajoSocial;
 		this.fechaPlanificada = fechaPlanificada;
 		this.fechaEjecutada = fechaEjecutada;
 	}
@@ -90,13 +90,13 @@ public class TsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_clasificador_trabajo_social", nullable = false)
-	public ClasificadorTrabajoSocial getFkClasificadorTrabajoSocial() {
-		return fkClasificadorTrabajoSocial;
+	@JoinColumn(name = "fk_trabajo_social", nullable = false)
+	public TrabajoSocial getFkTrabajoSocial() {
+		return fkTrabajoSocial;
 	}
 
-	public void setFkClasificadorTrabajoSocial(ClasificadorTrabajoSocial fkClasificadorTrabajoSocial) {
-		this.fkClasificadorTrabajoSocial = fkClasificadorTrabajoSocial;
+	public void setFkTrabajoSocial(TrabajoSocial fkTrabajoSocial) {
+		this.fkTrabajoSocial = fkTrabajoSocial;
 	}
 
 	@Column(name="fecha_planificada")

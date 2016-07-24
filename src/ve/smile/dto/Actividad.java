@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,7 +13,6 @@ import javax.persistence.Table;
 public class Actividad {
 
 	private Integer idActividad;
-	private ClasificadorActividad fkClasificadorActividad;
 	private String nombre;
 	private String descripcion;
 
@@ -29,11 +26,9 @@ public class Actividad {
 	}
 
 	public Actividad(
-			ClasificadorActividad fkClasificadorActividad,
 			String nombre,
 			String descripcion) {
 		super();
-		this.fkClasificadorActividad = fkClasificadorActividad;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
@@ -48,16 +43,6 @@ public class Actividad {
 
 	public void setIdActividad(Integer idActividad) {
 		this.idActividad = idActividad;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_clasificador_actividad", nullable = false)
-	public ClasificadorActividad getFkClasificadorActividad() {
-		return fkClasificadorActividad;
-	}
-
-	public void setFkClasificadorActividad(ClasificadorActividad fkClasificadorActividad) {
-		this.fkClasificadorActividad = fkClasificadorActividad;
 	}
 
 	@Column(name="nombre")

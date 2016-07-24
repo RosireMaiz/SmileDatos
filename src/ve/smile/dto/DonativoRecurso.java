@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class DonativoRecurso {
 
 	private Integer idDonativoRecurso;
-	private Recurso fkRecurso;
+	private TipoRecurso fkTipoRecurso;
 	private Persona fkPersona;
 	private EventoPlanificado fkEventoPlanificado;
 	private TsPlan fkTsPlan;
@@ -40,7 +40,7 @@ public class DonativoRecurso {
 	}
 
 	public DonativoRecurso(
-			Recurso fkRecurso,
+			TipoRecurso fkTipoRecurso,
 			Persona fkPersona,
 			EventoPlanificado fkEventoPlanificado,
 			TsPlan fkTsPlan,
@@ -49,7 +49,7 @@ public class DonativoRecurso {
 			String descripcion,
 			String cantidad) {
 		super();
-		this.fkRecurso = fkRecurso;
+		this.fkTipoRecurso = fkTipoRecurso;
 		this.fkPersona = fkPersona;
 		this.fkEventoPlanificado = fkEventoPlanificado;
 		this.fkTsPlan = fkTsPlan;
@@ -72,13 +72,13 @@ public class DonativoRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_recurso", nullable = false)
-	public Recurso getFkRecurso() {
-		return fkRecurso;
+	@JoinColumn(name = "fk_tipo_recurso", nullable = false)
+	public TipoRecurso getFkTipoRecurso() {
+		return fkTipoRecurso;
 	}
 
-	public void setFkRecurso(Recurso fkRecurso) {
-		this.fkRecurso = fkRecurso;
+	public void setFkTipoRecurso(TipoRecurso fkTipoRecurso) {
+		this.fkTipoRecurso = fkTipoRecurso;
 	}
 
 	@ManyToOne

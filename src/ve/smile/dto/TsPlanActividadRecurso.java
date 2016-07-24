@@ -16,7 +16,7 @@ public class TsPlanActividadRecurso {
 
 	private Integer idTsPlanActividadRecurso;
 	private TsPlanActividad fkTsPlanActividad;
-	private Recurso fkRecurso;
+	private TipoRecurso fkTipoRecurso;
 	private Integer cantidad;
 
 	public TsPlanActividadRecurso() {
@@ -30,11 +30,11 @@ public class TsPlanActividadRecurso {
 
 	public TsPlanActividadRecurso(
 			TsPlanActividad fkTsPlanActividad,
-			Recurso fkRecurso,
+			TipoRecurso fkTipoRecurso,
 			Integer cantidad) {
 		super();
 		this.fkTsPlanActividad = fkTsPlanActividad;
-		this.fkRecurso = fkRecurso;
+		this.fkTipoRecurso = fkTipoRecurso;
 		this.cantidad = cantidad;
 	}
 
@@ -61,13 +61,13 @@ public class TsPlanActividadRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_recurso", nullable = false)
-	public Recurso getFkRecurso() {
-		return fkRecurso;
+	@JoinColumn(name = "fk_tipo_recurso", nullable = false)
+	public TipoRecurso getFkTipoRecurso() {
+		return fkTipoRecurso;
 	}
 
-	public void setFkRecurso(Recurso fkRecurso) {
-		this.fkRecurso = fkRecurso;
+	public void setFkTipoRecurso(TipoRecurso fkTipoRecurso) {
+		this.fkTipoRecurso = fkTipoRecurso;
 	}
 
 	@Column(name="cantidad")

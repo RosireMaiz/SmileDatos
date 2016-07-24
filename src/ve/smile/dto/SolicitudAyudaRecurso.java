@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class SolicitudAyudaRecurso {
 
 	private Integer idSolicitudAyudaRecurso;
-	private Recurso fkRecurso;
+	private TipoRecurso fkTipoRecurso;
 	private SolicitudAyuda fkSolicitudAyuda;
 	private Integer cantidad;
 
@@ -29,11 +29,11 @@ public class SolicitudAyudaRecurso {
 	}
 
 	public SolicitudAyudaRecurso(
-			Recurso fkRecurso,
+			TipoRecurso fkTipoRecurso,
 			SolicitudAyuda fkSolicitudAyuda,
 			Integer cantidad) {
 		super();
-		this.fkRecurso = fkRecurso;
+		this.fkTipoRecurso = fkTipoRecurso;
 		this.fkSolicitudAyuda = fkSolicitudAyuda;
 		this.cantidad = cantidad;
 	}
@@ -51,13 +51,13 @@ public class SolicitudAyudaRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_recurso", nullable = false)
-	public Recurso getFkRecurso() {
-		return fkRecurso;
+	@JoinColumn(name = "fk_tipo_recurso", nullable = false)
+	public TipoRecurso getFkTipoRecurso() {
+		return fkTipoRecurso;
 	}
 
-	public void setFkRecurso(Recurso fkRecurso) {
-		this.fkRecurso = fkRecurso;
+	public void setFkTipoRecurso(TipoRecurso fkTipoRecurso) {
+		this.fkTipoRecurso = fkTipoRecurso;
 	}
 
 	@ManyToOne

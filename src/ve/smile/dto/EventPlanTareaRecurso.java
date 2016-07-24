@@ -16,7 +16,7 @@ public class EventPlanTareaRecurso {
 
 	private Integer idEventPlanTareaRecurso;
 	private EventPlanTarea fkEventPlanTarea;
-	private Recurso fkRecurso;
+	private TipoRecurso fkTipoRecurso;
 	private Integer cantidad;
 	private Long fechaRealizacion;
 
@@ -31,12 +31,12 @@ public class EventPlanTareaRecurso {
 
 	public EventPlanTareaRecurso(
 			EventPlanTarea fkEventPlanTarea,
-			Recurso fkRecurso,
+			TipoRecurso fkTipoRecurso,
 			Integer cantidad,
 			Long fechaRealizacion) {
 		super();
 		this.fkEventPlanTarea = fkEventPlanTarea;
-		this.fkRecurso = fkRecurso;
+		this.fkTipoRecurso = fkTipoRecurso;
 		this.cantidad = cantidad;
 		this.fechaRealizacion = fechaRealizacion;
 	}
@@ -64,13 +64,13 @@ public class EventPlanTareaRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_recurso", nullable = false)
-	public Recurso getFkRecurso() {
-		return fkRecurso;
+	@JoinColumn(name = "fk_tipo_recurso", nullable = false)
+	public TipoRecurso getFkTipoRecurso() {
+		return fkTipoRecurso;
 	}
 
-	public void setFkRecurso(Recurso fkRecurso) {
-		this.fkRecurso = fkRecurso;
+	public void setFkTipoRecurso(TipoRecurso fkTipoRecurso) {
+		this.fkTipoRecurso = fkTipoRecurso;
 	}
 
 	@Column(name="cantidad")

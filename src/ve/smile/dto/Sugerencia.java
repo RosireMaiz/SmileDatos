@@ -16,6 +16,7 @@ public class Sugerencia {
 
 	private Integer idSugerencia;
 	private Comunidad fkComunidad;
+	private ClasificadorSugerencia fkClasificadorSugerencia;
 	private String contenido;
 	private String asunto;
 	private Long fecha;
@@ -32,12 +33,14 @@ public class Sugerencia {
 
 	public Sugerencia(
 			Comunidad fkComunidad,
+			ClasificadorSugerencia fkClasificadorSugerencia,
 			String contenido,
 			String asunto,
 			Long fecha,
 			Character estatus) {
 		super();
 		this.fkComunidad = fkComunidad;
+		this.fkClasificadorSugerencia = fkClasificadorSugerencia;
 		this.contenido = contenido;
 		this.asunto = asunto;
 		this.fecha = fecha;
@@ -64,6 +67,16 @@ public class Sugerencia {
 
 	public void setFkComunidad(Comunidad fkComunidad) {
 		this.fkComunidad = fkComunidad;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_clasificador_sugerencia", nullable = false)
+	public ClasificadorSugerencia getFkClasificadorSugerencia() {
+		return fkClasificadorSugerencia;
+	}
+
+	public void setFkClasificadorSugerencia(ClasificadorSugerencia fkClasificadorSugerencia) {
+		this.fkClasificadorSugerencia = fkClasificadorSugerencia;
 	}
 
 	@Column(name="contenido")

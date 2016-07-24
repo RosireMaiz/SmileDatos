@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,7 +13,6 @@ import javax.persistence.Table;
 public class Capacitacion {
 
 	private Integer idCapacitacion;
-	private ClasificadorCapacitacion fkClasificadorCapacitacion;
 	private String nombre;
 	private String descripcion;
 
@@ -29,11 +26,9 @@ public class Capacitacion {
 	}
 
 	public Capacitacion(
-			ClasificadorCapacitacion fkClasificadorCapacitacion,
 			String nombre,
 			String descripcion) {
 		super();
-		this.fkClasificadorCapacitacion = fkClasificadorCapacitacion;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 	}
@@ -48,16 +43,6 @@ public class Capacitacion {
 
 	public void setIdCapacitacion(Integer idCapacitacion) {
 		this.idCapacitacion = idCapacitacion;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_clasificador_capacitacion", nullable = false)
-	public ClasificadorCapacitacion getFkClasificadorCapacitacion() {
-		return fkClasificadorCapacitacion;
-	}
-
-	public void setFkClasificadorCapacitacion(ClasificadorCapacitacion fkClasificadorCapacitacion) {
-		this.fkClasificadorCapacitacion = fkClasificadorCapacitacion;
 	}
 
 	@Column(name="nombre")

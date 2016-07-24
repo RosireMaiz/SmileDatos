@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class EventPlanTarea {
 
 	private Integer idEventPlanTarea;
-	private Tarea fkTarea;
+	private TipoTarea fkTipoTarea;
 	private TipoMotivo fkTipoMotivo;
 	private EventoPlanificado fkEventoPlanificado;
 	private Long fechaPlanificada;
@@ -31,13 +31,13 @@ public class EventPlanTarea {
 	}
 
 	public EventPlanTarea(
-			Tarea fkTarea,
+			TipoTarea fkTipoTarea,
 			TipoMotivo fkTipoMotivo,
 			EventoPlanificado fkEventoPlanificado,
 			Long fechaPlanificada,
 			Long fechaEjecutada) {
 		super();
-		this.fkTarea = fkTarea;
+		this.fkTipoTarea = fkTipoTarea;
 		this.fkTipoMotivo = fkTipoMotivo;
 		this.fkEventoPlanificado = fkEventoPlanificado;
 		this.fechaPlanificada = fechaPlanificada;
@@ -57,13 +57,13 @@ public class EventPlanTarea {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tarea", nullable = false)
-	public Tarea getFkTarea() {
-		return fkTarea;
+	@JoinColumn(name = "fk_tipo_tarea", nullable = false)
+	public TipoTarea getFkTipoTarea() {
+		return fkTipoTarea;
 	}
 
-	public void setFkTarea(Tarea fkTarea) {
-		this.fkTarea = fkTarea;
+	public void setFkTipoTarea(TipoTarea fkTipoTarea) {
+		this.fkTipoTarea = fkTipoTarea;
 	}
 
 	@ManyToOne

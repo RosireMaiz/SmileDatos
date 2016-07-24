@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class ComentarioTrabajoSocial {
 
 	private Integer idComentarioTrabajoSocial;
-	private TrabajoSocial fkTrabajoSocial;
+	private TsPlan fkTsPlan;
 	private Persona fkPersona;
 	private String nombre;
 	private Integer puntuacion;
@@ -31,13 +31,13 @@ public class ComentarioTrabajoSocial {
 	}
 
 	public ComentarioTrabajoSocial(
-			TrabajoSocial fkTrabajoSocial,
+			TsPlan fkTsPlan,
 			Persona fkPersona,
 			String nombre,
 			Integer puntuacion,
 			Character estatus) {
 		super();
-		this.fkTrabajoSocial = fkTrabajoSocial;
+		this.fkTsPlan = fkTsPlan;
 		this.fkPersona = fkPersona;
 		this.nombre = nombre;
 		this.puntuacion = puntuacion;
@@ -57,13 +57,13 @@ public class ComentarioTrabajoSocial {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_trabajo_social", nullable = false)
-	public TrabajoSocial getFkTrabajoSocial() {
-		return fkTrabajoSocial;
+	@JoinColumn(name = "fk_ts_plan", nullable = false)
+	public TsPlan getFkTsPlan() {
+		return fkTsPlan;
 	}
 
-	public void setFkTrabajoSocial(TrabajoSocial fkTrabajoSocial) {
-		this.fkTrabajoSocial = fkTrabajoSocial;
+	public void setFkTsPlan(TsPlan fkTsPlan) {
+		this.fkTsPlan = fkTsPlan;
 	}
 
 	@ManyToOne

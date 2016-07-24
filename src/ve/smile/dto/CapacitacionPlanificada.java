@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class CapacitacionPlanificada {
 
 	private Integer idCapacitacionPlanificada;
-	private Capacitacion fkCapacitacion;
+	private TipoCapacitacion fkTipoCapacitacion;
 	private Long fechaPlanificada;
 	private Long fechaEjecutada;
 	private Long estatus;
@@ -30,12 +30,12 @@ public class CapacitacionPlanificada {
 	}
 
 	public CapacitacionPlanificada(
-			Capacitacion fkCapacitacion,
+			TipoCapacitacion fkTipoCapacitacion,
 			Long fechaPlanificada,
 			Long fechaEjecutada,
 			Long estatus) {
 		super();
-		this.fkCapacitacion = fkCapacitacion;
+		this.fkTipoCapacitacion = fkTipoCapacitacion;
 		this.fechaPlanificada = fechaPlanificada;
 		this.fechaEjecutada = fechaEjecutada;
 		this.estatus = estatus;
@@ -54,13 +54,13 @@ public class CapacitacionPlanificada {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_capacitacion", nullable = false)
-	public Capacitacion getFkCapacitacion() {
-		return fkCapacitacion;
+	@JoinColumn(name = "fk_tipo_capacitacion", nullable = false)
+	public TipoCapacitacion getFkTipoCapacitacion() {
+		return fkTipoCapacitacion;
 	}
 
-	public void setFkCapacitacion(Capacitacion fkCapacitacion) {
-		this.fkCapacitacion = fkCapacitacion;
+	public void setFkTipoCapacitacion(TipoCapacitacion fkTipoCapacitacion) {
+		this.fkTipoCapacitacion = fkTipoCapacitacion;
 	}
 
 	@Column(name="fecha_planificada")

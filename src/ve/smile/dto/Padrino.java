@@ -20,6 +20,7 @@ public class Padrino {
 	private Long fechaIngreso;
 	private Long fechaSalida;
 	private Integer monto;
+	private String estatus;
 
 	public Padrino() {
 		super();
@@ -35,13 +36,15 @@ public class Padrino {
 			Persona fkPersona,
 			Long fechaIngreso,
 			Long fechaSalida,
-			Integer monto) {
+			Integer monto,
+			String estatus) {
 		super();
 		this.fkFrecuenciaAporte = fkFrecuenciaAporte;
 		this.fkPersona = fkPersona;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
 		this.monto = monto;
+		this.estatus = estatus;
 	}
 
 	@Id
@@ -101,6 +104,15 @@ public class Padrino {
 
 	public void setMonto(Integer monto) {
 		this.monto = monto;
+	}
+
+	@Column(name="estatus")
+	public String getEstatus() {
+		return estatus;
+	}
+
+	public void setEstatus(String estatus) {
+		this.estatus = estatus;
 	}
 
 	@Override

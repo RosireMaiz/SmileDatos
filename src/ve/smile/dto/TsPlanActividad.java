@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class TsPlanActividad {
 
 	private Integer idTsPlanActividad;
-	private Actividad fkActividad;
+	private TipoActividad fkTipoActividad;
 	private TsPlan fkTsPlan;
 	private TipoMotivo fkTipoMotivo;
 	private Long fechaPlanificada;
@@ -33,7 +33,7 @@ public class TsPlanActividad {
 	}
 
 	public TsPlanActividad(
-			Actividad fkActividad,
+			TipoActividad fkTipoActividad,
 			TsPlan fkTsPlan,
 			TipoMotivo fkTipoMotivo,
 			Long fechaPlanificada,
@@ -41,7 +41,7 @@ public class TsPlanActividad {
 			String observacion,
 			Character estatus) {
 		super();
-		this.fkActividad = fkActividad;
+		this.fkTipoActividad = fkTipoActividad;
 		this.fkTsPlan = fkTsPlan;
 		this.fkTipoMotivo = fkTipoMotivo;
 		this.fechaPlanificada = fechaPlanificada;
@@ -63,13 +63,13 @@ public class TsPlanActividad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_actividad", nullable = false)
-	public Actividad getFkActividad() {
-		return fkActividad;
+	@JoinColumn(name = "fk_tipo_actividad", nullable = false)
+	public TipoActividad getFkTipoActividad() {
+		return fkTipoActividad;
 	}
 
-	public void setFkActividad(Actividad fkActividad) {
-		this.fkActividad = fkActividad;
+	public void setFkTipoActividad(TipoActividad fkTipoActividad) {
+		this.fkTipoActividad = fkTipoActividad;
 	}
 
 	@ManyToOne

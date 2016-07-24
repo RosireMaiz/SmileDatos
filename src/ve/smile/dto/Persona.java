@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ve.smile.seguridad.dto.Usuario;
+
 @Table(name = "tb_persona")
 @Entity
 public class Persona {
@@ -17,6 +19,7 @@ public class Persona {
 	private Integer idPersona;
 	private Ciudad fkCiudad;
 	private ClasificadorPersona fkClasificadorPersona;
+	private Usuario fkUsuario;
 	private String identificacion;
 	private String nombre;
 	private Integer edad;
@@ -46,6 +49,7 @@ public class Persona {
 	public Persona(
 			Ciudad fkCiudad,
 			ClasificadorPersona fkClasificadorPersona,
+			Usuario fkUsuario,
 			String identificacion,
 			String nombre,
 			Integer edad,
@@ -65,6 +69,7 @@ public class Persona {
 		super();
 		this.fkCiudad = fkCiudad;
 		this.fkClasificadorPersona = fkClasificadorPersona;
+		this.fkUsuario = fkUsuario;
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.edad = edad;
@@ -113,6 +118,16 @@ public class Persona {
 
 	public void setFkClasificadorPersona(ClasificadorPersona fkClasificadorPersona) {
 		this.fkClasificadorPersona = fkClasificadorPersona;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_usuario", nullable = false)
+	public Usuario getFkUsuario() {
+		return fkUsuario;
+	}
+
+	public void setFkUsuario(Usuario fkUsuario) {
+		this.fkUsuario = fkUsuario;
 	}
 
 	@Column(name="identificacion")
