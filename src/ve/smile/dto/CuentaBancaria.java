@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ve.smile.enums.TipoEnum;
+import ve.smile.enums.TipoCuentaEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,7 +26,7 @@ public class CuentaBancaria {
 	private String titular;
 	private String identificacionTitular;
 	private String correoTitular;
-	private Integer tipo;
+	private Integer tipoCuenta;
 
 	public CuentaBancaria() {
 		super();
@@ -43,14 +43,14 @@ public class CuentaBancaria {
 			String titular,
 			String identificacionTitular,
 			String correoTitular,
-			Integer tipo) {
+			Integer tipoCuenta) {
 		super();
 		this.fkBanco = fkBanco;
 		this.cuentaBancaria = cuentaBancaria;
 		this.titular = titular;
 		this.identificacionTitular = identificacionTitular;
 		this.correoTitular = correoTitular;
-		this.tipo = tipo;
+		this.tipoCuenta = tipoCuenta;
 	}
 
 	@Id
@@ -111,22 +111,22 @@ public class CuentaBancaria {
 		this.correoTitular = correoTitular;
 	}
 
-	@Column(name="tipo")
-	public Integer getTipo() {
-		return tipo;
+	@Column(name="tipo_cuenta")
+	public Integer getTipoCuenta() {
+		return tipoCuenta;
 	}
 
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
+	public void setTipoCuenta(Integer tipoCuenta) {
+		this.tipoCuenta = tipoCuenta;
 	}
 
 	@JsonIgnore
-	public TipoEnum getTipoEnum() {
-		return TipoEnum.values()[this.tipo];
+	public TipoCuentaEnum getTipoCuentaEnum() {
+		return TipoCuentaEnum.values()[this.tipoCuenta];
 	}
 
-	public void setTipoEnum(TipoEnum tipoEnum) {
-		this.tipo = tipoEnum.ordinal();
+	public void setTipoCuentaEnum(TipoCuentaEnum tipoCuentaEnum) {
+		this.tipoCuenta = tipoCuentaEnum.ordinal();
 	}
 
 	@Override

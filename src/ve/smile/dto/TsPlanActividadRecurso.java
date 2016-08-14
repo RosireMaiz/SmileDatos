@@ -16,8 +16,9 @@ public class TsPlanActividadRecurso {
 
 	private Integer idTsPlanActividadRecurso;
 	private TsPlanActividad fkTsPlanActividad;
-	private TipoRecurso fkTipoRecurso;
+	private Recurso fkRecurso;
 	private Integer cantidad;
+	private Long fechaAsignacion;
 
 	public TsPlanActividadRecurso() {
 		super();
@@ -30,12 +31,14 @@ public class TsPlanActividadRecurso {
 
 	public TsPlanActividadRecurso(
 			TsPlanActividad fkTsPlanActividad,
-			TipoRecurso fkTipoRecurso,
-			Integer cantidad) {
+			Recurso fkRecurso,
+			Integer cantidad,
+			Long fechaAsignacion) {
 		super();
 		this.fkTsPlanActividad = fkTsPlanActividad;
-		this.fkTipoRecurso = fkTipoRecurso;
+		this.fkRecurso = fkRecurso;
 		this.cantidad = cantidad;
+		this.fechaAsignacion = fechaAsignacion;
 	}
 
 	@Id
@@ -61,13 +64,13 @@ public class TsPlanActividadRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_recurso", nullable = false)
-	public TipoRecurso getFkTipoRecurso() {
-		return fkTipoRecurso;
+	@JoinColumn(name = "fk_recurso", nullable = false)
+	public Recurso getFkRecurso() {
+		return fkRecurso;
 	}
 
-	public void setFkTipoRecurso(TipoRecurso fkTipoRecurso) {
-		this.fkTipoRecurso = fkTipoRecurso;
+	public void setFkRecurso(Recurso fkRecurso) {
+		this.fkRecurso = fkRecurso;
 	}
 
 	@Column(name="cantidad")
@@ -77,6 +80,15 @@ public class TsPlanActividadRecurso {
 
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	@Column(name="fecha_asignacion")
+	public Long getFechaAsignacion() {
+		return fechaAsignacion;
+	}
+
+	public void setFechaAsignacion(Long fechaAsignacion) {
+		this.fechaAsignacion = fechaAsignacion;
 	}
 
 	@Override

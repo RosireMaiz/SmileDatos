@@ -13,8 +13,8 @@ import javax.persistence.Table;
 public class Pregunta {
 
 	private Integer idPregunta;
-	private String titulo;
-	private String contenido;
+	private String pregunta;
+	private String respuesta;
 
 	public Pregunta() {
 		super();
@@ -26,11 +26,11 @@ public class Pregunta {
 	}
 
 	public Pregunta(
-			String titulo,
-			String contenido) {
+			String pregunta,
+			String respuesta) {
 		super();
-		this.titulo = titulo;
-		this.contenido = contenido;
+		this.pregunta = pregunta;
+		this.respuesta = respuesta;
 	}
 
 	@Id
@@ -45,22 +45,22 @@ public class Pregunta {
 		this.idPregunta = idPregunta;
 	}
 
-	@Column(name="titulo")
-	public String getTitulo() {
-		return titulo;
+	@Column(name="pregunta")
+	public String getPregunta() {
+		return pregunta;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setPregunta(String pregunta) {
+		this.pregunta = pregunta;
 	}
 
-	@Column(name="contenido")
-	public String getContenido() {
-		return contenido;
+	@Column(name="respuesta")
+	public String getRespuesta() {
+		return respuesta;
 	}
 
-	public void setContenido(String contenido) {
-		this.contenido = contenido;
+	public void setRespuesta(String respuesta) {
+		this.respuesta = respuesta;
 	}
 
 	@Override

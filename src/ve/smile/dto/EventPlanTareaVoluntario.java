@@ -17,8 +17,8 @@ public class EventPlanTareaVoluntario {
 	private Integer idEventPlanTareaVoluntario;
 	private EventPlanTarea fkEventPlanTarea;
 	private Voluntario fkVoluntario;
-	private TipoMotivo fkTipoMotivo;
-	private String ejecucion;
+	private Motivo fkMotivo;
+	private boolean ejecucion;
 	private String observacion;
 	private Character estatus;
 
@@ -34,14 +34,14 @@ public class EventPlanTareaVoluntario {
 	public EventPlanTareaVoluntario(
 			EventPlanTarea fkEventPlanTarea,
 			Voluntario fkVoluntario,
-			TipoMotivo fkTipoMotivo,
-			String ejecucion,
+			Motivo fkMotivo,
+			boolean ejecucion,
 			String observacion,
 			Character estatus) {
 		super();
 		this.fkEventPlanTarea = fkEventPlanTarea;
 		this.fkVoluntario = fkVoluntario;
-		this.fkTipoMotivo = fkTipoMotivo;
+		this.fkMotivo = fkMotivo;
 		this.ejecucion = ejecucion;
 		this.observacion = observacion;
 		this.estatus = estatus;
@@ -80,21 +80,21 @@ public class EventPlanTareaVoluntario {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
 	}
 
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
 	}
 
 	@Column(name="ejecucion")
-	public String getEjecucion() {
+	public boolean getEjecucion() {
 		return ejecucion;
 	}
 
-	public void setEjecucion(String ejecucion) {
+	public void setEjecucion(boolean ejecucion) {
 		this.ejecucion = ejecucion;
 	}
 

@@ -11,6 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import ve.smile.enums.ProcedenciaEnum;
+import ve.smile.enums.RecepcionEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -21,14 +22,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class DonativoRecurso {
 
 	private Integer idDonativoRecurso;
-	private TipoRecurso fkTipoRecurso;
 	private Persona fkPersona;
 	private EventoPlanificado fkEventoPlanificado;
 	private TsPlan fkTsPlan;
 	private Integer procedencia;
-	private Long fecha;
+	private Long fechaDonativo;
 	private String descripcion;
 	private String cantidad;
+	private Integer recepcion;
 
 	public DonativoRecurso() {
 		super();
@@ -40,23 +41,23 @@ public class DonativoRecurso {
 	}
 
 	public DonativoRecurso(
-			TipoRecurso fkTipoRecurso,
 			Persona fkPersona,
 			EventoPlanificado fkEventoPlanificado,
 			TsPlan fkTsPlan,
 			Integer procedencia,
-			Long fecha,
+			Long fechaDonativo,
 			String descripcion,
-			String cantidad) {
+			String cantidad,
+			Integer recepcion) {
 		super();
-		this.fkTipoRecurso = fkTipoRecurso;
 		this.fkPersona = fkPersona;
 		this.fkEventoPlanificado = fkEventoPlanificado;
 		this.fkTsPlan = fkTsPlan;
 		this.procedencia = procedencia;
-		this.fecha = fecha;
+		this.fechaDonativo = fechaDonativo;
 		this.descripcion = descripcion;
 		this.cantidad = cantidad;
+		this.recepcion = recepcion;
 	}
 
 	@Id
@@ -69,16 +70,6 @@ public class DonativoRecurso {
 
 	public void setIdDonativoRecurso(Integer idDonativoRecurso) {
 		this.idDonativoRecurso = idDonativoRecurso;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_tipo_recurso", nullable = false)
-	public TipoRecurso getFkTipoRecurso() {
-		return fkTipoRecurso;
-	}
-
-	public void setFkTipoRecurso(TipoRecurso fkTipoRecurso) {
-		this.fkTipoRecurso = fkTipoRecurso;
 	}
 
 	@ManyToOne
@@ -129,13 +120,13 @@ public class DonativoRecurso {
 		this.procedencia = procedenciaEnum.ordinal();
 	}
 
-	@Column(name="fecha")
-	public Long getFecha() {
-		return fecha;
+	@Column(name="fecha_donativo")
+	public Long getFechaDonativo() {
+		return fechaDonativo;
 	}
 
-	public void setFecha(Long fecha) {
-		this.fecha = fecha;
+	public void setFechaDonativo(Long fechaDonativo) {
+		this.fechaDonativo = fechaDonativo;
 	}
 
 	@Column(name="descripcion")
@@ -154,6 +145,24 @@ public class DonativoRecurso {
 
 	public void setCantidad(String cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	@Column(name="recepcion")
+	public Integer getRecepcion() {
+		return recepcion;
+	}
+
+	public void setRecepcion(Integer recepcion) {
+		this.recepcion = recepcion;
+	}
+
+	@JsonIgnore
+	public RecepcionEnum getRecepcionEnum() {
+		return RecepcionEnum.values()[this.recepcion];
+	}
+
+	public void setRecepcionEnum(RecepcionEnum recepcionEnum) {
+		this.recepcion = recepcionEnum.ordinal();
 	}
 
 	@Override

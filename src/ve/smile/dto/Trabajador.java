@@ -16,6 +16,7 @@ public class Trabajador {
 
 	private Integer idTrabajador;
 	private Persona fkPersona;
+	private Cargo fkCargo;
 	private Long fechaIngreso;
 	private Long fechaEgreso;
 
@@ -30,10 +31,12 @@ public class Trabajador {
 
 	public Trabajador(
 			Persona fkPersona,
+			Cargo fkCargo,
 			Long fechaIngreso,
 			Long fechaEgreso) {
 		super();
 		this.fkPersona = fkPersona;
+		this.fkCargo = fkCargo;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaEgreso = fechaEgreso;
 	}
@@ -58,6 +61,16 @@ public class Trabajador {
 
 	public void setFkPersona(Persona fkPersona) {
 		this.fkPersona = fkPersona;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_cargo", nullable = false)
+	public Cargo getFkCargo() {
+		return fkCargo;
+	}
+
+	public void setFkCargo(Cargo fkCargo) {
+		this.fkCargo = fkCargo;
 	}
 
 	@Column(name="fecha_ingreso")

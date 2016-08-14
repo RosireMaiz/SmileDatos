@@ -10,6 +10,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ve.smile.enums.EstatusActividadEnum;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_ts_plan_actividad_trabajador")
 @Entity
 public class TsPlanActividadTrabajador {
@@ -17,10 +23,13 @@ public class TsPlanActividadTrabajador {
 	private Integer idTsPlanActividadTrabajador;
 	private Trabajador fkTrabajador;
 	private TsPlanActividad fkTsPlanActividad;
-	private TipoMotivo fkTipoMotivo;
+	private Long fechaPlanificada;
+	private Long fechaEjecutada;
+	private boolean ejecucion;
+	private Motivo fkMotivo;
+	private boolean participacion;
 	private String observacion;
-	private String ejecucion;
-	private Character estatus;
+	private Integer estatusActividad;
 
 	public TsPlanActividadTrabajador() {
 		super();
@@ -34,17 +43,23 @@ public class TsPlanActividadTrabajador {
 	public TsPlanActividadTrabajador(
 			Trabajador fkTrabajador,
 			TsPlanActividad fkTsPlanActividad,
-			TipoMotivo fkTipoMotivo,
+			Long fechaPlanificada,
+			Long fechaEjecutada,
+			boolean ejecucion,
+			Motivo fkMotivo,
+			boolean participacion,
 			String observacion,
-			String ejecucion,
-			Character estatus) {
+			Integer estatusActividad) {
 		super();
 		this.fkTrabajador = fkTrabajador;
 		this.fkTsPlanActividad = fkTsPlanActividad;
-		this.fkTipoMotivo = fkTipoMotivo;
-		this.observacion = observacion;
+		this.fechaPlanificada = fechaPlanificada;
+		this.fechaEjecutada = fechaEjecutada;
 		this.ejecucion = ejecucion;
-		this.estatus = estatus;
+		this.fkMotivo = fkMotivo;
+		this.participacion = participacion;
+		this.observacion = observacion;
+		this.estatusActividad = estatusActividad;
 	}
 
 	@Id
@@ -79,14 +94,50 @@ public class TsPlanActividadTrabajador {
 		this.fkTsPlanActividad = fkTsPlanActividad;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
+	@Column(name="fecha_planificada")
+	public Long getFechaPlanificada() {
+		return fechaPlanificada;
 	}
 
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFechaPlanificada(Long fechaPlanificada) {
+		this.fechaPlanificada = fechaPlanificada;
+	}
+
+	@Column(name="fecha_ejecutada")
+	public Long getFechaEjecutada() {
+		return fechaEjecutada;
+	}
+
+	public void setFechaEjecutada(Long fechaEjecutada) {
+		this.fechaEjecutada = fechaEjecutada;
+	}
+
+	@Column(name="ejecucion")
+	public boolean getEjecucion() {
+		return ejecucion;
+	}
+
+	public void setEjecucion(boolean ejecucion) {
+		this.ejecucion = ejecucion;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
+	}
+
+	@Column(name="participacion")
+	public boolean getParticipacion() {
+		return participacion;
+	}
+
+	public void setParticipacion(boolean participacion) {
+		this.participacion = participacion;
 	}
 
 	@Column(name="observacion")
@@ -98,22 +149,22 @@ public class TsPlanActividadTrabajador {
 		this.observacion = observacion;
 	}
 
-	@Column(name="ejecucion")
-	public String getEjecucion() {
-		return ejecucion;
+	@Column(name="estatus_actividad")
+	public Integer getEstatusActividad() {
+		return estatusActividad;
 	}
 
-	public void setEjecucion(String ejecucion) {
-		this.ejecucion = ejecucion;
+	public void setEstatusActividad(Integer estatusActividad) {
+		this.estatusActividad = estatusActividad;
 	}
 
-	@Column(name="estatus")
-	public Character getEstatus() {
-		return estatus;
+	@JsonIgnore
+	public EstatusActividadEnum getEstatusActividadEnum() {
+		return EstatusActividadEnum.values()[this.estatusActividad];
 	}
 
-	public void setEstatus(Character estatus) {
-		this.estatus = estatus;
+	public void setEstatusActividadEnum(EstatusActividadEnum estatusActividadEnum) {
+		this.estatusActividad = estatusActividadEnum.ordinal();
 	}
 
 	@Override

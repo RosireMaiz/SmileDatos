@@ -5,13 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import ve.smile.enums.ExtensionEnum;
-import ve.smile.enums.TipoEnum;
+import ve.smile.enums.TipoMultimediaEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,12 +20,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Multimedia {
 
 	private Integer idMultimedia;
-	private Album fkAlbum;
 	private String url;
 	private String nombre;
 	private String descripcion;
 	private Integer extension;
-	private Integer tipo;
+	private Integer tipoMultimedia;
 
 	public Multimedia() {
 		super();
@@ -39,19 +36,17 @@ public class Multimedia {
 	}
 
 	public Multimedia(
-			Album fkAlbum,
 			String url,
 			String nombre,
 			String descripcion,
 			Integer extension,
-			Integer tipo) {
+			Integer tipoMultimedia) {
 		super();
-		this.fkAlbum = fkAlbum;
 		this.url = url;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.extension = extension;
-		this.tipo = tipo;
+		this.tipoMultimedia = tipoMultimedia;
 	}
 
 	@Id
@@ -64,16 +59,6 @@ public class Multimedia {
 
 	public void setIdMultimedia(Integer idMultimedia) {
 		this.idMultimedia = idMultimedia;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_album", nullable = false)
-	public Album getFkAlbum() {
-		return fkAlbum;
-	}
-
-	public void setFkAlbum(Album fkAlbum) {
-		this.fkAlbum = fkAlbum;
 	}
 
 	@Column(name="url")
@@ -121,22 +106,22 @@ public class Multimedia {
 		this.extension = extensionEnum.ordinal();
 	}
 
-	@Column(name="tipo")
-	public Integer getTipo() {
-		return tipo;
+	@Column(name="tipo_multimedia")
+	public Integer getTipoMultimedia() {
+		return tipoMultimedia;
 	}
 
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
+	public void setTipoMultimedia(Integer tipoMultimedia) {
+		this.tipoMultimedia = tipoMultimedia;
 	}
 
 	@JsonIgnore
-	public TipoEnum getTipoEnum() {
-		return TipoEnum.values()[this.tipo];
+	public TipoMultimediaEnum getTipoMultimediaEnum() {
+		return TipoMultimediaEnum.values()[this.tipoMultimedia];
 	}
 
-	public void setTipoEnum(TipoEnum tipoEnum) {
-		this.tipo = tipoEnum.ordinal();
+	public void setTipoMultimediaEnum(TipoMultimediaEnum tipoMultimediaEnum) {
+		this.tipoMultimedia = tipoMultimediaEnum.ordinal();
 	}
 
 	@Override

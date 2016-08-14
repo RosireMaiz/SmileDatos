@@ -13,8 +13,8 @@ import javax.persistence.Table;
 public class Album {
 
 	private Integer idAlbum;
-	private String descripcion;
 	private String titulo;
+	private String descripcion;
 	private Long fechaPublicacion;
 	private Long fechaExpiracion;
 	private Character estatus;
@@ -29,14 +29,14 @@ public class Album {
 	}
 
 	public Album(
-			String descripcion,
 			String titulo,
+			String descripcion,
 			Long fechaPublicacion,
 			Long fechaExpiracion,
 			Character estatus) {
 		super();
-		this.descripcion = descripcion;
 		this.titulo = titulo;
+		this.descripcion = descripcion;
 		this.fechaPublicacion = fechaPublicacion;
 		this.fechaExpiracion = fechaExpiracion;
 		this.estatus = estatus;
@@ -54,15 +54,6 @@ public class Album {
 		this.idAlbum = idAlbum;
 	}
 
-	@Column(name="descripcion")
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
 	@Column(name="titulo")
 	public String getTitulo() {
 		return titulo;
@@ -70,6 +61,15 @@ public class Album {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	@Column(name="descripcion")
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Column(name="fecha_publicacion")

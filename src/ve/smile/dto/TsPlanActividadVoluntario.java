@@ -10,6 +10,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ve.smile.enums.EstatusActividadEnum;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_ts_plan_actividad_voluntario")
 @Entity
 public class TsPlanActividadVoluntario {
@@ -17,10 +23,13 @@ public class TsPlanActividadVoluntario {
 	private Integer idTsPlanActividadVoluntario;
 	private TsPlanActividad fkTsPlanActividad;
 	private Voluntario fkVoluntario;
-	private TipoMotivo fkTipoMotivo;
-	private String ejecucion;
+	private Long fechaPlanificada;
+	private Long fechaEjecutada;
+	private boolean ejecucion;
+	private Motivo fkMotivo;
+	private boolean participacion;
 	private String observacion;
-	private Character estatus;
+	private Integer estatusActividad;
 
 	public TsPlanActividadVoluntario() {
 		super();
@@ -34,17 +43,23 @@ public class TsPlanActividadVoluntario {
 	public TsPlanActividadVoluntario(
 			TsPlanActividad fkTsPlanActividad,
 			Voluntario fkVoluntario,
-			TipoMotivo fkTipoMotivo,
-			String ejecucion,
+			Long fechaPlanificada,
+			Long fechaEjecutada,
+			boolean ejecucion,
+			Motivo fkMotivo,
+			boolean participacion,
 			String observacion,
-			Character estatus) {
+			Integer estatusActividad) {
 		super();
 		this.fkTsPlanActividad = fkTsPlanActividad;
 		this.fkVoluntario = fkVoluntario;
-		this.fkTipoMotivo = fkTipoMotivo;
+		this.fechaPlanificada = fechaPlanificada;
+		this.fechaEjecutada = fechaEjecutada;
 		this.ejecucion = ejecucion;
+		this.fkMotivo = fkMotivo;
+		this.participacion = participacion;
 		this.observacion = observacion;
-		this.estatus = estatus;
+		this.estatusActividad = estatusActividad;
 	}
 
 	@Id
@@ -79,23 +94,50 @@ public class TsPlanActividadVoluntario {
 		this.fkVoluntario = fkVoluntario;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
+	@Column(name="fecha_planificada")
+	public Long getFechaPlanificada() {
+		return fechaPlanificada;
 	}
 
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFechaPlanificada(Long fechaPlanificada) {
+		this.fechaPlanificada = fechaPlanificada;
+	}
+
+	@Column(name="fecha_ejecutada")
+	public Long getFechaEjecutada() {
+		return fechaEjecutada;
+	}
+
+	public void setFechaEjecutada(Long fechaEjecutada) {
+		this.fechaEjecutada = fechaEjecutada;
 	}
 
 	@Column(name="ejecucion")
-	public String getEjecucion() {
+	public boolean getEjecucion() {
 		return ejecucion;
 	}
 
-	public void setEjecucion(String ejecucion) {
+	public void setEjecucion(boolean ejecucion) {
 		this.ejecucion = ejecucion;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
+	}
+
+	@Column(name="participacion")
+	public boolean getParticipacion() {
+		return participacion;
+	}
+
+	public void setParticipacion(boolean participacion) {
+		this.participacion = participacion;
 	}
 
 	@Column(name="observacion")
@@ -107,13 +149,22 @@ public class TsPlanActividadVoluntario {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus")
-	public Character getEstatus() {
-		return estatus;
+	@Column(name="estatus_actividad")
+	public Integer getEstatusActividad() {
+		return estatusActividad;
 	}
 
-	public void setEstatus(Character estatus) {
-		this.estatus = estatus;
+	public void setEstatusActividad(Integer estatusActividad) {
+		this.estatusActividad = estatusActividad;
+	}
+
+	@JsonIgnore
+	public EstatusActividadEnum getEstatusActividadEnum() {
+		return EstatusActividadEnum.values()[this.estatusActividad];
+	}
+
+	public void setEstatusActividadEnum(EstatusActividadEnum estatusActividadEnum) {
+		this.estatusActividad = estatusActividadEnum.ordinal();
 	}
 
 	@Override

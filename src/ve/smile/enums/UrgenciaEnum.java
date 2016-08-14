@@ -7,7 +7,7 @@ public enum UrgenciaEnum {
 
 	@Override
 	public String toString() {
-		ResourceBundle operacionBundle = ResourceBundle.getBundle("ve.smile.seguridad.enums.UrgenciaEnum");
+		ResourceBundle operacionBundle = ResourceBundle.getBundle("ve.smile.enums.UrgenciaEnum");
 
 		return operacionBundle.getString(this.ordinal() + ".descripcion");
 	}

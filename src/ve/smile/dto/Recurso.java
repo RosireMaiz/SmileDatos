@@ -15,6 +15,7 @@ import javax.persistence.Table;
 public class Recurso {
 
 	private Integer idRecurso;
+	private ClasificadorRecurso fkClasificadorRecurso;
 	private UnidadMedida fkUnidadMedida;
 	private String nombre;
 	private String descripcion;
@@ -29,10 +30,12 @@ public class Recurso {
 	}
 
 	public Recurso(
+			ClasificadorRecurso fkClasificadorRecurso,
 			UnidadMedida fkUnidadMedida,
 			String nombre,
 			String descripcion) {
 		super();
+		this.fkClasificadorRecurso = fkClasificadorRecurso;
 		this.fkUnidadMedida = fkUnidadMedida;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -48,6 +51,16 @@ public class Recurso {
 
 	public void setIdRecurso(Integer idRecurso) {
 		this.idRecurso = idRecurso;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_clasificador_recurso", nullable = false)
+	public ClasificadorRecurso getFkClasificadorRecurso() {
+		return fkClasificadorRecurso;
+	}
+
+	public void setFkClasificadorRecurso(ClasificadorRecurso fkClasificadorRecurso) {
+		this.fkClasificadorRecurso = fkClasificadorRecurso;
 	}
 
 	@ManyToOne

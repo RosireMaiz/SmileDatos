@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -14,7 +16,9 @@ public class Evento {
 
 	private Integer idEvento;
 	private String nombre;
+	private ClasificadorEvento fkClasificadorEvento;
 	private String descripcion;
+	private Character tipoEvento;
 
 	public Evento() {
 		super();
@@ -27,10 +31,14 @@ public class Evento {
 
 	public Evento(
 			String nombre,
-			String descripcion) {
+			ClasificadorEvento fkClasificadorEvento,
+			String descripcion,
+			Character tipoEvento) {
 		super();
 		this.nombre = nombre;
+		this.fkClasificadorEvento = fkClasificadorEvento;
 		this.descripcion = descripcion;
+		this.tipoEvento = tipoEvento;
 	}
 
 	@Id
@@ -54,6 +62,16 @@ public class Evento {
 		this.nombre = nombre;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "fk_clasificador_evento", nullable = false)
+	public ClasificadorEvento getFkClasificadorEvento() {
+		return fkClasificadorEvento;
+	}
+
+	public void setFkClasificadorEvento(ClasificadorEvento fkClasificadorEvento) {
+		this.fkClasificadorEvento = fkClasificadorEvento;
+	}
+
 	@Column(name="descripcion")
 	public String getDescripcion() {
 		return descripcion;
@@ -61,6 +79,15 @@ public class Evento {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	@Column(name="tipo_evento")
+	public Character getTipoEvento() {
+		return tipoEvento;
+	}
+
+	public void setTipoEvento(Character tipoEvento) {
+		this.tipoEvento = tipoEvento;
 	}
 
 	@Override

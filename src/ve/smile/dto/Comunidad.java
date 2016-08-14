@@ -17,8 +17,9 @@ public class Comunidad {
 	private Integer idComunidad;
 	private Persona fkPersona;
 	private String nombre;
+	private String apellido;
 	private String correo;
-	private Character estatus;
+	private Long fechaCreacion;
 
 	public Comunidad() {
 		super();
@@ -32,13 +33,15 @@ public class Comunidad {
 	public Comunidad(
 			Persona fkPersona,
 			String nombre,
+			String apellido,
 			String correo,
-			Character estatus) {
+			Long fechaCreacion) {
 		super();
 		this.fkPersona = fkPersona;
 		this.nombre = nombre;
+		this.apellido = apellido;
 		this.correo = correo;
-		this.estatus = estatus;
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	@Id
@@ -72,6 +75,15 @@ public class Comunidad {
 		this.nombre = nombre;
 	}
 
+	@Column(name="apellido")
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
 	@Column(name="correo")
 	public String getCorreo() {
 		return correo;
@@ -81,13 +93,13 @@ public class Comunidad {
 		this.correo = correo;
 	}
 
-	@Column(name="estatus")
-	public Character getEstatus() {
-		return estatus;
+	@Column(name="fecha_creacion")
+	public Long getFechaCreacion() {
+		return fechaCreacion;
 	}
 
-	public void setEstatus(Character estatus) {
-		this.estatus = estatus;
+	public void setFechaCreacion(Long fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	@Override

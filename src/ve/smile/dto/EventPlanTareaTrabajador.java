@@ -17,10 +17,10 @@ public class EventPlanTareaTrabajador {
 	private Integer idEventPlanTareaTrabajador;
 	private EventPlanTarea fkEventPlanTarea;
 	private Trabajador fkTrabajador;
-	private TipoMotivo fkTipoMotivo;
-	private String ejecucion;
+	private Motivo fkMotivo;
+	private boolean ejecucion;
 	private String observacion;
-	private Character estatus;
+	private Character estatusTarea;
 
 	public EventPlanTareaTrabajador() {
 		super();
@@ -34,17 +34,17 @@ public class EventPlanTareaTrabajador {
 	public EventPlanTareaTrabajador(
 			EventPlanTarea fkEventPlanTarea,
 			Trabajador fkTrabajador,
-			TipoMotivo fkTipoMotivo,
-			String ejecucion,
+			Motivo fkMotivo,
+			boolean ejecucion,
 			String observacion,
-			Character estatus) {
+			Character estatusTarea) {
 		super();
 		this.fkEventPlanTarea = fkEventPlanTarea;
 		this.fkTrabajador = fkTrabajador;
-		this.fkTipoMotivo = fkTipoMotivo;
+		this.fkMotivo = fkMotivo;
 		this.ejecucion = ejecucion;
 		this.observacion = observacion;
-		this.estatus = estatus;
+		this.estatusTarea = estatusTarea;
 	}
 
 	@Id
@@ -80,21 +80,21 @@ public class EventPlanTareaTrabajador {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
 	}
 
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
 	}
 
 	@Column(name="ejecucion")
-	public String getEjecucion() {
+	public boolean getEjecucion() {
 		return ejecucion;
 	}
 
-	public void setEjecucion(String ejecucion) {
+	public void setEjecucion(boolean ejecucion) {
 		this.ejecucion = ejecucion;
 	}
 
@@ -107,13 +107,13 @@ public class EventPlanTareaTrabajador {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus")
-	public Character getEstatus() {
-		return estatus;
+	@Column(name="estatus_tarea")
+	public Character getEstatusTarea() {
+		return estatusTarea;
 	}
 
-	public void setEstatus(Character estatus) {
-		this.estatus = estatus;
+	public void setEstatusTarea(Character estatusTarea) {
+		this.estatusTarea = estatusTarea;
 	}
 
 	@Override

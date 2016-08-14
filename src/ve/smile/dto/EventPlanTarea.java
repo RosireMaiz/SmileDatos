@@ -15,11 +15,14 @@ import javax.persistence.Table;
 public class EventPlanTarea {
 
 	private Integer idEventPlanTarea;
-	private TipoTarea fkTipoTarea;
-	private TipoMotivo fkTipoMotivo;
+	private Tarea fkTarea;
 	private EventoPlanificado fkEventoPlanificado;
+	private Motivo fkMotivo;
+	private Directorio fkDirectorio;
 	private Long fechaPlanificada;
 	private Long fechaEjecutada;
+	private String observacion;
+	private String estatusTarea;
 
 	public EventPlanTarea() {
 		super();
@@ -31,17 +34,23 @@ public class EventPlanTarea {
 	}
 
 	public EventPlanTarea(
-			TipoTarea fkTipoTarea,
-			TipoMotivo fkTipoMotivo,
+			Tarea fkTarea,
 			EventoPlanificado fkEventoPlanificado,
+			Motivo fkMotivo,
+			Directorio fkDirectorio,
 			Long fechaPlanificada,
-			Long fechaEjecutada) {
+			Long fechaEjecutada,
+			String observacion,
+			String estatusTarea) {
 		super();
-		this.fkTipoTarea = fkTipoTarea;
-		this.fkTipoMotivo = fkTipoMotivo;
+		this.fkTarea = fkTarea;
 		this.fkEventoPlanificado = fkEventoPlanificado;
+		this.fkMotivo = fkMotivo;
+		this.fkDirectorio = fkDirectorio;
 		this.fechaPlanificada = fechaPlanificada;
 		this.fechaEjecutada = fechaEjecutada;
+		this.observacion = observacion;
+		this.estatusTarea = estatusTarea;
 	}
 
 	@Id
@@ -57,23 +66,13 @@ public class EventPlanTarea {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_tarea", nullable = false)
-	public TipoTarea getFkTipoTarea() {
-		return fkTipoTarea;
+	@JoinColumn(name = "fk_tarea", nullable = false)
+	public Tarea getFkTarea() {
+		return fkTarea;
 	}
 
-	public void setFkTipoTarea(TipoTarea fkTipoTarea) {
-		this.fkTipoTarea = fkTipoTarea;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
-	}
-
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFkTarea(Tarea fkTarea) {
+		this.fkTarea = fkTarea;
 	}
 
 	@ManyToOne
@@ -84,6 +83,26 @@ public class EventPlanTarea {
 
 	public void setFkEventoPlanificado(EventoPlanificado fkEventoPlanificado) {
 		this.fkEventoPlanificado = fkEventoPlanificado;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_directorio", nullable = false)
+	public Directorio getFkDirectorio() {
+		return fkDirectorio;
+	}
+
+	public void setFkDirectorio(Directorio fkDirectorio) {
+		this.fkDirectorio = fkDirectorio;
 	}
 
 	@Column(name="fecha_planificada")
@@ -102,6 +121,24 @@ public class EventPlanTarea {
 
 	public void setFechaEjecutada(Long fechaEjecutada) {
 		this.fechaEjecutada = fechaEjecutada;
+	}
+
+	@Column(name="observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	@Column(name="estatus_tarea")
+	public String getEstatusTarea() {
+		return estatusTarea;
+	}
+
+	public void setEstatusTarea(String estatusTarea) {
+		this.estatusTarea = estatusTarea;
 	}
 
 	@Override

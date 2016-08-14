@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ve.smile.enums.TipoEnum;
+import ve.smile.enums.TipoCarteleraEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,13 +22,11 @@ public class Cartelera {
 
 	private Integer idCartelera;
 	private Multimedia fkMultimedia;
-	private Etiqueta fkEtiqueta;
 	private String titulo;
 	private String descripcion;
 	private Long fechaInicio;
 	private Long fechaFinalizacion;
-	private Long fechaCreacion;
-	private Integer tipo;
+	private Integer tipoCartelera;
 
 	public Cartelera() {
 		super();
@@ -41,22 +39,18 @@ public class Cartelera {
 
 	public Cartelera(
 			Multimedia fkMultimedia,
-			Etiqueta fkEtiqueta,
 			String titulo,
 			String descripcion,
 			Long fechaInicio,
 			Long fechaFinalizacion,
-			Long fechaCreacion,
-			Integer tipo) {
+			Integer tipoCartelera) {
 		super();
 		this.fkMultimedia = fkMultimedia;
-		this.fkEtiqueta = fkEtiqueta;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.fechaInicio = fechaInicio;
 		this.fechaFinalizacion = fechaFinalizacion;
-		this.fechaCreacion = fechaCreacion;
-		this.tipo = tipo;
+		this.tipoCartelera = tipoCartelera;
 	}
 
 	@Id
@@ -79,16 +73,6 @@ public class Cartelera {
 
 	public void setFkMultimedia(Multimedia fkMultimedia) {
 		this.fkMultimedia = fkMultimedia;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_etiqueta", nullable = false)
-	public Etiqueta getFkEtiqueta() {
-		return fkEtiqueta;
-	}
-
-	public void setFkEtiqueta(Etiqueta fkEtiqueta) {
-		this.fkEtiqueta = fkEtiqueta;
 	}
 
 	@Column(name="titulo")
@@ -127,31 +111,22 @@ public class Cartelera {
 		this.fechaFinalizacion = fechaFinalizacion;
 	}
 
-	@Column(name="fecha_creacion")
-	public Long getFechaCreacion() {
-		return fechaCreacion;
+	@Column(name="tipo_cartelera")
+	public Integer getTipoCartelera() {
+		return tipoCartelera;
 	}
 
-	public void setFechaCreacion(Long fechaCreacion) {
-		this.fechaCreacion = fechaCreacion;
-	}
-
-	@Column(name="tipo")
-	public Integer getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
+	public void setTipoCartelera(Integer tipoCartelera) {
+		this.tipoCartelera = tipoCartelera;
 	}
 
 	@JsonIgnore
-	public TipoEnum getTipoEnum() {
-		return TipoEnum.values()[this.tipo];
+	public TipoCarteleraEnum getTipoCarteleraEnum() {
+		return TipoCarteleraEnum.values()[this.tipoCartelera];
 	}
 
-	public void setTipoEnum(TipoEnum tipoEnum) {
-		this.tipo = tipoEnum.ordinal();
+	public void setTipoCarteleraEnum(TipoCarteleraEnum tipoCarteleraEnum) {
+		this.tipoCartelera = tipoCarteleraEnum.ordinal();
 	}
 
 	@Override

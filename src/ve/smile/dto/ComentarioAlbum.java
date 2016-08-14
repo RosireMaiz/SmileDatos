@@ -17,8 +17,8 @@ public class ComentarioAlbum {
 	private Integer idComentarioAlbum;
 	private Album fkAlbum;
 	private Comunidad fkComunidad;
-	private String descripcion;
-	private Character estatus;
+	private String comentario;
+	private Character estatusComentario;
 
 	public ComentarioAlbum() {
 		super();
@@ -32,13 +32,13 @@ public class ComentarioAlbum {
 	public ComentarioAlbum(
 			Album fkAlbum,
 			Comunidad fkComunidad,
-			String descripcion,
-			Character estatus) {
+			String comentario,
+			Character estatusComentario) {
 		super();
 		this.fkAlbum = fkAlbum;
 		this.fkComunidad = fkComunidad;
-		this.descripcion = descripcion;
-		this.estatus = estatus;
+		this.comentario = comentario;
+		this.estatusComentario = estatusComentario;
 	}
 
 	@Id
@@ -73,22 +73,22 @@ public class ComentarioAlbum {
 		this.fkComunidad = fkComunidad;
 	}
 
-	@Column(name="descripcion")
-	public String getDescripcion() {
-		return descripcion;
+	@Column(name="comentario")
+	public String getComentario() {
+		return comentario;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 
-	@Column(name="estatus")
-	public Character getEstatus() {
-		return estatus;
+	@Column(name="estatus_comentario")
+	public Character getEstatusComentario() {
+		return estatusComentario;
 	}
 
-	public void setEstatus(Character estatus) {
-		this.estatus = estatus;
+	public void setEstatusComentario(Character estatusComentario) {
+		this.estatusComentario = estatusComentario;
 	}
 
 	@Override

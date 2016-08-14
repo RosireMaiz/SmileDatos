@@ -15,6 +15,8 @@ public class RedSocial {
 	private Integer idRedSocial;
 	private String nombre;
 	private String url;
+	private String accesToken;
+	private String accesSecret;
 
 	public RedSocial() {
 		super();
@@ -27,10 +29,14 @@ public class RedSocial {
 
 	public RedSocial(
 			String nombre,
-			String url) {
+			String url,
+			String accesToken,
+			String accesSecret) {
 		super();
 		this.nombre = nombre;
 		this.url = url;
+		this.accesToken = accesToken;
+		this.accesSecret = accesSecret;
 	}
 
 	@Id
@@ -61,6 +67,24 @@ public class RedSocial {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	@Column(name="acces_token")
+	public String getAccesToken() {
+		return accesToken;
+	}
+
+	public void setAccesToken(String accesToken) {
+		this.accesToken = accesToken;
+	}
+
+	@Column(name="acces_secret")
+	public String getAccesSecret() {
+		return accesSecret;
+	}
+
+	public void setAccesSecret(String accesSecret) {
+		this.accesSecret = accesSecret;
 	}
 
 	@Override

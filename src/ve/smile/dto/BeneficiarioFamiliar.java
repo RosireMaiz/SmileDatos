@@ -16,7 +16,7 @@ public class BeneficiarioFamiliar {
 
 	private Integer idBeneficiarioFamiliar;
 	private Beneficiario fkBeneficiario;
-	private Parentezco fkParentezco;
+	private Parentesco fkParentesco;
 	private Familiar fkFamiliar;
 
 	public BeneficiarioFamiliar() {
@@ -30,11 +30,11 @@ public class BeneficiarioFamiliar {
 
 	public BeneficiarioFamiliar(
 			Beneficiario fkBeneficiario,
-			Parentezco fkParentezco,
+			Parentesco fkParentesco,
 			Familiar fkFamiliar) {
 		super();
 		this.fkBeneficiario = fkBeneficiario;
-		this.fkParentezco = fkParentezco;
+		this.fkParentesco = fkParentesco;
 		this.fkFamiliar = fkFamiliar;
 	}
 
@@ -61,13 +61,13 @@ public class BeneficiarioFamiliar {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_parentezco", nullable = false)
-	public Parentezco getFkParentezco() {
-		return fkParentezco;
+	@JoinColumn(name = "fk_parentesco", nullable = false)
+	public Parentesco getFkParentesco() {
+		return fkParentesco;
 	}
 
-	public void setFkParentezco(Parentezco fkParentezco) {
-		this.fkParentezco = fkParentezco;
+	public void setFkParentesco(Parentesco fkParentesco) {
+		this.fkParentesco = fkParentesco;
 	}
 
 	@ManyToOne

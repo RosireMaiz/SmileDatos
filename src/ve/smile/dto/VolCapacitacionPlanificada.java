@@ -17,9 +17,10 @@ public class VolCapacitacionPlanificada {
 	private Integer idVolCapacitacionPlanificada;
 	private CapacitacionPlanificada fkCapacitacionPlanificada;
 	private Voluntario fkVoluntario;
-	private TipoMotivo fkTipoMotivo;
+	private Motivo fkMotivo;
 	private boolean asistencia;
 	private boolean participa;
+	private String observacion;
 
 	public VolCapacitacionPlanificada() {
 		super();
@@ -33,15 +34,17 @@ public class VolCapacitacionPlanificada {
 	public VolCapacitacionPlanificada(
 			CapacitacionPlanificada fkCapacitacionPlanificada,
 			Voluntario fkVoluntario,
-			TipoMotivo fkTipoMotivo,
+			Motivo fkMotivo,
 			boolean asistencia,
-			boolean participa) {
+			boolean participa,
+			String observacion) {
 		super();
 		this.fkCapacitacionPlanificada = fkCapacitacionPlanificada;
 		this.fkVoluntario = fkVoluntario;
-		this.fkTipoMotivo = fkTipoMotivo;
+		this.fkMotivo = fkMotivo;
 		this.asistencia = asistencia;
 		this.participa = participa;
+		this.observacion = observacion;
 	}
 
 	@Id
@@ -77,13 +80,13 @@ public class VolCapacitacionPlanificada {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
 	}
 
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
 	}
 
 	@Column(name="asistencia")
@@ -102,6 +105,15 @@ public class VolCapacitacionPlanificada {
 
 	public void setParticipa(boolean participa) {
 		this.participa = participa;
+	}
+
+	@Column(name="observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
 	}
 
 	@Override

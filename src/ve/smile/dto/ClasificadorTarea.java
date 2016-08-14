@@ -14,7 +14,6 @@ public class ClasificadorTarea {
 
 	private Integer idClasificadorTarea;
 	private String nombre;
-	private String descripcion;
 
 	public ClasificadorTarea() {
 		super();
@@ -26,11 +25,9 @@ public class ClasificadorTarea {
 	}
 
 	public ClasificadorTarea(
-			String nombre,
-			String descripcion) {
+			String nombre) {
 		super();
 		this.nombre = nombre;
-		this.descripcion = descripcion;
 	}
 
 	@Id
@@ -52,15 +49,6 @@ public class ClasificadorTarea {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	@Column(name="descripcion")
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 
 	@Override

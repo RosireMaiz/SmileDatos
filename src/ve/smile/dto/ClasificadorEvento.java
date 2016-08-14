@@ -14,7 +14,7 @@ public class ClasificadorEvento {
 
 	private Integer idClasificadorEvento;
 	private String nombre;
-	private String descripcion;
+	private String color;
 
 	public ClasificadorEvento() {
 		super();
@@ -27,10 +27,10 @@ public class ClasificadorEvento {
 
 	public ClasificadorEvento(
 			String nombre,
-			String descripcion) {
+			String color) {
 		super();
 		this.nombre = nombre;
-		this.descripcion = descripcion;
+		this.color = color;
 	}
 
 	@Id
@@ -54,13 +54,13 @@ public class ClasificadorEvento {
 		this.nombre = nombre;
 	}
 
-	@Column(name="descripcion")
-	public String getDescripcion() {
-		return descripcion;
+	@Column(name="color")
+	public String getColor() {
+		return color;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	@Override

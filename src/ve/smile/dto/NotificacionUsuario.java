@@ -10,19 +10,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ve.smile.enums.TipoReferenciaNotificacionEnum;
 import ve.smile.seguridad.dto.Usuario;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_notificacion_usuario")
 @Entity
 public class NotificacionUsuario {
 
 	private Integer idNotificacionUsuario;
-	private Notificacion fkNotificacion;
 	private Usuario fkUsuario;
 	private Long fecha;
-	private String contedio;
-	private String asunto;
-	private Character estatus;
+	private Integer referenciaGenericoId;
+	private Character estatusNotificacion;
+	private Integer tipoReferenciaNotificacion;
+	private String contenido;
 
 	public NotificacionUsuario() {
 		super();
@@ -34,19 +39,19 @@ public class NotificacionUsuario {
 	}
 
 	public NotificacionUsuario(
-			Notificacion fkNotificacion,
 			Usuario fkUsuario,
 			Long fecha,
-			String contedio,
-			String asunto,
-			Character estatus) {
+			Integer referenciaGenericoId,
+			Character estatusNotificacion,
+			Integer tipoReferenciaNotificacion,
+			String contenido) {
 		super();
-		this.fkNotificacion = fkNotificacion;
 		this.fkUsuario = fkUsuario;
 		this.fecha = fecha;
-		this.contedio = contedio;
-		this.asunto = asunto;
-		this.estatus = estatus;
+		this.referenciaGenericoId = referenciaGenericoId;
+		this.estatusNotificacion = estatusNotificacion;
+		this.tipoReferenciaNotificacion = tipoReferenciaNotificacion;
+		this.contenido = contenido;
 	}
 
 	@Id
@@ -59,16 +64,6 @@ public class NotificacionUsuario {
 
 	public void setIdNotificacionUsuario(Integer idNotificacionUsuario) {
 		this.idNotificacionUsuario = idNotificacionUsuario;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_notificacion", nullable = false)
-	public Notificacion getFkNotificacion() {
-		return fkNotificacion;
-	}
-
-	public void setFkNotificacion(Notificacion fkNotificacion) {
-		this.fkNotificacion = fkNotificacion;
 	}
 
 	@ManyToOne
@@ -90,31 +85,49 @@ public class NotificacionUsuario {
 		this.fecha = fecha;
 	}
 
-	@Column(name="contedio")
-	public String getContedio() {
-		return contedio;
+	@Column(name="referencia_generico_id")
+	public Integer getReferenciaGenericoId() {
+		return referenciaGenericoId;
 	}
 
-	public void setContedio(String contedio) {
-		this.contedio = contedio;
+	public void setReferenciaGenericoId(Integer referenciaGenericoId) {
+		this.referenciaGenericoId = referenciaGenericoId;
 	}
 
-	@Column(name="asunto")
-	public String getAsunto() {
-		return asunto;
+	@Column(name="estatus_notificacion")
+	public Character getEstatusNotificacion() {
+		return estatusNotificacion;
 	}
 
-	public void setAsunto(String asunto) {
-		this.asunto = asunto;
+	public void setEstatusNotificacion(Character estatusNotificacion) {
+		this.estatusNotificacion = estatusNotificacion;
 	}
 
-	@Column(name="estatus")
-	public Character getEstatus() {
-		return estatus;
+	@Column(name="tipo_referencia_notificacion")
+	public Integer getTipoReferenciaNotificacion() {
+		return tipoReferenciaNotificacion;
 	}
 
-	public void setEstatus(Character estatus) {
-		this.estatus = estatus;
+	public void setTipoReferenciaNotificacion(Integer tipoReferenciaNotificacion) {
+		this.tipoReferenciaNotificacion = tipoReferenciaNotificacion;
+	}
+
+	@JsonIgnore
+	public TipoReferenciaNotificacionEnum getTipoReferenciaNotificacionEnum() {
+		return TipoReferenciaNotificacionEnum.values()[this.tipoReferenciaNotificacion];
+	}
+
+	public void setTipoReferenciaNotificacionEnum(TipoReferenciaNotificacionEnum tipoReferenciaNotificacionEnum) {
+		this.tipoReferenciaNotificacion = tipoReferenciaNotificacionEnum.ordinal();
+	}
+
+	@Column(name="contenido")
+	public String getContenido() {
+		return contenido;
+	}
+
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
 	}
 
 	@Override

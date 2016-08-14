@@ -15,9 +15,14 @@ import javax.persistence.Table;
 public class CapacitacionPlanificada {
 
 	private Integer idCapacitacionPlanificada;
-	private TipoCapacitacion fkTipoCapacitacion;
+	private String descripcion;
+	private Capacitacion fkCapacitacion;
+	private Directorio fkDirectorio;
 	private Long fechaPlanificada;
 	private Long fechaEjecutada;
+	private Motivo fkMotivo;
+	private boolean ejecucion;
+	private String observacion;
 	private Long estatus;
 
 	public CapacitacionPlanificada() {
@@ -30,14 +35,24 @@ public class CapacitacionPlanificada {
 	}
 
 	public CapacitacionPlanificada(
-			TipoCapacitacion fkTipoCapacitacion,
+			String descripcion,
+			Capacitacion fkCapacitacion,
+			Directorio fkDirectorio,
 			Long fechaPlanificada,
 			Long fechaEjecutada,
+			Motivo fkMotivo,
+			boolean ejecucion,
+			String observacion,
 			Long estatus) {
 		super();
-		this.fkTipoCapacitacion = fkTipoCapacitacion;
+		this.descripcion = descripcion;
+		this.fkCapacitacion = fkCapacitacion;
+		this.fkDirectorio = fkDirectorio;
 		this.fechaPlanificada = fechaPlanificada;
 		this.fechaEjecutada = fechaEjecutada;
+		this.fkMotivo = fkMotivo;
+		this.ejecucion = ejecucion;
+		this.observacion = observacion;
 		this.estatus = estatus;
 	}
 
@@ -53,14 +68,33 @@ public class CapacitacionPlanificada {
 		this.idCapacitacionPlanificada = idCapacitacionPlanificada;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "fk_tipo_capacitacion", nullable = false)
-	public TipoCapacitacion getFkTipoCapacitacion() {
-		return fkTipoCapacitacion;
+	@Column(name="descripcion")
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setFkTipoCapacitacion(TipoCapacitacion fkTipoCapacitacion) {
-		this.fkTipoCapacitacion = fkTipoCapacitacion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_capacitacion", nullable = false)
+	public Capacitacion getFkCapacitacion() {
+		return fkCapacitacion;
+	}
+
+	public void setFkCapacitacion(Capacitacion fkCapacitacion) {
+		this.fkCapacitacion = fkCapacitacion;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_directorio", nullable = false)
+	public Directorio getFkDirectorio() {
+		return fkDirectorio;
+	}
+
+	public void setFkDirectorio(Directorio fkDirectorio) {
+		this.fkDirectorio = fkDirectorio;
 	}
 
 	@Column(name="fecha_planificada")
@@ -79,6 +113,34 @@ public class CapacitacionPlanificada {
 
 	public void setFechaEjecutada(Long fechaEjecutada) {
 		this.fechaEjecutada = fechaEjecutada;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
+	}
+
+	@Column(name="ejecucion")
+	public boolean getEjecucion() {
+		return ejecucion;
+	}
+
+	public void setEjecucion(boolean ejecucion) {
+		this.ejecucion = ejecucion;
+	}
+
+	@Column(name="observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
 	}
 
 	@Column(name="estatus")

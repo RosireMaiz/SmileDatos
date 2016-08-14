@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ve.smile.enums.TipoEnum;
+import ve.smile.enums.TipoDonativoCuentaBancariaEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,7 +23,9 @@ public class DonativoCuentaBancaria {
 	private Integer idDonativoCuentaBancaria;
 	private CuentaBancaria fkCuentaBancaria;
 	private DonativoRecurso fkDonativoRecurso;
-	private Integer tipo;
+	private Long fechaTransaccion;
+	private Long nroReferencia;
+	private Integer tipoDonativoCuentaBancaria;
 
 	public DonativoCuentaBancaria() {
 		super();
@@ -37,11 +39,15 @@ public class DonativoCuentaBancaria {
 	public DonativoCuentaBancaria(
 			CuentaBancaria fkCuentaBancaria,
 			DonativoRecurso fkDonativoRecurso,
-			Integer tipo) {
+			Long fechaTransaccion,
+			Long nroReferencia,
+			Integer tipoDonativoCuentaBancaria) {
 		super();
 		this.fkCuentaBancaria = fkCuentaBancaria;
 		this.fkDonativoRecurso = fkDonativoRecurso;
-		this.tipo = tipo;
+		this.fechaTransaccion = fechaTransaccion;
+		this.nroReferencia = nroReferencia;
+		this.tipoDonativoCuentaBancaria = tipoDonativoCuentaBancaria;
 	}
 
 	@Id
@@ -76,22 +82,40 @@ public class DonativoCuentaBancaria {
 		this.fkDonativoRecurso = fkDonativoRecurso;
 	}
 
-	@Column(name="tipo")
-	public Integer getTipo() {
-		return tipo;
+	@Column(name="fecha_transaccion")
+	public Long getFechaTransaccion() {
+		return fechaTransaccion;
 	}
 
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
+	public void setFechaTransaccion(Long fechaTransaccion) {
+		this.fechaTransaccion = fechaTransaccion;
+	}
+
+	@Column(name="nro_referencia")
+	public Long getNroReferencia() {
+		return nroReferencia;
+	}
+
+	public void setNroReferencia(Long nroReferencia) {
+		this.nroReferencia = nroReferencia;
+	}
+
+	@Column(name="tipo_donativo_cuenta_bancaria")
+	public Integer getTipoDonativoCuentaBancaria() {
+		return tipoDonativoCuentaBancaria;
+	}
+
+	public void setTipoDonativoCuentaBancaria(Integer tipoDonativoCuentaBancaria) {
+		this.tipoDonativoCuentaBancaria = tipoDonativoCuentaBancaria;
 	}
 
 	@JsonIgnore
-	public TipoEnum getTipoEnum() {
-		return TipoEnum.values()[this.tipo];
+	public TipoDonativoCuentaBancariaEnum getTipoDonativoCuentaBancariaEnum() {
+		return TipoDonativoCuentaBancariaEnum.values()[this.tipoDonativoCuentaBancaria];
 	}
 
-	public void setTipoEnum(TipoEnum tipoEnum) {
-		this.tipo = tipoEnum.ordinal();
+	public void setTipoDonativoCuentaBancariaEnum(TipoDonativoCuentaBancariaEnum tipoDonativoCuentaBancariaEnum) {
+		this.tipoDonativoCuentaBancaria = tipoDonativoCuentaBancariaEnum.ordinal();
 	}
 
 	@Override

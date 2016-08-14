@@ -15,12 +15,19 @@ import javax.persistence.Table;
 public class TsPlan {
 
 	private Integer idTsPlan;
+	private String descripcion;
 	private Album fkAlbum;
-	private TipoMotivo fkTipoMotivo;
+	private Directorio fkDirectorio;
+	private TsPlan fkTsPlan;
+	private Motivo fkMotivo;
 	private Persona fkPersona;
-	private TrabajoSocial fkTrabajoSocial;
 	private Long fechaPlanificada;
 	private Long fechaEjecutada;
+	private String observacion;
+	private Multimedia fkMultimedia;
+	private Long fechaInicioIncidencia;
+	private Long fechaFinIncidencia;
+	private boolean publicoPortal;
 
 	public TsPlan() {
 		super();
@@ -32,19 +39,33 @@ public class TsPlan {
 	}
 
 	public TsPlan(
+			String descripcion,
 			Album fkAlbum,
-			TipoMotivo fkTipoMotivo,
+			Directorio fkDirectorio,
+			TsPlan fkTsPlan,
+			Motivo fkMotivo,
 			Persona fkPersona,
-			TrabajoSocial fkTrabajoSocial,
 			Long fechaPlanificada,
-			Long fechaEjecutada) {
+			Long fechaEjecutada,
+			String observacion,
+			Multimedia fkMultimedia,
+			Long fechaInicioIncidencia,
+			Long fechaFinIncidencia,
+			boolean publicoPortal) {
 		super();
+		this.descripcion = descripcion;
 		this.fkAlbum = fkAlbum;
-		this.fkTipoMotivo = fkTipoMotivo;
+		this.fkDirectorio = fkDirectorio;
+		this.fkTsPlan = fkTsPlan;
+		this.fkMotivo = fkMotivo;
 		this.fkPersona = fkPersona;
-		this.fkTrabajoSocial = fkTrabajoSocial;
 		this.fechaPlanificada = fechaPlanificada;
 		this.fechaEjecutada = fechaEjecutada;
+		this.observacion = observacion;
+		this.fkMultimedia = fkMultimedia;
+		this.fechaInicioIncidencia = fechaInicioIncidencia;
+		this.fechaFinIncidencia = fechaFinIncidencia;
+		this.publicoPortal = publicoPortal;
 	}
 
 	@Id
@@ -59,6 +80,15 @@ public class TsPlan {
 		this.idTsPlan = idTsPlan;
 	}
 
+	@Column(name="descripcion")
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "fk_album", nullable = false)
 	public Album getFkAlbum() {
@@ -70,13 +100,33 @@ public class TsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
+	@JoinColumn(name = "fk_directorio", nullable = false)
+	public Directorio getFkDirectorio() {
+		return fkDirectorio;
 	}
 
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFkDirectorio(Directorio fkDirectorio) {
+		this.fkDirectorio = fkDirectorio;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_ts_plan", nullable = false)
+	public TsPlan getFkTsPlan() {
+		return fkTsPlan;
+	}
+
+	public void setFkTsPlan(TsPlan fkTsPlan) {
+		this.fkTsPlan = fkTsPlan;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
 	}
 
 	@ManyToOne
@@ -87,16 +137,6 @@ public class TsPlan {
 
 	public void setFkPersona(Persona fkPersona) {
 		this.fkPersona = fkPersona;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_trabajo_social", nullable = false)
-	public TrabajoSocial getFkTrabajoSocial() {
-		return fkTrabajoSocial;
-	}
-
-	public void setFkTrabajoSocial(TrabajoSocial fkTrabajoSocial) {
-		this.fkTrabajoSocial = fkTrabajoSocial;
 	}
 
 	@Column(name="fecha_planificada")
@@ -115,6 +155,52 @@ public class TsPlan {
 
 	public void setFechaEjecutada(Long fechaEjecutada) {
 		this.fechaEjecutada = fechaEjecutada;
+	}
+
+	@Column(name="observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_multimedia", nullable = false)
+	public Multimedia getFkMultimedia() {
+		return fkMultimedia;
+	}
+
+	public void setFkMultimedia(Multimedia fkMultimedia) {
+		this.fkMultimedia = fkMultimedia;
+	}
+
+	@Column(name="fecha_inicio_incidencia")
+	public Long getFechaInicioIncidencia() {
+		return fechaInicioIncidencia;
+	}
+
+	public void setFechaInicioIncidencia(Long fechaInicioIncidencia) {
+		this.fechaInicioIncidencia = fechaInicioIncidencia;
+	}
+
+	@Column(name="fecha_fin_incidencia")
+	public Long getFechaFinIncidencia() {
+		return fechaFinIncidencia;
+	}
+
+	public void setFechaFinIncidencia(Long fechaFinIncidencia) {
+		this.fechaFinIncidencia = fechaFinIncidencia;
+	}
+
+	@Column(name="publico_portal")
+	public boolean getPublicoPortal() {
+		return publicoPortal;
+	}
+
+	public void setPublicoPortal(boolean publicoPortal) {
+		this.publicoPortal = publicoPortal;
 	}
 
 	@Override

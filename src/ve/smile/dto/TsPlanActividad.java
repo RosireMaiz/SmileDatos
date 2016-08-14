@@ -15,13 +15,14 @@ import javax.persistence.Table;
 public class TsPlanActividad {
 
 	private Integer idTsPlanActividad;
-	private TipoActividad fkTipoActividad;
+	private Actividad fkActividad;
 	private TsPlan fkTsPlan;
-	private TipoMotivo fkTipoMotivo;
+	private Motivo fkMotivo;
 	private Long fechaPlanificada;
 	private Long fechaEjecutada;
+	private Directorio fkDirectorio;
 	private String observacion;
-	private Character estatus;
+	private Character estatusActividad;
 
 	public TsPlanActividad() {
 		super();
@@ -33,21 +34,23 @@ public class TsPlanActividad {
 	}
 
 	public TsPlanActividad(
-			TipoActividad fkTipoActividad,
+			Actividad fkActividad,
 			TsPlan fkTsPlan,
-			TipoMotivo fkTipoMotivo,
+			Motivo fkMotivo,
 			Long fechaPlanificada,
 			Long fechaEjecutada,
+			Directorio fkDirectorio,
 			String observacion,
-			Character estatus) {
+			Character estatusActividad) {
 		super();
-		this.fkTipoActividad = fkTipoActividad;
+		this.fkActividad = fkActividad;
 		this.fkTsPlan = fkTsPlan;
-		this.fkTipoMotivo = fkTipoMotivo;
+		this.fkMotivo = fkMotivo;
 		this.fechaPlanificada = fechaPlanificada;
 		this.fechaEjecutada = fechaEjecutada;
+		this.fkDirectorio = fkDirectorio;
 		this.observacion = observacion;
-		this.estatus = estatus;
+		this.estatusActividad = estatusActividad;
 	}
 
 	@Id
@@ -63,13 +66,13 @@ public class TsPlanActividad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_actividad", nullable = false)
-	public TipoActividad getFkTipoActividad() {
-		return fkTipoActividad;
+	@JoinColumn(name = "fk_actividad", nullable = false)
+	public Actividad getFkActividad() {
+		return fkActividad;
 	}
 
-	public void setFkTipoActividad(TipoActividad fkTipoActividad) {
-		this.fkTipoActividad = fkTipoActividad;
+	public void setFkActividad(Actividad fkActividad) {
+		this.fkActividad = fkActividad;
 	}
 
 	@ManyToOne
@@ -83,13 +86,13 @@ public class TsPlanActividad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
 	}
 
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
 	}
 
 	@Column(name="fecha_planificada")
@@ -110,6 +113,16 @@ public class TsPlanActividad {
 		this.fechaEjecutada = fechaEjecutada;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "fk_directorio", nullable = false)
+	public Directorio getFkDirectorio() {
+		return fkDirectorio;
+	}
+
+	public void setFkDirectorio(Directorio fkDirectorio) {
+		this.fkDirectorio = fkDirectorio;
+	}
+
 	@Column(name="observacion")
 	public String getObservacion() {
 		return observacion;
@@ -119,13 +132,13 @@ public class TsPlanActividad {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus")
-	public Character getEstatus() {
-		return estatus;
+	@Column(name="estatus_actividad")
+	public Character getEstatusActividad() {
+		return estatusActividad;
 	}
 
-	public void setEstatus(Character estatus) {
-		this.estatus = estatus;
+	public void setEstatusActividad(Character estatusActividad) {
+		this.estatusActividad = estatusActividad;
 	}
 
 	@Override

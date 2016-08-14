@@ -17,6 +17,7 @@ public class Indicador {
 	private Integer idIndicador;
 	private UnidadMedida fkUnidadMedida;
 	private String nombre;
+	private String descripcion;
 
 	public Indicador() {
 		super();
@@ -29,10 +30,12 @@ public class Indicador {
 
 	public Indicador(
 			UnidadMedida fkUnidadMedida,
-			String nombre) {
+			String nombre,
+			String descripcion) {
 		super();
 		this.fkUnidadMedida = fkUnidadMedida;
 		this.nombre = nombre;
+		this.descripcion = descripcion;
 	}
 
 	@Id
@@ -64,6 +67,15 @@ public class Indicador {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	@Column(name="descripcion")
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Override

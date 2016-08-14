@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,6 +17,7 @@ public class Tarea {
 	private Integer idTarea;
 	private String nombre;
 	private String descripcion;
+	private ClasificadorTarea fkClasificadorTarea;
 
 	public Tarea() {
 		super();
@@ -27,10 +30,12 @@ public class Tarea {
 
 	public Tarea(
 			String nombre,
-			String descripcion) {
+			String descripcion,
+			ClasificadorTarea fkClasificadorTarea) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.fkClasificadorTarea = fkClasificadorTarea;
 	}
 
 	@Id
@@ -61,6 +66,16 @@ public class Tarea {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_clasificador_tarea", nullable = false)
+	public ClasificadorTarea getFkClasificadorTarea() {
+		return fkClasificadorTarea;
+	}
+
+	public void setFkClasificadorTarea(ClasificadorTarea fkClasificadorTarea) {
+		this.fkClasificadorTarea = fkClasificadorTarea;
 	}
 
 	@Override

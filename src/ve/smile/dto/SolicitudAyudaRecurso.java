@@ -15,9 +15,10 @@ import javax.persistence.Table;
 public class SolicitudAyudaRecurso {
 
 	private Integer idSolicitudAyudaRecurso;
-	private TipoRecurso fkTipoRecurso;
+	private Recurso fkRecurso;
 	private SolicitudAyuda fkSolicitudAyuda;
 	private Integer cantidad;
+	private Long fechaAsignacion;
 
 	public SolicitudAyudaRecurso() {
 		super();
@@ -29,13 +30,15 @@ public class SolicitudAyudaRecurso {
 	}
 
 	public SolicitudAyudaRecurso(
-			TipoRecurso fkTipoRecurso,
+			Recurso fkRecurso,
 			SolicitudAyuda fkSolicitudAyuda,
-			Integer cantidad) {
+			Integer cantidad,
+			Long fechaAsignacion) {
 		super();
-		this.fkTipoRecurso = fkTipoRecurso;
+		this.fkRecurso = fkRecurso;
 		this.fkSolicitudAyuda = fkSolicitudAyuda;
 		this.cantidad = cantidad;
+		this.fechaAsignacion = fechaAsignacion;
 	}
 
 	@Id
@@ -51,13 +54,13 @@ public class SolicitudAyudaRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_recurso", nullable = false)
-	public TipoRecurso getFkTipoRecurso() {
-		return fkTipoRecurso;
+	@JoinColumn(name = "fk_recurso", nullable = false)
+	public Recurso getFkRecurso() {
+		return fkRecurso;
 	}
 
-	public void setFkTipoRecurso(TipoRecurso fkTipoRecurso) {
-		this.fkTipoRecurso = fkTipoRecurso;
+	public void setFkRecurso(Recurso fkRecurso) {
+		this.fkRecurso = fkRecurso;
 	}
 
 	@ManyToOne
@@ -77,6 +80,15 @@ public class SolicitudAyudaRecurso {
 
 	public void setCantidad(Integer cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	@Column(name="fecha_asignacion")
+	public Long getFechaAsignacion() {
+		return fechaAsignacion;
+	}
+
+	public void setFechaAsignacion(Long fechaAsignacion) {
+		this.fechaAsignacion = fechaAsignacion;
 	}
 
 	@Override

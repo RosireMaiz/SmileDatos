@@ -15,6 +15,7 @@ public class UnidadMedida {
 	private Integer idUnidadMedida;
 	private String nombre;
 	private String descripcion;
+	private String abreviatura;
 
 	public UnidadMedida() {
 		super();
@@ -27,10 +28,12 @@ public class UnidadMedida {
 
 	public UnidadMedida(
 			String nombre,
-			String descripcion) {
+			String descripcion,
+			String abreviatura) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.abreviatura = abreviatura;
 	}
 
 	@Id
@@ -61,6 +64,15 @@ public class UnidadMedida {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	@Column(name="abreviatura")
+	public String getAbreviatura() {
+		return abreviatura;
+	}
+
+	public void setAbreviatura(String abreviatura) {
+		this.abreviatura = abreviatura;
 	}
 
 	@Override

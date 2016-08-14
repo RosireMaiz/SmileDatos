@@ -10,32 +10,39 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ve.smile.enums.TipoPersonaEnum;
 import ve.smile.seguridad.dto.Usuario;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_persona")
 @Entity
 public class Persona {
 
 	private Integer idPersona;
 	private Ciudad fkCiudad;
-	private ClasificadorPersona fkClasificadorPersona;
 	private Usuario fkUsuario;
 	private String identificacion;
 	private String nombre;
+	private String apellido;
+	private Multimedia fkMultimedia;
 	private Integer edad;
 	private Integer sexo;
 	private Long fechaNacimiento;
 	private String telefono1;
 	private String telefono2;
-	private String telefono3;
 	private String direccion;
-	private String pais;
 	private String twitter;
 	private String instagram;
 	private String linkedin;
+	private String sitioWeb;
+	private String fax;
 	private Character estatus;
 	private String correo;
 	private String facebook;
+	private Integer tipoPersona;
 
 	public Persona() {
 		super();
@@ -48,44 +55,48 @@ public class Persona {
 
 	public Persona(
 			Ciudad fkCiudad,
-			ClasificadorPersona fkClasificadorPersona,
 			Usuario fkUsuario,
 			String identificacion,
 			String nombre,
+			String apellido,
+			Multimedia fkMultimedia,
 			Integer edad,
 			Integer sexo,
 			Long fechaNacimiento,
 			String telefono1,
 			String telefono2,
-			String telefono3,
 			String direccion,
-			String pais,
 			String twitter,
 			String instagram,
 			String linkedin,
+			String sitioWeb,
+			String fax,
 			Character estatus,
 			String correo,
-			String facebook) {
+			String facebook,
+			Integer tipoPersona) {
 		super();
 		this.fkCiudad = fkCiudad;
-		this.fkClasificadorPersona = fkClasificadorPersona;
 		this.fkUsuario = fkUsuario;
 		this.identificacion = identificacion;
 		this.nombre = nombre;
+		this.apellido = apellido;
+		this.fkMultimedia = fkMultimedia;
 		this.edad = edad;
 		this.sexo = sexo;
 		this.fechaNacimiento = fechaNacimiento;
 		this.telefono1 = telefono1;
 		this.telefono2 = telefono2;
-		this.telefono3 = telefono3;
 		this.direccion = direccion;
-		this.pais = pais;
 		this.twitter = twitter;
 		this.instagram = instagram;
 		this.linkedin = linkedin;
+		this.sitioWeb = sitioWeb;
+		this.fax = fax;
 		this.estatus = estatus;
 		this.correo = correo;
 		this.facebook = facebook;
+		this.tipoPersona = tipoPersona;
 	}
 
 	@Id
@@ -108,16 +119,6 @@ public class Persona {
 
 	public void setFkCiudad(Ciudad fkCiudad) {
 		this.fkCiudad = fkCiudad;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_clasificador_persona", nullable = false)
-	public ClasificadorPersona getFkClasificadorPersona() {
-		return fkClasificadorPersona;
-	}
-
-	public void setFkClasificadorPersona(ClasificadorPersona fkClasificadorPersona) {
-		this.fkClasificadorPersona = fkClasificadorPersona;
 	}
 
 	@ManyToOne
@@ -146,6 +147,25 @@ public class Persona {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	@Column(name="apellido")
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_multimedia", nullable = false)
+	public Multimedia getFkMultimedia() {
+		return fkMultimedia;
+	}
+
+	public void setFkMultimedia(Multimedia fkMultimedia) {
+		this.fkMultimedia = fkMultimedia;
 	}
 
 	@Column(name="edad")
@@ -193,15 +213,6 @@ public class Persona {
 		this.telefono2 = telefono2;
 	}
 
-	@Column(name="telefono_3")
-	public String getTelefono3() {
-		return telefono3;
-	}
-
-	public void setTelefono3(String telefono3) {
-		this.telefono3 = telefono3;
-	}
-
 	@Column(name="direccion")
 	public String getDireccion() {
 		return direccion;
@@ -209,15 +220,6 @@ public class Persona {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-
-	@Column(name="pais")
-	public String getPais() {
-		return pais;
-	}
-
-	public void setPais(String pais) {
-		this.pais = pais;
 	}
 
 	@Column(name="twitter")
@@ -247,6 +249,24 @@ public class Persona {
 		this.linkedin = linkedin;
 	}
 
+	@Column(name="sitio_web")
+	public String getSitioWeb() {
+		return sitioWeb;
+	}
+
+	public void setSitioWeb(String sitioWeb) {
+		this.sitioWeb = sitioWeb;
+	}
+
+	@Column(name="fax")
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
 	@Column(name="estatus")
 	public Character getEstatus() {
 		return estatus;
@@ -272,6 +292,24 @@ public class Persona {
 
 	public void setFacebook(String facebook) {
 		this.facebook = facebook;
+	}
+
+	@Column(name="tipo_persona")
+	public Integer getTipoPersona() {
+		return tipoPersona;
+	}
+
+	public void setTipoPersona(Integer tipoPersona) {
+		this.tipoPersona = tipoPersona;
+	}
+
+	@JsonIgnore
+	public TipoPersonaEnum getTipoPersonaEnum() {
+		return TipoPersonaEnum.values()[this.tipoPersona];
+	}
+
+	public void setTipoPersonaEnum(TipoPersonaEnum tipoPersonaEnum) {
+		this.tipoPersona = tipoPersonaEnum.ordinal();
 	}
 
 	@Override

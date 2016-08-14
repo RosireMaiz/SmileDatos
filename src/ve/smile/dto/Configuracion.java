@@ -11,6 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import ve.smile.enums.PropiedadEnum;
+import ve.smile.seguridad.dto.IconSclass;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,7 +24,7 @@ public class Configuracion {
 	private Integer idConfiguracion;
 	private Multimedia fkMultimedia;
 	private String descripcion;
-	private String icono;
+	private IconSclass fkIconSclass;
 	private String valor;
 	private Integer propiedad;
 
@@ -39,13 +40,13 @@ public class Configuracion {
 	public Configuracion(
 			Multimedia fkMultimedia,
 			String descripcion,
-			String icono,
+			IconSclass fkIconClass,
 			String valor,
 			Integer propiedad) {
 		super();
 		this.fkMultimedia = fkMultimedia;
 		this.descripcion = descripcion;
-		this.icono = icono;
+		this.fkIconSclass = fkIconClass;
 		this.valor = valor;
 		this.propiedad = propiedad;
 	}
@@ -81,13 +82,14 @@ public class Configuracion {
 		this.descripcion = descripcion;
 	}
 
-	@Column(name="icono")
-	public String getIcono() {
-		return icono;
+	@ManyToOne
+	@JoinColumn(name = "fk_icon_class", nullable = false)
+	public IconSclass getFkIconClass() {
+		return fkIconSclass;
 	}
 
-	public void setIcono(String icono) {
-		this.icono = icono;
+	public void setFkIconClass(IconSclass fkIconSclass) {
+		this.fkIconSclass = fkIconSclass;
 	}
 
 	@Column(name="valor")

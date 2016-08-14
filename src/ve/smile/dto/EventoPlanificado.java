@@ -17,11 +17,17 @@ public class EventoPlanificado {
 	private Integer idEventoPlanificado;
 	private Album fkAlbum;
 	private Directorio fkDirectorio;
-	private TipoEvento fkTipoEvento;
-	private TipoMotivo fkTipoMotivo;
+	private Evento fkEvento;
+	private Motivo fkMotivo;
 	private Persona fkPersona;
 	private Long fechaPlanificada;
 	private Long fechaEjecutada;
+	private Multimedia fkMultimedia;
+	private Long fechaInicioIncidencia;
+	private Long fechaFinIncidencia;
+	private String observacion;
+	private Character estatusEvento;
+	private boolean publicoPortal;
 
 	public EventoPlanificado() {
 		super();
@@ -35,19 +41,31 @@ public class EventoPlanificado {
 	public EventoPlanificado(
 			Album fkAlbum,
 			Directorio fkDirectorio,
-			TipoEvento fkTipoEvento,
-			TipoMotivo fkTipoMotivo,
+			Evento fkEvento,
+			Motivo fkMotivo,
 			Persona fkPersona,
 			Long fechaPlanificada,
-			Long fechaEjecutada) {
+			Long fechaEjecutada,
+			Multimedia fkMultimedia,
+			Long fechaInicioIncidencia,
+			Long fechaFinIncidencia,
+			String observacion,
+			Character estatusEvento,
+			boolean publicoPortal) {
 		super();
 		this.fkAlbum = fkAlbum;
 		this.fkDirectorio = fkDirectorio;
-		this.fkTipoEvento = fkTipoEvento;
-		this.fkTipoMotivo = fkTipoMotivo;
+		this.fkEvento = fkEvento;
+		this.fkMotivo = fkMotivo;
 		this.fkPersona = fkPersona;
 		this.fechaPlanificada = fechaPlanificada;
 		this.fechaEjecutada = fechaEjecutada;
+		this.fkMultimedia = fkMultimedia;
+		this.fechaInicioIncidencia = fechaInicioIncidencia;
+		this.fechaFinIncidencia = fechaFinIncidencia;
+		this.observacion = observacion;
+		this.estatusEvento = estatusEvento;
+		this.publicoPortal = publicoPortal;
 	}
 
 	@Id
@@ -83,23 +101,23 @@ public class EventoPlanificado {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_evento", nullable = false)
-	public TipoEvento getFkTipoEvento() {
-		return fkTipoEvento;
+	@JoinColumn(name = "fk_evento", nullable = false)
+	public Evento getFkEvento() {
+		return fkEvento;
 	}
 
-	public void setFkTipoEvento(TipoEvento fkTipoEvento) {
-		this.fkTipoEvento = fkTipoEvento;
+	public void setFkEvento(Evento fkEvento) {
+		this.fkEvento = fkEvento;
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
 	}
 
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
 	}
 
 	@ManyToOne
@@ -128,6 +146,61 @@ public class EventoPlanificado {
 
 	public void setFechaEjecutada(Long fechaEjecutada) {
 		this.fechaEjecutada = fechaEjecutada;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_multimedia", nullable = false)
+	public Multimedia getFkMultimedia() {
+		return fkMultimedia;
+	}
+
+	public void setFkMultimedia(Multimedia fkMultimedia) {
+		this.fkMultimedia = fkMultimedia;
+	}
+
+	@Column(name="fecha_inicio_incidencia")
+	public Long getFechaInicioIncidencia() {
+		return fechaInicioIncidencia;
+	}
+
+	public void setFechaInicioIncidencia(Long fechaInicioIncidencia) {
+		this.fechaInicioIncidencia = fechaInicioIncidencia;
+	}
+
+	@Column(name="fecha_fin_incidencia")
+	public Long getFechaFinIncidencia() {
+		return fechaFinIncidencia;
+	}
+
+	public void setFechaFinIncidencia(Long fechaFinIncidencia) {
+		this.fechaFinIncidencia = fechaFinIncidencia;
+	}
+
+	@Column(name="observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	@Column(name="estatus_evento")
+	public Character getEstatusEvento() {
+		return estatusEvento;
+	}
+
+	public void setEstatusEvento(Character estatusEvento) {
+		this.estatusEvento = estatusEvento;
+	}
+
+	@Column(name="publico_portal")
+	public boolean getPublicoPortal() {
+		return publicoPortal;
+	}
+
+	public void setPublicoPortal(boolean publicoPortal) {
+		this.publicoPortal = publicoPortal;
 	}
 
 	@Override

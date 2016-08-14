@@ -11,6 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import ve.smile.enums.UrgenciaEnum;
+import ve.smile.enums.EstatusSolicitudEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,10 +24,12 @@ public class SolicitudAyuda {
 	private Integer idSolicitudAyuda;
 	private Ayuda fkAyuda;
 	private Beneficiario fkBeneficiario;
-	private TipoMotivo fkTipoMotivo;
+	private Motivo fkMotivo;
 	private Long fecha;
 	private Character estatus;
 	private Integer urgencia;
+	private Integer estatusSolicitud;
+	private String observacion;
 
 	public SolicitudAyuda() {
 		super();
@@ -40,17 +43,21 @@ public class SolicitudAyuda {
 	public SolicitudAyuda(
 			Ayuda fkAyuda,
 			Beneficiario fkBeneficiario,
-			TipoMotivo fkTipoMotivo,
+			Motivo fkMotivo,
 			Long fecha,
 			Character estatus,
-			Integer urgencia) {
+			Integer urgencia,
+			Integer estatusSolicitud,
+			String observacion) {
 		super();
 		this.fkAyuda = fkAyuda;
 		this.fkBeneficiario = fkBeneficiario;
-		this.fkTipoMotivo = fkTipoMotivo;
+		this.fkMotivo = fkMotivo;
 		this.fecha = fecha;
 		this.estatus = estatus;
 		this.urgencia = urgencia;
+		this.estatusSolicitud = estatusSolicitud;
+		this.observacion = observacion;
 	}
 
 	@Id
@@ -86,13 +93,13 @@ public class SolicitudAyuda {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tipo_motivo", nullable = false)
-	public TipoMotivo getFkTipoMotivo() {
-		return fkTipoMotivo;
+	@JoinColumn(name = "fk_motivo", nullable = false)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
 	}
 
-	public void setFkTipoMotivo(TipoMotivo fkTipoMotivo) {
-		this.fkTipoMotivo = fkTipoMotivo;
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
 	}
 
 	@Column(name="fecha")
@@ -129,6 +136,33 @@ public class SolicitudAyuda {
 
 	public void setUrgenciaEnum(UrgenciaEnum urgenciaEnum) {
 		this.urgencia = urgenciaEnum.ordinal();
+	}
+
+	@Column(name="estatus_solicitud")
+	public Integer getEstatusSolicitud() {
+		return estatusSolicitud;
+	}
+
+	public void setEstatusSolicitud(Integer estatusSolicitud) {
+		this.estatusSolicitud = estatusSolicitud;
+	}
+
+	@JsonIgnore
+	public EstatusSolicitudEnum getEstatusSolicitudEnum() {
+		return EstatusSolicitudEnum.values()[this.estatusSolicitud];
+	}
+
+	public void setEstatusSolicitudEnum(EstatusSolicitudEnum estatusSolicitudEnum) {
+		this.estatusSolicitud = estatusSolicitudEnum.ordinal();
+	}
+
+	@Column(name="observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
 	}
 
 	@Override

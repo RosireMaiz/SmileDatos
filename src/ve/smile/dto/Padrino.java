@@ -10,6 +10,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ve.smile.enums.EstatusPostuladoEnum;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_padrino")
 @Entity
 public class Padrino {
@@ -20,7 +26,7 @@ public class Padrino {
 	private Long fechaIngreso;
 	private Long fechaSalida;
 	private Integer monto;
-	private String estatus;
+	private Integer estatusPostulado;
 
 	public Padrino() {
 		super();
@@ -37,14 +43,14 @@ public class Padrino {
 			Long fechaIngreso,
 			Long fechaSalida,
 			Integer monto,
-			String estatus) {
+			Integer estatusPostulado) {
 		super();
 		this.fkFrecuenciaAporte = fkFrecuenciaAporte;
 		this.fkPersona = fkPersona;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
 		this.monto = monto;
-		this.estatus = estatus;
+		this.estatusPostulado = estatusPostulado;
 	}
 
 	@Id
@@ -106,13 +112,22 @@ public class Padrino {
 		this.monto = monto;
 	}
 
-	@Column(name="estatus")
-	public String getEstatus() {
-		return estatus;
+	@Column(name="estatus_postulado")
+	public Integer getEstatusPostulado() {
+		return estatusPostulado;
 	}
 
-	public void setEstatus(String estatus) {
-		this.estatus = estatus;
+	public void setEstatusPostulado(Integer estatusPostulado) {
+		this.estatusPostulado = estatusPostulado;
+	}
+
+	@JsonIgnore
+	public EstatusPostuladoEnum getEstatusPostuladoEnum() {
+		return EstatusPostuladoEnum.values()[this.estatusPostulado];
+	}
+
+	public void setEstatusPostuladoEnum(EstatusPostuladoEnum estatusPostuladoEnum) {
+		this.estatusPostulado = estatusPostuladoEnum.ordinal();
 	}
 
 	@Override

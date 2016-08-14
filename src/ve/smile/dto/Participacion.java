@@ -16,8 +16,8 @@ public class Participacion {
 
 	private Integer idParticipacion;
 	private Multimedia fkMultimedia;
-	private String descripcion;
 	private String nombre;
+	private String descripcion;
 
 	public Participacion() {
 		super();
@@ -30,12 +30,12 @@ public class Participacion {
 
 	public Participacion(
 			Multimedia fkMultimedia,
-			String descripcion,
-			String nombre) {
+			String nombre,
+			String descripcion) {
 		super();
 		this.fkMultimedia = fkMultimedia;
-		this.descripcion = descripcion;
 		this.nombre = nombre;
+		this.descripcion = descripcion;
 	}
 
 	@Id
@@ -60,15 +60,6 @@ public class Participacion {
 		this.fkMultimedia = fkMultimedia;
 	}
 
-	@Column(name="descripcion")
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
 	@Column(name="nombre")
 	public String getNombre() {
 		return nombre;
@@ -76,6 +67,15 @@ public class Participacion {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	@Column(name="descripcion")
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Override

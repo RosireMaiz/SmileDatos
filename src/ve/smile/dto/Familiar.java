@@ -16,6 +16,8 @@ public class Familiar {
 
 	private Integer idFamiliar;
 	private Persona fkPersona;
+	private Long fechaIngreso;
+	private Long fechaSalida;
 
 	public Familiar() {
 		super();
@@ -27,9 +29,13 @@ public class Familiar {
 	}
 
 	public Familiar(
-			Persona fkPersona) {
+			Persona fkPersona,
+			Long fechaIngreso,
+			Long fechaSalida) {
 		super();
 		this.fkPersona = fkPersona;
+		this.fechaIngreso = fechaIngreso;
+		this.fechaSalida = fechaSalida;
 	}
 
 	@Id
@@ -52,6 +58,24 @@ public class Familiar {
 
 	public void setFkPersona(Persona fkPersona) {
 		this.fkPersona = fkPersona;
+	}
+
+	@Column(name="fecha_ingreso")
+	public Long getFechaIngreso() {
+		return fechaIngreso;
+	}
+
+	public void setFechaIngreso(Long fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
+
+	@Column(name="fecha_salida")
+	public Long getFechaSalida() {
+		return fechaSalida;
+	}
+
+	public void setFechaSalida(Long fechaSalida) {
+		this.fechaSalida = fechaSalida;
 	}
 
 	@Override

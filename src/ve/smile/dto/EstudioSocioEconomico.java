@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class EstudioSocioEconomico {
 
 	private Integer idEstudioSocioEconomico;
-	private Beneficiario fkBeneficiario;
+	private Persona fkPersona;
 	private SolicitudAyuda fkSolicitudAyuda;
 	private String resultado;
 	private Long fecha;
@@ -30,12 +30,12 @@ public class EstudioSocioEconomico {
 	}
 
 	public EstudioSocioEconomico(
-			Beneficiario fkBeneficiario,
+			Persona fkPersona,
 			SolicitudAyuda fkSolicitudAyuda,
 			String resultado,
 			Long fecha) {
 		super();
-		this.fkBeneficiario = fkBeneficiario;
+		this.fkPersona = fkPersona;
 		this.fkSolicitudAyuda = fkSolicitudAyuda;
 		this.resultado = resultado;
 		this.fecha = fecha;
@@ -54,13 +54,13 @@ public class EstudioSocioEconomico {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_beneficiario", nullable = false)
-	public Beneficiario getFkBeneficiario() {
-		return fkBeneficiario;
+	@JoinColumn(name = "fk_persona", nullable = false)
+	public Persona getFkPersona() {
+		return fkPersona;
 	}
 
-	public void setFkBeneficiario(Beneficiario fkBeneficiario) {
-		this.fkBeneficiario = fkBeneficiario;
+	public void setFkPersona(Persona fkPersona) {
+		this.fkPersona = fkPersona;
 	}
 
 	@ManyToOne

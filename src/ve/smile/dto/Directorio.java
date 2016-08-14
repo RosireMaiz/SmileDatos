@@ -16,11 +16,13 @@ public class Directorio {
 
 	private Integer idDirectorio;
 	private Ciudad fkCiudad;
+	private Multimedia fkMultimedia;
 	private Integer latitud;
 	private Integer longitud;
 	private String nombre;
 	private String direccion;
 	private String telefono;
+	private String url;
 
 	public Directorio() {
 		super();
@@ -33,18 +35,22 @@ public class Directorio {
 
 	public Directorio(
 			Ciudad fkCiudad,
+			Multimedia fkMultimedia,
 			Integer latitud,
 			Integer longitud,
 			String nombre,
 			String direccion,
-			String telefono) {
+			String telefono,
+			String url) {
 		super();
 		this.fkCiudad = fkCiudad;
+		this.fkMultimedia = fkMultimedia;
 		this.latitud = latitud;
 		this.longitud = longitud;
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
+		this.url = url;
 	}
 
 	@Id
@@ -67,6 +73,16 @@ public class Directorio {
 
 	public void setFkCiudad(Ciudad fkCiudad) {
 		this.fkCiudad = fkCiudad;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_multimedia", nullable = false)
+	public Multimedia getFkMultimedia() {
+		return fkMultimedia;
+	}
+
+	public void setFkMultimedia(Multimedia fkMultimedia) {
+		this.fkMultimedia = fkMultimedia;
 	}
 
 	@Column(name="latitud")
@@ -112,6 +128,15 @@ public class Directorio {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	@Column(name="url")
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	@Override
