@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import ve.smile.enums.TipoInteraccionEnum;
 import ve.smile.enums.TipoReferenciaInteraccionEnum;
@@ -74,6 +75,7 @@ public class InteraccionPortal {
 	}
 
 	@JsonIgnore
+	@Transient
 	public TipoInteraccionEnum getTipoInteraccionEnum() {
 		return TipoInteraccionEnum.values()[this.tipoInteraccion];
 	}
@@ -92,6 +94,7 @@ public class InteraccionPortal {
 	}
 
 	@JsonIgnore
+	@Transient
 	public TipoReferenciaInteraccionEnum getTipoReferenciaInteraccionEnum() {
 		return TipoReferenciaInteraccionEnum.values()[this.tipoReferenciaInteraccion];
 	}

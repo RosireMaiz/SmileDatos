@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import ve.smile.enums.TipoPersonaEnum;
 import ve.smile.seguridad.dto.Usuario;
@@ -304,6 +305,7 @@ public class Persona {
 	}
 
 	@JsonIgnore
+	@Transient
 	public TipoPersonaEnum getTipoPersonaEnum() {
 		return TipoPersonaEnum.values()[this.tipoPersona];
 	}

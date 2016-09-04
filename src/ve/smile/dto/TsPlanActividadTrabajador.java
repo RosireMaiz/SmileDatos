@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusActividadEnum;
 
@@ -159,6 +160,7 @@ public class TsPlanActividadTrabajador {
 	}
 
 	@JsonIgnore
+	@Transient
 	public EstatusActividadEnum getEstatusActividadEnum() {
 		return EstatusActividadEnum.values()[this.estatusActividad];
 	}

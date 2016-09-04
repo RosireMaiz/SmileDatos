@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import ve.smile.enums.ExtensionEnum;
 import ve.smile.enums.TipoMultimediaEnum;
@@ -98,6 +99,7 @@ public class Multimedia {
 	}
 
 	@JsonIgnore
+	@Transient
 	public ExtensionEnum getExtensionEnum() {
 		return ExtensionEnum.values()[this.extension];
 	}
@@ -116,6 +118,7 @@ public class Multimedia {
 	}
 
 	@JsonIgnore
+	@Transient
 	public TipoMultimediaEnum getTipoMultimediaEnum() {
 		return TipoMultimediaEnum.values()[this.tipoMultimedia];
 	}

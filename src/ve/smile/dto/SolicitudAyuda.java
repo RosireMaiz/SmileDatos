@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import ve.smile.enums.UrgenciaEnum;
 import ve.smile.enums.EstatusSolicitudEnum;
@@ -130,6 +131,7 @@ public class SolicitudAyuda {
 	}
 
 	@JsonIgnore
+	@Transient
 	public UrgenciaEnum getUrgenciaEnum() {
 		return UrgenciaEnum.values()[this.urgencia];
 	}
@@ -148,6 +150,7 @@ public class SolicitudAyuda {
 	}
 
 	@JsonIgnore
+	@Transient
 	public EstatusSolicitudEnum getEstatusSolicitudEnum() {
 		return EstatusSolicitudEnum.values()[this.estatusSolicitud];
 	}

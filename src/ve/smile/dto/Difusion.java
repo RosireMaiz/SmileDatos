@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import ve.smile.enums.TipoDifusionEnum;
 
@@ -112,6 +113,7 @@ public class Difusion {
 	}
 
 	@JsonIgnore
+	@Transient
 	public TipoDifusionEnum getTipoDifusionEnum() {
 		return TipoDifusionEnum.values()[this.tipoDifusion];
 	}
