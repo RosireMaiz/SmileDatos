@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import ve.smile.enums.TipoReconocimientoEnum;
 
@@ -81,6 +82,7 @@ public class ClasificadorReconocimiento {
 		this.tipoReconocimiento = tipoReconocimiento;
 	}
 
+	@Transient
 	@JsonIgnore
 	public TipoReconocimientoEnum getTipoReconocimientoEnum() {
 		return TipoReconocimientoEnum.values()[this.tipoReconocimiento];

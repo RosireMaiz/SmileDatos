@@ -15,9 +15,7 @@ import ve.smile.enums.TipoPersonaEnum;
 import ve.smile.seguridad.dto.Usuario;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_persona")
 @Entity
 public class Persona {
@@ -54,27 +52,12 @@ public class Persona {
 		this.idPersona = idPersona;
 	}
 
-	public Persona(
-			Ciudad fkCiudad,
-			Usuario fkUsuario,
-			String identificacion,
-			String nombre,
-			String apellido,
-			Multimedia fkMultimedia,
-			Integer edad,
-			Integer sexo,
-			Long fechaNacimiento,
-			String telefono1,
-			String telefono2,
-			String direccion,
-			String twitter,
-			String instagram,
-			String linkedin,
-			String sitioWeb,
-			String fax,
-			Character estatus,
-			String correo,
-			String facebook,
+	public Persona(Ciudad fkCiudad, Usuario fkUsuario, String identificacion,
+			String nombre, String apellido, Multimedia fkMultimedia,
+			Integer edad, Integer sexo, Long fechaNacimiento, String telefono1,
+			String telefono2, String direccion, String twitter,
+			String instagram, String linkedin, String sitioWeb, String fax,
+			Character estatus, String correo, String facebook,
 			Integer tipoPersona) {
 		super();
 		this.fkCiudad = fkCiudad;
@@ -103,7 +86,7 @@ public class Persona {
 	@Id
 	@SequenceGenerator(name = "tb_persona_sequence", sequenceName = "public.tb_persona_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_persona_sequence")
-	@Column(name="id_persona")
+	@Column(name = "id_persona")
 	public Integer getIdPersona() {
 		return idPersona;
 	}
@@ -132,7 +115,7 @@ public class Persona {
 		this.fkUsuario = fkUsuario;
 	}
 
-	@Column(name="identificacion")
+	@Column(name = "identificacion")
 	public String getIdentificacion() {
 		return identificacion;
 	}
@@ -141,7 +124,7 @@ public class Persona {
 		this.identificacion = identificacion;
 	}
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -150,7 +133,7 @@ public class Persona {
 		this.nombre = nombre;
 	}
 
-	@Column(name="apellido")
+	@Column(name = "apellido")
 	public String getApellido() {
 		return apellido;
 	}
@@ -160,7 +143,7 @@ public class Persona {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_multimedia", nullable = false)
+	@JoinColumn(name = "fk_multimedia", nullable = true)
 	public Multimedia getFkMultimedia() {
 		return fkMultimedia;
 	}
@@ -169,7 +152,7 @@ public class Persona {
 		this.fkMultimedia = fkMultimedia;
 	}
 
-	@Column(name="edad")
+	@Column(name = "edad")
 	public Integer getEdad() {
 		return edad;
 	}
@@ -178,7 +161,7 @@ public class Persona {
 		this.edad = edad;
 	}
 
-	@Column(name="sexo")
+	@Column(name = "sexo")
 	public Integer getSexo() {
 		return sexo;
 	}
@@ -187,7 +170,7 @@ public class Persona {
 		this.sexo = sexo;
 	}
 
-	@Column(name="fecha_nacimiento")
+	@Column(name = "fecha_nacimiento")
 	public Long getFechaNacimiento() {
 		return fechaNacimiento;
 	}
@@ -196,7 +179,7 @@ public class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@Column(name="telefono_1")
+	@Column(name = "telefono_1")
 	public String getTelefono1() {
 		return telefono1;
 	}
@@ -205,7 +188,7 @@ public class Persona {
 		this.telefono1 = telefono1;
 	}
 
-	@Column(name="telefono_2")
+	@Column(name = "telefono_2")
 	public String getTelefono2() {
 		return telefono2;
 	}
@@ -214,7 +197,7 @@ public class Persona {
 		this.telefono2 = telefono2;
 	}
 
-	@Column(name="direccion")
+	@Column(name = "direccion")
 	public String getDireccion() {
 		return direccion;
 	}
@@ -223,7 +206,7 @@ public class Persona {
 		this.direccion = direccion;
 	}
 
-	@Column(name="twitter")
+	@Column(name = "twitter")
 	public String getTwitter() {
 		return twitter;
 	}
@@ -232,7 +215,7 @@ public class Persona {
 		this.twitter = twitter;
 	}
 
-	@Column(name="instagram")
+	@Column(name = "instagram")
 	public String getInstagram() {
 		return instagram;
 	}
@@ -241,7 +224,7 @@ public class Persona {
 		this.instagram = instagram;
 	}
 
-	@Column(name="linkedin")
+	@Column(name = "linkedin")
 	public String getLinkedin() {
 		return linkedin;
 	}
@@ -250,7 +233,7 @@ public class Persona {
 		this.linkedin = linkedin;
 	}
 
-	@Column(name="sitio_web")
+	@Column(name = "sitio_web")
 	public String getSitioWeb() {
 		return sitioWeb;
 	}
@@ -259,7 +242,7 @@ public class Persona {
 		this.sitioWeb = sitioWeb;
 	}
 
-	@Column(name="fax")
+	@Column(name = "fax")
 	public String getFax() {
 		return fax;
 	}
@@ -268,7 +251,7 @@ public class Persona {
 		this.fax = fax;
 	}
 
-	@Column(name="estatus")
+	@Column(name = "estatus")
 	public Character getEstatus() {
 		return estatus;
 	}
@@ -277,7 +260,7 @@ public class Persona {
 		this.estatus = estatus;
 	}
 
-	@Column(name="correo")
+	@Column(name = "correo")
 	public String getCorreo() {
 		return correo;
 	}
@@ -286,7 +269,7 @@ public class Persona {
 		this.correo = correo;
 	}
 
-	@Column(name="facebook")
+	@Column(name = "facebook")
 	public String getFacebook() {
 		return facebook;
 	}
@@ -295,7 +278,7 @@ public class Persona {
 		this.facebook = facebook;
 	}
 
-	@Column(name="tipo_persona")
+	@Column(name = "tipo_persona")
 	public Integer getTipoPersona() {
 		return tipoPersona;
 	}
@@ -318,7 +301,8 @@ public class Persona {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idPersona == null) ? 0 : idPersona.hashCode());
+		result = prime * result
+				+ ((idPersona == null) ? 0 : idPersona.hashCode());
 		return result;
 	}
 
@@ -336,10 +320,10 @@ public class Persona {
 		Persona other = (Persona) obj;
 		if (idPersona == null) {
 			return false;
-		} 
+		}
 		if (!idPersona.equals(other.idPersona)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 
