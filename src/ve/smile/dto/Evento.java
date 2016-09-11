@@ -23,8 +23,8 @@ public class Evento {
 	private String descripcion;
 	private Character tipoEvento;
 
-	private List<Tarea> tareas;
-	private List<Indicador> indicadors;
+	private List<PlantillaEventoIndicador> eventoIndicadors;
+	private List<PlantillaEventoTarea> eventoTareas;
 	
 	public Evento() {
 		super();
@@ -97,21 +97,21 @@ public class Evento {
 	}
 	
 	@Transient
-	public List<Tarea> getTareas() {
-		return tareas;
+	public List<PlantillaEventoIndicador> getEventoIndicadors() {
+		return eventoIndicadors;
 	}
 
-	public void setTareas(List<Tarea> tareas) {
-		this.tareas = tareas;
+	public void setEventoIndicadors(List<PlantillaEventoIndicador> eventoIndicadors) {
+		this.eventoIndicadors = eventoIndicadors;
 	}
-
+	
 	@Transient
-	public List<Indicador> getIndicadors() {
-		return indicadors;
+	public List<PlantillaEventoTarea> getEventoTareas() {
+		return eventoTareas;
 	}
 
-	public void setIndicadors(List<Indicador> indicadors) {
-		this.indicadors = indicadors;
+	public void setEventoTareas(List<PlantillaEventoTarea> eventoTareas) {
+		this.eventoTareas = eventoTareas;
 	}
 
 	@Override
