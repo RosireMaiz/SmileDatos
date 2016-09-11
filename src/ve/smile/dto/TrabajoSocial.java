@@ -1,5 +1,7 @@
 package ve.smile.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table(name = "tb_trabajo_social")
 @Entity
@@ -19,6 +22,9 @@ public class TrabajoSocial {
 	private String nombre;
 	private String descripcion;
 
+	private List<Actividad> actividads;
+	private List<Indicador>	indicadors;
+	
 	public TrabajoSocial() {
 		super();
 	}
@@ -76,6 +82,24 @@ public class TrabajoSocial {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	@Transient
+	public List<Actividad> getActividads() {
+		return actividads;
+	}
+
+	public void setActividads(List<Actividad> actividads) {
+		this.actividads = actividads;
+	}
+
+	@Transient
+	public List<Indicador> getIndicadors() {
+		return indicadors;
+	}
+
+	public void setIndicadors(List<Indicador> indicadors) {
+		this.indicadors = indicadors;
 	}
 
 	@Override

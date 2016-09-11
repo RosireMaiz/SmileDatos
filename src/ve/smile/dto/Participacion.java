@@ -1,5 +1,8 @@
 package ve.smile.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table(name = "tb_participacion")
 @Entity
@@ -18,6 +22,8 @@ public class Participacion {
 	private Multimedia fkMultimedia;
 	private String nombre;
 	private String descripcion;
+	
+	private List<Requisito> requisitos;
 
 	public Participacion() {
 		super();
@@ -76,6 +82,18 @@ public class Participacion {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	@Transient
+	public List<Requisito> getRequisitos() {
+		if (requisitos == null) {
+			requisitos = new ArrayList<>();
+		}
+		return requisitos;
+	}
+
+	public void setRequisitos(List<Requisito> requisitos) {
+		this.requisitos = requisitos;
 	}
 
 	@Override

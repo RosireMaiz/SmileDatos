@@ -1,5 +1,7 @@
 package ve.smile.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table(name = "tb_evento")
 @Entity
@@ -20,6 +23,9 @@ public class Evento {
 	private String descripcion;
 	private Character tipoEvento;
 
+	private List<Tarea> tareas;
+	private List<Indicador> indicadors;
+	
 	public Evento() {
 		super();
 	}
@@ -88,6 +94,24 @@ public class Evento {
 
 	public void setTipoEvento(Character tipoEvento) {
 		this.tipoEvento = tipoEvento;
+	}
+	
+	@Transient
+	public List<Tarea> getTareas() {
+		return tareas;
+	}
+
+	public void setTareas(List<Tarea> tareas) {
+		this.tareas = tareas;
+	}
+
+	@Transient
+	public List<Indicador> getIndicadors() {
+		return indicadors;
+	}
+
+	public void setIndicadors(List<Indicador> indicadors) {
+		this.indicadors = indicadors;
 	}
 
 	@Override

@@ -1,5 +1,8 @@
 package ve.smile.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Table(name = "tb_clasificador_pregunta")
 @Entity
@@ -14,6 +18,8 @@ public class ClasificadorPregunta {
 
 	private Integer idClasificadorPregunta;
 	private String nombre;
+	
+	private List<Pregunta> preguntas;
 
 	public ClasificadorPregunta() {
 		super();
@@ -49,6 +55,18 @@ public class ClasificadorPregunta {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	@Transient
+	public List<Pregunta> getPreguntas() {
+		if (preguntas == null) {
+			preguntas = new ArrayList<>();
+		}
+		return preguntas;
+	}
+
+	public void setPreguntas(List<Pregunta> preguntas) {
+		this.preguntas = preguntas;
 	}
 
 	@Override
