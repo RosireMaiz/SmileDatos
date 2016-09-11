@@ -19,8 +19,8 @@ public class Ayuda {
 	private Integer idAyuda;
 	private String nombre;
 	private String descripcion;
-	
-	private List<Requisito> requisitos;
+
+	private List<RequisitoAyuda> requisitoAyudas;
 
 	public Ayuda() {
 		super();
@@ -31,9 +31,7 @@ public class Ayuda {
 		this.idAyuda = idAyuda;
 	}
 
-	public Ayuda(
-			String nombre,
-			String descripcion) {
+	public Ayuda(String nombre, String descripcion) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -42,7 +40,7 @@ public class Ayuda {
 	@Id
 	@SequenceGenerator(name = "tb_ayuda_sequence", sequenceName = "public.tb_ayuda_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_ayuda_sequence")
-	@Column(name="id_ayuda")
+	@Column(name = "id_ayuda")
 	public Integer getIdAyuda() {
 		return idAyuda;
 	}
@@ -51,7 +49,7 @@ public class Ayuda {
 		this.idAyuda = idAyuda;
 	}
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -60,7 +58,7 @@ public class Ayuda {
 		this.nombre = nombre;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -68,17 +66,17 @@ public class Ayuda {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+
 	@Transient
-	public List<Requisito> getRequisitos() {
-		if (requisitos == null) {
-			requisitos = new ArrayList<>();
+	public List<RequisitoAyuda> getRequisitoAyudas() {
+		if (requisitoAyudas == null) {
+			requisitoAyudas = new ArrayList<>();
 		}
-		return requisitos;
+		return requisitoAyudas;
 	}
 
-	public void setRequisitos(List<Requisito> requisitos) {
-		this.requisitos = requisitos;
+	public void setRequisitoAyudas(List<RequisitoAyuda> requisitoAyudas) {
+		this.requisitoAyudas = requisitoAyudas;
 	}
 
 	@Override
@@ -103,10 +101,10 @@ public class Ayuda {
 		Ayuda other = (Ayuda) obj;
 		if (idAyuda == null) {
 			return false;
-		} 
+		}
 		if (!idAyuda.equals(other.idAyuda)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

@@ -23,7 +23,7 @@ public class Participacion {
 	private String nombre;
 	private String descripcion;
 	
-	private List<Requisito> requisitos;
+	private List<RequisitoParticipacion> requisitoParticipacions;
 
 	public Participacion() {
 		super();
@@ -85,15 +85,15 @@ public class Participacion {
 	}
 
 	@Transient
-	public List<Requisito> getRequisitos() {
-		if (requisitos == null) {
-			requisitos = new ArrayList<>();
+	public List<RequisitoParticipacion> getRequisitoParticipacions() {
+		if (requisitoParticipacions == null) {
+			requisitoParticipacions = new ArrayList<>();
 		}
-		return requisitos;
+		return requisitoParticipacions;
 	}
 
-	public void setRequisitos(List<Requisito> requisitos) {
-		this.requisitos = requisitos;
+	public void setRequisitoParticipacions(List<RequisitoParticipacion> requisitoParticipacions) {
+		this.requisitoParticipacions = requisitoParticipacions;
 	}
 
 	@Override

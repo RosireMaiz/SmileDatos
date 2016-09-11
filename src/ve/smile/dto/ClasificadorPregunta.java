@@ -19,7 +19,7 @@ public class ClasificadorPregunta {
 	private Integer idClasificadorPregunta;
 	private String nombre;
 	
-	private List<Pregunta> preguntas;
+	private List<PreguntaClasificada> preguntaClasificadas;
 
 	public ClasificadorPregunta() {
 		super();
@@ -58,15 +58,15 @@ public class ClasificadorPregunta {
 	}
 	
 	@Transient
-	public List<Pregunta> getPreguntas() {
-		if (preguntas == null) {
-			preguntas = new ArrayList<>();
+	public List<PreguntaClasificada> getPreguntaClasificadas() {
+		if (preguntaClasificadas == null) {
+			preguntaClasificadas = new ArrayList<>();
 		}
-		return preguntas;
+		return preguntaClasificadas;
 	}
 
-	public void setPreguntas(List<Pregunta> preguntas) {
-		this.preguntas = preguntas;
+	public void setPreguntaClasificadas(List<PreguntaClasificada> preguntaClasificadas) {
+		this.preguntaClasificadas = preguntaClasificadas;
 	}
 
 	@Override
