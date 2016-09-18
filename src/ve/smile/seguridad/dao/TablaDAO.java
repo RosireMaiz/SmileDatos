@@ -19,22 +19,19 @@ public class TablaDAO extends BaseDAO<Tabla> {
     public String versionPostgreSQL() {
         String sql = "SELECT  version()";
         Map<String, Object> propiedades1 = new HashMap<String, Object>();
-        propiedades1= em().getEntityManagerFactory().getProperties();
-        
-//        System.out.println(.get("javax.persistence.jdbc.url"));
-//        System.out.println(em().getProperties().get("javax.persistence.jdbc.driver"));
-//        System.out.println(em().getProperties().get("javax.persistence.jdbc.user"));
-//        System.out.println(em().getProperties().get("javax.persistence.jdbc.password"));
-        
-        HashMap<String, Object> propiedades = new HashMap<String, Object>();
-        propiedades.put("url", propiedades1.get("javax.persistence.jdbc.url"));
-        propiedades.put("driver", propiedades1.get("javax.persistence.jdbc.driver"));
-        propiedades.put("user", propiedades1.get("javax.persistence.jdbc.user"));
-        propiedades.put("password", propiedades1.get("javax.persistence.jdbc.password"));
-        System.out.println(propiedades.get("url"));
-        System.out.println(propiedades.get("user"));
-        System.out.println(propiedades.get("password"));
-        System.out.println(propiedades.get("driver"));
+        propiedades1= em().getEntityManagerFactory().getProperties();        
+        String pruebas = (String) propiedades1.get("javax.persistence.jdbc.url");
+        String nueva=pruebas.replaceAll("//", "").replaceAll("/", ":");
+		System.out.println(nueva);
+		String[] pendientee = nueva.split(":");
+		String puerto = pendientee[3];
+		String ip  = pendientee[2];
+		String user = (String) propiedades1.get("javax.persistence.jdbc.user");
+		String contrasenna = (String) propiedades1.get("javax.persistence.jdbc.password");		
+
+      //  Ip de la cuestion 5432
+       // Ip de la cuestion postgres
+      //  Ip de la cuestion 123
         Object pendiente = em().createNativeQuery(sql).getSingleResult();
         return pendiente.toString();
        

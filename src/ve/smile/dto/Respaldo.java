@@ -10,14 +10,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ve.smile.seguridad.dto.Tabla;
-
 @Table(name = "tb_respaldo")
 @Entity
 public class Respaldo {
 
 	private Integer idRespaldo;
-	private Tabla fkTabla;
 	private Multimedia fkMultimedia;
 	private Long fechaRespaldo;
 
@@ -31,11 +28,9 @@ public class Respaldo {
 	}
 
 	public Respaldo(
-			Tabla fkTabla,
 			Multimedia fkMultimedia,
 			Long fechaRespaldo) {
 		super();
-		this.fkTabla = fkTabla;
 		this.fkMultimedia = fkMultimedia;
 		this.fechaRespaldo = fechaRespaldo;
 	}
@@ -50,16 +45,6 @@ public class Respaldo {
 
 	public void setIdRespaldo(Integer idRespaldo) {
 		this.idRespaldo = idRespaldo;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_tabla", nullable = false)
-	public Tabla getFkTabla() {
-		return fkTabla;
-	}
-
-	public void setFkTabla(Tabla fkTabla) {
-		this.fkTabla = fkTabla;
 	}
 
 	@ManyToOne

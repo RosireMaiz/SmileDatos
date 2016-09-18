@@ -3,16 +3,16 @@ package ve.smile.payload.response;
 import java.util.HashMap;
 import java.util.List;
 
-import ve.smile.dto.PlantillaTsPlanIndicador;
+import ve.smile.dto.PlantillaTrabajoSocialActividad;
 import lights.core.payload.response.IPayloadResponse;
 
-public class PayloadPlantillaTsPlanIndicadorResponse implements IPayloadResponse<PlantillaTsPlanIndicador> {
+public class PayloadPlantillaTrabajoSocialActividadResponse implements IPayloadResponse<PlantillaTrabajoSocialActividad> {
 
 	private HashMap<String, Object> informacion;
 
-	private List<PlantillaTsPlanIndicador> objetos;
+	private List<PlantillaTrabajoSocialActividad> objetos;
 
-	public PayloadPlantillaTsPlanIndicadorResponse() {
+	public PayloadPlantillaTrabajoSocialActividadResponse() {
 		super();
 		this.informacion = new HashMap<String, Object>();
 	}
@@ -28,12 +28,12 @@ public class PayloadPlantillaTsPlanIndicadorResponse implements IPayloadResponse
 	}
 
 	@Override
-	public List<PlantillaTsPlanIndicador> getObjetos() {
+	public List<PlantillaTrabajoSocialActividad> getObjetos() {
 		return objetos;
 	}
 
 	@Override
-	public void setObjetos(List<PlantillaTsPlanIndicador> objetos) {
+	public void setObjetos(List<PlantillaTrabajoSocialActividad> objetos) {
 		this.objetos = objetos;
 	}
 

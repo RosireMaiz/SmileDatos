@@ -16,7 +16,7 @@ public class Organizacion {
 
 	private Integer idOrganizacion;
 	private Multimedia fkMultimedia;
-	private Character rif;
+	private String rif;
 	private String nombre;
 	private String direccion;
 	private String telefono;
@@ -41,7 +41,7 @@ public class Organizacion {
 
 	public Organizacion(
 			Multimedia fkMultimedia,
-			Character rif,
+			String rif,
 			String nombre,
 			String direccion,
 			String telefono,
@@ -94,11 +94,11 @@ public class Organizacion {
 	}
 
 	@Column(name="rif")
-	public Character getRif() {
+	public String getRif() {
 		return rif;
 	}
 
-	public void setRif(Character rif) {
+	public void setRif(String rif) {
 		this.rif = rif;
 	}
 
