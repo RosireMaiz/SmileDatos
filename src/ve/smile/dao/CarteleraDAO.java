@@ -12,15 +12,13 @@ public class CarteleraDAO extends BaseDAO<Cartelera> {
 	@SuppressWarnings("unchecked")
 	public List<Cartelera> findOrganizacion(Integer cantidad,
 			Integer tipoCartelera) {
-		String sql = "select c from Cartelera c where c.tipoCartelera = ?2 limit ?1";
+		String sql = "select c from Cartelera c where c.tipoCartelera = ?1";
 
 		Query query = createQuery(sql);
 
-		query.setParameter(1, cantidad);
+		query.setParameter(1, tipoCartelera);
 
-		query.setParameter(2, tipoCartelera);
-
-		return query.getResultList();
+		return query.setMaxResults(cantidad).getResultList();
 
 	}
 

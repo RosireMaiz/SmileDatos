@@ -9,10 +9,10 @@ import ve.smile.dto.Organizacion;
 public class OrganizacionDAO extends BaseDAO<Organizacion> {
 	
 	public Organizacion findOrganizacion(){
-		String sql = "select o from Organizacion o limit 1";
+		String sql = "select o from Organizacion o";
 		Query query = createQuery(sql);
 		try {
-			return  (Organizacion) query.getSingleResult();
+			return  (Organizacion) query.setMaxResults(1).getSingleResult();
 		} catch (NoResultException e) {
 			return null;
 		}
