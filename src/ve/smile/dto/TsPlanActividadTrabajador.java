@@ -16,7 +16,6 @@ import ve.smile.enums.EstatusActividadEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_ts_plan_actividad_trabajador")
 @Entity
 public class TsPlanActividadTrabajador {

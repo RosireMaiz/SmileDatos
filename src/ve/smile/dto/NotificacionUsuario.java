@@ -17,7 +17,6 @@ import ve.smile.seguridad.dto.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_notificacion_usuario")
 @Entity
 public class NotificacionUsuario {

@@ -16,7 +16,6 @@ import ve.smile.enums.TipoDonativoCuentaBancariaEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_donativo_cuenta_bancaria")
 @Entity
 public class DonativoCuentaBancaria {

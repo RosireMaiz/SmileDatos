@@ -16,7 +16,6 @@ import ve.smile.enums.TipoDifusionEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_difusion")
 @Entity
 public class Difusion {

@@ -16,7 +16,6 @@ import ve.smile.enums.EstatusPostuladoEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_padrino")
 @Entity
 public class Padrino {

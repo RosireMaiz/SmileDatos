@@ -15,7 +15,6 @@ import ve.smile.enums.TipoReferenciaInteraccionEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_interaccion_portal")
 @Entity
 public class InteraccionPortal {

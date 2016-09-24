@@ -15,7 +15,6 @@ import ve.smile.enums.TipoMultimediaEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_multimedia")
 @Entity
 public class Multimedia {

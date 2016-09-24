@@ -14,7 +14,6 @@ import ve.smile.enums.TipoReconocimientoEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_clasificador_reconocimiento")
 @Entity
 public class ClasificadorReconocimiento {

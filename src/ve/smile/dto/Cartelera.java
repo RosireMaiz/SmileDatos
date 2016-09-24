@@ -16,7 +16,7 @@ import ve.smile.enums.TipoCarteleraEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+
 @Table(name = "tb_cartelera")
 @Entity
 public class Cartelera {

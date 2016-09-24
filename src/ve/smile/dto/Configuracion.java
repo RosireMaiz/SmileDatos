@@ -17,7 +17,6 @@ import ve.smile.seguridad.dto.IconSclass;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_configuracion")
 @Entity
 public class Configuracion {
