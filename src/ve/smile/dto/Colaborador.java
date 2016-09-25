@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -13,8 +15,9 @@ import javax.persistence.Table;
 public class Colaborador {
 
 	private Integer idColaborador;
-	private String titulo;
-	private String contenido;
+	private Persona fkPersona;
+	private String fechaIngreso;
+	private String fechaEgreso;
 
 	public Colaborador() {
 		super();
@@ -26,11 +29,13 @@ public class Colaborador {
 	}
 
 	public Colaborador(
-			String titulo,
-			String contenido) {
+			Persona fkPersona,
+			String fechaIngreso,
+			String fechaEgreso) {
 		super();
-		this.titulo = titulo;
-		this.contenido = contenido;
+		this.fkPersona = fkPersona;
+		this.fechaIngreso = fechaIngreso;
+		this.fechaEgreso = fechaEgreso;
 	}
 
 	@Id
@@ -45,22 +50,32 @@ public class Colaborador {
 		this.idColaborador = idColaborador;
 	}
 
-	@Column(name="titulo")
-	public String getTitulo() {
-		return titulo;
+	@ManyToOne
+	@JoinColumn(name = "fk_persona", nullable = false)
+	public Persona getFkPersona() {
+		return fkPersona;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setFkPersona(Persona fkPersona) {
+		this.fkPersona = fkPersona;
 	}
 
-	@Column(name="contenido")
-	public String getContenido() {
-		return contenido;
+	@Column(name="fecha_ingreso")
+	public String getFechaIngreso() {
+		return fechaIngreso;
 	}
 
-	public void setContenido(String contenido) {
-		this.contenido = contenido;
+	public void setFechaIngreso(String fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
+
+	@Column(name="fecha_egreso")
+	public String getFechaEgreso() {
+		return fechaEgreso;
+	}
+
+	public void setFechaEgreso(String fechaEgreso) {
+		this.fechaEgreso = fechaEgreso;
 	}
 
 	@Override
