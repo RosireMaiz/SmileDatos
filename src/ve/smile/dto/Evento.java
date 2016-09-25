@@ -8,10 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Table(name = "tb_evento")
 @Entity
@@ -23,9 +24,9 @@ public class Evento {
 	private String descripcion;
 	private Character tipoEvento;
 
-	private List<PlantillaEventoIndicador> eventoIndicadors;
-	private List<PlantillaEventoTarea> eventoTareas;
-	
+	private List<Indicador> eventoIndicadores;
+	private List<Tarea> eventoTareas;
+
 	public Evento() {
 		super();
 	}
@@ -35,11 +36,8 @@ public class Evento {
 		this.idEvento = idEvento;
 	}
 
-	public Evento(
-			String nombre,
-			ClasificadorEvento fkClasificadorEvento,
-			String descripcion,
-			Character tipoEvento) {
+	public Evento(String nombre, ClasificadorEvento fkClasificadorEvento,
+			String descripcion, Character tipoEvento) {
 		super();
 		this.nombre = nombre;
 		this.fkClasificadorEvento = fkClasificadorEvento;
@@ -50,7 +48,7 @@ public class Evento {
 	@Id
 	@SequenceGenerator(name = "tb_evento_sequence", sequenceName = "public.tb_evento_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_evento_sequence")
-	@Column(name="id_evento")
+	@Column(name = "id_evento")
 	public Integer getIdEvento() {
 		return idEvento;
 	}
@@ -59,7 +57,7 @@ public class Evento {
 		this.idEvento = idEvento;
 	}
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -78,7 +76,7 @@ public class Evento {
 		this.fkClasificadorEvento = fkClasificadorEvento;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -87,7 +85,7 @@ public class Evento {
 		this.descripcion = descripcion;
 	}
 
-	@Column(name="tipo_evento")
+	@Column(name = "tipo_evento")
 	public Character getTipoEvento() {
 		return tipoEvento;
 	}
@@ -95,22 +93,28 @@ public class Evento {
 	public void setTipoEvento(Character tipoEvento) {
 		this.tipoEvento = tipoEvento;
 	}
-	
-	@Transient
-	public List<PlantillaEventoIndicador> getEventoIndicadors() {
-		return eventoIndicadors;
+
+	@ManyToMany
+	@JoinTable(name = "tb_plantilla_evento_indicador", 
+				joinColumns = @JoinColumn(name = "fk_evento"), 
+				inverseJoinColumns = @JoinColumn(name = "fk_indicador"))
+	public List<Indicador> getEventoIndicadores() {
+		return eventoIndicadores;
 	}
 
-	public void setEventoIndicadors(List<PlantillaEventoIndicador> eventoIndicadors) {
-		this.eventoIndicadors = eventoIndicadors;
+	public void setEventoIndicadores(List<Indicador> eventoIndicadores) {
+		this.eventoIndicadores = eventoIndicadores;
 	}
-	
-	@Transient
-	public List<PlantillaEventoTarea> getEventoTareas() {
+
+	@ManyToMany
+	@JoinTable(name = "tb_plantilla_evento_tarea", 
+				joinColumns = @JoinColumn(name = "fk_evento"), 
+				inverseJoinColumns = @JoinColumn(name = "fk_tarea"))
+	public List<Tarea> getEventoTareas() {
 		return eventoTareas;
 	}
 
-	public void setEventoTareas(List<PlantillaEventoTarea> eventoTareas) {
+	public void setEventoTareas(List<Tarea> eventoTareas) {
 		this.eventoTareas = eventoTareas;
 	}
 
@@ -118,7 +122,8 @@ public class Evento {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idEvento == null) ? 0 : idEvento.hashCode());
+		result = prime * result
+				+ ((idEvento == null) ? 0 : idEvento.hashCode());
 		return result;
 	}
 
@@ -136,10 +141,10 @@ public class Evento {
 		Evento other = (Evento) obj;
 		if (idEvento == null) {
 			return false;
-		} 
+		}
 		if (!idEvento.equals(other.idEvento)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

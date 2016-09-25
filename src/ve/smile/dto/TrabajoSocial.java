@@ -1,11 +1,15 @@
 package ve.smile.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -18,7 +22,10 @@ public class TrabajoSocial {
 	private ClasificadorTrabajoSocial fkClasificadorTrabajoSocial;
 	private String nombre;
 	private String descripcion;
-	
+
+	private List<Actividad> trabajoSocialActividades;
+	private List<Indicador> trabajoSocialIndicadores;
+
 	public TrabajoSocial() {
 		super();
 	}
@@ -28,10 +35,8 @@ public class TrabajoSocial {
 		this.idTrabajoSocial = idTrabajoSocial;
 	}
 
-	public TrabajoSocial(
-			ClasificadorTrabajoSocial fkClasificadorTrabajoSocial,
-			String nombre,
-			String descripcion) {
+	public TrabajoSocial(ClasificadorTrabajoSocial fkClasificadorTrabajoSocial,
+			String nombre, String descripcion) {
 		super();
 		this.fkClasificadorTrabajoSocial = fkClasificadorTrabajoSocial;
 		this.nombre = nombre;
@@ -41,7 +46,7 @@ public class TrabajoSocial {
 	@Id
 	@SequenceGenerator(name = "tb_trabajo_social_sequence", sequenceName = "public.tb_trabajo_social_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_trabajo_social_sequence")
-	@Column(name="id_trabajo_social")
+	@Column(name = "id_trabajo_social")
 	public Integer getIdTrabajoSocial() {
 		return idTrabajoSocial;
 	}
@@ -56,11 +61,12 @@ public class TrabajoSocial {
 		return fkClasificadorTrabajoSocial;
 	}
 
-	public void setFkClasificadorTrabajoSocial(ClasificadorTrabajoSocial fkClasificadorTrabajoSocial) {
+	public void setFkClasificadorTrabajoSocial(
+			ClasificadorTrabajoSocial fkClasificadorTrabajoSocial) {
 		this.fkClasificadorTrabajoSocial = fkClasificadorTrabajoSocial;
 	}
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -69,7 +75,7 @@ public class TrabajoSocial {
 		this.nombre = nombre;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -78,11 +84,34 @@ public class TrabajoSocial {
 		this.descripcion = descripcion;
 	}
 
+	@ManyToMany
+	@JoinTable(name = "tb_plantilla_trabajo_social_actividad", joinColumns = @JoinColumn(name = "fk_trabajo_social"), inverseJoinColumns = @JoinColumn(name = "fk_actividad"))
+	public List<Actividad> getTrabajoSocialActividades() {
+		return trabajoSocialActividades;
+	}
+
+	public void setTrabajoSocialActividades(
+			List<Actividad> trabajoSocialActividades) {
+		this.trabajoSocialActividades = trabajoSocialActividades;
+	}
+
+	@ManyToMany
+	@JoinTable(name = "tb_plantilla_trabajo_social_indicador", joinColumns = @JoinColumn(name = "fk_trabajo_social"), inverseJoinColumns = @JoinColumn(name = "fk_indicador"))
+	public List<Indicador> getTrabajoSocialIndicadores() {
+		return trabajoSocialIndicadores;
+	}
+
+	public void setTrabajoSocialIndicadores(
+			List<Indicador> trabajoSocialIndicadores) {
+		this.trabajoSocialIndicadores = trabajoSocialIndicadores;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idTrabajoSocial == null) ? 0 : idTrabajoSocial.hashCode());
+		result = prime * result
+				+ ((idTrabajoSocial == null) ? 0 : idTrabajoSocial.hashCode());
 		return result;
 	}
 
@@ -100,10 +129,10 @@ public class TrabajoSocial {
 		TrabajoSocial other = (TrabajoSocial) obj;
 		if (idTrabajoSocial == null) {
 			return false;
-		} 
+		}
 		if (!idTrabajoSocial.equals(other.idTrabajoSocial)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

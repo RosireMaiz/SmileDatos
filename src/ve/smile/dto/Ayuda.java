@@ -1,6 +1,5 @@
 package ve.smile.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,9 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Table(name = "tb_ayuda")
 @Entity
@@ -20,7 +21,7 @@ public class Ayuda {
 	private String nombre;
 	private String descripcion;
 
-	private List<RequisitoAyuda> requisitoAyudas;
+	private List<Requisito> requisitos;
 
 	public Ayuda() {
 		super();
@@ -66,17 +67,17 @@ public class Ayuda {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
-	@Transient
-	public List<RequisitoAyuda> getRequisitoAyudas() {
-		if (requisitoAyudas == null) {
-			requisitoAyudas = new ArrayList<>();
-		}
-		return requisitoAyudas;
+	
+	@ManyToMany
+	@JoinTable(name = "tb_requisito_ayuda", 
+				joinColumns = @JoinColumn(name = "fk_ayuda"), 
+				inverseJoinColumns = @JoinColumn(name = "fk_requisito"))
+	public List<Requisito> getRequisitos() {
+		return requisitos;
 	}
 
-	public void setRequisitoAyudas(List<RequisitoAyuda> requisitoAyudas) {
-		this.requisitoAyudas = requisitoAyudas;
+	public void setRequisitos(List<Requisito> requisitos) {
+		this.requisitos = requisitos;
 	}
 
 	@Override
