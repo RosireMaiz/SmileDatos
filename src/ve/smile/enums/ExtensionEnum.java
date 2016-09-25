@@ -3,7 +3,7 @@ package ve.smile.enums;
 import java.util.ResourceBundle;
 
 public enum ExtensionEnum {
-	JPG, PNG, JPEG, PDF, DOC, DOCX, XLSX, XLS, ZIP, RAR;
+	JPG, PNG, JPEG, PDF, DOC, DOCX, XLSX, XLS, ZIP, RAR,BACKUP,SQL;
 
 	@Override
 	public String toString() {

@@ -3,7 +3,7 @@ package ve.smile.enums;
 import java.util.ResourceBundle;
 
 public enum TipoMultimediaEnum {
-	ICONO, GIT, IMAGEN;
+	ICONO, GIT, IMAGEN,RESPALDO;
 
 	@Override
 	public String toString() {

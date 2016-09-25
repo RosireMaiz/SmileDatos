@@ -1,14 +1,23 @@
 package ve.smile.dto;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import ve.smile.seguridad.dto.Tabla;
 
 @Table(name = "tb_respaldo")
 @Entity
@@ -17,6 +26,7 @@ public class Respaldo {
 	private Integer idRespaldo;
 	private Multimedia fkMultimedia;
 	private Long fechaRespaldo;
+	List<Tabla> listTablas;
 
 	public Respaldo() {
 		super();
@@ -47,7 +57,7 @@ public class Respaldo {
 		this.idRespaldo = idRespaldo;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "fk_multimedia", nullable = false)
 	public Multimedia getFkMultimedia() {
 		return fkMultimedia;
@@ -64,6 +74,16 @@ public class Respaldo {
 
 	public void setFechaRespaldo(Long fechaRespaldo) {
 		this.fechaRespaldo = fechaRespaldo;
+	}
+	
+	@ManyToMany
+	@JoinTable(name = "tb_respaldo_tabla", joinColumns=@JoinColumn(name="fk_respaldo"),inverseJoinColumns=@JoinColumn(name="fk_tabla"))
+	public List<Tabla> getListTablas() {
+		return listTablas;
+	}
+
+	public void setListTablas(List<Tabla> listTablas) {
+		this.listTablas = listTablas;
 	}
 
 	@Override
