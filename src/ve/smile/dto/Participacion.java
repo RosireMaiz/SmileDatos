@@ -55,7 +55,7 @@ public class Participacion {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_multimedia", nullable = false)
+	@JoinColumn(name = "fk_multimedia", nullable = true)
 	public Multimedia getFkMultimedia() {
 		return fkMultimedia;
 	}

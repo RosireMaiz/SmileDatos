@@ -1,5 +1,6 @@
 package ve.smile.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +18,8 @@ public class Directorio {
 	private Integer idDirectorio;
 	private Ciudad fkCiudad;
 	private Multimedia fkMultimedia;
-	private Integer latitud;
-	private Integer longitud;
+	private Double latitud;
+	private Double longitud;
 	private String nombre;
 	private String direccion;
 	private String telefono;
@@ -33,14 +34,8 @@ public class Directorio {
 		this.idDirectorio = idDirectorio;
 	}
 
-	public Directorio(
-			Ciudad fkCiudad,
-			Multimedia fkMultimedia,
-			Integer latitud,
-			Integer longitud,
-			String nombre,
-			String direccion,
-			String telefono,
+	public Directorio(Ciudad fkCiudad, Multimedia fkMultimedia, Double latitud,
+			Double longitud, String nombre, String direccion, String telefono,
 			String url) {
 		super();
 		this.fkCiudad = fkCiudad;
@@ -56,7 +51,7 @@ public class Directorio {
 	@Id
 	@SequenceGenerator(name = "tb_directorio_sequence", sequenceName = "public.tb_directorio_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_directorio_sequence")
-	@Column(name="id_directorio")
+	@Column(name = "id_directorio")
 	public Integer getIdDirectorio() {
 		return idDirectorio;
 	}
@@ -75,7 +70,7 @@ public class Directorio {
 		this.fkCiudad = fkCiudad;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_multimedia", nullable = false)
 	public Multimedia getFkMultimedia() {
 		return fkMultimedia;
@@ -85,25 +80,25 @@ public class Directorio {
 		this.fkMultimedia = fkMultimedia;
 	}
 
-	@Column(name="latitud")
-	public Integer getLatitud() {
+	@Column(name = "latitud")
+	public Double getLatitud() {
 		return latitud;
 	}
 
-	public void setLatitud(Integer latitud) {
+	public void setLatitud(Double latitud) {
 		this.latitud = latitud;
 	}
 
-	@Column(name="longitud")
-	public Integer getLongitud() {
+	@Column(name = "longitud")
+	public Double getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(Integer longitud) {
+	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -112,7 +107,7 @@ public class Directorio {
 		this.nombre = nombre;
 	}
 
-	@Column(name="direccion")
+	@Column(name = "direccion")
 	public String getDireccion() {
 		return direccion;
 	}
@@ -121,7 +116,7 @@ public class Directorio {
 		this.direccion = direccion;
 	}
 
-	@Column(name="telefono")
+	@Column(name = "telefono")
 	public String getTelefono() {
 		return telefono;
 	}
@@ -130,7 +125,7 @@ public class Directorio {
 		this.telefono = telefono;
 	}
 
-	@Column(name="url")
+	@Column(name = "url")
 	public String getUrl() {
 		return url;
 	}
@@ -143,7 +138,8 @@ public class Directorio {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idDirectorio == null) ? 0 : idDirectorio.hashCode());
+		result = prime * result
+				+ ((idDirectorio == null) ? 0 : idDirectorio.hashCode());
 		return result;
 	}
 
@@ -161,10 +157,10 @@ public class Directorio {
 		Directorio other = (Directorio) obj;
 		if (idDirectorio == null) {
 			return false;
-		} 
+		}
 		if (!idDirectorio.equals(other.idDirectorio)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 
