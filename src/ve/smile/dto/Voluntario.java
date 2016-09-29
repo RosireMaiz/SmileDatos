@@ -6,12 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
 import ve.smile.enums.EstatusPostuladoEnum;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name = "tb_voluntario")
 @Entity
@@ -32,10 +32,7 @@ public class Voluntario {
 		this.idVoluntario = idVoluntario;
 	}
 
-	public Voluntario(
-			Persona fkPersona,
-			Long fechaIngreso,
-			Long fechaEgreso,
+	public Voluntario(Persona fkPersona, Long fechaIngreso, Long fechaEgreso,
 			Integer estatusPostulado) {
 		super();
 		this.fkPersona = fkPersona;
@@ -47,7 +44,7 @@ public class Voluntario {
 	@Id
 	@SequenceGenerator(name = "tb_voluntario_sequence", sequenceName = "public.tb_voluntario_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_voluntario_sequence")
-	@Column(name="id_voluntario")
+	@Column(name = "id_voluntario")
 	public Integer getIdVoluntario() {
 		return idVoluntario;
 	}
@@ -56,8 +53,8 @@ public class Voluntario {
 		this.idVoluntario = idVoluntario;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
+	@OneToOne
+	@JoinColumn(name = "fk_persona", referencedColumnName = "id_persona")
 	public Persona getFkPersona() {
 		return fkPersona;
 	}
@@ -66,7 +63,7 @@ public class Voluntario {
 		this.fkPersona = fkPersona;
 	}
 
-	@Column(name="fecha_ingreso")
+	@Column(name = "fecha_ingreso")
 	public Long getFechaIngreso() {
 		return fechaIngreso;
 	}
@@ -75,7 +72,7 @@ public class Voluntario {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	@Column(name="fecha_egreso")
+	@Column(name = "fecha_egreso")
 	public Long getFechaEgreso() {
 		return fechaEgreso;
 	}
@@ -84,7 +81,7 @@ public class Voluntario {
 		this.fechaEgreso = fechaEgreso;
 	}
 
-	@Column(name="estatus_postulado")
+	@Column(name = "estatus_postulado")
 	public Integer getEstatusPostulado() {
 		return estatusPostulado;
 	}
@@ -93,13 +90,13 @@ public class Voluntario {
 		this.estatusPostulado = estatusPostulado;
 	}
 
-	@JsonIgnore
 	@Transient
 	public EstatusPostuladoEnum getEstatusPostuladoEnum() {
 		return EstatusPostuladoEnum.values()[this.estatusPostulado];
 	}
 
-	public void setEstatusPostuladoEnum(EstatusPostuladoEnum estatusPostuladoEnum) {
+	public void setEstatusPostuladoEnum(
+			EstatusPostuladoEnum estatusPostuladoEnum) {
 		this.estatusPostulado = estatusPostuladoEnum.ordinal();
 	}
 
@@ -107,7 +104,8 @@ public class Voluntario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idVoluntario == null) ? 0 : idVoluntario.hashCode());
+		result = prime * result
+				+ ((idVoluntario == null) ? 0 : idVoluntario.hashCode());
 		return result;
 	}
 
@@ -125,10 +123,10 @@ public class Voluntario {
 		Voluntario other = (Voluntario) obj;
 		if (idVoluntario == null) {
 			return false;
-		} 
+		}
 		if (!idVoluntario.equals(other.idVoluntario)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

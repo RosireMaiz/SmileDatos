@@ -14,8 +14,6 @@ import javax.persistence.Transient;
 import ve.smile.enums.TipoPersonaEnum;
 import ve.smile.seguridad.dto.Usuario;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Table(name = "tb_persona")
 @Entity
 public class Persona {
@@ -96,7 +94,7 @@ public class Persona {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_ciudad", nullable = false)
+	@JoinColumn(name = "fk_ciudad", nullable = true)
 	public Ciudad getFkCiudad() {
 		return fkCiudad;
 	}
@@ -106,7 +104,7 @@ public class Persona {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_usuario", nullable = false)
+	@JoinColumn(name = "fk_usuario", nullable = true)
 	public Usuario getFkUsuario() {
 		return fkUsuario;
 	}
@@ -287,7 +285,6 @@ public class Persona {
 		this.tipoPersona = tipoPersona;
 	}
 
-	@JsonIgnore
 	@Transient
 	public TipoPersonaEnum getTipoPersonaEnum() {
 		return TipoPersonaEnum.values()[this.tipoPersona];

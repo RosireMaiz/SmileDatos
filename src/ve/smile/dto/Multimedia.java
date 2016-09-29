@@ -12,9 +12,6 @@ import javax.persistence.Transient;
 import ve.smile.enums.ExtensionEnum;
 import ve.smile.enums.TipoMultimediaEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_multimedia")
 @Entity
 public class Multimedia {
@@ -97,7 +94,6 @@ public class Multimedia {
 		this.extension = extension;
 	}
 
-	@JsonIgnore
 	@Transient
 	public ExtensionEnum getExtensionEnum() {
 		return ExtensionEnum.values()[this.extension];
@@ -116,7 +112,6 @@ public class Multimedia {
 		this.tipoMultimedia = tipoMultimedia;
 	}
 
-	@JsonIgnore
 	@Transient
 	public TipoMultimediaEnum getTipoMultimediaEnum() {
 		return TipoMultimediaEnum.values()[this.tipoMultimedia];

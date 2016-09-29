@@ -16,9 +16,9 @@ import com.google.gson.internal.LinkedTreeMap;
 @Entity
 public class Usuario {
 
-	public static String ACTIVO = "A"; 	
+	public static String ACTIVO = "A";
 	public static String INACTIVO = "I";
-	
+
 	private Integer idUsuario;
 	private String clave;
 	private String correo;
@@ -35,38 +35,37 @@ public class Usuario {
 		this.idUsuario = idUsuario;
 	}
 
-	public Usuario(
-			String clave,
-			String correo,
-			Rol fkRol,
-			String estatus) {
+	public Usuario(String clave, String correo, Rol fkRol, String estatus) {
 		super();
 		this.clave = clave;
 		this.correo = correo;
 		this.fkRol = fkRol;
 		this.estatus = estatus;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static Usuario constructFromLinkedTreeMap(LinkedTreeMap<String, Object> linkedTreeMap) {
+	public static Usuario constructFromLinkedTreeMap(
+			LinkedTreeMap<String, Object> linkedTreeMap) {
 		if (linkedTreeMap == null) {
 			return null;
 		}
-		
-		Usuario usuario = new Usuario((String) linkedTreeMap.get("clave"),
+
+		Usuario usuario = new Usuario(
+				(String) linkedTreeMap.get("clave"),
 				(String) linkedTreeMap.get("correo"),
-				Rol.constructFromLinkedTreeMap((LinkedTreeMap<String, Object>) linkedTreeMap.get("fkRol")),
-				(String) linkedTreeMap.get("estatus"));
-		
-		usuario.setIdUsuario(((Double) linkedTreeMap.get("idUsuario")).intValue());
-		
+				Rol.constructFromLinkedTreeMap((LinkedTreeMap<String, Object>) linkedTreeMap
+						.get("fkRol")), (String) linkedTreeMap.get("estatus"));
+
+		usuario.setIdUsuario(((Double) linkedTreeMap.get("idUsuario"))
+				.intValue());
+
 		return usuario;
 	}
 
 	@Id
 	@SequenceGenerator(name = "tb_usuario_sequence", sequenceName = "public.tb_usuario_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_usuario_sequence")
-	@Column(name="id_usuario")
+	@Column(name = "id_usuario")
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}
@@ -75,7 +74,7 @@ public class Usuario {
 		this.idUsuario = idUsuario;
 	}
 
-	@Column(name="clave")
+	@Column(name = "clave")
 	public String getClave() {
 		return clave;
 	}
@@ -84,7 +83,7 @@ public class Usuario {
 		this.clave = clave;
 	}
 
-	@Column(name="correo")
+	@Column(name = "correo")
 	public String getCorreo() {
 		return correo;
 	}
@@ -103,7 +102,7 @@ public class Usuario {
 		this.fkRol = fkRol;
 	}
 
-	@Column(name="estatus")
+	@Column(name = "estatus")
 	public String getEstatus() {
 		return estatus;
 	}
@@ -116,7 +115,8 @@ public class Usuario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idUsuario == null) ? 0 : idUsuario.hashCode());
+		result = prime * result
+				+ ((idUsuario == null) ? 0 : idUsuario.hashCode());
 		return result;
 	}
 
@@ -134,10 +134,10 @@ public class Usuario {
 		Usuario other = (Usuario) obj;
 		if (idUsuario == null) {
 			return false;
-		} 
+		}
 		if (!idUsuario.equals(other.idUsuario)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

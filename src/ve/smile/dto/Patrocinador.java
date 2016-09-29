@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ve.smile.dto.Persona;;
 @Table(name = "tb_patrocinador")
 @Entity
 public class Patrocinador {

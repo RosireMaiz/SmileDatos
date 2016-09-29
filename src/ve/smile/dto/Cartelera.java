@@ -13,9 +13,6 @@ import javax.persistence.Transient;
 
 import ve.smile.enums.TipoCarteleraEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 @Table(name = "tb_cartelera")
 @Entity
@@ -121,7 +118,6 @@ public class Cartelera {
 		this.tipoCartelera = tipoCartelera;
 	}
 
-	@JsonIgnore
 	@Transient
 	public TipoCarteleraEnum getTipoCarteleraEnum() {
 		return TipoCarteleraEnum.values()[this.tipoCartelera];
