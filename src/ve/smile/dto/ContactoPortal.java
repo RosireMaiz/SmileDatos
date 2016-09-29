@@ -11,11 +11,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import ve.smile.enums.TipoContactoPortalEnum;
 import ve.smile.enums.EstatusContactoEnum;
+import ve.smile.enums.TipoContactoPortalEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Table(name = "tb_contacto_portal")
 @Entity
@@ -132,7 +131,6 @@ public class ContactoPortal {
 		this.estatusContacto = estatusContacto;
 	}
 
-	@JsonIgnore
 	@Transient
 	public EstatusContactoEnum getEstatusContactoEnum() {
 		return EstatusContactoEnum.values()[this.estatusContacto];

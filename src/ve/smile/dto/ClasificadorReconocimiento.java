@@ -11,9 +11,6 @@ import javax.persistence.Transient;
 
 import ve.smile.enums.TipoReconocimientoEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_clasificador_reconocimiento")
 @Entity
 public class ClasificadorReconocimiento {
@@ -32,9 +29,7 @@ public class ClasificadorReconocimiento {
 		this.idClasificadorReconocimiento = idClasificadorReconocimiento;
 	}
 
-	public ClasificadorReconocimiento(
-			String nombre,
-			String descripcion,
+	public ClasificadorReconocimiento(String nombre, String descripcion,
 			Integer tipoReconocimiento) {
 		super();
 		this.nombre = nombre;
@@ -45,16 +40,17 @@ public class ClasificadorReconocimiento {
 	@Id
 	@SequenceGenerator(name = "tb_clasificador_reconocimiento_sequence", sequenceName = "public.tb_clasificador_reconocimiento_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_clasificador_reconocimiento_sequence")
-	@Column(name="id_clasificador_reconocimiento")
+	@Column(name = "id_clasificador_reconocimiento")
 	public Integer getIdClasificadorReconocimiento() {
 		return idClasificadorReconocimiento;
 	}
 
-	public void setIdClasificadorReconocimiento(Integer idClasificadorReconocimiento) {
+	public void setIdClasificadorReconocimiento(
+			Integer idClasificadorReconocimiento) {
 		this.idClasificadorReconocimiento = idClasificadorReconocimiento;
 	}
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -63,7 +59,7 @@ public class ClasificadorReconocimiento {
 		this.nombre = nombre;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -72,7 +68,7 @@ public class ClasificadorReconocimiento {
 		this.descripcion = descripcion;
 	}
 
-	@Column(name="tipo_reconocimiento")
+	@Column(name = "tipo_reconocimiento")
 	public Integer getTipoReconocimiento() {
 		return tipoReconocimiento;
 	}
@@ -82,12 +78,12 @@ public class ClasificadorReconocimiento {
 	}
 
 	@Transient
-	@JsonIgnore
 	public TipoReconocimientoEnum getTipoReconocimientoEnum() {
 		return TipoReconocimientoEnum.values()[this.tipoReconocimiento];
 	}
 
-	public void setTipoReconocimientoEnum(TipoReconocimientoEnum tipoReconocimientoEnum) {
+	public void setTipoReconocimientoEnum(
+			TipoReconocimientoEnum tipoReconocimientoEnum) {
 		this.tipoReconocimiento = tipoReconocimientoEnum.ordinal();
 	}
 
@@ -95,7 +91,10 @@ public class ClasificadorReconocimiento {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idClasificadorReconocimiento == null) ? 0 : idClasificadorReconocimiento.hashCode());
+		result = prime
+				* result
+				+ ((idClasificadorReconocimiento == null) ? 0
+						: idClasificadorReconocimiento.hashCode());
 		return result;
 	}
 
@@ -113,10 +112,11 @@ public class ClasificadorReconocimiento {
 		ClasificadorReconocimiento other = (ClasificadorReconocimiento) obj;
 		if (idClasificadorReconocimiento == null) {
 			return false;
-		} 
-		if (!idClasificadorReconocimiento.equals(other.idClasificadorReconocimiento)) {
+		}
+		if (!idClasificadorReconocimiento
+				.equals(other.idClasificadorReconocimiento)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

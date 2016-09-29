@@ -54,7 +54,7 @@ public class EventPlanTareaRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_event_plan_tarea", nullable = false)
+	@JoinColumn(name = "fk_event_plan_tarea", nullable = true)
 	public EventPlanTarea getFkEventPlanTarea() {
 		return fkEventPlanTarea;
 	}
@@ -64,7 +64,7 @@ public class EventPlanTareaRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_recurso", nullable = false)
+	@JoinColumn(name = "fk_recurso", nullable = true)
 	public Recurso getFkRecurso() {
 		return fkRecurso;
 	}

@@ -60,7 +60,7 @@ public class EventPlanTareaVoluntario {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_event_plan_tarea", nullable = false)
+	@JoinColumn(name = "fk_event_plan_tarea", nullable = true)
 	public EventPlanTarea getFkEventPlanTarea() {
 		return fkEventPlanTarea;
 	}
@@ -70,7 +70,7 @@ public class EventPlanTareaVoluntario {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_voluntario", nullable = false)
+	@JoinColumn(name = "fk_voluntario", nullable = true)
 	public Voluntario getFkVoluntario() {
 		return fkVoluntario;
 	}
@@ -80,7 +80,7 @@ public class EventPlanTareaVoluntario {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}

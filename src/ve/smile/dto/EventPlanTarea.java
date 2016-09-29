@@ -33,15 +33,9 @@ public class EventPlanTarea {
 		this.idEventPlanTarea = idEventPlanTarea;
 	}
 
-	public EventPlanTarea(
-			Tarea fkTarea,
-			EventoPlanificado fkEventoPlanificado,
-			Motivo fkMotivo,
-			Directorio fkDirectorio,
-			Long fechaPlanificada,
-			Long fechaEjecutada,
-			String observacion,
-			String estatusTarea) {
+	public EventPlanTarea(Tarea fkTarea, EventoPlanificado fkEventoPlanificado,
+			Motivo fkMotivo, Directorio fkDirectorio, Long fechaPlanificada,
+			Long fechaEjecutada, String observacion, String estatusTarea) {
 		super();
 		this.fkTarea = fkTarea;
 		this.fkEventoPlanificado = fkEventoPlanificado;
@@ -56,7 +50,7 @@ public class EventPlanTarea {
 	@Id
 	@SequenceGenerator(name = "tb_event_plan_tarea_sequence", sequenceName = "public.tb_event_plan_tarea_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_event_plan_tarea_sequence")
-	@Column(name="id_event_plan_tarea")
+	@Column(name = "id_event_plan_tarea")
 	public Integer getIdEventPlanTarea() {
 		return idEventPlanTarea;
 	}
@@ -66,7 +60,7 @@ public class EventPlanTarea {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_tarea", nullable = false)
+	@JoinColumn(name = "fk_tarea", nullable = true)
 	public Tarea getFkTarea() {
 		return fkTarea;
 	}
@@ -76,7 +70,7 @@ public class EventPlanTarea {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_evento_planificado", nullable = false)
+	@JoinColumn(name = "fk_evento_planificado", nullable = true)
 	public EventoPlanificado getFkEventoPlanificado() {
 		return fkEventoPlanificado;
 	}
@@ -86,7 +80,7 @@ public class EventPlanTarea {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}
@@ -96,7 +90,7 @@ public class EventPlanTarea {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_directorio", nullable = false)
+	@JoinColumn(name = "fk_directorio", nullable = true)
 	public Directorio getFkDirectorio() {
 		return fkDirectorio;
 	}
@@ -105,7 +99,7 @@ public class EventPlanTarea {
 		this.fkDirectorio = fkDirectorio;
 	}
 
-	@Column(name="fecha_planificada")
+	@Column(name = "fecha_planificada")
 	public Long getFechaPlanificada() {
 		return fechaPlanificada;
 	}
@@ -114,7 +108,7 @@ public class EventPlanTarea {
 		this.fechaPlanificada = fechaPlanificada;
 	}
 
-	@Column(name="fecha_ejecutada")
+	@Column(name = "fecha_ejecutada")
 	public Long getFechaEjecutada() {
 		return fechaEjecutada;
 	}
@@ -123,7 +117,7 @@ public class EventPlanTarea {
 		this.fechaEjecutada = fechaEjecutada;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -132,7 +126,7 @@ public class EventPlanTarea {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus_tarea")
+	@Column(name = "estatus_tarea")
 	public String getEstatusTarea() {
 		return estatusTarea;
 	}
@@ -145,7 +139,9 @@ public class EventPlanTarea {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idEventPlanTarea == null) ? 0 : idEventPlanTarea.hashCode());
+		result = prime
+				* result
+				+ ((idEventPlanTarea == null) ? 0 : idEventPlanTarea.hashCode());
 		return result;
 	}
 
@@ -163,10 +159,10 @@ public class EventPlanTarea {
 		EventPlanTarea other = (EventPlanTarea) obj;
 		if (idEventPlanTarea == null) {
 			return false;
-		} 
+		}
 		if (!idEventPlanTarea.equals(other.idEventPlanTarea)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

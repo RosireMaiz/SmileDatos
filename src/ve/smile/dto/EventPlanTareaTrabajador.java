@@ -70,7 +70,7 @@ public class EventPlanTareaTrabajador {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_trabajador", nullable = false)
+	@JoinColumn(name = "fk_trabajador", nullable = true)
 	public Trabajador getFkTrabajador() {
 		return fkTrabajador;
 	}
@@ -80,7 +80,7 @@ public class EventPlanTareaTrabajador {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}

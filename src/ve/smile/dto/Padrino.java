@@ -13,9 +13,6 @@ import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusPostuladoEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_padrino")
 @Entity
 public class Padrino {
@@ -37,12 +34,8 @@ public class Padrino {
 		this.idPadrino = idPadrino;
 	}
 
-	public Padrino(
-			FrecuenciaAporte fkFrecuenciaAporte,
-			Persona fkPersona,
-			Long fechaIngreso,
-			Long fechaSalida,
-			Integer monto,
+	public Padrino(FrecuenciaAporte fkFrecuenciaAporte, Persona fkPersona,
+			Long fechaIngreso, Long fechaSalida, Integer monto,
 			Integer estatusPostulado) {
 		super();
 		this.fkFrecuenciaAporte = fkFrecuenciaAporte;
@@ -56,7 +49,7 @@ public class Padrino {
 	@Id
 	@SequenceGenerator(name = "tb_padrino_sequence", sequenceName = "public.tb_padrino_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_padrino_sequence")
-	@Column(name="id_padrino")
+	@Column(name = "id_padrino")
 	public Integer getIdPadrino() {
 		return idPadrino;
 	}
@@ -85,7 +78,7 @@ public class Padrino {
 		this.fkPersona = fkPersona;
 	}
 
-	@Column(name="fecha_ingreso")
+	@Column(name = "fecha_ingreso")
 	public Long getFechaIngreso() {
 		return fechaIngreso;
 	}
@@ -94,7 +87,7 @@ public class Padrino {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	@Column(name="fecha_salida")
+	@Column(name = "fecha_salida")
 	public Long getFechaSalida() {
 		return fechaSalida;
 	}
@@ -103,7 +96,7 @@ public class Padrino {
 		this.fechaSalida = fechaSalida;
 	}
 
-	@Column(name="monto")
+	@Column(name = "monto")
 	public Integer getMonto() {
 		return monto;
 	}
@@ -112,7 +105,7 @@ public class Padrino {
 		this.monto = monto;
 	}
 
-	@Column(name="estatus_postulado")
+	@Column(name = "estatus_postulado")
 	public Integer getEstatusPostulado() {
 		return estatusPostulado;
 	}
@@ -121,13 +114,13 @@ public class Padrino {
 		this.estatusPostulado = estatusPostulado;
 	}
 
-	@JsonIgnore
 	@Transient
 	public EstatusPostuladoEnum getEstatusPostuladoEnum() {
 		return EstatusPostuladoEnum.values()[this.estatusPostulado];
 	}
 
-	public void setEstatusPostuladoEnum(EstatusPostuladoEnum estatusPostuladoEnum) {
+	public void setEstatusPostuladoEnum(
+			EstatusPostuladoEnum estatusPostuladoEnum) {
 		this.estatusPostulado = estatusPostuladoEnum.ordinal();
 	}
 
@@ -135,7 +128,8 @@ public class Padrino {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idPadrino == null) ? 0 : idPadrino.hashCode());
+		result = prime * result
+				+ ((idPadrino == null) ? 0 : idPadrino.hashCode());
 		return result;
 	}
 
@@ -153,10 +147,10 @@ public class Padrino {
 		Padrino other = (Padrino) obj;
 		if (idPadrino == null) {
 			return false;
-		} 
+		}
 		if (!idPadrino.equals(other.idPadrino)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

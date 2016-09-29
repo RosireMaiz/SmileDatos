@@ -15,7 +15,6 @@ import ve.smile.enums.ProcedenciaEnum;
 import ve.smile.enums.RecepcionEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Table(name = "tb_donativo_recurso")
 @Entity
@@ -40,15 +39,10 @@ public class DonativoRecurso {
 		this.idDonativoRecurso = idDonativoRecurso;
 	}
 
-	public DonativoRecurso(
-			Persona fkPersona,
-			EventoPlanificado fkEventoPlanificado,
-			TsPlan fkTsPlan,
-			Integer procedencia,
-			Long fechaDonativo,
-			String descripcion,
-			String cantidad,
-			Integer recepcion) {
+	public DonativoRecurso(Persona fkPersona,
+			EventoPlanificado fkEventoPlanificado, TsPlan fkTsPlan,
+			Integer procedencia, Long fechaDonativo, String descripcion,
+			String cantidad, Integer recepcion) {
 		super();
 		this.fkPersona = fkPersona;
 		this.fkEventoPlanificado = fkEventoPlanificado;
@@ -63,7 +57,7 @@ public class DonativoRecurso {
 	@Id
 	@SequenceGenerator(name = "tb_donativo_recurso_sequence", sequenceName = "public.tb_donativo_recurso_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_donativo_recurso_sequence")
-	@Column(name="id_donativo_recurso")
+	@Column(name = "id_donativo_recurso")
 	public Integer getIdDonativoRecurso() {
 		return idDonativoRecurso;
 	}
@@ -73,7 +67,7 @@ public class DonativoRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
+	@JoinColumn(name = "fk_persona", nullable = true)
 	public Persona getFkPersona() {
 		return fkPersona;
 	}
@@ -83,7 +77,7 @@ public class DonativoRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_evento_planificado", nullable = false)
+	@JoinColumn(name = "fk_evento_planificado", nullable = true)
 	public EventoPlanificado getFkEventoPlanificado() {
 		return fkEventoPlanificado;
 	}
@@ -93,7 +87,7 @@ public class DonativoRecurso {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_ts_plan", nullable = false)
+	@JoinColumn(name = "fk_ts_plan", nullable = true)
 	public TsPlan getFkTsPlan() {
 		return fkTsPlan;
 	}
@@ -102,7 +96,7 @@ public class DonativoRecurso {
 		this.fkTsPlan = fkTsPlan;
 	}
 
-	@Column(name="procedencia")
+	@Column(name = "procedencia")
 	public Integer getProcedencia() {
 		return procedencia;
 	}
@@ -111,7 +105,6 @@ public class DonativoRecurso {
 		this.procedencia = procedencia;
 	}
 
-	@JsonIgnore
 	@Transient
 	public ProcedenciaEnum getProcedenciaEnum() {
 		return ProcedenciaEnum.values()[this.procedencia];
@@ -121,7 +114,7 @@ public class DonativoRecurso {
 		this.procedencia = procedenciaEnum.ordinal();
 	}
 
-	@Column(name="fecha_donativo")
+	@Column(name = "fecha_donativo")
 	public Long getFechaDonativo() {
 		return fechaDonativo;
 	}
@@ -130,7 +123,7 @@ public class DonativoRecurso {
 		this.fechaDonativo = fechaDonativo;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -139,7 +132,7 @@ public class DonativoRecurso {
 		this.descripcion = descripcion;
 	}
 
-	@Column(name="cantidad")
+	@Column(name = "cantidad")
 	public String getCantidad() {
 		return cantidad;
 	}
@@ -148,7 +141,7 @@ public class DonativoRecurso {
 		this.cantidad = cantidad;
 	}
 
-	@Column(name="recepcion")
+	@Column(name = "recepcion")
 	public Integer getRecepcion() {
 		return recepcion;
 	}
@@ -171,7 +164,10 @@ public class DonativoRecurso {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idDonativoRecurso == null) ? 0 : idDonativoRecurso.hashCode());
+		result = prime
+				* result
+				+ ((idDonativoRecurso == null) ? 0 : idDonativoRecurso
+						.hashCode());
 		return result;
 	}
 
@@ -189,10 +185,10 @@ public class DonativoRecurso {
 		DonativoRecurso other = (DonativoRecurso) obj;
 		if (idDonativoRecurso == null) {
 			return false;
-		} 
+		}
 		if (!idDonativoRecurso.equals(other.idDonativoRecurso)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

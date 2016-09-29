@@ -14,9 +14,6 @@ import javax.persistence.Transient;
 import ve.smile.enums.TipoReferenciaNotificacionEnum;
 import ve.smile.seguridad.dto.Usuario;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_notificacion_usuario")
 @Entity
 public class NotificacionUsuario {
@@ -38,13 +35,9 @@ public class NotificacionUsuario {
 		this.idNotificacionUsuario = idNotificacionUsuario;
 	}
 
-	public NotificacionUsuario(
-			Usuario fkUsuario,
-			Long fecha,
-			Integer referenciaGenericoId,
-			Character estatusNotificacion,
-			Integer tipoReferenciaNotificacion,
-			String contenido) {
+	public NotificacionUsuario(Usuario fkUsuario, Long fecha,
+			Integer referenciaGenericoId, Character estatusNotificacion,
+			Integer tipoReferenciaNotificacion, String contenido) {
 		super();
 		this.fkUsuario = fkUsuario;
 		this.fecha = fecha;
@@ -57,7 +50,7 @@ public class NotificacionUsuario {
 	@Id
 	@SequenceGenerator(name = "tb_notificacion_usuario_sequence", sequenceName = "public.tb_notificacion_usuario_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_notificacion_usuario_sequence")
-	@Column(name="id_notificacion_usuario")
+	@Column(name = "id_notificacion_usuario")
 	public Integer getIdNotificacionUsuario() {
 		return idNotificacionUsuario;
 	}
@@ -76,7 +69,7 @@ public class NotificacionUsuario {
 		this.fkUsuario = fkUsuario;
 	}
 
-	@Column(name="fecha")
+	@Column(name = "fecha")
 	public Long getFecha() {
 		return fecha;
 	}
@@ -85,7 +78,7 @@ public class NotificacionUsuario {
 		this.fecha = fecha;
 	}
 
-	@Column(name="referencia_generico_id")
+	@Column(name = "referencia_generico_id")
 	public Integer getReferenciaGenericoId() {
 		return referenciaGenericoId;
 	}
@@ -94,7 +87,7 @@ public class NotificacionUsuario {
 		this.referenciaGenericoId = referenciaGenericoId;
 	}
 
-	@Column(name="estatus_notificacion")
+	@Column(name = "estatus_notificacion")
 	public Character getEstatusNotificacion() {
 		return estatusNotificacion;
 	}
@@ -103,7 +96,7 @@ public class NotificacionUsuario {
 		this.estatusNotificacion = estatusNotificacion;
 	}
 
-	@Column(name="tipo_referencia_notificacion")
+	@Column(name = "tipo_referencia_notificacion")
 	public Integer getTipoReferenciaNotificacion() {
 		return tipoReferenciaNotificacion;
 	}
@@ -112,17 +105,18 @@ public class NotificacionUsuario {
 		this.tipoReferenciaNotificacion = tipoReferenciaNotificacion;
 	}
 
-	@JsonIgnore
 	@Transient
 	public TipoReferenciaNotificacionEnum getTipoReferenciaNotificacionEnum() {
 		return TipoReferenciaNotificacionEnum.values()[this.tipoReferenciaNotificacion];
 	}
 
-	public void setTipoReferenciaNotificacionEnum(TipoReferenciaNotificacionEnum tipoReferenciaNotificacionEnum) {
-		this.tipoReferenciaNotificacion = tipoReferenciaNotificacionEnum.ordinal();
+	public void setTipoReferenciaNotificacionEnum(
+			TipoReferenciaNotificacionEnum tipoReferenciaNotificacionEnum) {
+		this.tipoReferenciaNotificacion = tipoReferenciaNotificacionEnum
+				.ordinal();
 	}
 
-	@Column(name="contenido")
+	@Column(name = "contenido")
 	public String getContenido() {
 		return contenido;
 	}
@@ -135,7 +129,10 @@ public class NotificacionUsuario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idNotificacionUsuario == null) ? 0 : idNotificacionUsuario.hashCode());
+		result = prime
+				* result
+				+ ((idNotificacionUsuario == null) ? 0 : idNotificacionUsuario
+						.hashCode());
 		return result;
 	}
 
@@ -153,10 +150,10 @@ public class NotificacionUsuario {
 		NotificacionUsuario other = (NotificacionUsuario) obj;
 		if (idNotificacionUsuario == null) {
 			return false;
-		} 
+		}
 		if (!idNotificacionUsuario.equals(other.idNotificacionUsuario)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

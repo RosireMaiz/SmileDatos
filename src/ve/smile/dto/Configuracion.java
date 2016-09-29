@@ -14,9 +14,6 @@ import javax.persistence.Transient;
 import ve.smile.enums.PropiedadEnum;
 import ve.smile.seguridad.dto.IconSclass;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_configuracion")
 @Entity
 public class Configuracion {
@@ -37,12 +34,8 @@ public class Configuracion {
 		this.idConfiguracion = idConfiguracion;
 	}
 
-	public Configuracion(
-			Multimedia fkMultimedia,
-			String descripcion,
-			IconSclass fkIconClass,
-			String valor,
-			Integer propiedad) {
+	public Configuracion(Multimedia fkMultimedia, String descripcion,
+			IconSclass fkIconClass, String valor, Integer propiedad) {
 		super();
 		this.fkMultimedia = fkMultimedia;
 		this.descripcion = descripcion;
@@ -54,7 +47,7 @@ public class Configuracion {
 	@Id
 	@SequenceGenerator(name = "tb_configuracion_sequence", sequenceName = "public.tb_configuracion_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_configuracion_sequence")
-	@Column(name="id_configuracion")
+	@Column(name = "id_configuracion")
 	public Integer getIdConfiguracion() {
 		return idConfiguracion;
 	}
@@ -64,7 +57,7 @@ public class Configuracion {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_multimedia", nullable = false)
+	@JoinColumn(name = "fk_multimedia", nullable = true)
 	public Multimedia getFkMultimedia() {
 		return fkMultimedia;
 	}
@@ -73,7 +66,7 @@ public class Configuracion {
 		this.fkMultimedia = fkMultimedia;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -83,7 +76,7 @@ public class Configuracion {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_icon_class", nullable = false)
+	@JoinColumn(name = "fk_icon_class", nullable = true)
 	public IconSclass getFkIconClass() {
 		return fkIconSclass;
 	}
@@ -92,7 +85,7 @@ public class Configuracion {
 		this.fkIconSclass = fkIconSclass;
 	}
 
-	@Column(name="valor")
+	@Column(name = "valor")
 	public String getValor() {
 		return valor;
 	}
@@ -101,7 +94,7 @@ public class Configuracion {
 		this.valor = valor;
 	}
 
-	@Column(name="propiedad")
+	@Column(name = "propiedad")
 	public Integer getPropiedad() {
 		return propiedad;
 	}
@@ -110,7 +103,6 @@ public class Configuracion {
 		this.propiedad = propiedad;
 	}
 
-	@JsonIgnore
 	@Transient
 	public PropiedadEnum getPropiedadEnum() {
 		return PropiedadEnum.values()[this.propiedad];
@@ -124,7 +116,8 @@ public class Configuracion {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idConfiguracion == null) ? 0 : idConfiguracion.hashCode());
+		result = prime * result
+				+ ((idConfiguracion == null) ? 0 : idConfiguracion.hashCode());
 		return result;
 	}
 
@@ -142,10 +135,10 @@ public class Configuracion {
 		Configuracion other = (Configuracion) obj;
 		if (idConfiguracion == null) {
 			return false;
-		} 
+		}
 		if (!idConfiguracion.equals(other.idConfiguracion)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

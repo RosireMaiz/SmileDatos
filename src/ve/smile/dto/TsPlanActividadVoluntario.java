@@ -13,9 +13,6 @@ import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusActividadEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_ts_plan_actividad_voluntario")
 @Entity
 public class TsPlanActividadVoluntario {
@@ -40,16 +37,10 @@ public class TsPlanActividadVoluntario {
 		this.idTsPlanActividadVoluntario = idTsPlanActividadVoluntario;
 	}
 
-	public TsPlanActividadVoluntario(
-			TsPlanActividad fkTsPlanActividad,
-			Voluntario fkVoluntario,
-			Long fechaPlanificada,
-			Long fechaEjecutada,
-			boolean ejecucion,
-			Motivo fkMotivo,
-			boolean participacion,
-			String observacion,
-			Integer estatusActividad) {
+	public TsPlanActividadVoluntario(TsPlanActividad fkTsPlanActividad,
+			Voluntario fkVoluntario, Long fechaPlanificada,
+			Long fechaEjecutada, boolean ejecucion, Motivo fkMotivo,
+			boolean participacion, String observacion, Integer estatusActividad) {
 		super();
 		this.fkTsPlanActividad = fkTsPlanActividad;
 		this.fkVoluntario = fkVoluntario;
@@ -65,12 +56,13 @@ public class TsPlanActividadVoluntario {
 	@Id
 	@SequenceGenerator(name = "tb_ts_plan_actividad_voluntario_sequence", sequenceName = "public.tb_ts_plan_actividad_voluntario_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_ts_plan_actividad_voluntario_sequence")
-	@Column(name="id_ts_plan_actividad_voluntario")
+	@Column(name = "id_ts_plan_actividad_voluntario")
 	public Integer getIdTsPlanActividadVoluntario() {
 		return idTsPlanActividadVoluntario;
 	}
 
-	public void setIdTsPlanActividadVoluntario(Integer idTsPlanActividadVoluntario) {
+	public void setIdTsPlanActividadVoluntario(
+			Integer idTsPlanActividadVoluntario) {
 		this.idTsPlanActividadVoluntario = idTsPlanActividadVoluntario;
 	}
 
@@ -94,7 +86,7 @@ public class TsPlanActividadVoluntario {
 		this.fkVoluntario = fkVoluntario;
 	}
 
-	@Column(name="fecha_planificada")
+	@Column(name = "fecha_planificada")
 	public Long getFechaPlanificada() {
 		return fechaPlanificada;
 	}
@@ -103,7 +95,7 @@ public class TsPlanActividadVoluntario {
 		this.fechaPlanificada = fechaPlanificada;
 	}
 
-	@Column(name="fecha_ejecutada")
+	@Column(name = "fecha_ejecutada")
 	public Long getFechaEjecutada() {
 		return fechaEjecutada;
 	}
@@ -112,7 +104,7 @@ public class TsPlanActividadVoluntario {
 		this.fechaEjecutada = fechaEjecutada;
 	}
 
-	@Column(name="ejecucion")
+	@Column(name = "ejecucion")
 	public boolean getEjecucion() {
 		return ejecucion;
 	}
@@ -131,7 +123,7 @@ public class TsPlanActividadVoluntario {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="participacion")
+	@Column(name = "participacion")
 	public boolean getParticipacion() {
 		return participacion;
 	}
@@ -140,7 +132,7 @@ public class TsPlanActividadVoluntario {
 		this.participacion = participacion;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -149,7 +141,7 @@ public class TsPlanActividadVoluntario {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus_actividad")
+	@Column(name = "estatus_actividad")
 	public Integer getEstatusActividad() {
 		return estatusActividad;
 	}
@@ -158,13 +150,13 @@ public class TsPlanActividadVoluntario {
 		this.estatusActividad = estatusActividad;
 	}
 
-	@JsonIgnore
 	@Transient
 	public EstatusActividadEnum getEstatusActividadEnum() {
 		return EstatusActividadEnum.values()[this.estatusActividad];
 	}
 
-	public void setEstatusActividadEnum(EstatusActividadEnum estatusActividadEnum) {
+	public void setEstatusActividadEnum(
+			EstatusActividadEnum estatusActividadEnum) {
 		this.estatusActividad = estatusActividadEnum.ordinal();
 	}
 
@@ -172,7 +164,10 @@ public class TsPlanActividadVoluntario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idTsPlanActividadVoluntario == null) ? 0 : idTsPlanActividadVoluntario.hashCode());
+		result = prime
+				* result
+				+ ((idTsPlanActividadVoluntario == null) ? 0
+						: idTsPlanActividadVoluntario.hashCode());
 		return result;
 	}
 
@@ -190,10 +185,11 @@ public class TsPlanActividadVoluntario {
 		TsPlanActividadVoluntario other = (TsPlanActividadVoluntario) obj;
 		if (idTsPlanActividadVoluntario == null) {
 			return false;
-		} 
-		if (!idTsPlanActividadVoluntario.equals(other.idTsPlanActividadVoluntario)) {
+		}
+		if (!idTsPlanActividadVoluntario
+				.equals(other.idTsPlanActividadVoluntario)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

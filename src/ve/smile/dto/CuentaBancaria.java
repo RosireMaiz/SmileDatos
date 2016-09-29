@@ -13,9 +13,6 @@ import javax.persistence.Transient;
 
 import ve.smile.enums.TipoCuentaEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_cuenta_bancaria")
 @Entity
 public class CuentaBancaria {
@@ -37,12 +34,8 @@ public class CuentaBancaria {
 		this.idCuentaBancaria = idCuentaBancaria;
 	}
 
-	public CuentaBancaria(
-			Banco fkBanco,
-			String cuentaBancaria,
-			String titular,
-			String identificacionTitular,
-			String correoTitular,
+	public CuentaBancaria(Banco fkBanco, String cuentaBancaria, String titular,
+			String identificacionTitular, String correoTitular,
 			Integer tipoCuenta) {
 		super();
 		this.fkBanco = fkBanco;
@@ -56,7 +49,7 @@ public class CuentaBancaria {
 	@Id
 	@SequenceGenerator(name = "tb_cuenta_bancaria_sequence", sequenceName = "public.tb_cuenta_bancaria_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_cuenta_bancaria_sequence")
-	@Column(name="id_cuenta_bancaria")
+	@Column(name = "id_cuenta_bancaria")
 	public Integer getIdCuentaBancaria() {
 		return idCuentaBancaria;
 	}
@@ -75,7 +68,7 @@ public class CuentaBancaria {
 		this.fkBanco = fkBanco;
 	}
 
-	@Column(name="cuenta_bancaria")
+	@Column(name = "cuenta_bancaria")
 	public String getCuentaBancaria() {
 		return cuentaBancaria;
 	}
@@ -84,7 +77,7 @@ public class CuentaBancaria {
 		this.cuentaBancaria = cuentaBancaria;
 	}
 
-	@Column(name="titular")
+	@Column(name = "titular")
 	public String getTitular() {
 		return titular;
 	}
@@ -93,7 +86,7 @@ public class CuentaBancaria {
 		this.titular = titular;
 	}
 
-	@Column(name="identificacion_titular")
+	@Column(name = "identificacion_titular")
 	public String getIdentificacionTitular() {
 		return identificacionTitular;
 	}
@@ -102,7 +95,7 @@ public class CuentaBancaria {
 		this.identificacionTitular = identificacionTitular;
 	}
 
-	@Column(name="correo_titular")
+	@Column(name = "correo_titular")
 	public String getCorreoTitular() {
 		return correoTitular;
 	}
@@ -111,7 +104,7 @@ public class CuentaBancaria {
 		this.correoTitular = correoTitular;
 	}
 
-	@Column(name="tipo_cuenta")
+	@Column(name = "tipo_cuenta")
 	public Integer getTipoCuenta() {
 		return tipoCuenta;
 	}
@@ -120,7 +113,6 @@ public class CuentaBancaria {
 		this.tipoCuenta = tipoCuenta;
 	}
 
-	@JsonIgnore
 	@Transient
 	public TipoCuentaEnum getTipoCuentaEnum() {
 		return TipoCuentaEnum.values()[this.tipoCuenta];
@@ -134,7 +126,9 @@ public class CuentaBancaria {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idCuentaBancaria == null) ? 0 : idCuentaBancaria.hashCode());
+		result = prime
+				* result
+				+ ((idCuentaBancaria == null) ? 0 : idCuentaBancaria.hashCode());
 		return result;
 	}
 
@@ -152,10 +146,10 @@ public class CuentaBancaria {
 		CuentaBancaria other = (CuentaBancaria) obj;
 		if (idCuentaBancaria == null) {
 			return false;
-		} 
+		}
 		if (!idCuentaBancaria.equals(other.idCuentaBancaria)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

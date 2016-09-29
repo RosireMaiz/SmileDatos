@@ -13,9 +13,6 @@ import javax.persistence.Transient;
 
 import ve.smile.enums.TipoDonativoCuentaBancariaEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_donativo_cuenta_bancaria")
 @Entity
 public class DonativoCuentaBancaria {
@@ -36,12 +33,9 @@ public class DonativoCuentaBancaria {
 		this.idDonativoCuentaBancaria = idDonativoCuentaBancaria;
 	}
 
-	public DonativoCuentaBancaria(
-			CuentaBancaria fkCuentaBancaria,
-			DonativoRecurso fkDonativoRecurso,
-			Long fechaTransaccion,
-			Long nroReferencia,
-			Integer tipoDonativoCuentaBancaria) {
+	public DonativoCuentaBancaria(CuentaBancaria fkCuentaBancaria,
+			DonativoRecurso fkDonativoRecurso, Long fechaTransaccion,
+			Long nroReferencia, Integer tipoDonativoCuentaBancaria) {
 		super();
 		this.fkCuentaBancaria = fkCuentaBancaria;
 		this.fkDonativoRecurso = fkDonativoRecurso;
@@ -53,7 +47,7 @@ public class DonativoCuentaBancaria {
 	@Id
 	@SequenceGenerator(name = "tb_donativo_cuenta_bancaria_sequence", sequenceName = "public.tb_donativo_cuenta_bancaria_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_donativo_cuenta_bancaria_sequence")
-	@Column(name="id_donativo_cuenta_bancaria")
+	@Column(name = "id_donativo_cuenta_bancaria")
 	public Integer getIdDonativoCuentaBancaria() {
 		return idDonativoCuentaBancaria;
 	}
@@ -82,7 +76,7 @@ public class DonativoCuentaBancaria {
 		this.fkDonativoRecurso = fkDonativoRecurso;
 	}
 
-	@Column(name="fecha_transaccion")
+	@Column(name = "fecha_transaccion")
 	public Long getFechaTransaccion() {
 		return fechaTransaccion;
 	}
@@ -91,7 +85,7 @@ public class DonativoCuentaBancaria {
 		this.fechaTransaccion = fechaTransaccion;
 	}
 
-	@Column(name="nro_referencia")
+	@Column(name = "nro_referencia")
 	public Long getNroReferencia() {
 		return nroReferencia;
 	}
@@ -100,7 +94,7 @@ public class DonativoCuentaBancaria {
 		this.nroReferencia = nroReferencia;
 	}
 
-	@Column(name="tipo_donativo_cuenta_bancaria")
+	@Column(name = "tipo_donativo_cuenta_bancaria")
 	public Integer getTipoDonativoCuentaBancaria() {
 		return tipoDonativoCuentaBancaria;
 	}
@@ -109,21 +103,25 @@ public class DonativoCuentaBancaria {
 		this.tipoDonativoCuentaBancaria = tipoDonativoCuentaBancaria;
 	}
 
-	@JsonIgnore
 	@Transient
 	public TipoDonativoCuentaBancariaEnum getTipoDonativoCuentaBancariaEnum() {
 		return TipoDonativoCuentaBancariaEnum.values()[this.tipoDonativoCuentaBancaria];
 	}
 
-	public void setTipoDonativoCuentaBancariaEnum(TipoDonativoCuentaBancariaEnum tipoDonativoCuentaBancariaEnum) {
-		this.tipoDonativoCuentaBancaria = tipoDonativoCuentaBancariaEnum.ordinal();
+	public void setTipoDonativoCuentaBancariaEnum(
+			TipoDonativoCuentaBancariaEnum tipoDonativoCuentaBancariaEnum) {
+		this.tipoDonativoCuentaBancaria = tipoDonativoCuentaBancariaEnum
+				.ordinal();
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idDonativoCuentaBancaria == null) ? 0 : idDonativoCuentaBancaria.hashCode());
+		result = prime
+				* result
+				+ ((idDonativoCuentaBancaria == null) ? 0
+						: idDonativoCuentaBancaria.hashCode());
 		return result;
 	}
 
@@ -141,10 +139,10 @@ public class DonativoCuentaBancaria {
 		DonativoCuentaBancaria other = (DonativoCuentaBancaria) obj;
 		if (idDonativoCuentaBancaria == null) {
 			return false;
-		} 
+		}
 		if (!idDonativoCuentaBancaria.equals(other.idDonativoCuentaBancaria)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

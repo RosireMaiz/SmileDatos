@@ -81,7 +81,7 @@ public class EventoPlanificado {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_album", nullable = false)
+	@JoinColumn(name = "fk_album", nullable = true)
 	public Album getFkAlbum() {
 		return fkAlbum;
 	}
@@ -91,7 +91,7 @@ public class EventoPlanificado {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_directorio", nullable = false)
+	@JoinColumn(name = "fk_directorio", nullable = true)
 	public Directorio getFkDirectorio() {
 		return fkDirectorio;
 	}
@@ -101,7 +101,7 @@ public class EventoPlanificado {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_evento", nullable = false)
+	@JoinColumn(name = "fk_evento", nullable = true)
 	public Evento getFkEvento() {
 		return fkEvento;
 	}
@@ -111,7 +111,7 @@ public class EventoPlanificado {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}
@@ -121,7 +121,7 @@ public class EventoPlanificado {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
+	@JoinColumn(name = "fk_persona", nullable = true)
 	public Persona getFkPersona() {
 		return fkPersona;
 	}
@@ -149,7 +149,7 @@ public class EventoPlanificado {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_multimedia", nullable = false)
+	@JoinColumn(name = "fk_multimedia", nullable = true)
 	public Multimedia getFkMultimedia() {
 		return fkMultimedia;
 	}

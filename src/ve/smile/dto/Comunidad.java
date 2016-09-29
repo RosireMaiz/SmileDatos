@@ -30,12 +30,8 @@ public class Comunidad {
 		this.idComunidad = idComunidad;
 	}
 
-	public Comunidad(
-			Persona fkPersona,
-			String nombre,
-			String apellido,
-			String correo,
-			Long fechaCreacion) {
+	public Comunidad(Persona fkPersona, String nombre, String apellido,
+			String correo, Long fechaCreacion) {
 		super();
 		this.fkPersona = fkPersona;
 		this.nombre = nombre;
@@ -47,7 +43,7 @@ public class Comunidad {
 	@Id
 	@SequenceGenerator(name = "tb_comunidad_sequence", sequenceName = "public.tb_comunidad_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_comunidad_sequence")
-	@Column(name="id_comunidad")
+	@Column(name = "id_comunidad")
 	public Integer getIdComunidad() {
 		return idComunidad;
 	}
@@ -57,7 +53,7 @@ public class Comunidad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
+	@JoinColumn(name = "fk_persona", nullable = true)
 	public Persona getFkPersona() {
 		return fkPersona;
 	}
@@ -66,7 +62,7 @@ public class Comunidad {
 		this.fkPersona = fkPersona;
 	}
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -75,7 +71,7 @@ public class Comunidad {
 		this.nombre = nombre;
 	}
 
-	@Column(name="apellido")
+	@Column(name = "apellido")
 	public String getApellido() {
 		return apellido;
 	}
@@ -84,7 +80,7 @@ public class Comunidad {
 		this.apellido = apellido;
 	}
 
-	@Column(name="correo")
+	@Column(name = "correo")
 	public String getCorreo() {
 		return correo;
 	}
@@ -93,7 +89,7 @@ public class Comunidad {
 		this.correo = correo;
 	}
 
-	@Column(name="fecha_creacion")
+	@Column(name = "fecha_creacion")
 	public Long getFechaCreacion() {
 		return fechaCreacion;
 	}
@@ -106,7 +102,8 @@ public class Comunidad {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idComunidad == null) ? 0 : idComunidad.hashCode());
+		result = prime * result
+				+ ((idComunidad == null) ? 0 : idComunidad.hashCode());
 		return result;
 	}
 
@@ -124,10 +121,10 @@ public class Comunidad {
 		Comunidad other = (Comunidad) obj;
 		if (idComunidad == null) {
 			return false;
-		} 
+		}
 		if (!idComunidad.equals(other.idComunidad)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

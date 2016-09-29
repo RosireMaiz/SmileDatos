@@ -13,7 +13,6 @@ import ve.smile.enums.TipoInteraccionEnum;
 import ve.smile.enums.TipoReferenciaInteraccionEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Table(name = "tb_interaccion_portal")
 @Entity
@@ -33,10 +32,8 @@ public class InteraccionPortal {
 		this.idInteraccionPortal = idInteraccionPortal;
 	}
 
-	public InteraccionPortal(
-			Integer referenciaGenericoIdId,
-			Integer tipoInteraccion,
-			Integer tipoReferenciaInteraccion) {
+	public InteraccionPortal(Integer referenciaGenericoIdId,
+			Integer tipoInteraccion, Integer tipoReferenciaInteraccion) {
 		super();
 		this.referenciaGenericoIdId = referenciaGenericoIdId;
 		this.tipoInteraccion = tipoInteraccion;
@@ -46,7 +43,7 @@ public class InteraccionPortal {
 	@Id
 	@SequenceGenerator(name = "tb_interaccion_portal_sequence", sequenceName = "public.tb_interaccion_portal_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_interaccion_portal_sequence")
-	@Column(name="id_interaccion_portal")
+	@Column(name = "id_interaccion_portal")
 	public Integer getIdInteraccionPortal() {
 		return idInteraccionPortal;
 	}
@@ -55,7 +52,7 @@ public class InteraccionPortal {
 		this.idInteraccionPortal = idInteraccionPortal;
 	}
 
-	@Column(name="referencia_generico_id_id")
+	@Column(name = "referencia_generico_id_id")
 	public Integer getReferenciaGenericoIdId() {
 		return referenciaGenericoIdId;
 	}
@@ -64,7 +61,7 @@ public class InteraccionPortal {
 		this.referenciaGenericoIdId = referenciaGenericoIdId;
 	}
 
-	@Column(name="tipo_interaccion")
+	@Column(name = "tipo_interaccion")
 	public Integer getTipoInteraccion() {
 		return tipoInteraccion;
 	}
@@ -73,7 +70,6 @@ public class InteraccionPortal {
 		this.tipoInteraccion = tipoInteraccion;
 	}
 
-	@JsonIgnore
 	@Transient
 	public TipoInteraccionEnum getTipoInteraccionEnum() {
 		return TipoInteraccionEnum.values()[this.tipoInteraccion];
@@ -83,7 +79,7 @@ public class InteraccionPortal {
 		this.tipoInteraccion = tipoInteraccionEnum.ordinal();
 	}
 
-	@Column(name="tipo_referencia_interaccion")
+	@Column(name = "tipo_referencia_interaccion")
 	public Integer getTipoReferenciaInteraccion() {
 		return tipoReferenciaInteraccion;
 	}
@@ -98,15 +94,20 @@ public class InteraccionPortal {
 		return TipoReferenciaInteraccionEnum.values()[this.tipoReferenciaInteraccion];
 	}
 
-	public void setTipoReferenciaInteraccionEnum(TipoReferenciaInteraccionEnum tipoReferenciaInteraccionEnum) {
-		this.tipoReferenciaInteraccion = tipoReferenciaInteraccionEnum.ordinal();
+	public void setTipoReferenciaInteraccionEnum(
+			TipoReferenciaInteraccionEnum tipoReferenciaInteraccionEnum) {
+		this.tipoReferenciaInteraccion = tipoReferenciaInteraccionEnum
+				.ordinal();
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idInteraccionPortal == null) ? 0 : idInteraccionPortal.hashCode());
+		result = prime
+				* result
+				+ ((idInteraccionPortal == null) ? 0 : idInteraccionPortal
+						.hashCode());
 		return result;
 	}
 
@@ -124,10 +125,10 @@ public class InteraccionPortal {
 		InteraccionPortal other = (InteraccionPortal) obj;
 		if (idInteraccionPortal == null) {
 			return false;
-		} 
+		}
 		if (!idInteraccionPortal.equals(other.idInteraccionPortal)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

@@ -11,11 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import ve.smile.enums.UrgenciaEnum;
 import ve.smile.enums.EstatusSolicitudEnum;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import ve.smile.enums.UrgenciaEnum;
 
 @Table(name = "tb_solicitud_ayuda")
 @Entity
@@ -40,15 +37,9 @@ public class SolicitudAyuda {
 		this.idSolicitudAyuda = idSolicitudAyuda;
 	}
 
-	public SolicitudAyuda(
-			Ayuda fkAyuda,
-			Beneficiario fkBeneficiario,
-			Motivo fkMotivo,
-			Long fecha,
-			Character estatus,
-			Integer urgencia,
-			Integer estatusSolicitud,
-			String observacion) {
+	public SolicitudAyuda(Ayuda fkAyuda, Beneficiario fkBeneficiario,
+			Motivo fkMotivo, Long fecha, Character estatus, Integer urgencia,
+			Integer estatusSolicitud, String observacion) {
 		super();
 		this.fkAyuda = fkAyuda;
 		this.fkBeneficiario = fkBeneficiario;
@@ -63,7 +54,7 @@ public class SolicitudAyuda {
 	@Id
 	@SequenceGenerator(name = "tb_solicitud_ayuda_sequence", sequenceName = "public.tb_solicitud_ayuda_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_solicitud_ayuda_sequence")
-	@Column(name="id_solicitud_ayuda")
+	@Column(name = "id_solicitud_ayuda")
 	public Integer getIdSolicitudAyuda() {
 		return idSolicitudAyuda;
 	}
@@ -102,7 +93,7 @@ public class SolicitudAyuda {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="fecha")
+	@Column(name = "fecha")
 	public Long getFecha() {
 		return fecha;
 	}
@@ -111,7 +102,7 @@ public class SolicitudAyuda {
 		this.fecha = fecha;
 	}
 
-	@Column(name="estatus")
+	@Column(name = "estatus")
 	public Character getEstatus() {
 		return estatus;
 	}
@@ -120,7 +111,7 @@ public class SolicitudAyuda {
 		this.estatus = estatus;
 	}
 
-	@Column(name="urgencia")
+	@Column(name = "urgencia")
 	public Integer getUrgencia() {
 		return urgencia;
 	}
@@ -129,7 +120,6 @@ public class SolicitudAyuda {
 		this.urgencia = urgencia;
 	}
 
-	@JsonIgnore
 	@Transient
 	public UrgenciaEnum getUrgenciaEnum() {
 		return UrgenciaEnum.values()[this.urgencia];
@@ -139,7 +129,7 @@ public class SolicitudAyuda {
 		this.urgencia = urgenciaEnum.ordinal();
 	}
 
-	@Column(name="estatus_solicitud")
+	@Column(name = "estatus_solicitud")
 	public Integer getEstatusSolicitud() {
 		return estatusSolicitud;
 	}
@@ -148,17 +138,17 @@ public class SolicitudAyuda {
 		this.estatusSolicitud = estatusSolicitud;
 	}
 
-	@JsonIgnore
 	@Transient
 	public EstatusSolicitudEnum getEstatusSolicitudEnum() {
 		return EstatusSolicitudEnum.values()[this.estatusSolicitud];
 	}
 
-	public void setEstatusSolicitudEnum(EstatusSolicitudEnum estatusSolicitudEnum) {
+	public void setEstatusSolicitudEnum(
+			EstatusSolicitudEnum estatusSolicitudEnum) {
 		this.estatusSolicitud = estatusSolicitudEnum.ordinal();
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -171,7 +161,9 @@ public class SolicitudAyuda {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idSolicitudAyuda == null) ? 0 : idSolicitudAyuda.hashCode());
+		result = prime
+				* result
+				+ ((idSolicitudAyuda == null) ? 0 : idSolicitudAyuda.hashCode());
 		return result;
 	}
 
@@ -189,10 +181,10 @@ public class SolicitudAyuda {
 		SolicitudAyuda other = (SolicitudAyuda) obj;
 		if (idSolicitudAyuda == null) {
 			return false;
-		} 
+		}
 		if (!idSolicitudAyuda.equals(other.idSolicitudAyuda)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

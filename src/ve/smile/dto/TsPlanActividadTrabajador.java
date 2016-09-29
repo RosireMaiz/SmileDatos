@@ -13,9 +13,6 @@ import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusActividadEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_ts_plan_actividad_trabajador")
 @Entity
 public class TsPlanActividadTrabajador {
@@ -40,16 +37,10 @@ public class TsPlanActividadTrabajador {
 		this.idTsPlanActividadTrabajador = idTsPlanActividadTrabajador;
 	}
 
-	public TsPlanActividadTrabajador(
-			Trabajador fkTrabajador,
-			TsPlanActividad fkTsPlanActividad,
-			Long fechaPlanificada,
-			Long fechaEjecutada,
-			boolean ejecucion,
-			Motivo fkMotivo,
-			boolean participacion,
-			String observacion,
-			Integer estatusActividad) {
+	public TsPlanActividadTrabajador(Trabajador fkTrabajador,
+			TsPlanActividad fkTsPlanActividad, Long fechaPlanificada,
+			Long fechaEjecutada, boolean ejecucion, Motivo fkMotivo,
+			boolean participacion, String observacion, Integer estatusActividad) {
 		super();
 		this.fkTrabajador = fkTrabajador;
 		this.fkTsPlanActividad = fkTsPlanActividad;
@@ -65,12 +56,13 @@ public class TsPlanActividadTrabajador {
 	@Id
 	@SequenceGenerator(name = "tb_ts_plan_actividad_trabajador_sequence", sequenceName = "public.tb_ts_plan_actividad_trabajador_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_ts_plan_actividad_trabajador_sequence")
-	@Column(name="id_ts_plan_actividad_trabajador")
+	@Column(name = "id_ts_plan_actividad_trabajador")
 	public Integer getIdTsPlanActividadTrabajador() {
 		return idTsPlanActividadTrabajador;
 	}
 
-	public void setIdTsPlanActividadTrabajador(Integer idTsPlanActividadTrabajador) {
+	public void setIdTsPlanActividadTrabajador(
+			Integer idTsPlanActividadTrabajador) {
 		this.idTsPlanActividadTrabajador = idTsPlanActividadTrabajador;
 	}
 
@@ -94,7 +86,7 @@ public class TsPlanActividadTrabajador {
 		this.fkTsPlanActividad = fkTsPlanActividad;
 	}
 
-	@Column(name="fecha_planificada")
+	@Column(name = "fecha_planificada")
 	public Long getFechaPlanificada() {
 		return fechaPlanificada;
 	}
@@ -103,7 +95,7 @@ public class TsPlanActividadTrabajador {
 		this.fechaPlanificada = fechaPlanificada;
 	}
 
-	@Column(name="fecha_ejecutada")
+	@Column(name = "fecha_ejecutada")
 	public Long getFechaEjecutada() {
 		return fechaEjecutada;
 	}
@@ -112,7 +104,7 @@ public class TsPlanActividadTrabajador {
 		this.fechaEjecutada = fechaEjecutada;
 	}
 
-	@Column(name="ejecucion")
+	@Column(name = "ejecucion")
 	public boolean getEjecucion() {
 		return ejecucion;
 	}
@@ -131,7 +123,7 @@ public class TsPlanActividadTrabajador {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="participacion")
+	@Column(name = "participacion")
 	public boolean getParticipacion() {
 		return participacion;
 	}
@@ -140,7 +132,7 @@ public class TsPlanActividadTrabajador {
 		this.participacion = participacion;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -149,7 +141,7 @@ public class TsPlanActividadTrabajador {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus_actividad")
+	@Column(name = "estatus_actividad")
 	public Integer getEstatusActividad() {
 		return estatusActividad;
 	}
@@ -158,13 +150,13 @@ public class TsPlanActividadTrabajador {
 		this.estatusActividad = estatusActividad;
 	}
 
-	@JsonIgnore
 	@Transient
 	public EstatusActividadEnum getEstatusActividadEnum() {
 		return EstatusActividadEnum.values()[this.estatusActividad];
 	}
 
-	public void setEstatusActividadEnum(EstatusActividadEnum estatusActividadEnum) {
+	public void setEstatusActividadEnum(
+			EstatusActividadEnum estatusActividadEnum) {
 		this.estatusActividad = estatusActividadEnum.ordinal();
 	}
 
@@ -172,7 +164,10 @@ public class TsPlanActividadTrabajador {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idTsPlanActividadTrabajador == null) ? 0 : idTsPlanActividadTrabajador.hashCode());
+		result = prime
+				* result
+				+ ((idTsPlanActividadTrabajador == null) ? 0
+						: idTsPlanActividadTrabajador.hashCode());
 		return result;
 	}
 
@@ -190,10 +185,11 @@ public class TsPlanActividadTrabajador {
 		TsPlanActividadTrabajador other = (TsPlanActividadTrabajador) obj;
 		if (idTsPlanActividadTrabajador == null) {
 			return false;
-		} 
-		if (!idTsPlanActividadTrabajador.equals(other.idTsPlanActividadTrabajador)) {
+		}
+		if (!idTsPlanActividadTrabajador
+				.equals(other.idTsPlanActividadTrabajador)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

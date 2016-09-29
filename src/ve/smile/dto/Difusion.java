@@ -13,9 +13,6 @@ import javax.persistence.Transient;
 
 import ve.smile.enums.TipoDifusionEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Table(name = "tb_difusion")
 @Entity
 public class Difusion {
@@ -37,13 +34,8 @@ public class Difusion {
 		this.idDifusion = idDifusion;
 	}
 
-	public Difusion(
-			Long fecha,
-			Persona fkPersona,
-			String asunto,
-			String contenido,
-			Integer tipoDifusion,
-			String destinatario) {
+	public Difusion(Long fecha, Persona fkPersona, String asunto,
+			String contenido, Integer tipoDifusion, String destinatario) {
 		super();
 		this.fecha = fecha;
 		this.fkPersona = fkPersona;
@@ -56,7 +48,7 @@ public class Difusion {
 	@Id
 	@SequenceGenerator(name = "tb_difusion_sequence", sequenceName = "public.tb_difusion_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_difusion_sequence")
-	@Column(name="id_difusion")
+	@Column(name = "id_difusion")
 	public Integer getIdDifusion() {
 		return idDifusion;
 	}
@@ -65,7 +57,7 @@ public class Difusion {
 		this.idDifusion = idDifusion;
 	}
 
-	@Column(name="fecha")
+	@Column(name = "fecha")
 	public Long getFecha() {
 		return fecha;
 	}
@@ -84,7 +76,7 @@ public class Difusion {
 		this.fkPersona = fkPersona;
 	}
 
-	@Column(name="asunto")
+	@Column(name = "asunto")
 	public String getAsunto() {
 		return asunto;
 	}
@@ -93,7 +85,7 @@ public class Difusion {
 		this.asunto = asunto;
 	}
 
-	@Column(name="contenido")
+	@Column(name = "contenido")
 	public String getContenido() {
 		return contenido;
 	}
@@ -102,7 +94,7 @@ public class Difusion {
 		this.contenido = contenido;
 	}
 
-	@Column(name="tipo_difusion")
+	@Column(name = "tipo_difusion")
 	public Integer getTipoDifusion() {
 		return tipoDifusion;
 	}
@@ -111,7 +103,6 @@ public class Difusion {
 		this.tipoDifusion = tipoDifusion;
 	}
 
-	@JsonIgnore
 	@Transient
 	public TipoDifusionEnum getTipoDifusionEnum() {
 		return TipoDifusionEnum.values()[this.tipoDifusion];
@@ -121,7 +112,7 @@ public class Difusion {
 		this.tipoDifusion = tipoDifusionEnum.ordinal();
 	}
 
-	@Column(name="destinatario")
+	@Column(name = "destinatario")
 	public String getDestinatario() {
 		return destinatario;
 	}
@@ -134,7 +125,8 @@ public class Difusion {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idDifusion == null) ? 0 : idDifusion.hashCode());
+		result = prime * result
+				+ ((idDifusion == null) ? 0 : idDifusion.hashCode());
 		return result;
 	}
 
@@ -152,10 +144,10 @@ public class Difusion {
 		Difusion other = (Difusion) obj;
 		if (idDifusion == null) {
 			return false;
-		} 
+		}
 		if (!idDifusion.equals(other.idDifusion)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 
