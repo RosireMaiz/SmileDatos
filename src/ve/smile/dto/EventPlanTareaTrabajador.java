@@ -9,6 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import ve.smile.enums.EventPlanTareaEnum;
+import ve.smile.enums.EventPlanTareaTrabajadorEnum;
 
 @Table(name = "tb_event_plan_tarea_trabajador")
 @Entity
@@ -114,6 +118,15 @@ public class EventPlanTareaTrabajador {
 
 	public void setEstatusTarea(Integer estatusTarea) {
 		this.estatusTarea = estatusTarea;
+	}
+	
+	@Transient
+	public EventPlanTareaTrabajadorEnum getEventPlanTareaTrabajadorEnum() {
+		return EventPlanTareaTrabajadorEnum.values()[this.estatusTarea];
+	}
+
+	public void setEventPlanTareaTrabajadorEnum(EventPlanTareaTrabajadorEnum eventPlanTareaTrabajadorEnum) {
+		this.estatusTarea = eventPlanTareaTrabajadorEnum.ordinal();
 	}
 
 	@Override

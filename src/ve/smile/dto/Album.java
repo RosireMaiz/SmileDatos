@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import ve.smile.enums.EstatusAlbumEnum;
+import ve.smile.enums.TipoPersonaEnum;
 
 @Table(name = "tb_album")
 @Entity
@@ -98,7 +102,14 @@ public class Album {
 	public void setEstatusAlbum(Integer estatusAlbum) {
 		this.estatusAlbum = estatusAlbum;
 	}
+	@Transient
+	public EstatusAlbumEnum getEstatusAlbumEnum() {
+		return EstatusAlbumEnum.values()[this.estatusAlbum];
+	}
 
+	public void setEstatusAlbumEnum(EstatusAlbumEnum estatusAlbumEnum) {
+		this.estatusAlbum = estatusAlbumEnum.ordinal();
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

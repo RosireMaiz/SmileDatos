@@ -9,6 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import ve.smile.enums.EstatusEventoPlanificadoEnum;
+import ve.smile.enums.TipoPersonaEnum;
 
 @Table(name = "tb_evento_planificado")
 @Entity
@@ -203,6 +207,14 @@ public class EventoPlanificado {
 		this.publicoPortal = publicoPortal;
 	}
 
+	@Transient
+	public EstatusEventoPlanificadoEnum getEstatusEventoPlanificadoEnum() {
+		return EstatusEventoPlanificadoEnum.values()[this.estatusEvento];
+	}
+
+	public void setEstatusEventoPlanificadoEnum(EstatusEventoPlanificadoEnum estatusEventoPlanificadoEnum) {
+		this.estatusEvento = estatusEventoPlanificadoEnum.ordinal();
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

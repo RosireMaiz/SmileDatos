@@ -13,6 +13,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import ve.smile.enums.EventPlanTareaTrabajadorEnum;
+import ve.smile.enums.TipoEventoEnum;
 
 @Table(name = "tb_evento")
 @Entity
@@ -93,6 +97,16 @@ public class Evento {
 	public void setTipoEvento(Integer tipoEvento) {
 		this.tipoEvento = tipoEvento;
 	}
+	@Transient
+	public TipoEventoEnum getTipoEventoEnum() {
+		return TipoEventoEnum.values()[this.tipoEvento];
+	}
+
+	public void setTipoEventoEnum(TipoEventoEnum tipoEventoEnum) {
+		this.tipoEvento = tipoEventoEnum.ordinal();
+	}
+
+	
 
 	@ManyToMany
 	@JoinTable(name = "tb_plantilla_evento_indicador", 

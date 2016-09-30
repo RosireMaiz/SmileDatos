@@ -11,6 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import ve.smile.enums.EstatusCarteleraEnum;
 import ve.smile.enums.TipoCarteleraEnum;
 
 
@@ -134,6 +135,16 @@ public class Cartelera {
 
 	public void setEstatusCartelera(Integer estatusCartelera) {
 		this.estatusCartelera = estatusCartelera;
+	}
+	
+	
+	@Transient
+	public EstatusCarteleraEnum getEstatusCarteleraEnum() {
+		return EstatusCarteleraEnum.values()[this.estatusCartelera];
+	}
+
+	public void setEstatusCarteleraEnum(EstatusCarteleraEnum estatusCarteleraEnum) {
+		this.estatusCartelera = estatusCarteleraEnum.ordinal();
 	}
 
 	@Override

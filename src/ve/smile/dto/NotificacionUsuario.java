@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import ve.smile.enums.TipoReferenciaNotificacionEnum;
+import ve.smile.enums.EstatusNotificacionEnum;
 import ve.smile.seguridad.dto.Usuario;
 
 @Table(name = "tb_notificacion_usuario")
@@ -113,6 +114,17 @@ public class NotificacionUsuario {
 	public void setTipoReferenciaNotificacionEnum(
 			TipoReferenciaNotificacionEnum tipoReferenciaNotificacionEnum) {
 		this.tipoReferenciaNotificacion = tipoReferenciaNotificacionEnum
+				.ordinal();
+	}
+	
+	@Transient
+	public EstatusNotificacionEnum EstatusNotificacionEnum() {
+		return EstatusNotificacionEnum.values()[this.estatusNotificacion];
+	}
+
+	public void setEstatusNotificacionEnum(
+			EstatusNotificacionEnum estatusNotificacionEnum) {
+		this.estatusNotificacion = estatusNotificacionEnum
 				.ordinal();
 	}
 

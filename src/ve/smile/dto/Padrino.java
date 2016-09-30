@@ -11,7 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import ve.smile.enums.EstatusPostuladoEnum;
+import ve.smile.enums.EstatusPadrinoEnum;
+
 
 @Table(name = "tb_padrino")
 @Entity
@@ -115,13 +116,13 @@ public class Padrino {
 	}
 
 	@Transient
-	public EstatusPostuladoEnum getEstatusPostuladoEnum() {
-		return EstatusPostuladoEnum.values()[this.estatusPadrino];
+	public EstatusPadrinoEnum getEstatusPadrinoEnum() {
+		return EstatusPadrinoEnum.values()[this.estatusPadrino];
 	}
 
 	public void setEstatusPostuladoEnum(
-			EstatusPostuladoEnum estatusPostuladoEnum) {
-		this.estatusPadrino = estatusPostuladoEnum.ordinal();
+			EstatusPadrinoEnum estatusPadrinoEnum) {
+		this.estatusPadrino = estatusPadrinoEnum.ordinal();
 	}
 
 	@Override

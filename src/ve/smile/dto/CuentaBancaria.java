@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import ve.smile.enums.TipoCuentaEnum;
+import ve.smile.enums.PropietarioEnum;
 
 @Table(name = "tb_cuenta_bancaria")
 @Entity
@@ -115,11 +115,11 @@ public class CuentaBancaria {
 	}
 
 	@Transient
-	public TipoCuentaEnum getPropietarioEnum() {
-		return TipoCuentaEnum.values()[this.propietario];
+	public PropietarioEnum getPropietarioEnum() {
+		return PropietarioEnum.values()[this.propietario];
 	}
 
-	public void setPropietarioEnum(TipoCuentaEnum tipoCuentaEnum) {
+	public void setPropietarioEnum(PropietarioEnum tipoCuentaEnum) {
 		this.propietario = tipoCuentaEnum.ordinal();
 	}
 

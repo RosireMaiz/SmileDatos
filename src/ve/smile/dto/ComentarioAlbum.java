@@ -9,6 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import ve.smile.enums.EstatusCapacitacionPlanificadaEnum;
+import ve.smile.enums.EstatusComentarioAlbumEnum;
 
 @Table(name = "tb_comentario_album")
 @Entity
@@ -89,6 +93,16 @@ public class ComentarioAlbum {
 
 	public void setEstatusComentario(Integer estatusComentario) {
 		this.estatusComentario = estatusComentario;
+	}
+	
+	
+	@Transient
+	public EstatusComentarioAlbumEnum getEstatusComentarioAlbumEnum() {
+		return EstatusComentarioAlbumEnum.values()[this.estatusComentario];
+	}
+
+	public void setEstatusComentarioAlbumEnum(EstatusComentarioAlbumEnum estatusComentarioAlbumEnum) {
+		this.estatusComentario = estatusComentarioAlbumEnum.ordinal();
 	}
 
 	@Override

@@ -9,6 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import ve.smile.enums.EstatusAlbumEnum;
+import ve.smile.enums.EstatusCapacitacionPlanificadaEnum;
 
 @Table(name = "tb_capacitacion_planificada")
 @Entity
@@ -152,6 +156,15 @@ public class CapacitacionPlanificada {
 		this.estatusCapacintacionPlanificada = estatus;
 	}
 
+	@Transient
+	public EstatusCapacitacionPlanificadaEnum getEstatusCapacitacionPlanificadaEnum() {
+		return EstatusCapacitacionPlanificadaEnum.values()[this.estatusCapacintacionPlanificada];
+	}
+
+	public void setEstatusCapacitacionPlanificada(EstatusCapacitacionPlanificadaEnum estatusCapacitacionPlanificadaEnum) {
+		this.estatusCapacintacionPlanificada = estatusCapacitacionPlanificadaEnum.ordinal();
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
