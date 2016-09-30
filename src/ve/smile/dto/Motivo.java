@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,7 +17,7 @@ public class Motivo {
 	private Integer idMotivo;
 	private String nombre;
 	private String descripcion;
-
+	private ClasificadorMotivo fkClasificadorMotivo;
 	public Motivo() {
 		super();
 	}
@@ -61,6 +63,15 @@ public class Motivo {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	@ManyToOne
+	@JoinColumn(name = "fk_clasificador_motivo", nullable = false)
+	public ClasificadorMotivo getFkClasificadorMotivo() {
+		return fkClasificadorMotivo;
+	}
+
+	public void setFkClasificadorMotivo(ClasificadorMotivo fkClasificadorMotivo) {
+		this.fkClasificadorMotivo = fkClasificadorMotivo;
 	}
 
 	@Override

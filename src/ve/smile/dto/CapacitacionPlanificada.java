@@ -23,7 +23,7 @@ public class CapacitacionPlanificada {
 	private Motivo fkMotivo;
 	private boolean ejecucion;
 	private String observacion;
-	private Long estatus;
+	private Integer estatusCapacintacionPlanificada;
 
 	public CapacitacionPlanificada() {
 		super();
@@ -43,7 +43,7 @@ public class CapacitacionPlanificada {
 			Motivo fkMotivo,
 			boolean ejecucion,
 			String observacion,
-			Long estatus) {
+			Integer estatus) {
 		super();
 		this.descripcion = descripcion;
 		this.fkCapacitacion = fkCapacitacion;
@@ -53,7 +53,7 @@ public class CapacitacionPlanificada {
 		this.fkMotivo = fkMotivo;
 		this.ejecucion = ejecucion;
 		this.observacion = observacion;
-		this.estatus = estatus;
+		this.estatusCapacintacionPlanificada = estatus;
 	}
 
 	@Id
@@ -143,13 +143,13 @@ public class CapacitacionPlanificada {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus")
-	public Long getEstatus() {
-		return estatus;
+	@Column(name="estatus_capacitacion_planificada")
+	public Integer getEstatusCapacitacionPlanificada() {
+		return estatusCapacintacionPlanificada;
 	}
 
-	public void setEstatus(Long estatus) {
-		this.estatus = estatus;
+	public void setEstatusCapacitacionPlanificada(Integer estatus) {
+		this.estatusCapacintacionPlanificada = estatus;
 	}
 
 	@Override

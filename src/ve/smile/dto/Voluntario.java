@@ -21,7 +21,7 @@ public class Voluntario {
 	private Persona fkPersona;
 	private Long fechaIngreso;
 	private Long fechaEgreso;
-	private Integer estatusPostulado;
+	private Integer estatusVoluntario;
 
 	public Voluntario() {
 		super();
@@ -38,7 +38,7 @@ public class Voluntario {
 		this.fkPersona = fkPersona;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaEgreso = fechaEgreso;
-		this.estatusPostulado = estatusPostulado;
+		this.estatusVoluntario = estatusPostulado;
 	}
 
 	@Id
@@ -81,23 +81,23 @@ public class Voluntario {
 		this.fechaEgreso = fechaEgreso;
 	}
 
-	@Column(name = "estatus_postulado")
-	public Integer getEstatusPostulado() {
-		return estatusPostulado;
+	@Column(name = "estatus_voluntario")
+	public Integer getEstatusVoluntario() {
+		return estatusVoluntario;
 	}
 
-	public void setEstatusPostulado(Integer estatusPostulado) {
-		this.estatusPostulado = estatusPostulado;
+	public void setEstatusVoluntario(Integer estatusPostulado) {
+		this.estatusVoluntario = estatusPostulado;
 	}
 
 	@Transient
 	public EstatusPostuladoEnum getEstatusPostuladoEnum() {
-		return EstatusPostuladoEnum.values()[this.estatusPostulado];
+		return EstatusPostuladoEnum.values()[this.estatusVoluntario];
 	}
 
 	public void setEstatusPostuladoEnum(
 			EstatusPostuladoEnum estatusPostuladoEnum) {
-		this.estatusPostulado = estatusPostuladoEnum.ordinal();
+		this.estatusVoluntario = estatusPostuladoEnum.ordinal();
 	}
 
 	@Override

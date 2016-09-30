@@ -20,7 +20,7 @@ public class EventPlanTareaTrabajador {
 	private Motivo fkMotivo;
 	private boolean ejecucion;
 	private String observacion;
-	private Character estatusTarea;
+	private Integer estatusTarea;
 
 	public EventPlanTareaTrabajador() {
 		super();
@@ -37,7 +37,7 @@ public class EventPlanTareaTrabajador {
 			Motivo fkMotivo,
 			boolean ejecucion,
 			String observacion,
-			Character estatusTarea) {
+			Integer estatusTarea) {
 		super();
 		this.fkEventPlanTarea = fkEventPlanTarea;
 		this.fkTrabajador = fkTrabajador;
@@ -108,11 +108,11 @@ public class EventPlanTareaTrabajador {
 	}
 
 	@Column(name="estatus_tarea")
-	public Character getEstatusTarea() {
+	public Integer getEstatusTarea() {
 		return estatusTarea;
 	}
 
-	public void setEstatusTarea(Character estatusTarea) {
+	public void setEstatusTarea(Integer estatusTarea) {
 		this.estatusTarea = estatusTarea;
 	}
 

@@ -19,7 +19,7 @@ public class IncidenciaEventoPlan {
 	private EventoPlanificado fkEventoPlanificado;
 	private Motivo fkMotivo;
 	private Long fecha;
-	private String contenido;
+	private String observacion;
 
 	public IncidenciaEventoPlan() {
 		super();
@@ -41,7 +41,7 @@ public class IncidenciaEventoPlan {
 		this.fkEventoPlanificado = fkEventoPlanificado;
 		this.fkMotivo = fkMotivo;
 		this.fecha = fecha;
-		this.contenido = contenido;
+		this.observacion = contenido;
 	}
 
 	@Id
@@ -95,13 +95,13 @@ public class IncidenciaEventoPlan {
 		this.fecha = fecha;
 	}
 
-	@Column(name="contenido")
+	@Column(name="observacion")
 	public String getContenido() {
-		return contenido;
+		return observacion;
 	}
 
 	public void setContenido(String contenido) {
-		this.contenido = contenido;
+		this.observacion = contenido;
 	}
 
 	@Override

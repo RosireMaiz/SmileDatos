@@ -26,7 +26,7 @@ public class EventoPlanificado {
 	private Long fechaInicioIncidencia;
 	private Long fechaFinIncidencia;
 	private String observacion;
-	private Character estatusEvento;
+	private Integer estatusEvento;
 	private boolean publicoPortal;
 
 	public EventoPlanificado() {
@@ -50,7 +50,7 @@ public class EventoPlanificado {
 			Long fechaInicioIncidencia,
 			Long fechaFinIncidencia,
 			String observacion,
-			Character estatusEvento,
+			Integer estatusEvento,
 			boolean publicoPortal) {
 		super();
 		this.fkAlbum = fkAlbum;
@@ -186,11 +186,11 @@ public class EventoPlanificado {
 	}
 
 	@Column(name="estatus_evento")
-	public Character getEstatusEvento() {
+	public Integer getEstatusEvento() {
 		return estatusEvento;
 	}
 
-	public void setEstatusEvento(Character estatusEvento) {
+	public void setEstatusEvento(Integer estatusEvento) {
 		this.estatusEvento = estatusEvento;
 	}
 

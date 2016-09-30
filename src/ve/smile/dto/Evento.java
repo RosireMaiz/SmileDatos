@@ -22,7 +22,7 @@ public class Evento {
 	private String nombre;
 	private ClasificadorEvento fkClasificadorEvento;
 	private String descripcion;
-	private Character tipoEvento;
+	private Integer tipoEvento;
 
 	private List<Indicador> eventoIndicadores;
 	private List<Tarea> eventoTareas;
@@ -37,7 +37,7 @@ public class Evento {
 	}
 
 	public Evento(String nombre, ClasificadorEvento fkClasificadorEvento,
-			String descripcion, Character tipoEvento) {
+			String descripcion, Integer tipoEvento) {
 		super();
 		this.nombre = nombre;
 		this.fkClasificadorEvento = fkClasificadorEvento;
@@ -86,11 +86,11 @@ public class Evento {
 	}
 
 	@Column(name = "tipo_evento")
-	public Character getTipoEvento() {
+	public Integer getTipoEvento() {
 		return tipoEvento;
 	}
 
-	public void setTipoEvento(Character tipoEvento) {
+	public void setTipoEvento(Integer tipoEvento) {
 		this.tipoEvento = tipoEvento;
 	}
 

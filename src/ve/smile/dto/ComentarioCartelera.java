@@ -19,7 +19,7 @@ public class ComentarioCartelera {
 	private Comunidad fkComunidad;
 	private String comentario;
 	private Integer puntuacion;
-	private Character estatusComentario;
+	private Integer estatusComentario;
 
 	public ComentarioCartelera() {
 		super();
@@ -35,7 +35,7 @@ public class ComentarioCartelera {
 			Comunidad fkComunidad,
 			String comentario,
 			Integer puntuacion,
-			Character estatusComentario) {
+			Integer estatusComentario) {
 		super();
 		this.fkCartelera = fkCartelera;
 		this.fkComunidad = fkComunidad;
@@ -95,11 +95,11 @@ public class ComentarioCartelera {
 	}
 
 	@Column(name="estatus_comentario")
-	public Character getEstatusComentario() {
+	public Integer getEstatusComentario() {
 		return estatusComentario;
 	}
 
-	public void setEstatusComentario(Character estatusComentario) {
+	public void setEstatusComentario(Integer estatusComentario) {
 		this.estatusComentario = estatusComentario;
 	}
 

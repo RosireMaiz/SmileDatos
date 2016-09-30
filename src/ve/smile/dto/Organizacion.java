@@ -29,7 +29,7 @@ public class Organizacion {
 	private String iframe;
 	private String latitud;
 	private String longitud;
-
+	private String slogan;
 	public Organizacion() {
 		super();
 	}
@@ -216,6 +216,15 @@ public class Organizacion {
 		int result = 1;
 		result = prime * result + ((idOrganizacion == null) ? 0 : idOrganizacion.hashCode());
 		return result;
+	}
+	
+	@Column(name="slogan")
+	public String getSlogan() {
+		return slogan;
+	}
+
+	public void setSlogan(String slogan) {
+		this.slogan = slogan;
 	}
 
 	@Override

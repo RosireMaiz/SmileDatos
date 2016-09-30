@@ -22,8 +22,8 @@ public class Padrino {
 	private Persona fkPersona;
 	private Long fechaIngreso;
 	private Long fechaSalida;
-	private Integer monto;
-	private Integer estatusPostulado;
+	private float monto;
+	private Integer estatusPadrino;
 
 	public Padrino() {
 		super();
@@ -43,7 +43,7 @@ public class Padrino {
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
 		this.monto = monto;
-		this.estatusPostulado = estatusPostulado;
+		this.estatusPadrino = estatusPostulado;
 	}
 
 	@Id
@@ -97,31 +97,31 @@ public class Padrino {
 	}
 
 	@Column(name = "monto")
-	public Integer getMonto() {
+	public float getMonto() {
 		return monto;
 	}
 
-	public void setMonto(Integer monto) {
+	public void setMonto(float monto) {
 		this.monto = monto;
 	}
 
-	@Column(name = "estatus_postulado")
+	@Column(name = "estatus_padrino")
 	public Integer getEstatusPostulado() {
-		return estatusPostulado;
+		return estatusPadrino;
 	}
 
 	public void setEstatusPostulado(Integer estatusPostulado) {
-		this.estatusPostulado = estatusPostulado;
+		this.estatusPadrino = estatusPostulado;
 	}
 
 	@Transient
 	public EstatusPostuladoEnum getEstatusPostuladoEnum() {
-		return EstatusPostuladoEnum.values()[this.estatusPostulado];
+		return EstatusPostuladoEnum.values()[this.estatusPadrino];
 	}
 
 	public void setEstatusPostuladoEnum(
 			EstatusPostuladoEnum estatusPostuladoEnum) {
-		this.estatusPostulado = estatusPostuladoEnum.ordinal();
+		this.estatusPadrino = estatusPostuladoEnum.ordinal();
 	}
 
 	@Override

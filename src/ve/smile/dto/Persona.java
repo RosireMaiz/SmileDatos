@@ -25,7 +25,6 @@ public class Persona {
 	private String nombre;
 	private String apellido;
 	private Multimedia fkMultimedia;
-	private Integer edad;
 	private Integer sexo;
 	private Long fechaNacimiento;
 	private String telefono1;
@@ -52,7 +51,7 @@ public class Persona {
 
 	public Persona(Ciudad fkCiudad, Usuario fkUsuario, String identificacion,
 			String nombre, String apellido, Multimedia fkMultimedia,
-			Integer edad, Integer sexo, Long fechaNacimiento, String telefono1,
+			 Integer sexo, Long fechaNacimiento, String telefono1,
 			String telefono2, String direccion, String twitter,
 			String instagram, String linkedin, String sitioWeb, String fax,
 			Character estatus, String correo, String facebook,
@@ -64,7 +63,6 @@ public class Persona {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.fkMultimedia = fkMultimedia;
-		this.edad = edad;
 		this.sexo = sexo;
 		this.fechaNacimiento = fechaNacimiento;
 		this.telefono1 = telefono1;
@@ -148,15 +146,6 @@ public class Persona {
 
 	public void setFkMultimedia(Multimedia fkMultimedia) {
 		this.fkMultimedia = fkMultimedia;
-	}
-
-	@Column(name = "edad")
-	public Integer getEdad() {
-		return edad;
-	}
-
-	public void setEdad(Integer edad) {
-		this.edad = edad;
 	}
 
 	@Column(name = "sexo")

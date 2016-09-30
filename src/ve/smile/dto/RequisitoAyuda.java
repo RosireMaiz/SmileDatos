@@ -17,7 +17,7 @@ public class RequisitoAyuda {
 	private Integer idRequisitoAyuda;
 	private Ayuda fkAyuda;
 	private Requisito fkRequisito;
-
+	private Integer cantidad;
 	public RequisitoAyuda() {
 		super();
 	}
@@ -65,6 +65,14 @@ public class RequisitoAyuda {
 
 	public void setFkRequisito(Requisito fkRequisito) {
 		this.fkRequisito = fkRequisito;
+	}
+	@Column(name="cantidad")
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public class ComentarioAlbum {
 	private Album fkAlbum;
 	private Comunidad fkComunidad;
 	private String comentario;
-	private Character estatusComentario;
+	private Integer estatusComentario;
 
 	public ComentarioAlbum() {
 		super();
@@ -33,7 +33,7 @@ public class ComentarioAlbum {
 			Album fkAlbum,
 			Comunidad fkComunidad,
 			String comentario,
-			Character estatusComentario) {
+			Integer estatusComentario) {
 		super();
 		this.fkAlbum = fkAlbum;
 		this.fkComunidad = fkComunidad;
@@ -83,11 +83,11 @@ public class ComentarioAlbum {
 	}
 
 	@Column(name="estatus_comentario")
-	public Character getEstatusComentario() {
+	public Integer getEstatusComentario() {
 		return estatusComentario;
 	}
 
-	public void setEstatusComentario(Character estatusComentario) {
+	public void setEstatusComentario(Integer estatusComentario) {
 		this.estatusComentario = estatusComentario;
 	}
 

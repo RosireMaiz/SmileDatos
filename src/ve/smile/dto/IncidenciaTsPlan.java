@@ -19,7 +19,7 @@ public class IncidenciaTsPlan {
 	private TsPlan fkTsPlan;
 	private Motivo fkMotivo;
 	private Long fecha;
-	private String contenido;
+	private String observacion;
 
 	public IncidenciaTsPlan() {
 		super();
@@ -41,7 +41,7 @@ public class IncidenciaTsPlan {
 		this.fkTsPlan = fkTsPlan;
 		this.fkMotivo = fkMotivo;
 		this.fecha = fecha;
-		this.contenido = contenido;
+		this.observacion = contenido;
 	}
 
 	@Id
@@ -95,13 +95,13 @@ public class IncidenciaTsPlan {
 		this.fecha = fecha;
 	}
 
-	@Column(name="contenido")
-	public String getContenido() {
-		return contenido;
+	@Column(name="observacion")
+	public String getObservacion() {
+		return observacion;
 	}
 
-	public void setContenido(String contenido) {
-		this.contenido = contenido;
+	public void setObservacion(String contenido) {
+		this.observacion = contenido;
 	}
 
 	@Override

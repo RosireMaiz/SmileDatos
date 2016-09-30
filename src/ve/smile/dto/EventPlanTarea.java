@@ -22,7 +22,7 @@ public class EventPlanTarea {
 	private Long fechaPlanificada;
 	private Long fechaEjecutada;
 	private String observacion;
-	private String estatusTarea;
+	private Integer estatusTarea;
 
 	public EventPlanTarea() {
 		super();
@@ -35,7 +35,7 @@ public class EventPlanTarea {
 
 	public EventPlanTarea(Tarea fkTarea, EventoPlanificado fkEventoPlanificado,
 			Motivo fkMotivo, Directorio fkDirectorio, Long fechaPlanificada,
-			Long fechaEjecutada, String observacion, String estatusTarea) {
+			Long fechaEjecutada, String observacion, Integer estatusTarea) {
 		super();
 		this.fkTarea = fkTarea;
 		this.fkEventoPlanificado = fkEventoPlanificado;
@@ -127,11 +127,11 @@ public class EventPlanTarea {
 	}
 
 	@Column(name = "estatus_tarea")
-	public String getEstatusTarea() {
+	public Integer getEstatusTarea() {
 		return estatusTarea;
 	}
 
-	public void setEstatusTarea(String estatusTarea) {
+	public void setEstatusTarea(Integer estatusTarea) {
 		this.estatusTarea = estatusTarea;
 	}
 

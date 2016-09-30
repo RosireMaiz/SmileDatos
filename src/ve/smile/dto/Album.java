@@ -17,7 +17,7 @@ public class Album {
 	private String descripcion;
 	private Long fechaPublicacion;
 	private Long fechaExpiracion;
-	private Character estatus;
+	private Integer estatusAlbum;
 
 	public Album() {
 		super();
@@ -33,13 +33,13 @@ public class Album {
 			String descripcion,
 			Long fechaPublicacion,
 			Long fechaExpiracion,
-			Character estatus) {
+			Integer estatusAlbum) {
 		super();
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.fechaPublicacion = fechaPublicacion;
 		this.fechaExpiracion = fechaExpiracion;
-		this.estatus = estatus;
+		this.estatusAlbum = estatusAlbum;
 	}
 
 	@Id
@@ -90,13 +90,13 @@ public class Album {
 		this.fechaExpiracion = fechaExpiracion;
 	}
 
-	@Column(name="estatus")
-	public Character getEstatus() {
-		return estatus;
+	@Column(name="estatus_album")
+	public Integer getEstatusAlbum() {
+		return estatusAlbum;
 	}
 
-	public void setEstatus(Character estatus) {
-		this.estatus = estatus;
+	public void setEstatusAlbum(Integer estatusAlbum) {
+		this.estatusAlbum = estatusAlbum;
 	}
 
 	@Override

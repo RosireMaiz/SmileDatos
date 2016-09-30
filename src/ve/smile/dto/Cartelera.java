@@ -25,6 +25,7 @@ public class Cartelera {
 	private Long fechaInicio;
 	private Long fechaFinalizacion;
 	private Integer tipoCartelera;
+	private Integer estatusCartelera;
 
 	public Cartelera() {
 		super();
@@ -125,6 +126,14 @@ public class Cartelera {
 
 	public void setTipoCarteleraEnum(TipoCarteleraEnum tipoCarteleraEnum) {
 		this.tipoCartelera = tipoCarteleraEnum.ordinal();
+	}
+	@Column(name="estatus_cartelera")
+	public Integer getEstatusCartelera() {
+		return estatusCartelera;
+	}
+
+	public void setEstatusCartelera(Integer estatusCartelera) {
+		this.estatusCartelera = estatusCartelera;
 	}
 
 	@Override

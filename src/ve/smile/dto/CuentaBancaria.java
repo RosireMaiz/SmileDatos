@@ -23,8 +23,9 @@ public class CuentaBancaria {
 	private String titular;
 	private String identificacionTitular;
 	private String correoTitular;
-	private Integer tipoCuenta;
-
+	private Integer propietario;
+	private String tipoCuenta;
+	
 	public CuentaBancaria() {
 		super();
 	}
@@ -43,7 +44,7 @@ public class CuentaBancaria {
 		this.titular = titular;
 		this.identificacionTitular = identificacionTitular;
 		this.correoTitular = correoTitular;
-		this.tipoCuenta = tipoCuenta;
+		this.propietario = tipoCuenta;
 	}
 
 	@Id
@@ -104,22 +105,30 @@ public class CuentaBancaria {
 		this.correoTitular = correoTitular;
 	}
 
-	@Column(name = "tipo_cuenta")
-	public Integer getTipoCuenta() {
-		return tipoCuenta;
+	@Column(name = "propietario")
+	public Integer getPropietario() {
+		return propietario;
 	}
 
-	public void setTipoCuenta(Integer tipoCuenta) {
-		this.tipoCuenta = tipoCuenta;
+	public void setPropietario(Integer tipoCuenta) {
+		this.propietario = tipoCuenta;
 	}
 
 	@Transient
-	public TipoCuentaEnum getTipoCuentaEnum() {
-		return TipoCuentaEnum.values()[this.tipoCuenta];
+	public TipoCuentaEnum getPropietarioEnum() {
+		return TipoCuentaEnum.values()[this.propietario];
 	}
 
-	public void setTipoCuentaEnum(TipoCuentaEnum tipoCuentaEnum) {
-		this.tipoCuenta = tipoCuentaEnum.ordinal();
+	public void setPropietarioEnum(TipoCuentaEnum tipoCuentaEnum) {
+		this.propietario = tipoCuentaEnum.ordinal();
+	}
+
+	public String getTipoCuenta() {
+		return tipoCuenta;
+	}
+
+	public void setTipoCuenta(String tipoCuenta) {
+		this.tipoCuenta = tipoCuenta;
 	}
 
 	@Override

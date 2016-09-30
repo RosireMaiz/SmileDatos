@@ -22,7 +22,7 @@ public class NotificacionUsuario {
 	private Usuario fkUsuario;
 	private Long fecha;
 	private Integer referenciaGenericoId;
-	private Character estatusNotificacion;
+	private Integer estatusNotificacion;
 	private Integer tipoReferenciaNotificacion;
 	private String contenido;
 
@@ -36,7 +36,7 @@ public class NotificacionUsuario {
 	}
 
 	public NotificacionUsuario(Usuario fkUsuario, Long fecha,
-			Integer referenciaGenericoId, Character estatusNotificacion,
+			Integer referenciaGenericoId, Integer estatusNotificacion,
 			Integer tipoReferenciaNotificacion, String contenido) {
 		super();
 		this.fkUsuario = fkUsuario;
@@ -88,11 +88,11 @@ public class NotificacionUsuario {
 	}
 
 	@Column(name = "estatus_notificacion")
-	public Character getEstatusNotificacion() {
+	public Integer getEstatusNotificacion() {
 		return estatusNotificacion;
 	}
 
-	public void setEstatusNotificacion(Character estatusNotificacion) {
+	public void setEstatusNotificacion(Integer estatusNotificacion) {
 		this.estatusNotificacion = estatusNotificacion;
 	}
 
