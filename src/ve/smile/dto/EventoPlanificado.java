@@ -189,7 +189,7 @@ public class EventoPlanificado {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus_evento")
+	@Column(name="estatus_evento_planificado")
 	public Integer getEstatusEvento() {
 		return estatusEvento;
 	}
