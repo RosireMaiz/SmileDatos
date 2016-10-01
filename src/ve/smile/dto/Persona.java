@@ -39,6 +39,7 @@ public class Persona {
 	private String correo;
 	private String facebook;
 	private Integer tipoPersona;
+	private Integer rolMovil;
 
 	public Persona() {
 		super();
@@ -169,6 +170,14 @@ public class Persona {
 	@Column(name = "telefono_1")
 	public String getTelefono1() {
 		return telefono1;
+	}
+	@Column(name = "rol_movil")
+	public Integer getRolMovil() {
+		return rolMovil;
+	}
+
+	public void setRolMovil(Integer rolMovil) {
+		this.rolMovil = rolMovil;
 	}
 
 	public void setTelefono1(String telefono1) {

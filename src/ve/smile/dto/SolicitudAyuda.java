@@ -27,6 +27,7 @@ public class SolicitudAyuda {
 	private Integer urgencia;
 	private Integer estatusSolicitud;
 	private String observacion;
+	private String titulo;
 
 	public SolicitudAyuda() {
 		super();
@@ -155,6 +156,14 @@ public class SolicitudAyuda {
 
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+	@Column(name = "titulo")
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	@Override
