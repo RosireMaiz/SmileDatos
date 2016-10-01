@@ -106,18 +106,19 @@ public class Padrino {
 		this.monto = monto;
 	}
 
-	@Column(name = "estatus_padrino")
-	public Integer getEstatusPostulado() {
-		return estatusPadrino;
-	}
-
-	public void setEstatusPostulado(Integer estatusPostulado) {
-		this.estatusPadrino = estatusPostulado;
-	}
-
+	
 	@Transient
 	public EstatusPadrinoEnum getEstatusPadrinoEnum() {
 		return EstatusPadrinoEnum.values()[this.estatusPadrino];
+	}
+	
+	@Column(name = "estatus_padrino")
+	public Integer getEstatusPadrino() {
+		return estatusPadrino;
+	}
+
+	public void setEstatusPadrino(Integer estatusPadrino) {
+		this.estatusPadrino = estatusPadrino;
 	}
 
 	public void setEstatusPostuladoEnum(
