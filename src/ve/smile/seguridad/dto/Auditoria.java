@@ -25,8 +25,6 @@ public class Auditoria {
 	private Sesion fkSesion;
 	private Tabla fkTabla;
 	private Integer accion;
-	private MetodoDao fkMetodoDao;
-	private MetodoDao fkMetodoDaoRaiz;
 	private Integer registroId;
 	private String datos;
 	private Long fecha;
@@ -40,21 +38,12 @@ public class Auditoria {
 		this.idAuditoria = idAuditoria;
 	}
 
-	public Auditoria(
-			Sesion fkSesion,
-			Tabla fkTabla,
-			Integer accion,
-			MetodoDao fkMetodoDao,
-			MetodoDao fkMetodoDaoRaiz,
-			Integer registroId,
-			String datos,
-			Long fecha) {
+	public Auditoria(Sesion fkSesion, Tabla fkTabla, Integer accion,
+			Integer registroId, String datos, Long fecha) {
 		super();
 		this.fkSesion = fkSesion;
 		this.fkTabla = fkTabla;
 		this.accion = accion;
-		this.fkMetodoDao = fkMetodoDao;
-		this.fkMetodoDaoRaiz = fkMetodoDaoRaiz;
 		this.registroId = registroId;
 		this.datos = datos;
 		this.fecha = fecha;
@@ -63,7 +52,7 @@ public class Auditoria {
 	@Id
 	@SequenceGenerator(name = "tb_auditoria_sequence", sequenceName = "public.tb_auditoria_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_auditoria_sequence")
-	@Column(name="id_auditoria")
+	@Column(name = "id_auditoria")
 	public Integer getIdAuditoria() {
 		return idAuditoria;
 	}
@@ -92,7 +81,7 @@ public class Auditoria {
 		this.fkTabla = fkTabla;
 	}
 
-	@Column(name="accion")
+	@Column(name = "accion")
 	public Integer getAccion() {
 		return accion;
 	}
@@ -100,7 +89,7 @@ public class Auditoria {
 	public void setAccion(Integer accion) {
 		this.accion = accion;
 	}
-	
+
 	@JsonIgnore
 	@Transient
 	public AccionEnum getAccionEnum() {
@@ -111,27 +100,7 @@ public class Auditoria {
 		this.accion = accionEnum.ordinal();
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "fk_metodo_dao", nullable = false)
-	public MetodoDao getFkMetodoDao() {
-		return fkMetodoDao;
-	}
-
-	public void setFkMetodoDao(MetodoDao fkMetodoDao) {
-		this.fkMetodoDao = fkMetodoDao;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "fk_metodo_dao_raiz", nullable = false)	
-	public MetodoDao getFkMetodoDaoRaiz() {
-		return fkMetodoDaoRaiz;
-	}
-
-	public void setFkMetodoDaoRaiz(MetodoDao fkMetodoDaoRaiz) {
-		this.fkMetodoDaoRaiz = fkMetodoDaoRaiz;
-	}
-
-	@Column(name="registro_id")
+	@Column(name = "registro_id")
 	public Integer getRegistroId() {
 		return registroId;
 	}
@@ -140,7 +109,7 @@ public class Auditoria {
 		this.registroId = registroId;
 	}
 
-	@Column(name="datos")
+	@Column(name = "datos")
 	public String getDatos() {
 		return datos;
 	}
@@ -149,7 +118,7 @@ public class Auditoria {
 		this.datos = datos;
 	}
 
-	@Column(name="fecha")
+	@Column(name = "fecha")
 	public Long getFecha() {
 		return fecha;
 	}
@@ -162,7 +131,8 @@ public class Auditoria {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idAuditoria == null) ? 0 : idAuditoria.hashCode());
+		result = prime * result
+				+ ((idAuditoria == null) ? 0 : idAuditoria.hashCode());
 		return result;
 	}
 
@@ -180,10 +150,10 @@ public class Auditoria {
 		Auditoria other = (Auditoria) obj;
 		if (idAuditoria == null) {
 			return false;
-		} 
+		}
 		if (!idAuditoria.equals(other.idAuditoria)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

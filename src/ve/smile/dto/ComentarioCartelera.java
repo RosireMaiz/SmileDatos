@@ -11,7 +11,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import ve.smile.enums.EstatusComentarioAlbumEnum;
 import ve.smile.enums.EstatusComentarioCarteleraEnum;
 
 @Table(name = "tb_comentario_cartelera")
@@ -34,12 +33,8 @@ public class ComentarioCartelera {
 		this.idComentarioCartelera = idComentarioCartelera;
 	}
 
-	public ComentarioCartelera(
-			Cartelera fkCartelera,
-			Comunidad fkComunidad,
-			String comentario,
-			Integer puntuacion,
-			Integer estatusComentario) {
+	public ComentarioCartelera(Cartelera fkCartelera, Comunidad fkComunidad,
+			String comentario, Integer puntuacion, Integer estatusComentario) {
 		super();
 		this.fkCartelera = fkCartelera;
 		this.fkComunidad = fkComunidad;
@@ -51,7 +46,7 @@ public class ComentarioCartelera {
 	@Id
 	@SequenceGenerator(name = "tb_comentario_cartelera_sequence", sequenceName = "public.tb_comentario_cartelera_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_comentario_cartelera_sequence")
-	@Column(name="id_comentario_cartelera")
+	@Column(name = "id_comentario_cartelera")
 	public Integer getIdComentarioCartelera() {
 		return idComentarioCartelera;
 	}
@@ -80,7 +75,7 @@ public class ComentarioCartelera {
 		this.fkComunidad = fkComunidad;
 	}
 
-	@Column(name="comentario")
+	@Column(name = "comentario")
 	public String getComentario() {
 		return comentario;
 	}
@@ -89,7 +84,7 @@ public class ComentarioCartelera {
 		this.comentario = comentario;
 	}
 
-	@Column(name="puntuacion")
+	@Column(name = "puntuacion")
 	public Integer getPuntuacion() {
 		return puntuacion;
 	}
@@ -98,7 +93,7 @@ public class ComentarioCartelera {
 		this.puntuacion = puntuacion;
 	}
 
-	@Column(name="estatus_comentario")
+	@Column(name = "estatus_comentario")
 	public Integer getEstatusComentario() {
 		return estatusComentario;
 	}
@@ -106,13 +101,14 @@ public class ComentarioCartelera {
 	public void setEstatusComentario(Integer estatusComentario) {
 		this.estatusComentario = estatusComentario;
 	}
-	
+
 	@Transient
 	public EstatusComentarioCarteleraEnum getEstatusComentarioCarteleraEnum() {
 		return EstatusComentarioCarteleraEnum.values()[this.estatusComentario];
 	}
 
-	public void setEstatusComentarioCarteleraEnum(EstatusComentarioCarteleraEnum estatusComentarioCarteleraEnum) {
+	public void setEstatusComentarioCarteleraEnum(
+			EstatusComentarioCarteleraEnum estatusComentarioCarteleraEnum) {
 		this.estatusComentario = estatusComentarioCarteleraEnum.ordinal();
 	}
 
@@ -120,7 +116,10 @@ public class ComentarioCartelera {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idComentarioCartelera == null) ? 0 : idComentarioCartelera.hashCode());
+		result = prime
+				* result
+				+ ((idComentarioCartelera == null) ? 0 : idComentarioCartelera
+						.hashCode());
 		return result;
 	}
 
@@ -138,10 +137,10 @@ public class ComentarioCartelera {
 		ComentarioCartelera other = (ComentarioCartelera) obj;
 		if (idComentarioCartelera == null) {
 			return false;
-		} 
+		}
 		if (!idComentarioCartelera.equals(other.idComentarioCartelera)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

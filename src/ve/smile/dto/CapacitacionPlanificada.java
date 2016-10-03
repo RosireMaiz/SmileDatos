@@ -11,7 +11,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import ve.smile.enums.EstatusAlbumEnum;
 import ve.smile.enums.EstatusCapacitacionPlanificadaEnum;
 
 @Table(name = "tb_capacitacion_planificada")
@@ -38,16 +37,10 @@ public class CapacitacionPlanificada {
 		this.idCapacitacionPlanificada = idCapacitacionPlanificada;
 	}
 
-	public CapacitacionPlanificada(
-			String descripcion,
-			Capacitacion fkCapacitacion,
-			Directorio fkDirectorio,
-			Long fechaPlanificada,
-			Long fechaEjecutada,
-			Motivo fkMotivo,
-			boolean ejecucion,
-			String observacion,
-			Integer estatus) {
+	public CapacitacionPlanificada(String descripcion,
+			Capacitacion fkCapacitacion, Directorio fkDirectorio,
+			Long fechaPlanificada, Long fechaEjecutada, Motivo fkMotivo,
+			boolean ejecucion, String observacion, Integer estatus) {
 		super();
 		this.descripcion = descripcion;
 		this.fkCapacitacion = fkCapacitacion;
@@ -63,7 +56,7 @@ public class CapacitacionPlanificada {
 	@Id
 	@SequenceGenerator(name = "tb_capacitacion_planificada_sequence", sequenceName = "public.tb_capacitacion_planificada_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_capacitacion_planificada_sequence")
-	@Column(name="id_capacitacion_planificada")
+	@Column(name = "id_capacitacion_planificada")
 	public Integer getIdCapacitacionPlanificada() {
 		return idCapacitacionPlanificada;
 	}
@@ -72,7 +65,7 @@ public class CapacitacionPlanificada {
 		this.idCapacitacionPlanificada = idCapacitacionPlanificada;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -101,7 +94,7 @@ public class CapacitacionPlanificada {
 		this.fkDirectorio = fkDirectorio;
 	}
 
-	@Column(name="fecha_planificada")
+	@Column(name = "fecha_planificada")
 	public Long getFechaPlanificada() {
 		return fechaPlanificada;
 	}
@@ -110,7 +103,7 @@ public class CapacitacionPlanificada {
 		this.fechaPlanificada = fechaPlanificada;
 	}
 
-	@Column(name="fecha_ejecutada")
+	@Column(name = "fecha_ejecutada")
 	public Long getFechaEjecutada() {
 		return fechaEjecutada;
 	}
@@ -120,7 +113,7 @@ public class CapacitacionPlanificada {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}
@@ -129,7 +122,7 @@ public class CapacitacionPlanificada {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="ejecucion")
+	@Column(name = "ejecucion")
 	public boolean getEjecucion() {
 		return ejecucion;
 	}
@@ -138,7 +131,7 @@ public class CapacitacionPlanificada {
 		this.ejecucion = ejecucion;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -147,7 +140,7 @@ public class CapacitacionPlanificada {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus_capacitacion_planificada")
+	@Column(name = "estatus_capacitacion_planificada")
 	public Integer getEstatusCapacitacionPlanificada() {
 		return estatusCapacintacionPlanificada;
 	}
@@ -161,15 +154,20 @@ public class CapacitacionPlanificada {
 		return EstatusCapacitacionPlanificadaEnum.values()[this.estatusCapacintacionPlanificada];
 	}
 
-	public void setEstatusCapacitacionPlanificada(EstatusCapacitacionPlanificadaEnum estatusCapacitacionPlanificadaEnum) {
-		this.estatusCapacintacionPlanificada = estatusCapacitacionPlanificadaEnum.ordinal();
+	public void setEstatusCapacitacionPlanificada(
+			EstatusCapacitacionPlanificadaEnum estatusCapacitacionPlanificadaEnum) {
+		this.estatusCapacintacionPlanificada = estatusCapacitacionPlanificadaEnum
+				.ordinal();
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idCapacitacionPlanificada == null) ? 0 : idCapacitacionPlanificada.hashCode());
+		result = prime
+				* result
+				+ ((idCapacitacionPlanificada == null) ? 0
+						: idCapacitacionPlanificada.hashCode());
 		return result;
 	}
 
@@ -187,10 +185,10 @@ public class CapacitacionPlanificada {
 		CapacitacionPlanificada other = (CapacitacionPlanificada) obj;
 		if (idCapacitacionPlanificada == null) {
 			return false;
-		} 
+		}
 		if (!idCapacitacionPlanificada.equals(other.idCapacitacionPlanificada)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

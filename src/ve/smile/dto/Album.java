@@ -10,7 +10,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusAlbumEnum;
-import ve.smile.enums.TipoPersonaEnum;
 
 @Table(name = "tb_album")
 @Entity
@@ -32,12 +31,8 @@ public class Album {
 		this.idAlbum = idAlbum;
 	}
 
-	public Album(
-			String titulo,
-			String descripcion,
-			Long fechaPublicacion,
-			Long fechaExpiracion,
-			Integer estatusAlbum) {
+	public Album(String titulo, String descripcion, Long fechaPublicacion,
+			Long fechaExpiracion, Integer estatusAlbum) {
 		super();
 		this.titulo = titulo;
 		this.descripcion = descripcion;
@@ -49,7 +44,7 @@ public class Album {
 	@Id
 	@SequenceGenerator(name = "tb_album_sequence", sequenceName = "public.tb_album_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_album_sequence")
-	@Column(name="id_album")
+	@Column(name = "id_album")
 	public Integer getIdAlbum() {
 		return idAlbum;
 	}
@@ -58,7 +53,7 @@ public class Album {
 		this.idAlbum = idAlbum;
 	}
 
-	@Column(name="titulo")
+	@Column(name = "titulo")
 	public String getTitulo() {
 		return titulo;
 	}
@@ -67,7 +62,7 @@ public class Album {
 		this.titulo = titulo;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -76,7 +71,7 @@ public class Album {
 		this.descripcion = descripcion;
 	}
 
-	@Column(name="fecha_publicacion")
+	@Column(name = "fecha_publicacion")
 	public Long getFechaPublicacion() {
 		return fechaPublicacion;
 	}
@@ -85,7 +80,7 @@ public class Album {
 		this.fechaPublicacion = fechaPublicacion;
 	}
 
-	@Column(name="fecha_expiracion")
+	@Column(name = "fecha_expiracion")
 	public Long getFechaExpiracion() {
 		return fechaExpiracion;
 	}
@@ -94,7 +89,7 @@ public class Album {
 		this.fechaExpiracion = fechaExpiracion;
 	}
 
-	@Column(name="estatus_album")
+	@Column(name = "estatus_album")
 	public Integer getEstatusAlbum() {
 		return estatusAlbum;
 	}
@@ -102,6 +97,7 @@ public class Album {
 	public void setEstatusAlbum(Integer estatusAlbum) {
 		this.estatusAlbum = estatusAlbum;
 	}
+
 	@Transient
 	public EstatusAlbumEnum getEstatusAlbumEnum() {
 		return EstatusAlbumEnum.values()[this.estatusAlbum];
@@ -110,6 +106,7 @@ public class Album {
 	public void setEstatusAlbumEnum(EstatusAlbumEnum estatusAlbumEnum) {
 		this.estatusAlbum = estatusAlbumEnum.ordinal();
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -132,10 +129,10 @@ public class Album {
 		Album other = (Album) obj;
 		if (idAlbum == null) {
 			return false;
-		} 
+		}
 		if (!idAlbum.equals(other.idAlbum)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

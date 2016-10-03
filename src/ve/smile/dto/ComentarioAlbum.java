@@ -11,7 +11,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import ve.smile.enums.EstatusCapacitacionPlanificadaEnum;
 import ve.smile.enums.EstatusComentarioAlbumEnum;
 
 @Table(name = "tb_comentario_album")
@@ -22,6 +21,7 @@ public class ComentarioAlbum {
 	private Album fkAlbum;
 	private Comunidad fkComunidad;
 	private String comentario;
+	private Integer puntuacion;
 	private Integer estatusComentario;
 
 	public ComentarioAlbum() {
@@ -33,11 +33,8 @@ public class ComentarioAlbum {
 		this.idComentarioAlbum = idComentarioAlbum;
 	}
 
-	public ComentarioAlbum(
-			Album fkAlbum,
-			Comunidad fkComunidad,
-			String comentario,
-			Integer estatusComentario) {
+	public ComentarioAlbum(Album fkAlbum, Comunidad fkComunidad,
+			String comentario, Integer estatusComentario) {
 		super();
 		this.fkAlbum = fkAlbum;
 		this.fkComunidad = fkComunidad;
@@ -48,7 +45,7 @@ public class ComentarioAlbum {
 	@Id
 	@SequenceGenerator(name = "tb_comentario_album_sequence", sequenceName = "public.tb_comentario_album_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_comentario_album_sequence")
-	@Column(name="id_comentario_album")
+	@Column(name = "id_comentario_album")
 	public Integer getIdComentarioAlbum() {
 		return idComentarioAlbum;
 	}
@@ -77,7 +74,7 @@ public class ComentarioAlbum {
 		this.fkComunidad = fkComunidad;
 	}
 
-	@Column(name="comentario")
+	@Column(name = "comentario")
 	public String getComentario() {
 		return comentario;
 	}
@@ -86,7 +83,16 @@ public class ComentarioAlbum {
 		this.comentario = comentario;
 	}
 
-	@Column(name="estatus_comentario")
+	@Column(name = "puntuacion")
+	public Integer getPuntuacion() {
+		return puntuacion;
+	}
+
+	public void setPuntuacion(Integer puntuacion) {
+		this.puntuacion = puntuacion;
+	}
+
+	@Column(name = "estatus_comentario")
 	public Integer getEstatusComentario() {
 		return estatusComentario;
 	}
@@ -94,14 +100,14 @@ public class ComentarioAlbum {
 	public void setEstatusComentario(Integer estatusComentario) {
 		this.estatusComentario = estatusComentario;
 	}
-	
-	
+
 	@Transient
 	public EstatusComentarioAlbumEnum getEstatusComentarioAlbumEnum() {
 		return EstatusComentarioAlbumEnum.values()[this.estatusComentario];
 	}
 
-	public void setEstatusComentarioAlbumEnum(EstatusComentarioAlbumEnum estatusComentarioAlbumEnum) {
+	public void setEstatusComentarioAlbumEnum(
+			EstatusComentarioAlbumEnum estatusComentarioAlbumEnum) {
 		this.estatusComentario = estatusComentarioAlbumEnum.ordinal();
 	}
 
@@ -109,7 +115,10 @@ public class ComentarioAlbum {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idComentarioAlbum == null) ? 0 : idComentarioAlbum.hashCode());
+		result = prime
+				* result
+				+ ((idComentarioAlbum == null) ? 0 : idComentarioAlbum
+						.hashCode());
 		return result;
 	}
 
@@ -127,10 +136,10 @@ public class ComentarioAlbum {
 		ComentarioAlbum other = (ComentarioAlbum) obj;
 		if (idComentarioAlbum == null) {
 			return false;
-		} 
+		}
 		if (!idComentarioAlbum.equals(other.idComentarioAlbum)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

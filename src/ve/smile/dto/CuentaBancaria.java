@@ -25,7 +25,7 @@ public class CuentaBancaria {
 	private String correoTitular;
 	private Integer propietario;
 	private String tipoCuenta;
-	
+
 	public CuentaBancaria() {
 		super();
 	}
@@ -123,6 +123,7 @@ public class CuentaBancaria {
 		this.propietario = tipoCuentaEnum.ordinal();
 	}
 
+	@Column(name = "tipo_cuenta")
 	public String getTipoCuenta() {
 		return tipoCuenta;
 	}
