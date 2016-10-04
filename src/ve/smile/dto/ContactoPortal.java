@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusContactoEnum;
+import ve.smile.enums.ProcedenciaEnum;
 import ve.smile.enums.TipoContactoPortalEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,6 +28,7 @@ public class ContactoPortal {
 	private Long fecha;
 	private Integer tipoContactoPortal;
 	private Integer estatusContacto;
+	private Integer procedencia;
 
 	public ContactoPortal() {
 		super();
@@ -37,13 +39,9 @@ public class ContactoPortal {
 		this.idContactoPortal = idContactoPortal;
 	}
 
-	public ContactoPortal(
-			Comunidad fkComunidad,
-			ClasificadorSugerencia fkClasificadorSugerencia,
-			String contenido,
-			Long fecha,
-			Integer tipoContactoPortal,
-			Integer estatusContacto) {
+	public ContactoPortal(Comunidad fkComunidad,
+			ClasificadorSugerencia fkClasificadorSugerencia, String contenido,
+			Long fecha, Integer tipoContactoPortal, Integer estatusContacto) {
 		super();
 		this.fkComunidad = fkComunidad;
 		this.fkClasificadorSugerencia = fkClasificadorSugerencia;
@@ -56,7 +54,7 @@ public class ContactoPortal {
 	@Id
 	@SequenceGenerator(name = "tb_contacto_portal_sequence", sequenceName = "public.tb_contacto_portal_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_contacto_portal_sequence")
-	@Column(name="id_contacto_portal")
+	@Column(name = "id_contacto_portal")
 	public Integer getIdContactoPortal() {
 		return idContactoPortal;
 	}
@@ -81,11 +79,12 @@ public class ContactoPortal {
 		return fkClasificadorSugerencia;
 	}
 
-	public void setFkClasificadorSugerencia(ClasificadorSugerencia fkClasificadorSugerencia) {
+	public void setFkClasificadorSugerencia(
+			ClasificadorSugerencia fkClasificadorSugerencia) {
 		this.fkClasificadorSugerencia = fkClasificadorSugerencia;
 	}
 
-	@Column(name="contenido")
+	@Column(name = "contenido")
 	public String getContenido() {
 		return contenido;
 	}
@@ -94,7 +93,7 @@ public class ContactoPortal {
 		this.contenido = contenido;
 	}
 
-	@Column(name="fecha")
+	@Column(name = "fecha")
 	public Long getFecha() {
 		return fecha;
 	}
@@ -103,7 +102,7 @@ public class ContactoPortal {
 		this.fecha = fecha;
 	}
 
-	@Column(name="tipo_contacto_portal")
+	@Column(name = "tipo_contacto_portal")
 	public Integer getTipoContactoPortal() {
 		return tipoContactoPortal;
 	}
@@ -118,17 +117,26 @@ public class ContactoPortal {
 		return TipoContactoPortalEnum.values()[this.tipoContactoPortal];
 	}
 
-	public void setTipoContactoPortalEnum(TipoContactoPortalEnum tipoContactoPortalEnum) {
+	public void setTipoContactoPortalEnum(
+			TipoContactoPortalEnum tipoContactoPortalEnum) {
 		this.tipoContactoPortal = tipoContactoPortalEnum.ordinal();
 	}
 
-	@Column(name="estatus_contacto")
+	@Column(name = "estatus_contacto")
 	public Integer getEstatusContacto() {
 		return estatusContacto;
 	}
 
 	public void setEstatusContacto(Integer estatusContacto) {
 		this.estatusContacto = estatusContacto;
+	}
+
+	public Integer getProcedencia() {
+		return procedencia;
+	}
+
+	public void setProcedencia(Integer procedencia) {
+		this.procedencia = procedencia;
 	}
 
 	@Transient
@@ -140,11 +148,22 @@ public class ContactoPortal {
 		this.estatusContacto = estatusContactoEnum.ordinal();
 	}
 
+	@Transient
+	public ProcedenciaEnum getProcedeciaEnum() {
+		return ProcedenciaEnum.values()[this.procedencia];
+	}
+
+	public void setProcedeciaEnum(ProcedenciaEnum procedenciaEnum) {
+		this.procedencia = procedenciaEnum.ordinal();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idContactoPortal == null) ? 0 : idContactoPortal.hashCode());
+		result = prime
+				* result
+				+ ((idContactoPortal == null) ? 0 : idContactoPortal.hashCode());
 		return result;
 	}
 
@@ -162,10 +181,10 @@ public class ContactoPortal {
 		ContactoPortal other = (ContactoPortal) obj;
 		if (idContactoPortal == null) {
 			return false;
-		} 
+		}
 		if (!idContactoPortal.equals(other.idContactoPortal)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 
