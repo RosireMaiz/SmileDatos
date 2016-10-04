@@ -18,7 +18,7 @@ public class TsPlan {
 	private String descripcion;
 	private Album fkAlbum;
 	private Directorio fkDirectorio;
-	private TsPlan fkTsPlan;
+	private TrabajoSocial fkTrabajoSocial;
 	private Motivo fkMotivo;
 	private Persona fkPersona;
 	private Long fechaPlanificada;
@@ -38,25 +38,16 @@ public class TsPlan {
 		this.idTsPlan = idTsPlan;
 	}
 
-	public TsPlan(
-			String descripcion,
-			Album fkAlbum,
-			Directorio fkDirectorio,
-			TsPlan fkTsPlan,
-			Motivo fkMotivo,
-			Persona fkPersona,
-			Long fechaPlanificada,
-			Long fechaEjecutada,
-			String observacion,
-			Multimedia fkMultimedia,
-			Long fechaInicioIncidencia,
-			Long fechaFinIncidencia,
-			boolean publicoPortal) {
+	public TsPlan(String descripcion, Album fkAlbum, Directorio fkDirectorio,
+			TrabajoSocial fkTrabajoSocial, Motivo fkMotivo, Persona fkPersona,
+			Long fechaPlanificada, Long fechaEjecutada, String observacion,
+			Multimedia fkMultimedia, Long fechaInicioIncidencia,
+			Long fechaFinIncidencia, boolean publicoPortal) {
 		super();
 		this.descripcion = descripcion;
 		this.fkAlbum = fkAlbum;
 		this.fkDirectorio = fkDirectorio;
-		this.fkTsPlan = fkTsPlan;
+		this.fkTrabajoSocial = fkTrabajoSocial;
 		this.fkMotivo = fkMotivo;
 		this.fkPersona = fkPersona;
 		this.fechaPlanificada = fechaPlanificada;
@@ -71,7 +62,7 @@ public class TsPlan {
 	@Id
 	@SequenceGenerator(name = "tb_ts_plan_sequence", sequenceName = "public.tb_ts_plan_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_ts_plan_sequence")
-	@Column(name="id_ts_plan")
+	@Column(name = "id_ts_plan")
 	public Integer getIdTsPlan() {
 		return idTsPlan;
 	}
@@ -80,7 +71,7 @@ public class TsPlan {
 		this.idTsPlan = idTsPlan;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -110,17 +101,17 @@ public class TsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_ts_plan", nullable = false)
-	public TsPlan getFkTsPlan() {
-		return fkTsPlan;
+	@JoinColumn(name = "fk_trabajo_social", nullable = false)
+	public TrabajoSocial getFkTrabajoSocial() {
+		return fkTrabajoSocial;
 	}
 
-	public void setFkTsPlan(TsPlan fkTsPlan) {
-		this.fkTsPlan = fkTsPlan;
+	public void setFkTrabajoSocial(TrabajoSocial fkTrabajoSocial) {
+		this.fkTrabajoSocial = fkTrabajoSocial;
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}
@@ -139,7 +130,7 @@ public class TsPlan {
 		this.fkPersona = fkPersona;
 	}
 
-	@Column(name="fecha_planificada")
+	@Column(name = "fecha_planificada")
 	public Long getFechaPlanificada() {
 		return fechaPlanificada;
 	}
@@ -148,7 +139,7 @@ public class TsPlan {
 		this.fechaPlanificada = fechaPlanificada;
 	}
 
-	@Column(name="fecha_ejecutada")
+	@Column(name = "fecha_ejecutada")
 	public Long getFechaEjecutada() {
 		return fechaEjecutada;
 	}
@@ -157,7 +148,7 @@ public class TsPlan {
 		this.fechaEjecutada = fechaEjecutada;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -176,7 +167,7 @@ public class TsPlan {
 		this.fkMultimedia = fkMultimedia;
 	}
 
-	@Column(name="fecha_inicio_incidencia")
+	@Column(name = "fecha_inicio_incidencia")
 	public Long getFechaInicioIncidencia() {
 		return fechaInicioIncidencia;
 	}
@@ -185,7 +176,7 @@ public class TsPlan {
 		this.fechaInicioIncidencia = fechaInicioIncidencia;
 	}
 
-	@Column(name="fecha_fin_incidencia")
+	@Column(name = "fecha_fin_incidencia")
 	public Long getFechaFinIncidencia() {
 		return fechaFinIncidencia;
 	}
@@ -194,7 +185,7 @@ public class TsPlan {
 		this.fechaFinIncidencia = fechaFinIncidencia;
 	}
 
-	@Column(name="publico_portal")
+	@Column(name = "publico_portal")
 	public boolean getPublicoPortal() {
 		return publicoPortal;
 	}
@@ -207,7 +198,8 @@ public class TsPlan {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idTsPlan == null) ? 0 : idTsPlan.hashCode());
+		result = prime * result
+				+ ((idTsPlan == null) ? 0 : idTsPlan.hashCode());
 		return result;
 	}
 
@@ -225,10 +217,10 @@ public class TsPlan {
 		TsPlan other = (TsPlan) obj;
 		if (idTsPlan == null) {
 			return false;
-		} 
+		}
 		if (!idTsPlan.equals(other.idTsPlan)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 
