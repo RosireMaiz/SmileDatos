@@ -3,7 +3,7 @@ package ve.smile.enums;
 import java.util.ResourceBundle;
 
 public enum PropiedadEnum {
-	ORGANIZACION, DONATIVO;
+	ORGANIZACION, DONATIVO, INFO_MOVIL, APK;
 
 	@Override
 	public String toString() {
