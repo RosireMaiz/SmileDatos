@@ -1,11 +1,15 @@
 package ve.smile.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -20,6 +24,8 @@ public class Trabajador {
 	private Long fechaIngreso;
 	private Long fechaEgreso;
 
+	private List<Fortaleza> fortalezas;
+	
 	public Trabajador() {
 		super();
 	}
@@ -71,6 +77,18 @@ public class Trabajador {
 
 	public void setFkCargo(Cargo fkCargo) {
 		this.fkCargo = fkCargo;
+	}
+	
+	@ManyToMany
+	@JoinTable(name = "tb_trabajador_fortaleza", 
+				joinColumns = @JoinColumn(name = "fk_trabajador"), 
+				inverseJoinColumns = @JoinColumn(name = "fk_fortaleza"))
+	public List<Fortaleza> getFortalezas() {
+		return fortalezas;
+	}
+
+	public void setFortalezas(List<Fortaleza> fortalezas) {
+		this.fortalezas = fortalezas;
 	}
 
 	@Column(name="fecha_ingreso")
