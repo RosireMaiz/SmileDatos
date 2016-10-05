@@ -11,7 +11,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import ve.smile.enums.EventPlanTareaEnum;
 import ve.smile.enums.EventPlanTareaTrabajadorEnum;
 
 @Table(name = "tb_event_plan_tarea_trabajador")
@@ -35,13 +34,9 @@ public class EventPlanTareaTrabajador {
 		this.idEventPlanTareaTrabajador = idEventPlanTareaTrabajador;
 	}
 
-	public EventPlanTareaTrabajador(
-			EventPlanTarea fkEventPlanTarea,
-			Trabajador fkTrabajador,
-			Motivo fkMotivo,
-			boolean ejecucion,
-			String observacion,
-			Integer estatusTarea) {
+	public EventPlanTareaTrabajador(EventPlanTarea fkEventPlanTarea,
+			Trabajador fkTrabajador, Motivo fkMotivo, boolean ejecucion,
+			String observacion, Integer estatusTarea) {
 		super();
 		this.fkEventPlanTarea = fkEventPlanTarea;
 		this.fkTrabajador = fkTrabajador;
@@ -54,7 +49,7 @@ public class EventPlanTareaTrabajador {
 	@Id
 	@SequenceGenerator(name = "tb_event_plan_tarea_trabajador_sequence", sequenceName = "public.tb_event_plan_tarea_trabajador_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_event_plan_tarea_trabajador_sequence")
-	@Column(name="id_event_plan_tarea_trabajador")
+	@Column(name = "id_event_plan_tarea_trabajador")
 	public Integer getIdEventPlanTareaTrabajador() {
 		return idEventPlanTareaTrabajador;
 	}
@@ -93,7 +88,7 @@ public class EventPlanTareaTrabajador {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="ejecucion")
+	@Column(name = "ejecucion")
 	public boolean getEjecucion() {
 		return ejecucion;
 	}
@@ -102,7 +97,7 @@ public class EventPlanTareaTrabajador {
 		this.ejecucion = ejecucion;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -111,7 +106,7 @@ public class EventPlanTareaTrabajador {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus_tarea")
+	@Column(name = "estatus_tarea")
 	public Integer getEstatusTarea() {
 		return estatusTarea;
 	}
@@ -119,13 +114,14 @@ public class EventPlanTareaTrabajador {
 	public void setEstatusTarea(Integer estatusTarea) {
 		this.estatusTarea = estatusTarea;
 	}
-	
+
 	@Transient
 	public EventPlanTareaTrabajadorEnum getEventPlanTareaTrabajadorEnum() {
 		return EventPlanTareaTrabajadorEnum.values()[this.estatusTarea];
 	}
 
-	public void setEventPlanTareaTrabajadorEnum(EventPlanTareaTrabajadorEnum eventPlanTareaTrabajadorEnum) {
+	public void setEventPlanTareaTrabajadorEnum(
+			EventPlanTareaTrabajadorEnum eventPlanTareaTrabajadorEnum) {
 		this.estatusTarea = eventPlanTareaTrabajadorEnum.ordinal();
 	}
 
@@ -133,7 +129,10 @@ public class EventPlanTareaTrabajador {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idEventPlanTareaTrabajador == null) ? 0 : idEventPlanTareaTrabajador.hashCode());
+		result = prime
+				* result
+				+ ((idEventPlanTareaTrabajador == null) ? 0
+						: idEventPlanTareaTrabajador.hashCode());
 		return result;
 	}
 
@@ -151,10 +150,11 @@ public class EventPlanTareaTrabajador {
 		EventPlanTareaTrabajador other = (EventPlanTareaTrabajador) obj;
 		if (idEventPlanTareaTrabajador == null) {
 			return false;
-		} 
-		if (!idEventPlanTareaTrabajador.equals(other.idEventPlanTareaTrabajador)) {
+		}
+		if (!idEventPlanTareaTrabajador
+				.equals(other.idEventPlanTareaTrabajador)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

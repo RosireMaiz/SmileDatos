@@ -19,8 +19,8 @@ public class IndicadorEventoPlanTarea {
 	private Indicador fkIndicador;
 	private Motivo fkMotivo;
 	private String observacion;
-	private String valorEsperado;
-	private String valorReal;
+	private Double valorEsperado;
+	private Double valorReal;
 
 	public IndicadorEventoPlanTarea() {
 		super();
@@ -31,13 +31,9 @@ public class IndicadorEventoPlanTarea {
 		this.idIndicadorEventoPlanTarea = idIndicadorEventoPlanTarea;
 	}
 
-	public IndicadorEventoPlanTarea(
-			EventPlanTarea fkEventPlanTarea,
-			Indicador fkIndicador,
-			Motivo fkMotivo,
-			String observacion,
-			String valorEsperado,
-			String valorReal) {
+	public IndicadorEventoPlanTarea(EventPlanTarea fkEventPlanTarea,
+			Indicador fkIndicador, Motivo fkMotivo, String observacion,
+			Double valorEsperado, Double valorReal) {
 		super();
 		this.fkEventPlanTarea = fkEventPlanTarea;
 		this.fkIndicador = fkIndicador;
@@ -50,7 +46,7 @@ public class IndicadorEventoPlanTarea {
 	@Id
 	@SequenceGenerator(name = "tb_indicador_evento_plan_tarea_sequence", sequenceName = "public.tb_indicador_evento_plan_tarea_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_indicador_evento_plan_tarea_sequence")
-	@Column(name="id_indicador_evento_plan_tarea")
+	@Column(name = "id_indicador_evento_plan_tarea")
 	public Integer getIdIndicadorEventoPlanTarea() {
 		return idIndicadorEventoPlanTarea;
 	}
@@ -89,7 +85,7 @@ public class IndicadorEventoPlanTarea {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -98,21 +94,21 @@ public class IndicadorEventoPlanTarea {
 		this.observacion = observacion;
 	}
 
-	@Column(name="valor_esperado")
-	public String getValorEsperado() {
+	@Column(name = "valor_esperado")
+	public Double getValorEsperado() {
 		return valorEsperado;
 	}
 
-	public void setValorEsperado(String valorEsperado) {
+	public void setValorEsperado(Double valorEsperado) {
 		this.valorEsperado = valorEsperado;
 	}
 
-	@Column(name="valor_real")
-	public String getValorReal() {
+	@Column(name = "valor_real")
+	public Double getValorReal() {
 		return valorReal;
 	}
 
-	public void setValorReal(String valorReal) {
+	public void setValorReal(Double valorReal) {
 		this.valorReal = valorReal;
 	}
 
@@ -120,7 +116,10 @@ public class IndicadorEventoPlanTarea {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idIndicadorEventoPlanTarea == null) ? 0 : idIndicadorEventoPlanTarea.hashCode());
+		result = prime
+				* result
+				+ ((idIndicadorEventoPlanTarea == null) ? 0
+						: idIndicadorEventoPlanTarea.hashCode());
 		return result;
 	}
 
@@ -138,10 +137,11 @@ public class IndicadorEventoPlanTarea {
 		IndicadorEventoPlanTarea other = (IndicadorEventoPlanTarea) obj;
 		if (idIndicadorEventoPlanTarea == null) {
 			return false;
-		} 
-		if (!idIndicadorEventoPlanTarea.equals(other.idIndicadorEventoPlanTarea)) {
+		}
+		if (!idIndicadorEventoPlanTarea
+				.equals(other.idIndicadorEventoPlanTarea)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

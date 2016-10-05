@@ -19,8 +19,8 @@ public class IndicadorTsPlan {
 	private Indicador fkIndicador;
 	private Motivo fkMotivo;
 	private String observacion;
-	private String valorEsperado;
-	private String valorReal;
+	private Double valorEsperado;
+	private Double valorReal;
 
 	public IndicadorTsPlan() {
 		super();
@@ -31,13 +31,9 @@ public class IndicadorTsPlan {
 		this.idIndicadorTsPlan = idIndicadorTsPlan;
 	}
 
-	public IndicadorTsPlan(
-			TsPlan fkTsPlan,
-			Indicador fkIndicador,
-			Motivo fkMotivo,
-			String observacion,
-			String valorEsperado,
-			String valorReal) {
+	public IndicadorTsPlan(TsPlan fkTsPlan, Indicador fkIndicador,
+			Motivo fkMotivo, String observacion, Double valorEsperado,
+			Double valorReal) {
 		super();
 		this.fkTsPlan = fkTsPlan;
 		this.fkIndicador = fkIndicador;
@@ -50,7 +46,7 @@ public class IndicadorTsPlan {
 	@Id
 	@SequenceGenerator(name = "tb_indicador_ts_plan_sequence", sequenceName = "public.tb_indicador_ts_plan_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_indicador_ts_plan_sequence")
-	@Column(name="id_indicador_ts_plan")
+	@Column(name = "id_indicador_ts_plan")
 	public Integer getIdIndicadorTsPlan() {
 		return idIndicadorTsPlan;
 	}
@@ -89,7 +85,7 @@ public class IndicadorTsPlan {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -98,21 +94,21 @@ public class IndicadorTsPlan {
 		this.observacion = observacion;
 	}
 
-	@Column(name="valor_esperado")
-	public String getValorEsperado() {
+	@Column(name = "valor_esperado")
+	public Double getValorEsperado() {
 		return valorEsperado;
 	}
 
-	public void setValorEsperado(String valorEsperado) {
+	public void setValorEsperado(Double valorEsperado) {
 		this.valorEsperado = valorEsperado;
 	}
 
-	@Column(name="valor_real")
-	public String getValorReal() {
+	@Column(name = "valor_real")
+	public Double getValorReal() {
 		return valorReal;
 	}
 
-	public void setValorReal(String valorReal) {
+	public void setValorReal(Double valorReal) {
 		this.valorReal = valorReal;
 	}
 
@@ -120,7 +116,10 @@ public class IndicadorTsPlan {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idIndicadorTsPlan == null) ? 0 : idIndicadorTsPlan.hashCode());
+		result = prime
+				* result
+				+ ((idIndicadorTsPlan == null) ? 0 : idIndicadorTsPlan
+						.hashCode());
 		return result;
 	}
 
@@ -138,10 +137,10 @@ public class IndicadorTsPlan {
 		IndicadorTsPlan other = (IndicadorTsPlan) obj;
 		if (idIndicadorTsPlan == null) {
 			return false;
-		} 
+		}
 		if (!idIndicadorTsPlan.equals(other.idIndicadorTsPlan)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

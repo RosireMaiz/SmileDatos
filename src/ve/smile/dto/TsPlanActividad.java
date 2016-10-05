@@ -22,7 +22,7 @@ public class TsPlanActividad {
 	private Long fechaEjecutada;
 	private Directorio fkDirectorio;
 	private String observacion;
-	private Character estatusActividad;
+	private Integer estatusActividad;
 
 	public TsPlanActividad() {
 		super();
@@ -33,15 +33,10 @@ public class TsPlanActividad {
 		this.idTsPlanActividad = idTsPlanActividad;
 	}
 
-	public TsPlanActividad(
-			Actividad fkActividad,
-			TsPlan fkTsPlan,
-			Motivo fkMotivo,
-			Long fechaPlanificada,
-			Long fechaEjecutada,
-			Directorio fkDirectorio,
-			String observacion,
-			Character estatusActividad) {
+	public TsPlanActividad(Actividad fkActividad, TsPlan fkTsPlan,
+			Motivo fkMotivo, Long fechaPlanificada, Long fechaEjecutada,
+			Directorio fkDirectorio, String observacion,
+			Integer estatusActividad) {
 		super();
 		this.fkActividad = fkActividad;
 		this.fkTsPlan = fkTsPlan;
@@ -56,7 +51,7 @@ public class TsPlanActividad {
 	@Id
 	@SequenceGenerator(name = "tb_ts_plan_actividad_sequence", sequenceName = "public.tb_ts_plan_actividad_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_ts_plan_actividad_sequence")
-	@Column(name="id_ts_plan_actividad")
+	@Column(name = "id_ts_plan_actividad")
 	public Integer getIdTsPlanActividad() {
 		return idTsPlanActividad;
 	}
@@ -95,7 +90,7 @@ public class TsPlanActividad {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="fecha_planificada")
+	@Column(name = "fecha_planificada")
 	public Long getFechaPlanificada() {
 		return fechaPlanificada;
 	}
@@ -104,7 +99,7 @@ public class TsPlanActividad {
 		this.fechaPlanificada = fechaPlanificada;
 	}
 
-	@Column(name="fecha_ejecutada")
+	@Column(name = "fecha_ejecutada")
 	public Long getFechaEjecutada() {
 		return fechaEjecutada;
 	}
@@ -123,7 +118,7 @@ public class TsPlanActividad {
 		this.fkDirectorio = fkDirectorio;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -132,12 +127,12 @@ public class TsPlanActividad {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus_actividad")
-	public Character getEstatusActividad() {
+	@Column(name = "estatus_actividad")
+	public Integer getEstatusActividad() {
 		return estatusActividad;
 	}
 
-	public void setEstatusActividad(Character estatusActividad) {
+	public void setEstatusActividad(Integer estatusActividad) {
 		this.estatusActividad = estatusActividad;
 	}
 
@@ -145,7 +140,10 @@ public class TsPlanActividad {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idTsPlanActividad == null) ? 0 : idTsPlanActividad.hashCode());
+		result = prime
+				* result
+				+ ((idTsPlanActividad == null) ? 0 : idTsPlanActividad
+						.hashCode());
 		return result;
 	}
 
@@ -163,10 +161,10 @@ public class TsPlanActividad {
 		TsPlanActividad other = (TsPlanActividad) obj;
 		if (idTsPlanActividad == null) {
 			return false;
-		} 
+		}
 		if (!idTsPlanActividad.equals(other.idTsPlanActividad)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

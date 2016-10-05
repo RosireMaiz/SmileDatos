@@ -15,7 +15,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import ve.smile.enums.EventPlanTareaTrabajadorEnum;
 import ve.smile.enums.TipoEventoEnum;
 
 @Table(name = "tb_evento")
@@ -97,6 +96,7 @@ public class Evento {
 	public void setTipoEvento(Integer tipoEvento) {
 		this.tipoEvento = tipoEvento;
 	}
+
 	@Transient
 	public TipoEventoEnum getTipoEventoEnum() {
 		return TipoEventoEnum.values()[this.tipoEvento];
@@ -106,12 +106,8 @@ public class Evento {
 		this.tipoEvento = tipoEventoEnum.ordinal();
 	}
 
-	
-
 	@ManyToMany
-	@JoinTable(name = "tb_plantilla_evento_indicador", 
-				joinColumns = @JoinColumn(name = "fk_evento"), 
-				inverseJoinColumns = @JoinColumn(name = "fk_indicador"))
+	@JoinTable(name = "tb_plantilla_evento_indicador", joinColumns = @JoinColumn(name = "fk_evento"), inverseJoinColumns = @JoinColumn(name = "fk_indicador"))
 	public List<Indicador> getEventoIndicadores() {
 		return eventoIndicadores;
 	}
@@ -121,9 +117,7 @@ public class Evento {
 	}
 
 	@ManyToMany
-	@JoinTable(name = "tb_plantilla_evento_tarea", 
-				joinColumns = @JoinColumn(name = "fk_evento"), 
-				inverseJoinColumns = @JoinColumn(name = "fk_tarea"))
+	@JoinTable(name = "tb_plantilla_evento_tarea", joinColumns = @JoinColumn(name = "fk_evento"), inverseJoinColumns = @JoinColumn(name = "fk_tarea"))
 	public List<Tarea> getEventoTareas() {
 		return eventoTareas;
 	}

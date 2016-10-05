@@ -3,7 +3,7 @@ package ve.smile.enums;
 import java.util.ResourceBundle;
 
 public enum RecepcionEnum {
-	TRANSACCION_BANCARIA, OFICINA, OTRO;
+	TRANSACCION_BANCARIA, OFICINA, EVENTO, OTRO;
 
 	@Override
 	public String toString() {

@@ -12,7 +12,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusEventoPlanificadoEnum;
-import ve.smile.enums.TipoPersonaEnum;
 
 @Table(name = "tb_evento_planificado")
 @Entity
@@ -42,19 +41,11 @@ public class EventoPlanificado {
 		this.idEventoPlanificado = idEventoPlanificado;
 	}
 
-	public EventoPlanificado(
-			Album fkAlbum,
-			Directorio fkDirectorio,
-			Evento fkEvento,
-			Motivo fkMotivo,
-			Persona fkPersona,
-			Long fechaPlanificada,
-			Long fechaEjecutada,
-			Multimedia fkMultimedia,
-			Long fechaInicioIncidencia,
-			Long fechaFinIncidencia,
-			String observacion,
-			Integer estatusEvento,
+	public EventoPlanificado(Album fkAlbum, Directorio fkDirectorio,
+			Evento fkEvento, Motivo fkMotivo, Persona fkPersona,
+			Long fechaPlanificada, Long fechaEjecutada,
+			Multimedia fkMultimedia, Long fechaInicioIncidencia,
+			Long fechaFinIncidencia, String observacion, Integer estatusEvento,
 			boolean publicoPortal) {
 		super();
 		this.fkAlbum = fkAlbum;
@@ -75,7 +66,7 @@ public class EventoPlanificado {
 	@Id
 	@SequenceGenerator(name = "tb_evento_planificado_sequence", sequenceName = "public.tb_evento_planificado_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_evento_planificado_sequence")
-	@Column(name="id_evento_planificado")
+	@Column(name = "id_evento_planificado")
 	public Integer getIdEventoPlanificado() {
 		return idEventoPlanificado;
 	}
@@ -134,7 +125,7 @@ public class EventoPlanificado {
 		this.fkPersona = fkPersona;
 	}
 
-	@Column(name="fecha_planificada")
+	@Column(name = "fecha_planificada")
 	public Long getFechaPlanificada() {
 		return fechaPlanificada;
 	}
@@ -143,7 +134,7 @@ public class EventoPlanificado {
 		this.fechaPlanificada = fechaPlanificada;
 	}
 
-	@Column(name="fecha_ejecutada")
+	@Column(name = "fecha_ejecutada")
 	public Long getFechaEjecutada() {
 		return fechaEjecutada;
 	}
@@ -162,7 +153,7 @@ public class EventoPlanificado {
 		this.fkMultimedia = fkMultimedia;
 	}
 
-	@Column(name="fecha_inicio_incidencia")
+	@Column(name = "fecha_inicio_incidencia")
 	public Long getFechaInicioIncidencia() {
 		return fechaInicioIncidencia;
 	}
@@ -171,7 +162,7 @@ public class EventoPlanificado {
 		this.fechaInicioIncidencia = fechaInicioIncidencia;
 	}
 
-	@Column(name="fecha_fin_incidencia")
+	@Column(name = "fecha_fin_incidencia")
 	public Long getFechaFinIncidencia() {
 		return fechaFinIncidencia;
 	}
@@ -180,7 +171,7 @@ public class EventoPlanificado {
 		this.fechaFinIncidencia = fechaFinIncidencia;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -189,7 +180,7 @@ public class EventoPlanificado {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus_evento_planificado")
+	@Column(name = "estatus_evento_planificado")
 	public Integer getEstatusEvento() {
 		return estatusEvento;
 	}
@@ -198,7 +189,7 @@ public class EventoPlanificado {
 		this.estatusEvento = estatusEvento;
 	}
 
-	@Column(name="publico_portal")
+	@Column(name = "publico_portal")
 	public boolean getPublicoPortal() {
 		return publicoPortal;
 	}
@@ -212,14 +203,19 @@ public class EventoPlanificado {
 		return EstatusEventoPlanificadoEnum.values()[this.estatusEvento];
 	}
 
-	public void setEstatusEventoPlanificadoEnum(EstatusEventoPlanificadoEnum estatusEventoPlanificadoEnum) {
+	public void setEstatusEventoPlanificadoEnum(
+			EstatusEventoPlanificadoEnum estatusEventoPlanificadoEnum) {
 		this.estatusEvento = estatusEventoPlanificadoEnum.ordinal();
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idEventoPlanificado == null) ? 0 : idEventoPlanificado.hashCode());
+		result = prime
+				* result
+				+ ((idEventoPlanificado == null) ? 0 : idEventoPlanificado
+						.hashCode());
 		return result;
 	}
 
@@ -237,10 +233,10 @@ public class EventoPlanificado {
 		EventoPlanificado other = (EventoPlanificado) obj;
 		if (idEventoPlanificado == null) {
 			return false;
-		} 
+		}
 		if (!idEventoPlanificado.equals(other.idEventoPlanificado)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

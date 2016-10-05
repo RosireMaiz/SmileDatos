@@ -16,8 +16,8 @@ public class Colaborador {
 
 	private Integer idColaborador;
 	private Persona fkPersona;
-	private String fechaIngreso;
-	private String fechaEgreso;
+	private Long fechaIngreso;
+	private Long fechaEgreso;
 
 	public Colaborador() {
 		super();
@@ -28,10 +28,7 @@ public class Colaborador {
 		this.idColaborador = idColaborador;
 	}
 
-	public Colaborador(
-			Persona fkPersona,
-			String fechaIngreso,
-			String fechaEgreso) {
+	public Colaborador(Persona fkPersona, Long fechaIngreso, Long fechaEgreso) {
 		super();
 		this.fkPersona = fkPersona;
 		this.fechaIngreso = fechaIngreso;
@@ -41,7 +38,7 @@ public class Colaborador {
 	@Id
 	@SequenceGenerator(name = "tb_colaborador_sequence", sequenceName = "public.tb_colaborador_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_colaborador_sequence")
-	@Column(name="id_colaborador")
+	@Column(name = "id_colaborador")
 	public Integer getIdColaborador() {
 		return idColaborador;
 	}
@@ -60,21 +57,21 @@ public class Colaborador {
 		this.fkPersona = fkPersona;
 	}
 
-	@Column(name="fecha_ingreso")
-	public String getFechaIngreso() {
+	@Column(name = "fecha_ingreso")
+	public Long getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(String fechaIngreso) {
+	public void setFechaIngreso(Long fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	@Column(name="fecha_egreso")
-	public String getFechaEgreso() {
+	@Column(name = "fecha_egreso")
+	public Long getFechaEgreso() {
 		return fechaEgreso;
 	}
 
-	public void setFechaEgreso(String fechaEgreso) {
+	public void setFechaEgreso(Long fechaEgreso) {
 		this.fechaEgreso = fechaEgreso;
 	}
 
@@ -82,7 +79,8 @@ public class Colaborador {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idColaborador == null) ? 0 : idColaborador.hashCode());
+		result = prime * result
+				+ ((idColaborador == null) ? 0 : idColaborador.hashCode());
 		return result;
 	}
 
@@ -100,10 +98,10 @@ public class Colaborador {
 		Colaborador other = (Colaborador) obj;
 		if (idColaborador == null) {
 			return false;
-		} 
+		}
 		if (!idColaborador.equals(other.idColaborador)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

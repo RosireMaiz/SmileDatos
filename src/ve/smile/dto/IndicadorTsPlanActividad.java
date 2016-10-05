@@ -19,8 +19,8 @@ public class IndicadorTsPlanActividad {
 	private Indicador fkIndicador;
 	private Motivo fkMotivo;
 	private String observacion;
-	private String valorEsperado;
-	private String valorReal;
+	private Double valorEsperado;
+	private Double valorReal;
 
 	public IndicadorTsPlanActividad() {
 		super();
@@ -36,8 +36,8 @@ public class IndicadorTsPlanActividad {
 			Indicador fkIndicador,
 			Motivo fkMotivo,
 			String observacion,
-			String valorEsperado,
-			String valorReal) {
+			Double valorEsperado,
+			Double valorReal) {
 		super();
 		this.fkTsPlanActividad = fkTsPlanActividad;
 		this.fkIndicador = fkIndicador;
@@ -99,20 +99,20 @@ public class IndicadorTsPlanActividad {
 	}
 
 	@Column(name="valor_esperado")
-	public String getValorEsperado() {
+	public Double getValorEsperado() {
 		return valorEsperado;
 	}
 
-	public void setValorEsperado(String valorEsperado) {
+	public void setValorEsperado(Double valorEsperado) {
 		this.valorEsperado = valorEsperado;
 	}
 
 	@Column(name="valor_real")
-	public String getValorReal() {
+	public Double getValorReal() {
 		return valorReal;
 	}
 
-	public void setValorReal(String valorReal) {
+	public void setValorReal(Double valorReal) {
 		this.valorReal = valorReal;
 	}
 
