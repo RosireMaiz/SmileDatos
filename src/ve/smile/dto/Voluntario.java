@@ -1,11 +1,15 @@
 package ve.smile.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -24,6 +28,10 @@ public class Voluntario {
 	private Long fechaIngreso;
 	private Long fechaEgreso;
 	private Integer estatusVoluntario;
+	
+	private List<Fortaleza> fortalezas;
+	private List<Profesion> profesiones;
+	private List<ClasificadorVoluntario> clasificaciones;
 
 	public Voluntario() {
 		super();
@@ -100,6 +108,51 @@ public class Voluntario {
 	public void setEstatusVoluntarioEnum(
 			EstatusVoluntarioEnum estatusVoluntarioEnum) {
 		this.estatusVoluntario = estatusVoluntarioEnum.ordinal();
+	}
+	
+	// FORTALEZAS
+	@ManyToMany
+	@JoinTable(name = "tb_voluntario_fortaleza", joinColumns = @JoinColumn(name = "fk_voluntario"), 
+				inverseJoinColumns = @JoinColumn(name = "fk_fortaleza"))
+	
+	public List<Fortaleza> getFortalezas()
+	{
+		return fortalezas;
+	}
+
+	public void setFortalezas(List<Fortaleza> fortalezas)
+	{
+		this.fortalezas = fortalezas;
+	}
+	
+	// PROFESIONES
+	@ManyToMany
+	@JoinTable(name = "tb_voluntario_profesion", joinColumns = @JoinColumn(name = "fk_voluntario"), 
+				inverseJoinColumns = @JoinColumn(name = "fk_profesion"))
+	
+	public List<Profesion> getProfesiones()
+	{
+		return profesiones;
+	}
+
+	public void setProfesiones(List<Profesion> profesiones)
+	{
+		this.profesiones = profesiones;
+	}
+	
+	// CLASIFICACIONES
+	@ManyToMany
+	@JoinTable(name = "tb_voluntario_clasificado", joinColumns = @JoinColumn(name = "fk_voluntario"), 
+				inverseJoinColumns = @JoinColumn(name = "fk_clasificador_voluntario"))
+		
+	public List<ClasificadorVoluntario> getClasificaciones()
+	{
+		return clasificaciones;
+	}
+
+	public void setClasificaciones(List<ClasificadorVoluntario> clasificaciones)
+	{
+		this.clasificaciones = clasificaciones;
 	}
 
 	@Override

@@ -19,5 +19,15 @@ public class FortalezaDAO extends BaseDAO<Fortaleza> {
 
 		return query.getResultList();
 	}
+	
+	// FORTALEZAS POR VOLUNTARIO
+	@SuppressWarnings("unchecked")
+	public List<Fortaleza> findByVoluntario(Integer idVoluntario)
+	{
+		String ql = "SELECT tf.fkFortaleza FROM VoluntarioFortaleza tf WHERE tf.fkVoluntario.idVoluntario = ?1 ORDER BY tf.fkFortaleza.idFortaleza";
+		Query query = createQuery(ql);
+		query.setParameter(1, idVoluntario);
+		return query.getResultList();
+	}
 
 }
