@@ -90,7 +90,7 @@ public class EstudioSocioEconomico {
 	}
 
 	@Column(name = "fecha_ejecutada")
-	public Long getFechaEjutada() {
+	public Long getFechaEjecutada() {
 		return fechaEjecutada;
 	}
 
