@@ -10,14 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusVoluntarioEnum;
-
-
 
 @Table(name = "tb_voluntario")
 @Entity
@@ -28,10 +27,13 @@ public class Voluntario {
 	private Long fechaIngreso;
 	private Long fechaEgreso;
 	private Integer estatusVoluntario;
-	
+
 	private List<Fortaleza> fortalezas;
 	private List<Profesion> profesiones;
 	private List<ClasificadorVoluntario> clasificaciones;
+
+	private Motivo fkMotivo;
+	private String observacion;
 
 	public Voluntario() {
 		super();
@@ -43,12 +45,14 @@ public class Voluntario {
 	}
 
 	public Voluntario(Persona fkPersona, Long fechaIngreso, Long fechaEgreso,
-			Integer estatusPostulado) {
+			Integer estatusPostulado, Motivo fkMotivo, String observacion) {
 		super();
 		this.fkPersona = fkPersona;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaEgreso = fechaEgreso;
 		this.estatusVoluntario = estatusPostulado;
+		this.fkMotivo = fkMotivo;
+		this.observacion = observacion;
 	}
 
 	@Id
@@ -100,6 +104,25 @@ public class Voluntario {
 		this.estatusVoluntario = estatusPostulado;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = true)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
+	}
+
+	@Column(name = "observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
 	@Transient
 	public EstatusVoluntarioEnum getEstatusVoluntarioEnum() {
 		return EstatusVoluntarioEnum.values()[this.estatusVoluntario];
@@ -109,49 +132,37 @@ public class Voluntario {
 			EstatusVoluntarioEnum estatusVoluntarioEnum) {
 		this.estatusVoluntario = estatusVoluntarioEnum.ordinal();
 	}
-	
+
 	// FORTALEZAS
 	@ManyToMany
-	@JoinTable(name = "tb_voluntario_fortaleza", joinColumns = @JoinColumn(name = "fk_voluntario"), 
-				inverseJoinColumns = @JoinColumn(name = "fk_fortaleza"))
-	
-	public List<Fortaleza> getFortalezas()
-	{
+	@JoinTable(name = "tb_voluntario_fortaleza", joinColumns = @JoinColumn(name = "fk_voluntario"), inverseJoinColumns = @JoinColumn(name = "fk_fortaleza"))
+	public List<Fortaleza> getFortalezas() {
 		return fortalezas;
 	}
 
-	public void setFortalezas(List<Fortaleza> fortalezas)
-	{
+	public void setFortalezas(List<Fortaleza> fortalezas) {
 		this.fortalezas = fortalezas;
 	}
-	
+
 	// PROFESIONES
 	@ManyToMany
-	@JoinTable(name = "tb_voluntario_profesion", joinColumns = @JoinColumn(name = "fk_voluntario"), 
-				inverseJoinColumns = @JoinColumn(name = "fk_profesion"))
-	
-	public List<Profesion> getProfesiones()
-	{
+	@JoinTable(name = "tb_voluntario_profesion", joinColumns = @JoinColumn(name = "fk_voluntario"), inverseJoinColumns = @JoinColumn(name = "fk_profesion"))
+	public List<Profesion> getProfesiones() {
 		return profesiones;
 	}
 
-	public void setProfesiones(List<Profesion> profesiones)
-	{
+	public void setProfesiones(List<Profesion> profesiones) {
 		this.profesiones = profesiones;
 	}
-	
+
 	// CLASIFICACIONES
 	@ManyToMany
-	@JoinTable(name = "tb_voluntario_clasificado", joinColumns = @JoinColumn(name = "fk_voluntario"), 
-				inverseJoinColumns = @JoinColumn(name = "fk_clasificador_voluntario"))
-		
-	public List<ClasificadorVoluntario> getClasificaciones()
-	{
+	@JoinTable(name = "tb_voluntario_clasificado", joinColumns = @JoinColumn(name = "fk_voluntario"), inverseJoinColumns = @JoinColumn(name = "fk_clasificador_voluntario"))
+	public List<ClasificadorVoluntario> getClasificaciones() {
 		return clasificaciones;
 	}
 
-	public void setClasificaciones(List<ClasificadorVoluntario> clasificaciones)
-	{
+	public void setClasificaciones(List<ClasificadorVoluntario> clasificaciones) {
 		this.clasificaciones = clasificaciones;
 	}
 

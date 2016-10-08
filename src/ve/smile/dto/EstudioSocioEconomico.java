@@ -19,6 +19,7 @@ public class EstudioSocioEconomico {
 	private SolicitudAyuda fkSolicitudAyuda;
 	private String resultado;
 	private Long fecha;
+	private Long fechaEjecutada;
 
 	public EstudioSocioEconomico() {
 		super();
@@ -86,6 +87,15 @@ public class EstudioSocioEconomico {
 
 	public void setFecha(Long fecha) {
 		this.fecha = fecha;
+	}
+
+	@Column(name = "fecha_ejecutada")
+	public Long getFechaEjutada() {
+		return fechaEjecutada;
+	}
+
+	public void setFechaEjecutada(Long fechaEjecutada) {
+		this.fechaEjecutada = fechaEjecutada;
 	}
 
 	@Override

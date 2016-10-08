@@ -13,7 +13,6 @@ import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusPadrinoEnum;
 
-
 @Table(name = "tb_padrino")
 @Entity
 public class Padrino {
@@ -26,6 +25,9 @@ public class Padrino {
 	private float monto;
 	private Integer estatusPadrino;
 
+	private Motivo fkMotivo;
+	private String observacion;
+
 	public Padrino() {
 		super();
 	}
@@ -37,7 +39,7 @@ public class Padrino {
 
 	public Padrino(FrecuenciaAporte fkFrecuenciaAporte, Persona fkPersona,
 			Long fechaIngreso, Long fechaSalida, Integer monto,
-			Integer estatusPostulado) {
+			Integer estatusPostulado, Motivo fkMotivo, String observacion) {
 		super();
 		this.fkFrecuenciaAporte = fkFrecuenciaAporte;
 		this.fkPersona = fkPersona;
@@ -45,6 +47,8 @@ public class Padrino {
 		this.fechaSalida = fechaSalida;
 		this.monto = monto;
 		this.estatusPadrino = estatusPostulado;
+		this.fkMotivo = fkMotivo;
+		this.observacion = observacion;
 	}
 
 	@Id
@@ -106,12 +110,6 @@ public class Padrino {
 		this.monto = monto;
 	}
 
-	
-	@Transient
-	public EstatusPadrinoEnum getEstatusPadrinoEnum() {
-		return EstatusPadrinoEnum.values()[this.estatusPadrino];
-	}
-	
 	@Column(name = "estatus_padrino")
 	public Integer getEstatusPadrino() {
 		return estatusPadrino;
@@ -121,8 +119,31 @@ public class Padrino {
 		this.estatusPadrino = estatusPadrino;
 	}
 
-	public void setEstatusPostuladoEnum(
-			EstatusPadrinoEnum estatusPadrinoEnum) {
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = true)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
+	}
+
+	@Column(name = "observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	@Transient
+	public EstatusPadrinoEnum getEstatusPadrinoEnum() {
+		return EstatusPadrinoEnum.values()[this.estatusPadrino];
+	}
+
+	public void setEstatusPostuladoEnum(EstatusPadrinoEnum estatusPadrinoEnum) {
 		this.estatusPadrino = estatusPadrinoEnum.ordinal();
 	}
 

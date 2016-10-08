@@ -19,6 +19,11 @@ public class Colaborador {
 	private Long fechaIngreso;
 	private Long fechaEgreso;
 
+	private Motivo fkMotivo;
+	private String observacion;
+
+	private Integer estatusColaborador;
+
 	public Colaborador() {
 		super();
 	}
@@ -73,6 +78,34 @@ public class Colaborador {
 
 	public void setFechaEgreso(Long fechaEgreso) {
 		this.fechaEgreso = fechaEgreso;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = true)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
+	}
+
+	@Column(name = "observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	@Column(name = "estatus_colaborador")
+	public Integer getEstatusColaborador() {
+		return estatusColaborador;
+	}
+
+	public void setEstatusColaborador(Integer estatusColaborador) {
+		this.estatusColaborador = estatusColaborador;
 	}
 
 	@Override
