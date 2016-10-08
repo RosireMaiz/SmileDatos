@@ -76,7 +76,7 @@ public class Configuracion {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_icon_class", nullable = true)
+	@JoinColumn(name = "fk_icon_sclass", nullable = true)
 	public IconSclass getFkIconClass() {
 		return fkIconSclass;
 	}

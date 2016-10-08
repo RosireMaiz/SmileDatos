@@ -29,6 +29,8 @@ public class SolicitudAyuda {
 	private String observacion;
 	private String titulo;
 
+	private String detalleRechazo;
+
 	public SolicitudAyuda() {
 		super();
 	}
@@ -40,7 +42,7 @@ public class SolicitudAyuda {
 
 	public SolicitudAyuda(Ayuda fkAyuda, Beneficiario fkBeneficiario,
 			Motivo fkMotivo, Long fecha, Character estatus, Integer urgencia,
-			Integer estatusSolicitud, String observacion) {
+			Integer estatusSolicitud, String observacion, String detalleRechazo) {
 		super();
 		this.fkAyuda = fkAyuda;
 		this.fkBeneficiario = fkBeneficiario;
@@ -50,6 +52,7 @@ public class SolicitudAyuda {
 		this.urgencia = urgencia;
 		this.estatusSolicitud = estatusSolicitud;
 		this.observacion = observacion;
+		this.detalleRechazo = detalleRechazo;
 	}
 
 	@Id
@@ -158,9 +161,19 @@ public class SolicitudAyuda {
 		this.observacion = observacion;
 	}
 
+	@Column(name = "detalle_rechazo")
+	public String getDetalleRechazo() {
+		return detalleRechazo;
+	}
+
+	public void setDetalleRechazo(String detalleRechazo) {
+		this.detalleRechazo = detalleRechazo;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
+
 	@Column(name = "titulo")
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;

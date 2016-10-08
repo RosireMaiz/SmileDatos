@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class EstudioSocioEconomico {
 
 	private Integer idEstudioSocioEconomico;
-	private Persona fkPersona;
+	private Trabajador fkTrabajador;
 	private SolicitudAyuda fkSolicitudAyuda;
 	private String resultado;
 	private Long fecha;
@@ -29,13 +29,10 @@ public class EstudioSocioEconomico {
 		this.idEstudioSocioEconomico = idEstudioSocioEconomico;
 	}
 
-	public EstudioSocioEconomico(
-			Persona fkPersona,
-			SolicitudAyuda fkSolicitudAyuda,
-			String resultado,
-			Long fecha) {
+	public EstudioSocioEconomico(Trabajador fkTrabajador,
+			SolicitudAyuda fkSolicitudAyuda, String resultado, Long fecha) {
 		super();
-		this.fkPersona = fkPersona;
+		this.fkTrabajador = fkTrabajador;
 		this.fkSolicitudAyuda = fkSolicitudAyuda;
 		this.resultado = resultado;
 		this.fecha = fecha;
@@ -44,7 +41,7 @@ public class EstudioSocioEconomico {
 	@Id
 	@SequenceGenerator(name = "tb_estudio_socio_economico_sequence", sequenceName = "public.tb_estudio_socio_economico_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_estudio_socio_economico_sequence")
-	@Column(name="id_estudio_socio_economico")
+	@Column(name = "id_estudio_socio_economico")
 	public Integer getIdEstudioSocioEconomico() {
 		return idEstudioSocioEconomico;
 	}
@@ -54,13 +51,13 @@ public class EstudioSocioEconomico {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
-	public Persona getFkPersona() {
-		return fkPersona;
+	@JoinColumn(name = "fk_trabajador", nullable = false)
+	public Trabajador getFkTrabajador() {
+		return fkTrabajador;
 	}
 
-	public void setFkPersona(Persona fkPersona) {
-		this.fkPersona = fkPersona;
+	public void setFkTrabajador(Trabajador fkTrabajador) {
+		this.fkTrabajador = fkTrabajador;
 	}
 
 	@ManyToOne
@@ -73,7 +70,7 @@ public class EstudioSocioEconomico {
 		this.fkSolicitudAyuda = fkSolicitudAyuda;
 	}
 
-	@Column(name="resultado")
+	@Column(name = "resultado")
 	public String getResultado() {
 		return resultado;
 	}
@@ -82,7 +79,7 @@ public class EstudioSocioEconomico {
 		this.resultado = resultado;
 	}
 
-	@Column(name="fecha")
+	@Column(name = "fecha")
 	public Long getFecha() {
 		return fecha;
 	}
@@ -95,7 +92,10 @@ public class EstudioSocioEconomico {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idEstudioSocioEconomico == null) ? 0 : idEstudioSocioEconomico.hashCode());
+		result = prime
+				* result
+				+ ((idEstudioSocioEconomico == null) ? 0
+						: idEstudioSocioEconomico.hashCode());
 		return result;
 	}
 
@@ -113,10 +113,10 @@ public class EstudioSocioEconomico {
 		EstudioSocioEconomico other = (EstudioSocioEconomico) obj;
 		if (idEstudioSocioEconomico == null) {
 			return false;
-		} 
+		}
 		if (!idEstudioSocioEconomico.equals(other.idEstudioSocioEconomico)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 
