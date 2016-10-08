@@ -143,7 +143,7 @@ public class Padrino {
 		return EstatusPadrinoEnum.values()[this.estatusPadrino];
 	}
 
-	public void setEstatusPostuladoEnum(EstatusPadrinoEnum estatusPadrinoEnum) {
+	public void setEstatusPadrinoEnum(EstatusPadrinoEnum estatusPadrinoEnum) {
 		this.estatusPadrino = estatusPadrinoEnum.ordinal();
 	}
 

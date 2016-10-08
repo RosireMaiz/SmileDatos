@@ -135,7 +135,7 @@ public class Trabajador {
 	}
 
 	@Column(name = "estatus_trabajador")
-	public Integer getEstatusPadrino() {
+	public Integer getEstatusTrabajador() {
 		return estatusTrabajador;
 	}
 
@@ -144,11 +144,11 @@ public class Trabajador {
 	}
 
 	@Transient
-	public EstatusPadrinoEnum getEstatusPadrinoEnum() {
+	public EstatusPadrinoEnum getEstatusTrabajadorEnum() {
 		return EstatusPadrinoEnum.values()[this.estatusTrabajador];
 	}
 
-	public void setEstatusPostuladoEnum(
+	public void setEstatusTrabajadorEnum(
 			EstatusTrabajadorEnum estatusTrabajadorEnum) {
 		this.estatusTrabajador = estatusTrabajadorEnum.ordinal();
 	}
