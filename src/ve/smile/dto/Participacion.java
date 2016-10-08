@@ -22,6 +22,9 @@ public class Participacion {
 	private Multimedia fkMultimedia;
 	private String nombre;
 	private String descripcion;
+	private boolean formulario;
+	private Integer tipoFormulario;
+	private String respuesta;
 
 	private List<Requisito> requisitos;
 
@@ -80,6 +83,33 @@ public class Participacion {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	@Column(name = "formulario")
+	public boolean getFormulario() {
+		return formulario;
+	}
+
+	public void setFormulario(boolean formulario) {
+		this.formulario = formulario;
+	}
+
+	@Column(name = "tipo_formulario")
+	public Integer getTipoFormulario() {
+		return tipoFormulario;
+	}
+
+	public void setTipoFormulario(Integer tipoFormulario) {
+		this.tipoFormulario = tipoFormulario;
+	}
+
+	@Column(name = "respuesta")
+	public String getRespuesta() {
+		return respuesta;
+	}
+
+	public void setRespuesta(String respuesta) {
+		this.respuesta = respuesta;
 	}
 
 	@ManyToMany
