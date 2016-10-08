@@ -29,7 +29,8 @@ public class ContactoPortal {
 	private Integer tipoContactoPortal;
 	private Integer estatusContacto;
 	private Integer procedencia;
-
+	private String respuesta;
+	
 	public ContactoPortal() {
 		super();
 	}
@@ -137,6 +138,15 @@ public class ContactoPortal {
 
 	public void setProcedencia(Integer procedencia) {
 		this.procedencia = procedencia;
+	}
+	
+	@Column(name = "respuesta")
+	public String getRespuesta() {
+		return respuesta;
+	}
+
+	public void setRespuesta(String respuesta) {
+		this.respuesta = respuesta;
 	}
 
 	@Transient

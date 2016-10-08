@@ -24,7 +24,6 @@ public class Participacion {
 	private String descripcion;
 	private boolean formulario;
 	private Integer tipoFormulario;
-	private String respuesta;
 
 	private List<Requisito> requisitos;
 
@@ -101,15 +100,6 @@ public class Participacion {
 
 	public void setTipoFormulario(Integer tipoFormulario) {
 		this.tipoFormulario = tipoFormulario;
-	}
-
-	@Column(name = "respuesta")
-	public String getRespuesta() {
-		return respuesta;
-	}
-
-	public void setRespuesta(String respuesta) {
-		this.respuesta = respuesta;
 	}
 
 	@ManyToMany
