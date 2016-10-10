@@ -12,7 +12,7 @@ public class ComentarioAlbumDAO extends BaseDAO<ComentarioAlbum> {
 	@SuppressWarnings("unchecked")
 	public List<ComentarioAlbum> findComentariosAlbum(Integer album,
 			Integer estatusComentario) {
-		String sql = "select e from ComentarioAlbum e where e.fkAlbum.idAlbum = ?1 and e.estatusComentario = ?2";
+		String sql = "select e from ComentarioAlbum e where e.fkAlbum.idAlbum = ?1 and e.estatusComentario <= ?2";
 
 		Query query = createQuery(sql);
 
