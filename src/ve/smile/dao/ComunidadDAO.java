@@ -1,5 +1,6 @@
 package ve.smile.dao;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import lights.core.googlecode.genericdao.dao.jpa.BaseDAO;
@@ -15,6 +16,10 @@ public class ComunidadDAO extends BaseDAO<Comunidad> {
 
 		query.setParameter(1, correo);
 
-		return (Comunidad) query.getSingleResult();
+		try {
+			return (Comunidad) query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 }
