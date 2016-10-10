@@ -1,5 +1,7 @@
 package ve.smile.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -26,6 +29,9 @@ public class EventPlanTarea {
 	private Long fechaEjecutada;
 	private String observacion;
 	private Integer estatusTarea;
+	private List<Indicador> listIndicadors;
+
+	private List<IndicadorEventoPlanTarea> indicadorEventoPlanTareas;
 
 	public EventPlanTarea() {
 		super();
@@ -145,6 +151,25 @@ public class EventPlanTarea {
 
 	public void setEventPlanTareaEnum(EventPlanTareaEnum eventPlanTareaEnum) {
 		this.estatusTarea = eventPlanTareaEnum.ordinal();
+	}
+
+	@Transient
+	public List<Indicador> getListIndicadors() {
+		return listIndicadors;
+	}
+
+	public void setListIndicadors(List<Indicador> listIndicadors) {
+		this.listIndicadors = listIndicadors;
+	}
+
+	@OneToMany(mappedBy = "fkEventPlanTarea")
+	public List<IndicadorEventoPlanTarea> getIndicadorEventoPlanTareas() {
+		return indicadorEventoPlanTareas;
+	}
+
+	public void setIndicadorEventoPlanTareas(
+			List<IndicadorEventoPlanTarea> indicadorEventoPlanTareas) {
+		this.indicadorEventoPlanTareas = indicadorEventoPlanTareas;
 	}
 
 	@Override
