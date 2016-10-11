@@ -29,8 +29,9 @@ public class EventPlanTarea {
 	private Long fechaEjecutada;
 	private String observacion;
 	private Integer estatusTarea;
+	@Transient
 	private List<Indicador> listIndicadors;
-
+	@Transient
 	private List<IndicadorEventoPlanTarea> indicadorEventoPlanTareas;
 
 	public EventPlanTarea() {
@@ -153,7 +154,7 @@ public class EventPlanTarea {
 		this.estatusTarea = eventPlanTareaEnum.ordinal();
 	}
 
-	@Transient
+	
 	public List<Indicador> getListIndicadors() {
 		return listIndicadors;
 	}
@@ -162,7 +163,7 @@ public class EventPlanTarea {
 		this.listIndicadors = listIndicadors;
 	}
 
-	@OneToMany(mappedBy = "fkEventPlanTarea")
+	
 	public List<IndicadorEventoPlanTarea> getIndicadorEventoPlanTareas() {
 		return indicadorEventoPlanTareas;
 	}
