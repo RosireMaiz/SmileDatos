@@ -1,5 +1,8 @@
 package ve.smile.dto;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "tb_ts_plan_actividad")
 @Entity
 public class TsPlanActividad {
@@ -23,6 +31,10 @@ public class TsPlanActividad {
 	private Directorio fkDirectorio;
 	private String observacion;
 	private Integer estatusActividad;
+
+	private List<Indicador> listIndicadors;
+
+	private List<IndicadorTsPlanActividad> indicadorTsPlanActividads;
 
 	public TsPlanActividad() {
 		super();
@@ -81,7 +93,7 @@ public class TsPlanActividad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}
@@ -134,6 +146,46 @@ public class TsPlanActividad {
 
 	public void setEstatusActividad(Integer estatusActividad) {
 		this.estatusActividad = estatusActividad;
+	}
+
+	@Transient
+	public List<Indicador> getListIndicadors() {
+		return listIndicadors;
+	}
+
+	public void setListIndicadors(List<Indicador> listIndicadors) {
+		this.listIndicadors = listIndicadors;
+	}
+
+	@JsonIgnore
+	@Transient
+	public List<IndicadorTsPlanActividad> getIndicadorTsPlanActividads() {
+		return indicadorTsPlanActividads;
+	}
+
+	public void setIndicadorTsPlanActividads(
+			List<IndicadorTsPlanActividad> indicadorTsPlanActividads) {
+		this.indicadorTsPlanActividads = indicadorTsPlanActividads;
+	}
+
+	@JsonIgnore
+	@Transient
+	public Date getFechaPlanificadaDate() {
+		return new Date(this.fechaPlanificada);
+	}
+
+	public void setFechaPlanificadaDate(Date fechaPlanificadaDate) {
+		this.fechaPlanificada = fechaPlanificadaDate.getTime();
+	}
+
+	@JsonIgnore
+	@Transient
+	public Date getFechaEjecutadaDate() {
+		return new Date(this.fechaEjecutada);
+	}
+
+	public void setFechaEjecutadaDate(Date fechaEjecutadaDate) {
+		this.fechaEjecutada = fechaEjecutadaDate.getTime();
 	}
 
 	@Override

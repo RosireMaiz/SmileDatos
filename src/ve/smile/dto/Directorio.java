@@ -1,6 +1,5 @@
 package ve.smile.dto;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -70,8 +69,8 @@ public class Directorio {
 		this.fkCiudad = fkCiudad;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_multimedia", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "fk_multimedia", nullable = true)
 	public Multimedia getFkMultimedia() {
 		return fkMultimedia;
 	}

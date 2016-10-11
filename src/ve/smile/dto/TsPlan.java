@@ -81,7 +81,7 @@ public class TsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_album", nullable = false)
+	@JoinColumn(name = "fk_album", nullable = true)
 	public Album getFkAlbum() {
 		return fkAlbum;
 	}
@@ -91,7 +91,7 @@ public class TsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_directorio", nullable = false)
+	@JoinColumn(name = "fk_directorio", nullable = true)
 	public Directorio getFkDirectorio() {
 		return fkDirectorio;
 	}
@@ -101,7 +101,7 @@ public class TsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_trabajo_social", nullable = false)
+	@JoinColumn(name = "fk_trabajo_social", nullable = true)
 	public TrabajoSocial getFkTrabajoSocial() {
 		return fkTrabajoSocial;
 	}
@@ -121,7 +121,7 @@ public class TsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
+	@JoinColumn(name = "fk_persona", nullable = true)
 	public Persona getFkPersona() {
 		return fkPersona;
 	}
