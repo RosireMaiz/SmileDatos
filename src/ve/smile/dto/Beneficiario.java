@@ -18,6 +18,9 @@ public class Beneficiario {
 	private Persona fkPersona;
 	private Long fechaIngreso;
 	private Long fechaSalida;
+	private Integer estatusBeneficiario;
+	private Familiar fkFamiliar;
+	private Parentesco fkParentesco;
 
 	public Beneficiario() {
 		super();
@@ -105,6 +108,34 @@ public class Beneficiario {
 			return false;
 		} 
 		return true;
+	}
+
+	public Integer getEstatusBeneficiario() {
+		return estatusBeneficiario;
+	}
+
+	public void setEstatusBeneficiario(Integer estatusBeneficiario) {
+		this.estatusBeneficiario = estatusBeneficiario;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_familiar", nullable = false)
+	public Familiar getFkFamiliar() {
+		return fkFamiliar;
+	}
+
+	public void setFkFamiliar(Familiar fkFamiliar) {
+		this.fkFamiliar = fkFamiliar;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_parentesco", nullable = false)
+	public Parentesco getFkParentesco() {
+		return fkParentesco;
+	}
+
+	public void setFkParentesco(Parentesco fkParentesco) {
+		this.fkParentesco = fkParentesco;
 	}
 
 }
