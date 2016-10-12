@@ -18,6 +18,7 @@ public class Motivo {
 	private String nombre;
 	private String descripcion;
 	private ClasificadorMotivo fkClasificadorMotivo;
+	
 	public Motivo() {
 		super();
 	}

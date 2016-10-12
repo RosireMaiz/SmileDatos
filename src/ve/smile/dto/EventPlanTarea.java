@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -29,9 +28,9 @@ public class EventPlanTarea {
 	private Long fechaEjecutada;
 	private String observacion;
 	private Integer estatusTarea;
-	@Transient
+
 	private List<Indicador> listIndicadors;
-	@Transient
+
 	private List<IndicadorEventoPlanTarea> indicadorEventoPlanTareas;
 
 	public EventPlanTarea() {
@@ -154,7 +153,7 @@ public class EventPlanTarea {
 		this.estatusTarea = eventPlanTareaEnum.ordinal();
 	}
 
-	
+	@Transient
 	public List<Indicador> getListIndicadors() {
 		return listIndicadors;
 	}
@@ -163,7 +162,7 @@ public class EventPlanTarea {
 		this.listIndicadors = listIndicadors;
 	}
 
-	
+	@Transient
 	public List<IndicadorEventoPlanTarea> getIndicadorEventoPlanTareas() {
 		return indicadorEventoPlanTareas;
 	}
