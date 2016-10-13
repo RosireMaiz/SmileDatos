@@ -1,5 +1,6 @@
 package ve.smile.dto;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ve.smile.enums.EventPlanTareaEnum;
 
@@ -29,9 +32,13 @@ public class EventPlanTarea {
 	private String observacion;
 	private Integer estatusTarea;
 
-	private List<Indicador> listIndicadors;
+	/*private List<Indicador> listIndicadors;*/
+	
+	private List<EventPlanTareaRecurso> listEventPlanTareaRecursos;
 
 	private List<IndicadorEventoPlanTarea> indicadorEventoPlanTareas;
+	
+	private List<Persona> listPersonas;
 
 	public EventPlanTarea() {
 		super();
@@ -153,15 +160,16 @@ public class EventPlanTarea {
 		this.estatusTarea = eventPlanTareaEnum.ordinal();
 	}
 
-	@Transient
+	/*@Transient
 	public List<Indicador> getListIndicadors() {
 		return listIndicadors;
 	}
 
 	public void setListIndicadors(List<Indicador> listIndicadors) {
 		this.listIndicadors = listIndicadors;
-	}
+	}*/
 
+	@JsonIgnore
 	@Transient
 	public List<IndicadorEventoPlanTarea> getIndicadorEventoPlanTareas() {
 		return indicadorEventoPlanTareas;
@@ -170,6 +178,48 @@ public class EventPlanTarea {
 	public void setIndicadorEventoPlanTareas(
 			List<IndicadorEventoPlanTarea> indicadorEventoPlanTareas) {
 		this.indicadorEventoPlanTareas = indicadorEventoPlanTareas;
+	}
+	
+	@JsonIgnore
+	@Transient
+	public Date getFechaPlanificadaDate() {
+		return new Date(this.fechaPlanificada);
+	}
+
+	public void setFechaPlanificadaDate(Date fechaPlanificadaDate) {
+		this.fechaPlanificada = fechaPlanificadaDate.getTime();
+	}
+	
+	
+	@JsonIgnore
+	@Transient
+	public List<EventPlanTareaRecurso> getListEventPlanTareaRecursos() {
+		return listEventPlanTareaRecursos;
+	}
+
+	public void setListEventPlanTareaRecursos(
+			List<EventPlanTareaRecurso> listEventPlanTareaRecursos) {
+		this.listEventPlanTareaRecursos = listEventPlanTareaRecursos;
+	}
+
+	@JsonIgnore
+	@Transient
+	public List<Persona> getListPersonas() {
+		return listPersonas;
+	}
+
+	public void setListPersonas(List<Persona> listPersonas) {
+		this.listPersonas = listPersonas;
+	}
+
+	@JsonIgnore
+	@Transient
+	public Date getFechaEjecutadaDate() {
+		return new Date(this.fechaEjecutada);
+	}
+
+	public void setFechaEjecutadaDate(Date fechaEjecutadaDate) {
+		this.fechaEjecutada = fechaEjecutadaDate.getTime();
 	}
 
 	@Override
