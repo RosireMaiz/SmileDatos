@@ -11,15 +11,17 @@ public class EventoPlanificadoDAO extends BaseDAO<EventoPlanificado> {
 	
 	@SuppressWarnings("unchecked")
 	public List<EventoPlanificado> findEventosPlanificadoPublico(Boolean publico,
-			Integer estatusEvento) {
-		String sql = "select e from EventoPlanificado e where e.publicoPortal = ?1 and e.estatusEvento = ?2";
+			Integer estatusEvento, Long fechaDesde, Integer cant) {
+		String sql = "select e from EventoPlanificado e where e.publicoPortal = ?1 and "
+				+ "e.estatusEvento = ?2 and e.fechaPlanificada >= ?3 ORDER BY e.fechaPlanificada";
 
 		Query query = createQuery(sql);
 
 		query.setParameter(1, publico);
 		query.setParameter(2, estatusEvento);
+		query.setParameter(3, fechaDesde);
 
-		return query.getResultList();
+		return query.setMaxResults(cant).getResultList();
 
 	}
 	
