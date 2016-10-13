@@ -15,7 +15,6 @@ public class Fortaleza {
 	private Integer idFortaleza;
 	private String nombre;
 	private String descripcion;
-	private Integer estatusFamiliar;
 
 	public Fortaleza() {
 		super();
@@ -93,12 +92,6 @@ public class Fortaleza {
 		return true;
 	}
 
-	public Integer getEstatusFamiliar() {
-		return estatusFamiliar;
-	}
-
-	public void setEstatusFamiliar(Integer estatusFamiliar) {
-		this.estatusFamiliar = estatusFamiliar;
-	}
+	
 
 }

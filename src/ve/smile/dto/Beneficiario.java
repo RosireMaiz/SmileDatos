@@ -110,6 +110,7 @@ public class Beneficiario {
 		return true;
 	}
 
+		@Column(name="estatus_beneficiario")
 	public Integer getEstatusBeneficiario() {
 		return estatusBeneficiario;
 	}

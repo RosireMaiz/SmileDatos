@@ -27,7 +27,7 @@ public class DonativoRecurso {
 	private Integer procedencia;
 	private Long fechaDonativo;
 	private String descripcion;
-	private String cantidad;
+	private float cantidad;
 	private Integer recepcion;
 
 	public DonativoRecurso() {
@@ -42,7 +42,7 @@ public class DonativoRecurso {
 	public DonativoRecurso(Persona fkPersona,
 			EventoPlanificado fkEventoPlanificado, TsPlan fkTsPlan,
 			Integer procedencia, Long fechaDonativo, String descripcion,
-			String cantidad, Integer recepcion) {
+			float cantidad, Integer recepcion) {
 		super();
 		this.fkPersona = fkPersona;
 		this.fkEventoPlanificado = fkEventoPlanificado;
@@ -133,11 +133,11 @@ public class DonativoRecurso {
 	}
 
 	@Column(name = "cantidad")
-	public String getCantidad() {
+	public float getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(String cantidad) {
+	public void setCantidad(float cantidad) {
 		this.cantidad = cantidad;
 	}
 

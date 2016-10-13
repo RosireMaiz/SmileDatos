@@ -18,6 +18,7 @@ public class Familiar {
 	private Persona fkPersona;
 	private Long fechaIngreso;
 	private Long fechaSalida;
+	private Integer estatusFamiliar;
 
 	public Familiar() {
 		super();
@@ -84,6 +85,15 @@ public class Familiar {
 		int result = 1;
 		result = prime * result + ((idFamiliar == null) ? 0 : idFamiliar.hashCode());
 		return result;
+	}
+	
+			@Column(name="estatus_familiar")
+	public Integer getEstatusFamiliar() {
+		return estatusFamiliar;
+	}
+
+	public void setEstatusFamiliar(Integer estatusFamiliar) {
+		this.estatusFamiliar = estatusFamiliar;
 	}
 
 	@Override
