@@ -5,17 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import ve.smile.enums.UnidadFrecuenciaAporteEnum;
 
 @Table(name = "tb_frecuencia_aporte")
 @Entity
 public class FrecuenciaAporte {
 
 	private Integer idFrecuenciaAporte;
-	private UnidadMedida fkUnidadMedida;
+	private Integer unidadFrecuenciaAporte;
 	private String nombre;
 	private Integer frecuencia;
 
@@ -28,12 +29,10 @@ public class FrecuenciaAporte {
 		this.idFrecuenciaAporte = idFrecuenciaAporte;
 	}
 
-	public FrecuenciaAporte(
-			UnidadMedida fkUnidadMedida,
-			String nombre,
+	public FrecuenciaAporte(Integer unidadFrecuenciaAporte, String nombre,
 			Integer frecuencia) {
 		super();
-		this.fkUnidadMedida = fkUnidadMedida;
+		this.unidadFrecuenciaAporte = unidadFrecuenciaAporte;
 		this.nombre = nombre;
 		this.frecuencia = frecuencia;
 	}
@@ -41,7 +40,7 @@ public class FrecuenciaAporte {
 	@Id
 	@SequenceGenerator(name = "tb_frecuencia_aporte_sequence", sequenceName = "public.tb_frecuencia_aporte_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_frecuencia_aporte_sequence")
-	@Column(name="id_frecuencia_aporte")
+	@Column(name = "id_frecuencia_aporte")
 	public Integer getIdFrecuenciaAporte() {
 		return idFrecuenciaAporte;
 	}
@@ -50,17 +49,16 @@ public class FrecuenciaAporte {
 		this.idFrecuenciaAporte = idFrecuenciaAporte;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "fk_unidad_medida", nullable = false)
-	public UnidadMedida getFkUnidadMedida() {
-		return fkUnidadMedida;
+	@Column(name = "unidad_frecuencia_aporte")
+	public Integer getUnidadFrecuenciaAporte() {
+		return unidadFrecuenciaAporte;
 	}
 
-	public void setFkUnidadMedida(UnidadMedida fkUnidadMedida) {
-		this.fkUnidadMedida = fkUnidadMedida;
+	public void setUnidadFrecuenciaAporte(Integer unidadFrecuenciaAporte) {
+		this.unidadFrecuenciaAporte = unidadFrecuenciaAporte;
 	}
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -69,7 +67,7 @@ public class FrecuenciaAporte {
 		this.nombre = nombre;
 	}
 
-	@Column(name="frecuencia")
+	@Column(name = "frecuencia")
 	public Integer getFrecuencia() {
 		return frecuencia;
 	}
@@ -78,11 +76,24 @@ public class FrecuenciaAporte {
 		this.frecuencia = frecuencia;
 	}
 
+	@Transient
+	public UnidadFrecuenciaAporteEnum getUnidadFrecuenciaAporteEnum() {
+		return UnidadFrecuenciaAporteEnum.values()[this.unidadFrecuenciaAporte];
+	}
+
+	public void setUnidadFrecuenciaAporteEnum(
+			UnidadFrecuenciaAporteEnum unidadFrecuenciaAporteEnum) {
+		this.unidadFrecuenciaAporte = unidadFrecuenciaAporteEnum.ordinal();
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idFrecuenciaAporte == null) ? 0 : idFrecuenciaAporte.hashCode());
+		result = prime
+				* result
+				+ ((idFrecuenciaAporte == null) ? 0 : idFrecuenciaAporte
+						.hashCode());
 		return result;
 	}
 
@@ -100,10 +111,10 @@ public class FrecuenciaAporte {
 		FrecuenciaAporte other = (FrecuenciaAporte) obj;
 		if (idFrecuenciaAporte == null) {
 			return false;
-		} 
+		}
 		if (!idFrecuenciaAporte.equals(other.idFrecuenciaAporte)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 
