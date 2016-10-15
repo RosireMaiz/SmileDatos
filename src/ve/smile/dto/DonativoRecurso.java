@@ -30,6 +30,10 @@ public class DonativoRecurso {
 	private float cantidad;
 	private Integer recepcion;
 
+	private Recurso fkRecurso;
+	private boolean aporte;
+	private Long fechaArpoteCorrespondiente;
+
 	public DonativoRecurso() {
 		super();
 	}
@@ -42,7 +46,8 @@ public class DonativoRecurso {
 	public DonativoRecurso(Persona fkPersona,
 			EventoPlanificado fkEventoPlanificado, TsPlan fkTsPlan,
 			Integer procedencia, Long fechaDonativo, String descripcion,
-			float cantidad, Integer recepcion) {
+			float cantidad, Integer recepcion, Recurso fkRecurso,
+			boolean aporte, Long fechaArpoteCorrespondiente) {
 		super();
 		this.fkPersona = fkPersona;
 		this.fkEventoPlanificado = fkEventoPlanificado;
@@ -52,6 +57,9 @@ public class DonativoRecurso {
 		this.descripcion = descripcion;
 		this.cantidad = cantidad;
 		this.recepcion = recepcion;
+		this.fkRecurso = fkRecurso;
+		this.aporte = aporte;
+		this.fechaArpoteCorrespondiente = fechaArpoteCorrespondiente;
 	}
 
 	@Id
@@ -148,6 +156,34 @@ public class DonativoRecurso {
 
 	public void setRecepcion(Integer recepcion) {
 		this.recepcion = recepcion;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "fk_recurso", nullable = true)
+	public Recurso getFkRecurso() {
+		return fkRecurso;
+	}
+
+	public void setFkRecurso(Recurso fkRecurso) {
+		this.fkRecurso = fkRecurso;
+	}
+
+	@Column(name = "aporte")
+	public boolean getAporte() {
+		return aporte;
+	}
+
+	public void setAporte(boolean aporte) {
+		this.aporte = aporte;
+	}
+
+	@Column(name = "fecha_aporte_correspondiente")
+	public Long getFechaArpoteCorrespondiente() {
+		return fechaArpoteCorrespondiente;
+	}
+
+	public void setFechaArpoteCorrespondiente(Long fechaArpoteCorrespondiente) {
+		this.fechaArpoteCorrespondiente = fechaArpoteCorrespondiente;
 	}
 
 	@JsonIgnore

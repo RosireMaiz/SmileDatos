@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import ve.smile.enums.EstatusColaboradorEnum;
 
 @Table(name = "tb_colaborador")
 @Entity
@@ -106,6 +109,16 @@ public class Colaborador {
 
 	public void setEstatusColaborador(Integer estatusColaborador) {
 		this.estatusColaborador = estatusColaborador;
+	}
+
+	@Transient
+	public EstatusColaboradorEnum getEstatusColaboradorEnum() {
+		return EstatusColaboradorEnum.values()[this.estatusColaborador];
+	}
+
+	public void setEstatusColaboradorEnum(
+			EstatusColaboradorEnum estatusColaboradorEnum) {
+		this.estatusColaborador = estatusColaboradorEnum.ordinal();
 	}
 
 	@Override
