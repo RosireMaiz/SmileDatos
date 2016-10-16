@@ -31,7 +31,9 @@ public class EventoPlanificado {
 	private String observacion;
 	private Integer estatusEvento;
 	private boolean publicoPortal;
+	private boolean botonAlbum;
 
+	
 	public EventoPlanificado() {
 		super();
 	}
@@ -46,7 +48,7 @@ public class EventoPlanificado {
 			Long fechaPlanificada, Long fechaEjecutada,
 			Multimedia fkMultimedia, Long fechaInicioIncidencia,
 			Long fechaFinIncidencia, String observacion, Integer estatusEvento,
-			boolean publicoPortal) {
+			boolean publicoPortal, boolean botonAlbum) {
 		super();
 		this.fkAlbum = fkAlbum;
 		this.fkDirectorio = fkDirectorio;
@@ -61,6 +63,7 @@ public class EventoPlanificado {
 		this.observacion = observacion;
 		this.estatusEvento = estatusEvento;
 		this.publicoPortal = publicoPortal;
+		this.botonAlbum= botonAlbum;
 	}
 
 	@Id
@@ -84,6 +87,7 @@ public class EventoPlanificado {
 	public void setFkAlbum(Album fkAlbum) {
 		this.fkAlbum = fkAlbum;
 	}
+	
 
 	@ManyToOne
 	@JoinColumn(name = "fk_directorio", nullable = true)
@@ -189,6 +193,16 @@ public class EventoPlanificado {
 		this.estatusEvento = estatusEvento;
 	}
 
+	@Column(name = "botonalbum")
+	public boolean getBotonAlbum() {
+		return botonAlbum;
+	}
+
+	public void setBotonAlbum(boolean botonAlbum) {
+		this.botonAlbum = botonAlbum;
+	}
+
+	
 	@Column(name = "publico_portal")
 	public boolean getPublicoPortal() {
 		return publicoPortal;
