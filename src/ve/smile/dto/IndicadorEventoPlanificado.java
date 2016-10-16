@@ -56,8 +56,8 @@ public class IndicadorEventoPlanificado {
 		this.idIndicadorEventoPlanificado = idIndicadorEventoPlanificado;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "fk_evento_planificado", nullable = false)
+	@ManyToOne()
+	@JoinColumn(name = "fk_evento_planificado", nullable = true)
 	public EventoPlanificado getFkEventoPlanificado() {
 		return fkEventoPlanificado;
 	}
@@ -66,8 +66,8 @@ public class IndicadorEventoPlanificado {
 		this.fkEventoPlanificado = fkEventoPlanificado;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "fk_indicador", nullable = false)
+	@ManyToOne()
+	@JoinColumn(name = "fk_indicador", nullable = true)
 	public Indicador getFkIndicador() {
 		return fkIndicador;
 	}
@@ -77,7 +77,7 @@ public class IndicadorEventoPlanificado {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}

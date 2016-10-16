@@ -1,5 +1,7 @@
 package ve.smile.dto;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name = "tb_event_plan_tarea_recurso")
 @Entity
@@ -89,6 +94,16 @@ public class EventPlanTareaRecurso {
 
 	public void setFechaAsignacion(Long fechaAsignacion) {
 		this.fechaAsignacion = fechaAsignacion;
+	}
+	
+	@JsonIgnore
+	@Transient
+	public Date getFechaAsignacionDate() {
+		return new Date(this.fechaAsignacion);
+	}
+
+	public void setFechaAsignacionDate(Date fechaAsignacionDate) {
+		this.fechaAsignacion = fechaAsignacionDate.getTime();
 	}
 
 	@Override
