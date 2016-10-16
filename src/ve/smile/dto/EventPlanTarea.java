@@ -32,13 +32,15 @@ public class EventPlanTarea {
 	private String observacion;
 	private Integer estatusTarea;
 
-	/*private List<Indicador> listIndicadors;*/
-	
+	/* private List<Indicador> listIndicadors; */
+
 	private List<EventPlanTareaRecurso> listEventPlanTareaRecursos;
 
 	private List<IndicadorEventoPlanTarea> indicadorEventoPlanTareas;
-	
-	private List<Persona> listPersonas;
+
+	private List<EventPlanTareaTrabajador> listEventPlanTareaTrabajadors;
+
+	private List<EventPlanTareaVoluntario> listPlanTareaVoluntarios;
 
 	public EventPlanTarea() {
 		super();
@@ -160,15 +162,6 @@ public class EventPlanTarea {
 		this.estatusTarea = eventPlanTareaEnum.ordinal();
 	}
 
-	/*@Transient
-	public List<Indicador> getListIndicadors() {
-		return listIndicadors;
-	}
-
-	public void setListIndicadors(List<Indicador> listIndicadors) {
-		this.listIndicadors = listIndicadors;
-	}*/
-
 	@JsonIgnore
 	@Transient
 	public List<IndicadorEventoPlanTarea> getIndicadorEventoPlanTareas() {
@@ -179,7 +172,7 @@ public class EventPlanTarea {
 			List<IndicadorEventoPlanTarea> indicadorEventoPlanTareas) {
 		this.indicadorEventoPlanTareas = indicadorEventoPlanTareas;
 	}
-	
+
 	@JsonIgnore
 	@Transient
 	public Date getFechaPlanificadaDate() {
@@ -189,8 +182,7 @@ public class EventPlanTarea {
 	public void setFechaPlanificadaDate(Date fechaPlanificadaDate) {
 		this.fechaPlanificada = fechaPlanificadaDate.getTime();
 	}
-	
-	
+
 	@JsonIgnore
 	@Transient
 	public List<EventPlanTareaRecurso> getListEventPlanTareaRecursos() {
@@ -204,12 +196,24 @@ public class EventPlanTarea {
 
 	@JsonIgnore
 	@Transient
-	public List<Persona> getListPersonas() {
-		return listPersonas;
+	public List<EventPlanTareaTrabajador> getListEventPlanTareaTrabajadors() {
+		return listEventPlanTareaTrabajadors;
 	}
 
-	public void setListPersonas(List<Persona> listPersonas) {
-		this.listPersonas = listPersonas;
+	public void setListEventPlanTareaTrabajadors(
+			List<EventPlanTareaTrabajador> listEventPlanTareaTrabajadors) {
+		this.listEventPlanTareaTrabajadors = listEventPlanTareaTrabajadors;
+	}
+
+	@JsonIgnore
+	@Transient
+	public List<EventPlanTareaVoluntario> getListPlanTareaVoluntarios() {
+		return listPlanTareaVoluntarios;
+	}
+
+	public void setListPlanTareaVoluntarios(
+			List<EventPlanTareaVoluntario> listPlanTareaVoluntarios) {
+		this.listPlanTareaVoluntarios = listPlanTareaVoluntarios;
 	}
 
 	@JsonIgnore

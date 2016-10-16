@@ -107,7 +107,7 @@ public class EventPlanTareaVoluntario {
 		this.observacion = observacion;
 	}
 
-	@Column(name="estatus")
+	@Column(name="estatus_tarea")
 	public Integer getEstatus() {
 		return estatus;
 	}
