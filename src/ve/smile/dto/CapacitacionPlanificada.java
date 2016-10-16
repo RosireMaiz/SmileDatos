@@ -1,11 +1,15 @@
 package ve.smile.dto;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -26,7 +30,9 @@ public class CapacitacionPlanificada {
 	private Motivo fkMotivo;
 	private boolean ejecucion;
 	private String observacion;
-	private Integer estatusCapacintacionPlanificada;
+	private Integer estatusCapacitacionPlanificada;
+	
+	private List<Voluntario> voluntariosInscritos;
 
 	public CapacitacionPlanificada() {
 		super();
@@ -50,7 +56,7 @@ public class CapacitacionPlanificada {
 		this.fkMotivo = fkMotivo;
 		this.ejecucion = ejecucion;
 		this.observacion = observacion;
-		this.estatusCapacintacionPlanificada = estatus;
+		this.estatusCapacitacionPlanificada = estatus;
 	}
 
 	@Id
@@ -142,21 +148,34 @@ public class CapacitacionPlanificada {
 
 	@Column(name = "estatus_capacitacion_planificada")
 	public Integer getEstatusCapacitacionPlanificada() {
-		return estatusCapacintacionPlanificada;
+		return estatusCapacitacionPlanificada;
 	}
 
 	public void setEstatusCapacitacionPlanificada(Integer estatus) {
-		this.estatusCapacintacionPlanificada = estatus;
+		this.estatusCapacitacionPlanificada = estatus;
+	}
+	
+	// VOLUNTARIOS INSCRITOS
+	@ManyToMany
+	@JoinTable(name = "tb_vol_capacitacion_planificada", joinColumns = @JoinColumn(name = "fk_capacitacion_planificada"), inverseJoinColumns = @JoinColumn(name = "fk_voluntario"))
+	public List<Voluntario> getVoluntariosInscritos()
+	{
+		return voluntariosInscritos;
+	}
+
+	public void setVoluntariosInscritos(List<Voluntario> voluntariosInscritos)
+	{
+		this.voluntariosInscritos = voluntariosInscritos;
 	}
 
 	@Transient
 	public EstatusCapacitacionPlanificadaEnum getEstatusCapacitacionPlanificadaEnum() {
-		return EstatusCapacitacionPlanificadaEnum.values()[this.estatusCapacintacionPlanificada];
+		return EstatusCapacitacionPlanificadaEnum.values()[this.estatusCapacitacionPlanificada];
 	}
 
 	public void setEstatusCapacitacionPlanificada(
 			EstatusCapacitacionPlanificadaEnum estatusCapacitacionPlanificadaEnum) {
-		this.estatusCapacintacionPlanificada = estatusCapacitacionPlanificadaEnum
+		this.estatusCapacitacionPlanificada = estatusCapacitacionPlanificadaEnum
 				.ordinal();
 	}
 
