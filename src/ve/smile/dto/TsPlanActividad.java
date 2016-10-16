@@ -32,9 +32,11 @@ public class TsPlanActividad {
 	private String observacion;
 	private Integer estatusActividad;
 
-	private List<Indicador> listIndicadors;
-
 	private List<IndicadorTsPlanActividad> indicadorTsPlanActividads;
+
+	private List<TsPlanActividadTrabajador> tsPlanActividadTrabajadors;
+
+	private List<TsPlanActividadVoluntario> tsPlanActividadVoluntarios;
 
 	public TsPlanActividad() {
 		super();
@@ -148,15 +150,6 @@ public class TsPlanActividad {
 		this.estatusActividad = estatusActividad;
 	}
 
-	@Transient
-	public List<Indicador> getListIndicadors() {
-		return listIndicadors;
-	}
-
-	public void setListIndicadors(List<Indicador> listIndicadors) {
-		this.listIndicadors = listIndicadors;
-	}
-
 	@JsonIgnore
 	@Transient
 	public List<IndicadorTsPlanActividad> getIndicadorTsPlanActividads() {
@@ -186,6 +179,28 @@ public class TsPlanActividad {
 
 	public void setFechaEjecutadaDate(Date fechaEjecutadaDate) {
 		this.fechaEjecutada = fechaEjecutadaDate.getTime();
+	}
+
+	@JsonIgnore
+	@Transient
+	public List<TsPlanActividadTrabajador> getTsPlanActividadTrabajadors() {
+		return tsPlanActividadTrabajadors;
+	}
+
+	public void setTsPlanActividadTrabajadors(
+			List<TsPlanActividadTrabajador> tsPlanActividadTrabajadors) {
+		this.tsPlanActividadTrabajadors = tsPlanActividadTrabajadors;
+	}
+
+	@JsonIgnore
+	@Transient
+	public List<TsPlanActividadVoluntario> getTsPlanActividadVoluntarios() {
+		return tsPlanActividadVoluntarios;
+	}
+
+	public void setTsPlanActividadVoluntarios(
+			List<TsPlanActividadVoluntario> tsPlanActividadVoluntarios) {
+		this.tsPlanActividadVoluntarios = tsPlanActividadVoluntarios;
 	}
 
 	@Override
