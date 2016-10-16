@@ -31,6 +31,7 @@ public class TsPlanActividad {
 	private Directorio fkDirectorio;
 	private String observacion;
 	private Integer estatusActividad;
+	private boolean ejecucion;
 
 	private List<IndicadorTsPlanActividad> indicadorTsPlanActividads;
 
@@ -233,6 +234,14 @@ public class TsPlanActividad {
 			return false;
 		}
 		return true;
+	}
+	@Column(name = "ejecucion")
+	public boolean isEjecucion() {
+		return ejecucion;
+	}
+
+	public void setEjecucion(boolean ejecucion) {
+		this.ejecucion = ejecucion;
 	}
 
 }

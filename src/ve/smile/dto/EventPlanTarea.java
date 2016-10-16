@@ -31,6 +31,7 @@ public class EventPlanTarea {
 	private Long fechaEjecutada;
 	private String observacion;
 	private Integer estatusTarea;
+	private boolean ejecucion;
 
 	/* private List<Indicador> listIndicadors; */
 
@@ -255,6 +256,15 @@ public class EventPlanTarea {
 			return false;
 		}
 		return true;
+	}
+	
+	@Column(name = "ejecucion")
+	public boolean isEjecucion() {
+		return ejecucion;
+	}
+
+	public void setEjecucion(boolean ejecucion) {
+		this.ejecucion = ejecucion;
 	}
 
 }

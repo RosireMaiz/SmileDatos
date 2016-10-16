@@ -30,6 +30,8 @@ public class Organizacion {
 	private String latitud;
 	private String longitud;
 	private String slogan;
+	private String correo;
+	private String fax;
 	public Organizacion() {
 		super();
 	}
@@ -247,5 +249,23 @@ public class Organizacion {
 		} 
 		return true;
 	}
+	@Column(name="correo")
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	@Column(name="fax")
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+	
+	
 
 }
