@@ -60,7 +60,7 @@ public class IndicadorTsPlanActividad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_ts_plan_actividad", nullable = false)
+	@JoinColumn(name = "fk_ts_plan_actividad", nullable = true)
 	public TsPlanActividad getFkTsPlanActividad() {
 		return fkTsPlanActividad;
 	}
@@ -70,7 +70,7 @@ public class IndicadorTsPlanActividad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_indicador", nullable = false)
+	@JoinColumn(name = "fk_indicador", nullable = true)
 	public Indicador getFkIndicador() {
 		return fkIndicador;
 	}

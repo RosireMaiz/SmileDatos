@@ -67,7 +67,7 @@ public class TsPlanActividadVoluntario {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_ts_plan_actividad", nullable = false)
+	@JoinColumn(name = "fk_ts_plan_actividad", nullable = true)
 	public TsPlanActividad getFkTsPlanActividad() {
 		return fkTsPlanActividad;
 	}
@@ -77,7 +77,7 @@ public class TsPlanActividadVoluntario {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_voluntario", nullable = false)
+	@JoinColumn(name = "fk_voluntario", nullable = true)
 	public Voluntario getFkVoluntario() {
 		return fkVoluntario;
 	}
@@ -114,7 +114,7 @@ public class TsPlanActividadVoluntario {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}

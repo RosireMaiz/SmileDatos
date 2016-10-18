@@ -54,7 +54,7 @@ public class TsPlanPersona {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
+	@JoinColumn(name = "fk_persona", nullable = true)
 	public Persona getFkPersona() {
 		return fkPersona;
 	}
@@ -64,7 +64,7 @@ public class TsPlanPersona {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_ts_plan", nullable = false)
+	@JoinColumn(name = "fk_ts_plan", nullable = true)
 	public TsPlan getFkTsPlan() {
 		return fkTsPlan;
 	}

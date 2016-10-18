@@ -30,12 +30,8 @@ public class IncidenciaTsPlan {
 		this.idIncidenciaTsPlan = idIncidenciaTsPlan;
 	}
 
-	public IncidenciaTsPlan(
-			Persona fkPersona,
-			TsPlan fkTsPlan,
-			Motivo fkMotivo,
-			Long fecha,
-			String contenido) {
+	public IncidenciaTsPlan(Persona fkPersona, TsPlan fkTsPlan,
+			Motivo fkMotivo, Long fecha, String contenido) {
 		super();
 		this.fkPersona = fkPersona;
 		this.fkTsPlan = fkTsPlan;
@@ -47,7 +43,7 @@ public class IncidenciaTsPlan {
 	@Id
 	@SequenceGenerator(name = "tb_incidencia_ts_plan_sequence", sequenceName = "public.tb_incidencia_ts_plan_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_incidencia_ts_plan_sequence")
-	@Column(name="id_incidencia_ts_plan")
+	@Column(name = "id_incidencia_ts_plan")
 	public Integer getIdIncidenciaTsPlan() {
 		return idIncidenciaTsPlan;
 	}
@@ -57,7 +53,7 @@ public class IncidenciaTsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
+	@JoinColumn(name = "fk_persona", nullable = true)
 	public Persona getFkPersona() {
 		return fkPersona;
 	}
@@ -67,7 +63,7 @@ public class IncidenciaTsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_ts_plan", nullable = false)
+	@JoinColumn(name = "fk_ts_plan", nullable = true)
 	public TsPlan getFkTsPlan() {
 		return fkTsPlan;
 	}
@@ -77,7 +73,7 @@ public class IncidenciaTsPlan {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_motivo", nullable = false)
+	@JoinColumn(name = "fk_motivo", nullable = true)
 	public Motivo getFkMotivo() {
 		return fkMotivo;
 	}
@@ -86,7 +82,7 @@ public class IncidenciaTsPlan {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="fecha")
+	@Column(name = "fecha")
 	public Long getFecha() {
 		return fecha;
 	}
@@ -95,7 +91,7 @@ public class IncidenciaTsPlan {
 		this.fecha = fecha;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -108,7 +104,10 @@ public class IncidenciaTsPlan {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idIncidenciaTsPlan == null) ? 0 : idIncidenciaTsPlan.hashCode());
+		result = prime
+				* result
+				+ ((idIncidenciaTsPlan == null) ? 0 : idIncidenciaTsPlan
+						.hashCode());
 		return result;
 	}
 
@@ -126,10 +125,10 @@ public class IncidenciaTsPlan {
 		IncidenciaTsPlan other = (IncidenciaTsPlan) obj;
 		if (idIncidenciaTsPlan == null) {
 			return false;
-		} 
+		}
 		if (!idIncidenciaTsPlan.equals(other.idIncidenciaTsPlan)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

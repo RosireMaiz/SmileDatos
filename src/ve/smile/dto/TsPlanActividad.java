@@ -39,6 +39,8 @@ public class TsPlanActividad {
 
 	private List<TsPlanActividadVoluntario> tsPlanActividadVoluntarios;
 
+	private List<TsPlanActividadRecurso> tsPlanActividadRecursos;
+
 	public TsPlanActividad() {
 		super();
 	}
@@ -76,7 +78,7 @@ public class TsPlanActividad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_actividad", nullable = false)
+	@JoinColumn(name = "fk_actividad", nullable = true)
 	public Actividad getFkActividad() {
 		return fkActividad;
 	}
@@ -86,7 +88,7 @@ public class TsPlanActividad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_ts_plan", nullable = false)
+	@JoinColumn(name = "fk_ts_plan", nullable = true)
 	public TsPlan getFkTsPlan() {
 		return fkTsPlan;
 	}
@@ -124,7 +126,7 @@ public class TsPlanActividad {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_directorio", nullable = false)
+	@JoinColumn(name = "fk_directorio", nullable = true)
 	public Directorio getFkDirectorio() {
 		return fkDirectorio;
 	}
@@ -165,21 +167,36 @@ public class TsPlanActividad {
 	@JsonIgnore
 	@Transient
 	public Date getFechaPlanificadaDate() {
-		return new Date(this.fechaPlanificada);
+		if (this.fechaPlanificada != null) {
+			return new Date(this.fechaPlanificada);
+		}
+		return null;
 	}
 
 	public void setFechaPlanificadaDate(Date fechaPlanificadaDate) {
-		this.fechaPlanificada = fechaPlanificadaDate.getTime();
+		if (fechaPlanificadaDate != null) {
+			this.fechaPlanificada = fechaPlanificadaDate.getTime();
+		} else {
+			this.fechaPlanificada = null;
+		}
 	}
 
 	@JsonIgnore
 	@Transient
 	public Date getFechaEjecutadaDate() {
-		return new Date(this.fechaEjecutada);
+		if (this.fechaEjecutada != null) {
+			return new Date(this.fechaEjecutada);
+		}
+		return null;
 	}
 
 	public void setFechaEjecutadaDate(Date fechaEjecutadaDate) {
-		this.fechaEjecutada = fechaEjecutadaDate.getTime();
+		if (fechaEjecutadaDate != null) {
+			this.fechaEjecutada = fechaEjecutadaDate.getTime();
+		} else {
+			this.fechaEjecutada = null;
+		}
+
 	}
 
 	@JsonIgnore
@@ -202,6 +219,17 @@ public class TsPlanActividad {
 	public void setTsPlanActividadVoluntarios(
 			List<TsPlanActividadVoluntario> tsPlanActividadVoluntarios) {
 		this.tsPlanActividadVoluntarios = tsPlanActividadVoluntarios;
+	}
+
+	@JsonIgnore
+	@Transient
+	public List<TsPlanActividadRecurso> getTsPlanActividadRecursos() {
+		return tsPlanActividadRecursos;
+	}
+
+	public void setTsPlanActividadRecursos(
+			List<TsPlanActividadRecurso> tsPlanActividadRecursos) {
+		this.tsPlanActividadRecursos = tsPlanActividadRecursos;
 	}
 
 	@Override
@@ -235,6 +263,7 @@ public class TsPlanActividad {
 		}
 		return true;
 	}
+
 	@Column(name = "ejecucion")
 	public boolean isEjecucion() {
 		return ejecucion;

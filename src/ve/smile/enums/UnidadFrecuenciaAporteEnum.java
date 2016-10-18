@@ -3,7 +3,7 @@ package ve.smile.enums;
 import java.util.ResourceBundle;
 
 public enum UnidadFrecuenciaAporteEnum {
-	DIA, MES, AÑO;
+	DIA, MES, ANNO;
 
 	@Override
 	public String toString() {
