@@ -154,6 +154,7 @@ public class EventPlanTarea {
 		this.estatusTarea = estatusTarea;
 	}
 
+	@JsonIgnore
 	@Transient
 	public EventPlanTareaEnum getEventPlanTareaEnum() {
 		return EventPlanTareaEnum.values()[this.estatusTarea];
