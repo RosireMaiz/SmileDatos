@@ -34,6 +34,7 @@ public class Trabajador {
 	private Integer estatusTrabajador;
 
 	private List<Fortaleza> fortalezas;
+	private List<Profesion> profesiones;
 
 	public Trabajador() {
 		super();
@@ -151,6 +152,17 @@ public class Trabajador {
 	public void setEstatusTrabajadorEnum(
 			EstatusTrabajadorEnum estatusTrabajadorEnum) {
 		this.estatusTrabajador = estatusTrabajadorEnum.ordinal();
+	}
+
+	// PROFESIONES
+	@ManyToMany
+	@JoinTable(name = "tb_trabajador_profesion", joinColumns = @JoinColumn(name = "fk_trabajador"), inverseJoinColumns = @JoinColumn(name = "fk_profesion"))
+	public List<Profesion> getProfesiones() {
+		return profesiones;
+	}
+
+	public void setProfesiones(List<Profesion> profesiones) {
+		this.profesiones = profesiones;
 	}
 
 	@Override
