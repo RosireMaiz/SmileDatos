@@ -9,6 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import ve.smile.enums.EstatusTrabajoSocialPlanificadoEnum;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name = "tb_ts_plan")
 @Entity
@@ -25,9 +30,11 @@ public class TsPlan {
 	private Long fechaEjecutada;
 	private String observacion;
 	private Multimedia fkMultimedia;
-	private Long fechaInicioIncidencia;
-	private Long fechaFinIncidencia;
+	private Long fechaInicio;
+	private Long fechaFin;
 	private boolean publicoPortal;
+
+	private Integer estatusTsPlan;
 
 	public TsPlan() {
 		super();
@@ -41,8 +48,8 @@ public class TsPlan {
 	public TsPlan(String descripcion, Album fkAlbum, Directorio fkDirectorio,
 			TrabajoSocial fkTrabajoSocial, Motivo fkMotivo, Persona fkPersona,
 			Long fechaPlanificada, Long fechaEjecutada, String observacion,
-			Multimedia fkMultimedia, Long fechaInicioIncidencia,
-			Long fechaFinIncidencia, boolean publicoPortal) {
+			Multimedia fkMultimedia, Long fechaInicio, Long fechaFin,
+			boolean publicoPortal, Integer estatusTsPlan) {
 		super();
 		this.descripcion = descripcion;
 		this.fkAlbum = fkAlbum;
@@ -54,9 +61,10 @@ public class TsPlan {
 		this.fechaEjecutada = fechaEjecutada;
 		this.observacion = observacion;
 		this.fkMultimedia = fkMultimedia;
-		this.fechaInicioIncidencia = fechaInicioIncidencia;
-		this.fechaFinIncidencia = fechaFinIncidencia;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
 		this.publicoPortal = publicoPortal;
+		this.estatusTsPlan = estatusTsPlan;
 	}
 
 	@Id
@@ -167,22 +175,22 @@ public class TsPlan {
 		this.fkMultimedia = fkMultimedia;
 	}
 
-	@Column(name = "fecha_inicio_incidencia")
-	public Long getFechaInicioIncidencia() {
-		return fechaInicioIncidencia;
+	@Column(name = "fecha_inicio")
+	public Long getFechaInicio() {
+		return fechaInicio;
 	}
 
-	public void setFechaInicioIncidencia(Long fechaInicioIncidencia) {
-		this.fechaInicioIncidencia = fechaInicioIncidencia;
+	public void setFechaInicio(Long fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
 
-	@Column(name = "fecha_fin_incidencia")
-	public Long getFechaFinIncidencia() {
-		return fechaFinIncidencia;
+	@Column(name = "fecha_fin")
+	public Long getFechaFin() {
+		return fechaFin;
 	}
 
-	public void setFechaFinIncidencia(Long fechaFinIncidencia) {
-		this.fechaFinIncidencia = fechaFinIncidencia;
+	public void setFechaFin(Long fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 
 	@Column(name = "publico_portal")
@@ -192,6 +200,26 @@ public class TsPlan {
 
 	public void setPublicoPortal(boolean publicoPortal) {
 		this.publicoPortal = publicoPortal;
+	}
+
+	@Column(name = "estatus_ts_plan")
+	public Integer getEstatusTsPlan() {
+		return estatusTsPlan;
+	}
+
+	public void setEstatusTsPlan(Integer estatusTrabajoSocialPlanificado) {
+		this.estatusTsPlan = estatusTrabajoSocialPlanificado;
+	}
+
+	@JsonIgnore
+	@Transient
+	public EstatusTrabajoSocialPlanificadoEnum getEstatusEventoPlanificadoEnum() {
+		return EstatusTrabajoSocialPlanificadoEnum.values()[this.estatusTsPlan];
+	}
+
+	public void setEstatusTrabajoSocialPlanificadoEnum(
+			EstatusTrabajoSocialPlanificadoEnum estatusTrabajoSocialPlanificadoEnum) {
+		this.estatusTsPlan = estatusTrabajoSocialPlanificadoEnum.ordinal();
 	}
 
 	@Override
