@@ -1,5 +1,7 @@
 package ve.smile.dto;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name = "tb_ts_plan_actividad_recurso")
 @Entity
@@ -29,11 +34,8 @@ public class TsPlanActividadRecurso {
 		this.idTsPlanActividadRecurso = idTsPlanActividadRecurso;
 	}
 
-	public TsPlanActividadRecurso(
-			TsPlanActividad fkTsPlanActividad,
-			Recurso fkRecurso,
-			Integer cantidad,
-			Long fechaAsignacion) {
+	public TsPlanActividadRecurso(TsPlanActividad fkTsPlanActividad,
+			Recurso fkRecurso, Integer cantidad, Long fechaAsignacion) {
 		super();
 		this.fkTsPlanActividad = fkTsPlanActividad;
 		this.fkRecurso = fkRecurso;
@@ -44,7 +46,7 @@ public class TsPlanActividadRecurso {
 	@Id
 	@SequenceGenerator(name = "tb_ts_plan_actividad_recurso_sequence", sequenceName = "public.tb_ts_plan_actividad_recurso_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_ts_plan_actividad_recurso_sequence")
-	@Column(name="id_ts_plan_actividad_recurso")
+	@Column(name = "id_ts_plan_actividad_recurso")
 	public Integer getIdTsPlanActividadRecurso() {
 		return idTsPlanActividadRecurso;
 	}
@@ -73,7 +75,7 @@ public class TsPlanActividadRecurso {
 		this.fkRecurso = fkRecurso;
 	}
 
-	@Column(name="cantidad")
+	@Column(name = "cantidad")
 	public Integer getCantidad() {
 		return cantidad;
 	}
@@ -82,7 +84,7 @@ public class TsPlanActividadRecurso {
 		this.cantidad = cantidad;
 	}
 
-	@Column(name="fecha_asignacion")
+	@Column(name = "fecha_asignacion")
 	public Long getFechaAsignacion() {
 		return fechaAsignacion;
 	}
@@ -91,11 +93,33 @@ public class TsPlanActividadRecurso {
 		this.fechaAsignacion = fechaAsignacion;
 	}
 
+	@JsonIgnore
+	@Transient
+	public Date getFechaAsignacionDate() {
+		if (this.fechaAsignacion != null) {
+			return new Date(this.fechaAsignacion);
+		}
+		return null;
+	}
+
+	@JsonIgnore
+	@Transient
+	public void setFechaAsignacionDate(Date fechaAsignacionDate) {
+		if (fechaAsignacionDate != null) {
+			fechaAsignacion = fechaAsignacionDate.getTime();
+		} else {
+			fechaAsignacion = null;
+		}
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idTsPlanActividadRecurso == null) ? 0 : idTsPlanActividadRecurso.hashCode());
+		result = prime
+				* result
+				+ ((idTsPlanActividadRecurso == null) ? 0
+						: idTsPlanActividadRecurso.hashCode());
 		return result;
 	}
 
@@ -113,10 +137,10 @@ public class TsPlanActividadRecurso {
 		TsPlanActividadRecurso other = (TsPlanActividadRecurso) obj;
 		if (idTsPlanActividadRecurso == null) {
 			return false;
-		} 
+		}
 		if (!idTsPlanActividadRecurso.equals(other.idTsPlanActividadRecurso)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

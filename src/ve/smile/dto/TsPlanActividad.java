@@ -265,7 +265,7 @@ public class TsPlanActividad {
 	}
 
 	@Column(name = "ejecucion")
-	public boolean isEjecucion() {
+	public boolean getEjecucion() {
 		return ejecucion;
 	}
 
