@@ -37,4 +37,10 @@ public class EventoPlanificadoDAO extends BaseDAO<EventoPlanificado> {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<EventoPlanificado> consultaEventosPlanificadosParametrizado(String sql)
+	{
+		Query query = createQuery(sql);
+		return query.getResultList();
+	}
 }

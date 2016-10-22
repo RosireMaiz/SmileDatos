@@ -19,6 +19,9 @@ public class Familiar {
 	private Long fechaIngreso;
 	private Long fechaSalida;
 	private Integer estatusFamiliar;
+	
+	private Motivo fkMotivo;
+	private String observacion;
 
 	public Familiar() {
 		super();
@@ -32,11 +35,15 @@ public class Familiar {
 	public Familiar(
 			Persona fkPersona,
 			Long fechaIngreso,
-			Long fechaSalida) {
+			Long fechaSalida,
+			Motivo fkMotivo,
+			String observacion) {
 		super();
 		this.fkPersona = fkPersona;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
+		this.fkMotivo = fkMotivo;
+		this.observacion = observacion;
 	}
 
 	@Id
@@ -52,7 +59,7 @@ public class Familiar {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
+	@JoinColumn(name = "fk_persona", nullable = true)
 	public Persona getFkPersona() {
 		return fkPersona;
 	}
@@ -77,6 +84,25 @@ public class Familiar {
 
 	public void setFechaSalida(Long fechaSalida) {
 		this.fechaSalida = fechaSalida;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = true)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
+	}
+	
+	@Column(name = "observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
 	}
 
 	@Override

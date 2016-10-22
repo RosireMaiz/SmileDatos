@@ -21,6 +21,9 @@ public class Beneficiario {
 	private Integer estatusBeneficiario;
 	private Familiar fkFamiliar;
 	private Parentesco fkParentesco;
+	
+	private Motivo fkMotivo;
+	private String observacion;
 
 	public Beneficiario() {
 		super();
@@ -34,11 +37,15 @@ public class Beneficiario {
 	public Beneficiario(
 			Persona fkPersona,
 			Long fechaIngreso,
-			Long fechaSalida) {
+			Long fechaSalida,
+			Motivo fkMotivo,
+			String observacion) {
 		super();
 		this.fkPersona = fkPersona;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
+		this.fkMotivo = fkMotivo;
+		this.observacion = observacion;
 	}
 
 	@Id
@@ -54,7 +61,7 @@ public class Beneficiario {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_persona", nullable = false)
+	@JoinColumn(name = "fk_persona", nullable = true)
 	public Persona getFkPersona() {
 		return fkPersona;
 	}
@@ -79,6 +86,25 @@ public class Beneficiario {
 
 	public void setFechaSalida(Long fechaSalida) {
 		this.fechaSalida = fechaSalida;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_motivo", nullable = true)
+	public Motivo getFkMotivo() {
+		return fkMotivo;
+	}
+
+	public void setFkMotivo(Motivo fkMotivo) {
+		this.fkMotivo = fkMotivo;
+	}
+	
+	@Column(name = "observacion")
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
 	}
 
 	@Override
@@ -120,7 +146,7 @@ public class Beneficiario {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "fk_familiar", nullable = false)
+	@JoinColumn(name = "fk_familiar", nullable = true)
 	public Familiar getFkFamiliar() {
 		return fkFamiliar;
 	}
@@ -130,7 +156,7 @@ public class Beneficiario {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name = "fk_parentesco", nullable = false)
+	@JoinColumn(name = "fk_parentesco", nullable = true)
 	public Parentesco getFkParentesco() {
 		return fkParentesco;
 	}

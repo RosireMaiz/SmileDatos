@@ -6,7 +6,9 @@ public enum EstatusEventoPlanificadoEnum {
 	POSTULADO,
 		PLANIFICADO,
 			RECHAZADO,
-		POR_PLANIFICAR;
+		POR_PLANIFICAR,
+		CANCELADO,
+		EJECUTADO;
 	
 
 	@Override
