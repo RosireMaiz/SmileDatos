@@ -33,11 +33,8 @@ public class VolCapacitacionPlanificada {
 
 	public VolCapacitacionPlanificada(
 			CapacitacionPlanificada fkCapacitacionPlanificada,
-			Voluntario fkVoluntario,
-			Motivo fkMotivo,
-			boolean asistencia,
-			boolean participa,
-			String observacion) {
+			Voluntario fkVoluntario, Motivo fkMotivo, boolean asistencia,
+			boolean participa, String observacion) {
 		super();
 		this.fkCapacitacionPlanificada = fkCapacitacionPlanificada;
 		this.fkVoluntario = fkVoluntario;
@@ -50,12 +47,13 @@ public class VolCapacitacionPlanificada {
 	@Id
 	@SequenceGenerator(name = "tb_vol_capacitacion_planificada_sequence", sequenceName = "public.tb_vol_capacitacion_planificada_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_vol_capacitacion_planificada_sequence")
-	@Column(name="id_vol_capacitacion_planificada")
+	@Column(name = "id_vol_capacitacion_planificada")
 	public Integer getIdVolCapacitacionPlanificada() {
 		return idVolCapacitacionPlanificada;
 	}
 
-	public void setIdVolCapacitacionPlanificada(Integer idVolCapacitacionPlanificada) {
+	public void setIdVolCapacitacionPlanificada(
+			Integer idVolCapacitacionPlanificada) {
 		this.idVolCapacitacionPlanificada = idVolCapacitacionPlanificada;
 	}
 
@@ -65,7 +63,8 @@ public class VolCapacitacionPlanificada {
 		return fkCapacitacionPlanificada;
 	}
 
-	public void setFkCapacitacionPlanificada(CapacitacionPlanificada fkCapacitacionPlanificada) {
+	public void setFkCapacitacionPlanificada(
+			CapacitacionPlanificada fkCapacitacionPlanificada) {
 		this.fkCapacitacionPlanificada = fkCapacitacionPlanificada;
 	}
 
@@ -89,7 +88,7 @@ public class VolCapacitacionPlanificada {
 		this.fkMotivo = fkMotivo;
 	}
 
-	@Column(name="asistencia")
+	@Column(name = "asistencia", nullable = true)
 	public boolean getAsistencia() {
 		return asistencia;
 	}
@@ -98,7 +97,7 @@ public class VolCapacitacionPlanificada {
 		this.asistencia = asistencia;
 	}
 
-	@Column(name="participa")
+	@Column(name = "participa", nullable = true)
 	public boolean getParticipa() {
 		return participa;
 	}
@@ -107,7 +106,7 @@ public class VolCapacitacionPlanificada {
 		this.participa = participa;
 	}
 
-	@Column(name="observacion")
+	@Column(name = "observacion")
 	public String getObservacion() {
 		return observacion;
 	}
@@ -120,7 +119,10 @@ public class VolCapacitacionPlanificada {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idVolCapacitacionPlanificada == null) ? 0 : idVolCapacitacionPlanificada.hashCode());
+		result = prime
+				* result
+				+ ((idVolCapacitacionPlanificada == null) ? 0
+						: idVolCapacitacionPlanificada.hashCode());
 		return result;
 	}
 
@@ -138,10 +140,11 @@ public class VolCapacitacionPlanificada {
 		VolCapacitacionPlanificada other = (VolCapacitacionPlanificada) obj;
 		if (idVolCapacitacionPlanificada == null) {
 			return false;
-		} 
-		if (!idVolCapacitacionPlanificada.equals(other.idVolCapacitacionPlanificada)) {
+		}
+		if (!idVolCapacitacionPlanificada
+				.equals(other.idVolCapacitacionPlanificada)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 

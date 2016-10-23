@@ -8,14 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusCapacitacionPlanificadaEnum;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name = "tb_capacitacion_planificada")
 @Entity
@@ -31,8 +31,8 @@ public class CapacitacionPlanificada {
 	private boolean ejecucion;
 	private String observacion;
 	private Integer estatusCapacitacionPlanificada;
-	
-	private List<Voluntario> voluntariosInscritos;
+
+	private List<VolCapacitacionPlanificada> voluntariosInscritos;
 
 	public CapacitacionPlanificada() {
 		super();
@@ -154,20 +154,20 @@ public class CapacitacionPlanificada {
 	public void setEstatusCapacitacionPlanificada(Integer estatus) {
 		this.estatusCapacitacionPlanificada = estatus;
 	}
-	
+
 	// VOLUNTARIOS INSCRITOS
-	@ManyToMany
-	@JoinTable(name = "tb_vol_capacitacion_planificada", joinColumns = @JoinColumn(name = "fk_capacitacion_planificada"), inverseJoinColumns = @JoinColumn(name = "fk_voluntario"))
-	public List<Voluntario> getVoluntariosInscritos()
-	{
+	@JsonIgnore
+	@Transient
+	public List<VolCapacitacionPlanificada> getVoluntariosInscritos() {
 		return voluntariosInscritos;
 	}
 
-	public void setVoluntariosInscritos(List<Voluntario> voluntariosInscritos)
-	{
+	public void setVoluntariosInscritos(
+			List<VolCapacitacionPlanificada> voluntariosInscritos) {
 		this.voluntariosInscritos = voluntariosInscritos;
 	}
 
+	@JsonIgnore
 	@Transient
 	public EstatusCapacitacionPlanificadaEnum getEstatusCapacitacionPlanificadaEnum() {
 		return EstatusCapacitacionPlanificadaEnum.values()[this.estatusCapacitacionPlanificada];
