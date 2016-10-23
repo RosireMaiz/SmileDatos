@@ -178,11 +178,18 @@ public class EventPlanTarea {
 	@JsonIgnore
 	@Transient
 	public Date getFechaPlanificadaDate() {
-		return new Date(this.fechaPlanificada);
+		if (this.fechaPlanificada != null) {
+			return new Date(this.fechaPlanificada);
+		}
+		return null;
 	}
 
 	public void setFechaPlanificadaDate(Date fechaPlanificadaDate) {
-		this.fechaPlanificada = fechaPlanificadaDate.getTime();
+		if (fechaPlanificadaDate != null) {
+			this.fechaPlanificada = fechaPlanificadaDate.getTime();
+		} else {
+			this.fechaPlanificada = null;
+		}
 	}
 
 	@JsonIgnore
@@ -221,11 +228,18 @@ public class EventPlanTarea {
 	@JsonIgnore
 	@Transient
 	public Date getFechaEjecutadaDate() {
-		return new Date(this.fechaEjecutada);
+		if (this.fechaEjecutada != null) {
+			return new Date(this.fechaEjecutada);
+		}
+		return null;
 	}
 
 	public void setFechaEjecutadaDate(Date fechaEjecutadaDate) {
-		this.fechaEjecutada = fechaEjecutadaDate.getTime();
+		if (fechaEjecutadaDate != null) {
+			this.fechaEjecutada = fechaEjecutadaDate.getTime();
+		} else {
+			this.fechaEjecutada = null;
+		}
 	}
 
 	@Override

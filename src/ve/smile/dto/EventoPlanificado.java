@@ -26,8 +26,8 @@ public class EventoPlanificado {
 	private Long fechaPlanificada;
 	private Long fechaEjecutada;
 	private Multimedia fkMultimedia;
-	private Long fechaInicioIncidencia;
-	private Long fechaFinIncidencia;
+	private Long fechaInicio;
+	private Long fechaFin;
 	private String observacion;
 	private Integer estatusEvento;
 	private boolean publicoPortal;
@@ -56,8 +56,8 @@ public class EventoPlanificado {
 		this.fechaPlanificada = fechaPlanificada;
 		this.fechaEjecutada = fechaEjecutada;
 		this.fkMultimedia = fkMultimedia;
-		this.fechaInicioIncidencia = fechaInicioIncidencia;
-		this.fechaFinIncidencia = fechaFinIncidencia;
+		this.fechaInicio = fechaInicioIncidencia;
+		this.fechaFin = fechaFinIncidencia;
 		this.observacion = observacion;
 		this.estatusEvento = estatusEvento;
 		this.publicoPortal = publicoPortal;
@@ -154,21 +154,21 @@ public class EventoPlanificado {
 	}
 
 	@Column(name = "fecha_inicio_incidencia")
-	public Long getFechaInicioIncidencia() {
-		return fechaInicioIncidencia;
+	public Long getFechaInicio() {
+		return fechaInicio;
 	}
 
-	public void setFechaInicioIncidencia(Long fechaInicioIncidencia) {
-		this.fechaInicioIncidencia = fechaInicioIncidencia;
+	public void setFechaInicio(Long fechaInicioIncidencia) {
+		this.fechaInicio = fechaInicioIncidencia;
 	}
 
 	@Column(name = "fecha_fin_incidencia")
-	public Long getFechaFinIncidencia() {
-		return fechaFinIncidencia;
+	public Long getFechaFin() {
+		return fechaFin;
 	}
 
-	public void setFechaFinIncidencia(Long fechaFinIncidencia) {
-		this.fechaFinIncidencia = fechaFinIncidencia;
+	public void setFechaFin(Long fechaFinIncidencia) {
+		this.fechaFin = fechaFinIncidencia;
 	}
 
 	@Column(name = "observacion")
