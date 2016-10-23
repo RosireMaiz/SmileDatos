@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.EstatusEventoPlanificadoEnum;
 
 @Table(name = "tb_evento_planificado")
@@ -32,6 +34,9 @@ public class EventoPlanificado {
 	private Integer estatusEvento;
 	private boolean publicoPortal;
 
+	private Long fechaInicioEjecucion;
+	private Long fechaFinEjecucion;
+	
 	public EventoPlanificado() {
 		super();
 	}
@@ -198,6 +203,7 @@ public class EventoPlanificado {
 		this.publicoPortal = publicoPortal;
 	}
 
+	@JsonIgnore
 	@Transient
 	public EstatusEventoPlanificadoEnum getEstatusEventoPlanificadoEnum() {
 		return EstatusEventoPlanificadoEnum.values()[this.estatusEvento];
@@ -207,6 +213,25 @@ public class EventoPlanificado {
 			EstatusEventoPlanificadoEnum estatusEventoPlanificadoEnum) {
 		this.estatusEvento = estatusEventoPlanificadoEnum.ordinal();
 	}
+	
+	@Column(name = "fecha_inicio_ejecucion")
+	public Long getFechaInicioEjecucion() {
+		return fechaInicioEjecucion;
+	}
+
+	public void setFechaInicioEjecucion(Long fechaInicioEjecucion) {
+		this.fechaInicioEjecucion = fechaInicioEjecucion;
+	}
+
+	@Column(name = "fecha_fin_ejecucion")
+	public Long getFechaFinEjecucion() {
+		return fechaFinEjecucion;
+	}
+
+	public void setFechaFinEjecucion(Long fechaFinEjecucion) {
+		this.fechaFinEjecucion = fechaFinEjecucion;
+	}
+
 
 	@Override
 	public int hashCode() {

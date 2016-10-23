@@ -32,6 +32,8 @@ public class TsPlan {
 	private Multimedia fkMultimedia;
 	private Long fechaInicio;
 	private Long fechaFin;
+	private Long fechaInicioEjecucion;
+	private Long fechaFinEjecucion;
 	private boolean publicoPortal;
 
 	private Integer estatusTsPlan;
@@ -220,6 +222,24 @@ public class TsPlan {
 	public void setEstatusTrabajoSocialPlanificadoEnum(
 			EstatusTrabajoSocialPlanificadoEnum estatusTrabajoSocialPlanificadoEnum) {
 		this.estatusTsPlan = estatusTrabajoSocialPlanificadoEnum.ordinal();
+	}
+
+	@Column(name = "fecha_inicio_ejecucion")
+	public Long getFechaInicioEjecucion() {
+		return fechaInicioEjecucion;
+	}
+
+	public void setFechaInicioEjecucion(Long fechaInicioEjecucion) {
+		this.fechaInicioEjecucion = fechaInicioEjecucion;
+	}
+
+	@Column(name = "fecha_fin_ejecucion")
+	public Long getFechaFinEjecucion() {
+		return fechaFinEjecucion;
+	}
+
+	public void setFechaFinEjecucion(Long fechaFinEjecucion) {
+		this.fechaFinEjecucion = fechaFinEjecucion;
 	}
 
 	@Override

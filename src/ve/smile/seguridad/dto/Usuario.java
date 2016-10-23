@@ -1,5 +1,8 @@
 package ve.smile.seguridad.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
+import ve.smile.dto.NotificacionUsuario;
+import ve.smile.dto.Persona;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.internal.LinkedTreeMap;
 
 @Table(name = "tb_usuario")
@@ -24,6 +32,12 @@ public class Usuario {
 	private String correo;
 	private Rol fkRol;
 	private String estatus;
+
+	private Persona persona;
+
+	private List<NotificacionUsuario> notificacionUsuarios;
+
+	private List<NotificacionUsuario> notificacionUsuariosPendientes;
 
 	public Usuario() {
 		super();
@@ -109,6 +123,44 @@ public class Usuario {
 
 	public void setEstatus(String estatus) {
 		this.estatus = estatus;
+	}
+
+	@JsonIgnore
+	@Transient
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	@JsonIgnore
+	@Transient
+	public List<NotificacionUsuario> getNotificacionUsuarios() {
+		if (this.notificacionUsuarios == null) {
+			this.notificacionUsuarios = new ArrayList<>();
+		}
+		return notificacionUsuarios;
+	}
+
+	public void setNotificacionUsuarios(
+			List<NotificacionUsuario> notificacionUsuarios) {
+		this.notificacionUsuarios = notificacionUsuarios;
+	}
+
+	@JsonIgnore
+	@Transient
+	public List<NotificacionUsuario> getNotificacionUsuariosPendientes() {
+		if (this.notificacionUsuariosPendientes == null) {
+			this.notificacionUsuariosPendientes = new ArrayList<>();
+		}
+		return notificacionUsuariosPendientes;
+	}
+
+	public void setNotificacionUsuariosPendientes(
+			List<NotificacionUsuario> notificacionUsuariosPendientes) {
+		this.notificacionUsuariosPendientes = notificacionUsuariosPendientes;
 	}
 
 	@Override
