@@ -20,6 +20,7 @@ public class EstudioSocioEconomico {
 	private String resultado;
 	private Long fecha;
 	private Long fechaEjecutada;
+	private Integer estatusEstudio;
 
 	public EstudioSocioEconomico() {
 		super();
@@ -96,6 +97,15 @@ public class EstudioSocioEconomico {
 
 	public void setFechaEjecutada(Long fechaEjecutada) {
 		this.fechaEjecutada = fechaEjecutada;
+	}
+	
+	@Column(name="estatus_estudio")
+	public Integer getEstatusEstudio() {
+		return estatusEstudio;
+	}
+
+	public void setEstatusEstudio(Integer estatusEstudio) {
+		this.estatusEstudio = estatusEstudio;
 	}
 
 	@Override
