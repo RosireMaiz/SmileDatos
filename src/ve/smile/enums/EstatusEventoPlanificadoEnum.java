@@ -3,14 +3,12 @@ package ve.smile.enums;
 import java.util.ResourceBundle;
 
 public enum EstatusEventoPlanificadoEnum {
-	POSTULADO,
 		PLANIFICADO,
-			RECHAZADO,
-		POR_PLANIFICAR,
-		CANCELADO,
-		EJECUTADO;
-	
-
+		EJECUTADO,
+		POSTULADO,
+		RECHAZADO,
+		CANCELADO;
+		
 	@Override
 	public String toString() {
 		ResourceBundle operacionBundle = ResourceBundle.getBundle("ve.smile.enums.EstatusEventoPlanificadoEnum");
