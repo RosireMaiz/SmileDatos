@@ -12,7 +12,7 @@ public class MultimediaDAO extends BaseDAO<Multimedia> {
 	@SuppressWarnings("unchecked")
 	public List<Multimedia> findMultimediaTipo(Integer cantidad, Integer tipo) {
 		
-		String sql = "select m from Multimedia m where m.tipoMultimedia = ?1";
+		String sql = "select m from Multimedia m where m.tipoMultimedia = ?1 ORDER BY m.idMultimedia DESC";
 		
 		Query query = createQuery(sql);
 		

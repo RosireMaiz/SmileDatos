@@ -12,7 +12,7 @@ public class AlbumDAO extends BaseDAO<Album> {
 	@SuppressWarnings("unchecked")
 	public List<Album> findAlbumCantidad(Integer cantidad, Integer statusAlbum) {
 		
-		String sql = "select a from Album a where a.estatusAlbum = ?1";
+		String sql = "select a from Album a where a.estatusAlbum = ?1 ORDER BY A.idAlbum DESC";
 		
 		Query query = createQuery(sql);
 		
