@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import ve.smile.enums.EstatusContactoEnum;
-import ve.smile.enums.ProcedenciaEnum;
+import ve.smile.enums.ProcedenciaMensajeEnum;
 import ve.smile.enums.TipoContactoPortalEnum;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -149,6 +149,7 @@ public class ContactoPortal {
 		this.respuesta = respuesta;
 	}
 
+	@JsonIgnore
 	@Transient
 	public EstatusContactoEnum getEstatusContactoEnum() {
 		return EstatusContactoEnum.values()[this.estatusContacto];
@@ -158,13 +159,14 @@ public class ContactoPortal {
 		this.estatusContacto = estatusContactoEnum.ordinal();
 	}
 
+	@JsonIgnore
 	@Transient
-	public ProcedenciaEnum getProcedeciaEnum() {
-		return ProcedenciaEnum.values()[this.procedencia];
+	public ProcedenciaMensajeEnum getProcedeciaEnum() {
+		return ProcedenciaMensajeEnum.values()[this.procedencia];
 	}
 
-	public void setProcedeciaEnum(ProcedenciaEnum procedenciaEnum) {
-		this.procedencia = procedenciaEnum.ordinal();
+	public void setProcedenciaMensajeEnum(ProcedenciaMensajeEnum procedenciaMensajeEnum) {
+		this.procedencia = procedenciaMensajeEnum.ordinal();
 	}
 
 	@Override
