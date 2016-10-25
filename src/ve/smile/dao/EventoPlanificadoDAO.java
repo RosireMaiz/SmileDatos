@@ -13,7 +13,7 @@ public class EventoPlanificadoDAO extends BaseDAO<EventoPlanificado> {
 	public List<EventoPlanificado> findEventosPlanificadoPublico(Boolean publico,
 			Integer estatusEvento, Long fechaDesde, Integer cant) {
 		String sql = "select e from EventoPlanificado e where e.publicoPortal = ?1 and "
-				+ "e.estatusEvento = ?2 and e.fechaPlanificada >= ?3 ORDER BY e.fechaPlanificada";
+				+ "e.estatusEvento = ?2 and e.fechaInicioEjecucion >= ?3 ORDER BY e.fechaInicio";
 
 		Query query = createQuery(sql);
 
