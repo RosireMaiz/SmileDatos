@@ -1,5 +1,7 @@
 package ve.smile.dto;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Table(name = "tb_solicitud_ayuda_recurso")
 @Entity
@@ -29,10 +34,8 @@ public class SolicitudAyudaRecurso {
 		this.idSolicitudAyudaRecurso = idSolicitudAyudaRecurso;
 	}
 
-	public SolicitudAyudaRecurso(
-			Recurso fkRecurso,
-			SolicitudAyuda fkSolicitudAyuda,
-			Integer cantidad,
+	public SolicitudAyudaRecurso(Recurso fkRecurso,
+			SolicitudAyuda fkSolicitudAyuda, Integer cantidad,
 			Long fechaAsignacion) {
 		super();
 		this.fkRecurso = fkRecurso;
@@ -44,7 +47,7 @@ public class SolicitudAyudaRecurso {
 	@Id
 	@SequenceGenerator(name = "tb_solicitud_ayuda_recurso_sequence", sequenceName = "public.tb_solicitud_ayuda_recurso_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_solicitud_ayuda_recurso_sequence")
-	@Column(name="id_solicitud_ayuda_recurso")
+	@Column(name = "id_solicitud_ayuda_recurso")
 	public Integer getIdSolicitudAyudaRecurso() {
 		return idSolicitudAyudaRecurso;
 	}
@@ -73,7 +76,7 @@ public class SolicitudAyudaRecurso {
 		this.fkSolicitudAyuda = fkSolicitudAyuda;
 	}
 
-	@Column(name="cantidad")
+	@Column(name = "cantidad")
 	public Integer getCantidad() {
 		return cantidad;
 	}
@@ -82,7 +85,7 @@ public class SolicitudAyudaRecurso {
 		this.cantidad = cantidad;
 	}
 
-	@Column(name="fecha_asignacion")
+	@Column(name = "fecha_asignacion")
 	public Long getFechaAsignacion() {
 		return fechaAsignacion;
 	}
@@ -91,11 +94,33 @@ public class SolicitudAyudaRecurso {
 		this.fechaAsignacion = fechaAsignacion;
 	}
 
+	@JsonIgnore
+	@Transient
+	public Date getFechaAsignacionDate() {
+		if (this.fechaAsignacion != null) {
+			return new Date(this.fechaAsignacion);
+		}
+		return null;
+	}
+
+	@JsonIgnore
+	@Transient
+	public void setFechaAsignacionDate(Date fechaAsignacionDate) {
+		if (fechaAsignacionDate != null) {
+			fechaAsignacion = fechaAsignacionDate.getTime();
+		} else {
+			fechaAsignacion = null;
+		}
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idSolicitudAyudaRecurso == null) ? 0 : idSolicitudAyudaRecurso.hashCode());
+		result = prime
+				* result
+				+ ((idSolicitudAyudaRecurso == null) ? 0
+						: idSolicitudAyudaRecurso.hashCode());
 		return result;
 	}
 
@@ -113,10 +138,10 @@ public class SolicitudAyudaRecurso {
 		SolicitudAyudaRecurso other = (SolicitudAyudaRecurso) obj;
 		if (idSolicitudAyudaRecurso == null) {
 			return false;
-		} 
+		}
 		if (!idSolicitudAyudaRecurso.equals(other.idSolicitudAyudaRecurso)) {
 			return false;
-		} 
+		}
 		return true;
 	}
 
