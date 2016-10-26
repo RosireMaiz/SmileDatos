@@ -27,11 +27,16 @@ public class Organizacion {
 	private String direccion2;
 	private String telefono2;
 	private String iframe;
-	private String latitud;
-	private String longitud;
+	private Double latitud;
+	private Double longitud;
 	private String slogan;
 	private String correo;
 	private String fax;
+	private String facebook;
+	private String twitter;
+	private String linkedin;
+	private String instagram;
+
 	public Organizacion() {
 		super();
 	}
@@ -41,21 +46,10 @@ public class Organizacion {
 		this.idOrganizacion = idOrganizacion;
 	}
 
-	public Organizacion(
-			Multimedia fkMultimedia,
-			String rif,
-			String nombre,
-			String direccion,
-			String telefono,
-			String mision,
-			String vision,
-			String valores,
-			String descripcion,
-			String direccion2,
-			String telefono2,
-			String iframe,
-			String latitud,
-			String longitud) {
+	public Organizacion(Multimedia fkMultimedia, String rif, String nombre,
+			String direccion, String telefono, String mision, String vision,
+			String valores, String descripcion, String direccion2,
+			String telefono2, String iframe, Double latitud, Double longitud) {
 		super();
 		this.fkMultimedia = fkMultimedia;
 		this.rif = rif;
@@ -76,7 +70,7 @@ public class Organizacion {
 	@Id
 	@SequenceGenerator(name = "tb_organizacion_sequence", sequenceName = "public.tb_organizacion_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tb_organizacion_sequence")
-	@Column(name="id_organizacion")
+	@Column(name = "id_organizacion")
 	public Integer getIdOrganizacion() {
 		return idOrganizacion;
 	}
@@ -95,7 +89,7 @@ public class Organizacion {
 		this.fkMultimedia = fkMultimedia;
 	}
 
-	@Column(name="rif")
+	@Column(name = "rif")
 	public String getRif() {
 		return rif;
 	}
@@ -104,7 +98,7 @@ public class Organizacion {
 		this.rif = rif;
 	}
 
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	public String getNombre() {
 		return nombre;
 	}
@@ -113,7 +107,7 @@ public class Organizacion {
 		this.nombre = nombre;
 	}
 
-	@Column(name="direccion")
+	@Column(name = "direccion")
 	public String getDireccion() {
 		return direccion;
 	}
@@ -122,7 +116,7 @@ public class Organizacion {
 		this.direccion = direccion;
 	}
 
-	@Column(name="telefono")
+	@Column(name = "telefono")
 	public String getTelefono() {
 		return telefono;
 	}
@@ -131,7 +125,7 @@ public class Organizacion {
 		this.telefono = telefono;
 	}
 
-	@Column(name="mision")
+	@Column(name = "mision")
 	public String getMision() {
 		return mision;
 	}
@@ -140,7 +134,7 @@ public class Organizacion {
 		this.mision = mision;
 	}
 
-	@Column(name="vision")
+	@Column(name = "vision")
 	public String getVision() {
 		return vision;
 	}
@@ -149,7 +143,7 @@ public class Organizacion {
 		this.vision = vision;
 	}
 
-	@Column(name="valores")
+	@Column(name = "valores")
 	public String getValores() {
 		return valores;
 	}
@@ -158,7 +152,7 @@ public class Organizacion {
 		this.valores = valores;
 	}
 
-	@Column(name="descripcion")
+	@Column(name = "descripcion")
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -167,7 +161,7 @@ public class Organizacion {
 		this.descripcion = descripcion;
 	}
 
-	@Column(name="direccion2")
+	@Column(name = "direccion2")
 	public String getDireccion2() {
 		return direccion2;
 	}
@@ -176,7 +170,7 @@ public class Organizacion {
 		this.direccion2 = direccion2;
 	}
 
-	@Column(name="telefono2")
+	@Column(name = "telefono2")
 	public String getTelefono2() {
 		return telefono2;
 	}
@@ -185,7 +179,7 @@ public class Organizacion {
 		this.telefono2 = telefono2;
 	}
 
-	@Column(name="iframe")
+	@Column(name = "iframe")
 	public String getIframe() {
 		return iframe;
 	}
@@ -194,21 +188,21 @@ public class Organizacion {
 		this.iframe = iframe;
 	}
 
-	@Column(name="latitud")
-	public String getLatitud() {
+	@Column(name = "latitud")
+	public Double getLatitud() {
 		return latitud;
 	}
 
-	public void setLatitud(String latitud) {
+	public void setLatitud(Double latitud) {
 		this.latitud = latitud;
 	}
 
-	@Column(name="longitud")
-	public String getLongitud() {
+	@Column(name = "longitud")
+	public Double getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(String longitud) {
+	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
 
@@ -216,17 +210,54 @@ public class Organizacion {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idOrganizacion == null) ? 0 : idOrganizacion.hashCode());
+		result = prime * result
+				+ ((idOrganizacion == null) ? 0 : idOrganizacion.hashCode());
 		return result;
 	}
-	
-	@Column(name="slogan")
+
+	@Column(name = "slogan")
 	public String getSlogan() {
 		return slogan;
 	}
 
 	public void setSlogan(String slogan) {
 		this.slogan = slogan;
+	}
+
+	@Column(name = "facebook")
+	public String getFacebook() {
+		return facebook;
+	}
+
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
+
+	@Column(name = "twitter")
+	public String getTwitter() {
+		return twitter;
+	}
+
+	public void setTwitter(String twitter) {
+		this.twitter = twitter;
+	}
+
+	@Column(name = "linkedin")
+	public String getLinkedin() {
+		return linkedin;
+	}
+
+	public void setLinkedin(String linkedin) {
+		this.linkedin = linkedin;
+	}
+
+	public String getInstagram() {
+		return instagram;
+	}
+
+	@Column(name = "instagram")
+	public void setInstagram(String instagram) {
+		this.instagram = instagram;
 	}
 
 	@Override
@@ -243,13 +274,14 @@ public class Organizacion {
 		Organizacion other = (Organizacion) obj;
 		if (idOrganizacion == null) {
 			return false;
-		} 
+		}
 		if (!idOrganizacion.equals(other.idOrganizacion)) {
 			return false;
-		} 
+		}
 		return true;
 	}
-	@Column(name="correo")
+
+	@Column(name = "correo")
 	public String getCorreo() {
 		return correo;
 	}
@@ -257,7 +289,8 @@ public class Organizacion {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	@Column(name="fax")
+
+	@Column(name = "fax")
 	public String getFax() {
 		return fax;
 	}
@@ -265,7 +298,5 @@ public class Organizacion {
 	public void setFax(String fax) {
 		this.fax = fax;
 	}
-	
-	
 
 }
