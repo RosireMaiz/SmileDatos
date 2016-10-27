@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.TipoPersonaEnum;
 import ve.smile.seguridad.dto.Usuario;
 
@@ -283,6 +285,8 @@ public class Persona {
 		this.tipoPersona = tipoPersona;
 	}
 
+
+	@JsonIgnore
 	@Transient
 	public TipoPersonaEnum getTipoPersonaEnum() {
 		return TipoPersonaEnum.values()[this.tipoPersona];

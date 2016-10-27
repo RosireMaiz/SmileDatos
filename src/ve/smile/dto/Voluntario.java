@@ -16,6 +16,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.EstatusVoluntarioEnum;
 
 @Table(name = "tb_voluntario")
@@ -123,6 +125,7 @@ public class Voluntario {
 		this.observacion = observacion;
 	}
 
+	@JsonIgnore
 	@Transient
 	public EstatusVoluntarioEnum getEstatusVoluntarioEnum() {
 		return EstatusVoluntarioEnum.values()[this.estatusVoluntario];
