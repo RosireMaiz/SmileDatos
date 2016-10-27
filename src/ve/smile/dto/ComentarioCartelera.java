@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.EstatusComentarioCarteleraEnum;
 
 @Table(name = "tb_comentario_cartelera")
@@ -102,6 +104,7 @@ public class ComentarioCartelera {
 		this.estatusComentario = estatusComentario;
 	}
 
+	@JsonIgnore
 	@Transient
 	public EstatusComentarioCarteleraEnum getEstatusComentarioCarteleraEnum() {
 		return EstatusComentarioCarteleraEnum.values()[this.estatusComentario];

@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.EventPlanTareaTrabajadorEnum;
 
 @Table(name = "tb_event_plan_tarea_trabajador")
@@ -115,6 +117,7 @@ public class EventPlanTareaTrabajador {
 		this.estatusTarea = estatusTarea;
 	}
 
+	@JsonIgnore
 	@Transient
 	public EventPlanTareaTrabajadorEnum getEventPlanTareaTrabajadorEnum() {
 		return EventPlanTareaTrabajadorEnum.values()[this.estatusTarea];
