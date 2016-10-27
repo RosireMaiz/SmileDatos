@@ -70,6 +70,7 @@ public class InteraccionPortal {
 		this.tipoInteraccion = tipoInteraccion;
 	}
 
+	@JsonIgnore
 	@Transient
 	public TipoInteraccionEnum getTipoInteraccionEnum() {
 		return TipoInteraccionEnum.values()[this.tipoInteraccion];

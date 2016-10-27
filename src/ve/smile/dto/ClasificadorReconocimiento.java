@@ -9,6 +9,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.TipoReconocimientoEnum;
 
 @Table(name = "tb_clasificador_reconocimiento")
@@ -77,6 +79,7 @@ public class ClasificadorReconocimiento {
 		this.tipoReconocimiento = tipoReconocimiento;
 	}
 
+	@JsonIgnore
 	@Transient
 	public TipoReconocimientoEnum getTipoReconocimientoEnum() {
 		return TipoReconocimientoEnum.values()[this.tipoReconocimiento];

@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.TipoDifusionEnum;
 
 @Table(name = "tb_difusion")
@@ -103,6 +105,7 @@ public class Difusion {
 		this.tipoDifusion = tipoDifusion;
 	}
 
+	@JsonIgnore
 	@Transient
 	public TipoDifusionEnum getTipoDifusionEnum() {
 		return TipoDifusionEnum.values()[this.tipoDifusion];

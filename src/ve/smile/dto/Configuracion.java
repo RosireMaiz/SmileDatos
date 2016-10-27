@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.PropiedadEnum;
 import ve.smile.seguridad.dto.IconSclass;
 
@@ -103,6 +105,7 @@ public class Configuracion {
 		this.propiedad = propiedad;
 	}
 
+	@JsonIgnore
 	@Transient
 	public PropiedadEnum getPropiedadEnum() {
 		return PropiedadEnum.values()[this.propiedad];

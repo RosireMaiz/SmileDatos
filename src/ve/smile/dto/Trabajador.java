@@ -15,6 +15,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.EstatusPadrinoEnum;
 import ve.smile.enums.EstatusTrabajadorEnum;
 
@@ -144,6 +146,7 @@ public class Trabajador {
 		this.estatusTrabajador = estatusTrabajador;
 	}
 
+	@JsonIgnore
 	@Transient
 	public EstatusPadrinoEnum getEstatusTrabajadorEnum() {
 		return EstatusPadrinoEnum.values()[this.estatusTrabajador];

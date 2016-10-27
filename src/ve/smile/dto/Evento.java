@@ -15,6 +15,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.TipoEventoEnum;
 
 @Table(name = "tb_evento")
@@ -97,6 +99,7 @@ public class Evento {
 		this.tipoEvento = tipoEvento;
 	}
 
+	@JsonIgnore
 	@Transient
 	public TipoEventoEnum getTipoEventoEnum() {
 		return TipoEventoEnum.values()[this.tipoEvento];

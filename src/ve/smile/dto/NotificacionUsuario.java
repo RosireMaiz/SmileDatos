@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.TipoReferenciaNotificacionEnum;
 import ve.smile.enums.EstatusNotificacionEnum;
 import ve.smile.seguridad.dto.Usuario;
@@ -106,6 +108,7 @@ public class NotificacionUsuario {
 		this.tipoReferenciaNotificacion = tipoReferenciaNotificacion;
 	}
 
+	@JsonIgnore
 	@Transient
 	public TipoReferenciaNotificacionEnum getTipoReferenciaNotificacionEnum() {
 		return TipoReferenciaNotificacionEnum.values()[this.tipoReferenciaNotificacion];
@@ -117,6 +120,7 @@ public class NotificacionUsuario {
 				.ordinal();
 	}
 	
+	@JsonIgnore
 	@Transient
 	public EstatusNotificacionEnum EstatusNotificacionEnum() {
 		return EstatusNotificacionEnum.values()[this.estatusNotificacion];

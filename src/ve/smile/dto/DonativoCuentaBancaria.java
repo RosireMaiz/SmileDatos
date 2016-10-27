@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.TipoDonativoCuentaBancariaEnum;
 
 @Table(name = "tb_donativo_cuenta_bancaria")
@@ -103,6 +105,7 @@ public class DonativoCuentaBancaria {
 		this.tipoDonativoCuentaBancaria = tipoDonativoCuentaBancaria;
 	}
 
+	@JsonIgnore
 	@Transient
 	public TipoDonativoCuentaBancariaEnum getTipoDonativoCuentaBancariaEnum() {
 		return TipoDonativoCuentaBancariaEnum.values()[this.tipoDonativoCuentaBancaria];

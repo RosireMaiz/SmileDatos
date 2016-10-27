@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.PropietarioEnum;
 
 @Table(name = "tb_cuenta_bancaria")
@@ -114,6 +116,7 @@ public class CuentaBancaria {
 		this.propietario = tipoCuenta;
 	}
 
+	@JsonIgnore
 	@Transient
 	public PropietarioEnum getPropietarioEnum() {
 		return PropietarioEnum.values()[this.propietario];

@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.EstatusSolicitudEnum;
 import ve.smile.enums.UrgenciaEnum;
 
@@ -124,6 +126,7 @@ public class SolicitudAyuda {
 		this.urgencia = urgencia;
 	}
 
+	@JsonIgnore
 	@Transient
 	public UrgenciaEnum getUrgenciaEnum() {
 		return UrgenciaEnum.values()[this.urgencia];
@@ -142,6 +145,7 @@ public class SolicitudAyuda {
 		this.estatusSolicitud = estatusSolicitud;
 	}
 
+	@JsonIgnore
 	@Transient
 	public EstatusSolicitudEnum getEstatusSolicitudEnum() {
 		return EstatusSolicitudEnum.values()[this.estatusSolicitud];

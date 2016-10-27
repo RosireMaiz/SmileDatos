@@ -11,6 +11,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.EstatusCarteleraEnum;
 import ve.smile.enums.TipoCarteleraEnum;
 
@@ -137,7 +139,7 @@ public class Cartelera {
 		this.estatusCartelera = estatusCartelera;
 	}
 	
-	
+	@JsonIgnore
 	@Transient
 	public EstatusCarteleraEnum getEstatusCarteleraEnum() {
 		return EstatusCarteleraEnum.values()[this.estatusCartelera];

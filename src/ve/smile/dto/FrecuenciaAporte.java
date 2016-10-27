@@ -9,6 +9,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ve.smile.enums.UnidadFrecuenciaAporteEnum;
 
 @Table(name = "tb_frecuencia_aporte")
@@ -76,6 +78,7 @@ public class FrecuenciaAporte {
 		this.frecuencia = frecuencia;
 	}
 
+	@JsonIgnore
 	@Transient
 	public UnidadFrecuenciaAporteEnum getUnidadFrecuenciaAporteEnum() {
 		return UnidadFrecuenciaAporteEnum.values()[this.unidadFrecuenciaAporte];
